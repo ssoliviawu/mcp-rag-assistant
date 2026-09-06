@@ -1,0 +1,44 @@
+[project]
+name = "mcp-rag-assistant"
+version = "0.1.0"
+description = "An MCP-aware RAG assistant for MCP documentation"
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+    "beautifulsoup4",
+    "markdownify",
+    "mcp[cli]>=2.0.0",
+    "numpy>=2.5.2",
+    "onnx>=1.22.0",
+    "onnxruntime>=1.28.0",
+    "openai>=3.1.0",
+    "optimum>=2.3.0",
+    "pgvector>=0.5.0",
+    "psycopg[binary]>=3.3.4",
+    "pydantic",
+    "python-dotenv>=1.2.2",
+    "requests",
+    "tokenizers>=0.22.2",
+    "transformers>=5.15.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = [
+    "db*",
+    "embedding*",
+    "ingestion*",
+    "rag*",
+    "retrieval*",
+    "mcp_server*",
+]

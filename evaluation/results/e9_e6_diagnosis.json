@@ -1,0 +1,2239 @@
+{
+  "experiment": "E9_E6_diagnosis",
+  "source": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\evaluation\\results\\e8_e6_vs_e2_analysis.json",
+  "alpha": 0.05,
+  "summary": {
+    "total_questions": 48,
+    "rank_changed": 13,
+    "improved": 4,
+    "worsened": 9,
+    "unchanged": 35,
+    "improvement_diagnosis": {
+      "GOLD_ALREADY_TOP1": 2,
+      "LEXICAL_CANNOT_HELP": 2
+    },
+    "worsening_diagnosis": {
+      "LEXICAL_NO_DISCRIMINATION": 4,
+      "OTHER_REGRESSION": 1,
+      "SEMANTIC_AND_LEXICAL_FAVOR_COMPETITOR": 4
+    },
+    "candidate_set": {
+      "same": 15,
+      "different": 33
+    }
+  },
+  "cases": [
+    {
+      "id": "q001",
+      "question": "How do I create an MCP tool in Python?",
+      "classification": "GOLD_RANK_WORSENED",
+      "diagnosis": "LEXICAL_NO_DISCRIMINATION",
+      "e2_gold_rank": 2,
+      "e6_gold_rank": 3,
+      "rank_change": -1,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-advanced-low-level-server-6",
+        "title": "docs_src/lowlevel/tutorial002.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "similarity": 0.7784006595611628,
+        "lexical_score": 0.625,
+        "final_score": 0.8096506595611628,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7518107442968653,
+        "lexical_score": 0.625,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7784006595611628,
+        "lexical_score": 0.625,
+        "final_score": 0.8096506595611628
+      },
+      "semantic_gap": 0.026589915264297437,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions"
+        ]
+      }
+    },
+    {
+      "id": "q002",
+      "question": "How are MCP tool input schemas generated from Python functions?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-tools-15",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "similarity": 0.7704817882323801,
+        "lexical_score": 0.6,
+        "final_score": 0.8004817882323801,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7704817882323801,
+        "lexical_score": 0.6,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7704817882323801,
+        "lexical_score": 0.6,
+        "final_score": 0.8004817882323801
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/servers"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/servers/completions"
+        ]
+      }
+    },
+    {
+      "id": "q003",
+      "question": "How do I make an MCP tool parameter optional?",
+      "classification": "GOLD_RANK_IMPROVED",
+      "diagnosis": "GOLD_ALREADY_TOP1",
+      "e2_gold_rank": 2,
+      "e6_gold_rank": 1,
+      "rank_change": 1,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-tools-15",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "similarity": 0.7128139946703317,
+        "lexical_score": 1.0,
+        "final_score": 0.7628139946703317,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7128139946703317,
+        "lexical_score": 1.0,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7128139946703317,
+        "lexical_score": 1.0,
+        "final_score": 0.7628139946703317
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/client/transports"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/context"
+        ]
+      }
+    },
+    {
+      "id": "q004",
+      "question": "How do I describe an MCP tool parameter?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-tools-0",
+        "title": "Tools",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "similarity": 0.7538640352406536,
+        "lexical_score": 0.42857142857142855,
+        "final_score": 0.7752926066692251,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7538640352406536,
+        "lexical_score": 0.42857142857142855,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7538640352406536,
+        "lexical_score": 0.42857142857142855,
+        "final_score": 0.7752926066692251
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions"
+        ]
+      }
+    },
+    {
+      "id": "q005",
+      "question": "How do I define an enum parameter for an MCP tool?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-tools-15",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "similarity": 0.7588984596400997,
+        "lexical_score": 0.8888888888888888,
+        "final_score": 0.8033429040845441,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7588984596400997,
+        "lexical_score": 0.8888888888888888,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7588984596400997,
+        "lexical_score": 0.8888888888888888,
+        "final_score": 0.8033429040845441
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q006",
+      "question": "How do I use a Pydantic model as an MCP tool input?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-tools-15",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "similarity": 0.7909454578724776,
+        "lexical_score": 0.9,
+        "final_score": 0.8359454578724776,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7909454578724776,
+        "lexical_score": 0.9,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7909454578724776,
+        "lexical_score": 0.9,
+        "final_score": 0.8359454578724776
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q007",
+      "question": "What is the difference between an MCP tool and a resource?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/resources",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-resources-0",
+        "title": "Resources",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/resources",
+        "similarity": 0.8405345678329468,
+        "lexical_score": 0.7,
+        "final_score": 0.8755345678329468,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.8405345678329468,
+        "lexical_score": 0.7,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.8405345678329468,
+        "lexical_score": 0.7,
+        "final_score": 0.8755345678329468
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/servers/completions"
+        ]
+      }
+    },
+    {
+      "id": "q008",
+      "question": "How do MCP tool errors work in FastMCP?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 2,
+      "e6_gold_rank": 2,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-40",
+        "title": "What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.7221837474217278,
+        "lexical_score": 0.625,
+        "final_score": 0.7534337474217278,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7183798979747247,
+        "lexical_score": 0.625,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7221837474217278,
+        "lexical_score": 0.625,
+        "final_score": 0.7534337474217278
+      },
+      "semantic_gap": 0.0038038494470030715,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/servers/resources"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/run/deploy"
+        ]
+      }
+    },
+    {
+      "id": "q009",
+      "question": "How can an MCP tool report progress?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 2,
+      "e6_gold_rank": 2,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-81",
+        "title": "`ProgressContext` and `progress()` context manager removed",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.7584778440452294,
+        "lexical_score": 0.7142857142857143,
+        "final_score": 0.7941921297595151,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.6941737118855899,
+        "lexical_score": 1.0,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7584778440452294,
+        "lexical_score": 0.7142857142857143,
+        "final_score": 0.7941921297595151
+      },
+      "semantic_gap": 0.0643041321596396,
+      "lexical_gap": 0.2857142857142857,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies"
+        ]
+      }
+    },
+    {
+      "id": "q010",
+      "question": "How do I access MCP Context inside a tool?",
+      "classification": "GOLD_RANK_WORSENED",
+      "diagnosis": "LEXICAL_NO_DISCRIMINATION",
+      "e2_gold_rank": 5,
+      "e6_gold_rank": 6,
+      "rank_change": -1,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-60",
+        "title": "`MCPServer.get_context()` removed",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.8064065344818275,
+        "lexical_score": 0.5714285714285714,
+        "final_score": 0.8349779630532561,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7095367139301738,
+        "lexical_score": 0.5714285714285714,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.8064065344818275,
+        "lexical_score": 0.5714285714285714,
+        "final_score": 0.8349779630532561
+      },
+      "semantic_gap": 0.09686982055165372,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/servers/completions"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry"
+        ]
+      }
+    },
+    {
+      "id": "q011",
+      "question": "What information is available from MCP Context?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 2,
+      "e6_gold_rank": 2,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-60",
+        "title": "`MCPServer.get_context()` removed",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.695310615934207,
+        "lexical_score": 0.5714285714285714,
+        "final_score": 0.7238820445056355,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.6851481011598183,
+        "lexical_score": 0.7142857142857143,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.695310615934207,
+        "lexical_score": 0.5714285714285714,
+        "final_score": 0.7238820445056355
+      },
+      "semantic_gap": 0.010162514774388676,
+      "lexical_gap": 0.1428571428571429,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q012",
+      "question": "How do I return structured output from an MCP tool?",
+      "classification": "GOLD_RANK_IMPROVED",
+      "diagnosis": "GOLD_ALREADY_TOP1",
+      "e2_gold_rank": 2,
+      "e6_gold_rank": 1,
+      "rank_change": 1,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-tools-15",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "similarity": 0.753382243115242,
+        "lexical_score": 1.0,
+        "final_score": 0.8033822431152421,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.753382243115242,
+        "lexical_score": 1.0,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.753382243115242,
+        "lexical_score": 1.0,
+        "final_score": 0.8033822431152421
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/servers"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates"
+        ]
+      }
+    },
+    {
+      "id": "q013",
+      "question": "What happens when an MCP tool returns a primitive type?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 3,
+      "e6_gold_rank": 3,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-62",
+        "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.6951160794358208,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.7284494127691541,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.6889831198474075,
+        "lexical_score": 0.5555555555555556,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.6951160794358208,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.7284494127691541
+      },
+      "semantic_gap": 0.0061329595884133115,
+      "lexical_gap": -0.11111111111111105,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q014",
+      "question": "Can an MCP tool return a Pydantic model?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 4,
+      "e6_gold_rank": 4,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-tools-15",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "similarity": 0.771835602169171,
+        "lexical_score": 1.0,
+        "final_score": 0.8218356021691711,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7162475159020725,
+        "lexical_score": 0.8571428571428571,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.771835602169171,
+        "lexical_score": 1.0,
+        "final_score": 0.8218356021691711
+      },
+      "semantic_gap": 0.055588086267098547,
+      "lexical_gap": -0.1428571428571429,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q015",
+      "question": "Can an MCP tool return a TypedDict?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-structured-output-7",
+        "title": "docs_src/structured_output/tutorial003.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output",
+        "similarity": 0.7576377391815186,
+        "lexical_score": 0.8333333333333334,
+        "final_score": 0.7993044058481852,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7576377391815186,
+        "lexical_score": 0.8333333333333334,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7576377391815186,
+        "lexical_score": 0.8333333333333334,
+        "final_score": 0.7993044058481852
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/run/deploy"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions"
+        ]
+      }
+    },
+    {
+      "id": "q016",
+      "question": "Can an MCP tool return a plain untyped class?",
+      "classification": "GOLD_RANK_WORSENED",
+      "diagnosis": "LEXICAL_NO_DISCRIMINATION",
+      "e2_gold_rank": 4,
+      "e6_gold_rank": 5,
+      "rank_change": -1,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-tools-15",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "similarity": 0.7034300952127576,
+        "lexical_score": 0.75,
+        "final_score": 0.7409300952127575,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.6725192265201088,
+        "lexical_score": 0.75,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7034300952127576,
+        "lexical_score": 0.75,
+        "final_score": 0.7409300952127575
+      },
+      "semantic_gap": 0.030910868692648807,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q017",
+      "question": "How do I return CallToolResult directly from an MCP tool?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 4,
+      "e6_gold_rank": 4,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-62",
+        "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.8277878761291504,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.8611212094624837,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.743748858943651,
+        "lexical_score": 0.8888888888888888,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.8277878761291504,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.8611212094624837
+      },
+      "semantic_gap": 0.08403901718549944,
+      "lexical_gap": 0.2222222222222222,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q018",
+      "question": "How do I mark an MCP tool result as an error?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 5,
+      "e6_gold_rank": 5,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-troubleshooting-8",
+        "title": "My host lists zero tools",
+        "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting",
+        "similarity": 0.7573195695877075,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.7906529029210408,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7320110361569515,
+        "lexical_score": 0.6666666666666666,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7573195695877075,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.7906529029210408
+      },
+      "semantic_gap": 0.02530853343075601,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates"
+        ]
+      }
+    },
+    {
+      "id": "q019",
+      "question": "How do I use _meta in an MCP tool result?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 2,
+      "e6_gold_rank": 2,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-14",
+        "title": "_meta remains the supported place for custom data, per the MCP spec",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.7751080065836954,
+        "lexical_score": 0.5555555555555556,
+        "final_score": 0.8028857843614732,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7495621741340006,
+        "lexical_score": 0.7777777777777778,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7751080065836954,
+        "lexical_score": 0.5555555555555556,
+        "final_score": 0.8028857843614732
+      },
+      "semantic_gap": 0.025545832449694772,
+      "lexical_gap": 0.2222222222222222,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting"
+        ]
+      }
+    },
+    {
+      "id": "q020",
+      "question": "What is the low-level MCP Server class used for?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 3,
+      "e6_gold_rank": 3,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-40",
+        "title": "What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.7504549026489258,
+        "lexical_score": 0.9,
+        "final_score": 0.7954549026489258,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.6859889626502991,
+        "lexical_score": 0.8,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7504549026489258,
+        "lexical_score": 0.9,
+        "final_score": 0.7954549026489258
+      },
+      "semantic_gap": 0.06446593999862671,
+      "lexical_gap": -0.09999999999999998,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host",
+          "https://py.sdk.modelcontextprotocol.io/whats-new"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates"
+        ]
+      }
+    },
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 8,
+      "e6_gold_rank": 8,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-40",
+        "title": "What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.8051773905754089,
+        "lexical_score": 0.6363636363636364,
+        "final_score": 0.8369955723935908,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.6623979210853577,
+        "lexical_score": 0.45454545454545453,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.8051773905754089,
+        "lexical_score": 0.6363636363636364,
+        "final_score": 0.8369955723935908
+      },
+      "semantic_gap": 0.14277946949005127,
+      "lexical_gap": -0.18181818181818182,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q022",
+      "question": "How do I define a tool with the low-level MCP Server?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-advanced-low-level-server-0",
+        "title": "The low-level Server",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "similarity": 0.7698676860490274,
+        "lexical_score": 0.6,
+        "final_score": 0.7998676860490275,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7698676860490274,
+        "lexical_score": 0.6,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7698676860490274,
+        "lexical_score": 0.6,
+        "final_score": 0.7998676860490275
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io"
+        ]
+      }
+    },
+    {
+      "id": "q023",
+      "question": "What arguments does a low-level MCP tool handler receive?",
+      "classification": "GOLD_RANK_WORSENED",
+      "diagnosis": "SEMANTIC_AND_LEXICAL_FAVOR_COMPETITOR",
+      "e2_gold_rank": 3,
+      "e6_gold_rank": 4,
+      "rank_change": -1,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-87",
+        "title": "Lowlevel `Server`: decorator-based handlers replaced with constructor `on_*` params",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.7582829368626226,
+        "lexical_score": 0.7777777777777778,
+        "final_score": 0.7971718257515115,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7213329242865502,
+        "lexical_score": 0.3333333333333333,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7582829368626226,
+        "lexical_score": 0.7777777777777778,
+        "final_score": 0.7971718257515115
+      },
+      "semantic_gap": 0.036950012576072444,
+      "lexical_gap": -0.4444444444444445,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting"
+        ]
+      }
+    },
+    {
+      "id": "q024",
+      "question": "How does a low-level MCP server dispatch multiple tools?",
+      "classification": "GOLD_RANK_WORSENED",
+      "diagnosis": "LEXICAL_NO_DISCRIMINATION",
+      "e2_gold_rank": 3,
+      "e6_gold_rank": 4,
+      "rank_change": -1,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/run/deploy",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-run-deploy-0",
+        "title": "Deploy & scale",
+        "url": "https://py.sdk.modelcontextprotocol.io/run/deploy",
+        "similarity": 0.7405514717102051,
+        "lexical_score": 0.3333333333333333,
+        "final_score": 0.7572181383768718,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7081658840179443,
+        "lexical_score": 0.3333333333333333,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7405514717102051,
+        "lexical_score": 0.3333333333333333,
+        "final_score": 0.7572181383768718
+      },
+      "semantic_gap": 0.03238558769226074,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/advanced"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/run/asgi"
+        ]
+      }
+    },
+    {
+      "id": "q026",
+      "question": "How can Pydantic generate an MCP JSON Schema?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-tools-11",
+        "title": "docs_src/tools/tutorial004.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "similarity": 0.7563041223196977,
+        "lexical_score": 0.75,
+        "final_score": 0.7938041223196977,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7563041223196977,
+        "lexical_score": 0.75,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7563041223196977,
+        "lexical_score": 0.75,
+        "final_score": 0.7938041223196977
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/servers/completions"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients"
+        ]
+      }
+    },
+    {
+      "id": "q027",
+      "question": "How do I create an MCP prompt in Python?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-prompts-9",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts",
+        "similarity": 0.7914391756057739,
+        "lexical_score": 0.625,
+        "final_score": 0.8226891756057739,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7914391756057739,
+        "lexical_score": 0.625,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7914391756057739,
+        "lexical_score": 0.625,
+        "final_score": 0.8226891756057739
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates"
+        ]
+      }
+    },
+    {
+      "id": "q028",
+      "question": "Who controls an MCP prompt?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-prompts-9",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts",
+        "similarity": 0.7607294547775229,
+        "lexical_score": 0.8,
+        "final_score": 0.8007294547775229,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7607294547775229,
+        "lexical_score": 0.8,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7607294547775229,
+        "lexical_score": 0.8,
+        "final_score": 0.8007294547775229
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q029",
+      "question": "What type are MCP prompt arguments?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-prompts-9",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts",
+        "similarity": 0.7777830594117364,
+        "lexical_score": 0.8333333333333334,
+        "final_score": 0.819449726078403,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7777830594117364,
+        "lexical_score": 0.8333333333333334,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7777830594117364,
+        "lexical_score": 0.8333333333333334,
+        "final_score": 0.819449726078403
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/sampling-and-roots",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions"
+        ]
+      }
+    },
+    {
+      "id": "q030",
+      "question": "How can an MCP prompt create a multi-turn conversation?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-prompts-9",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts",
+        "similarity": 0.7124063968658447,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.745739730199178,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7124063968658447,
+        "lexical_score": 0.6666666666666666,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7124063968658447,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.745739730199178
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q031",
+      "question": "How do I make an MCP resource?",
+      "classification": "GOLD_RANK_WORSENED",
+      "diagnosis": "SEMANTIC_AND_LEXICAL_FAVOR_COMPETITOR",
+      "e2_gold_rank": 6,
+      "e6_gold_rank": 7,
+      "rank_change": -1,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/resources",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-resources-8",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/resources",
+        "similarity": 0.7465498447418213,
+        "lexical_score": 1.0,
+        "final_score": 0.7965498447418213,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7091350902157965,
+        "lexical_score": 0.5,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7465498447418213,
+        "lexical_score": 1.0,
+        "final_score": 0.7965498447418213
+      },
+      "semantic_gap": 0.03741475452602483,
+      "lexical_gap": -0.5,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/get-started",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip"
+        ]
+      }
+    },
+    {
+      "id": "q032",
+      "question": "How do MCP resource subscriptions work?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 4,
+      "e6_gold_rank": 4,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/apps",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-advanced-apps-0",
+        "title": "MCP Apps",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/apps",
+        "similarity": 0.710989317625443,
+        "lexical_score": 0.8333333333333334,
+        "final_score": 0.7526559842921097,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.6824985945969404,
+        "lexical_score": 0.5,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.710989317625443,
+        "lexical_score": 0.8333333333333334,
+        "final_score": 0.7526559842921097
+      },
+      "semantic_gap": 0.02849072302850264,
+      "lexical_gap": -0.33333333333333337,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/client/subscriptions",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/context",
+          "https://py.sdk.modelcontextprotocol.io/run/authorization"
+        ]
+      }
+    },
+    {
+      "id": "q033",
+      "question": "How do I run an MCP Python server with the development CLI?",
+      "classification": "GOLD_RANK_WORSENED",
+      "diagnosis": "SEMANTIC_AND_LEXICAL_FAVOR_COMPETITOR",
+      "e2_gold_rank": 6,
+      "e6_gold_rank": 7,
+      "rank_change": -1,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/run",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-run-10",
+        "title": "The `mcp` command",
+        "url": "https://py.sdk.modelcontextprotocol.io/run",
+        "similarity": 0.8120296597480774,
+        "lexical_score": 0.6363636363636364,
+        "final_score": 0.8438478415662592,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7546143678060564,
+        "lexical_score": 0.45454545454545453,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.8120296597480774,
+        "lexical_score": 0.6363636363636364,
+        "final_score": 0.8438478415662592
+      },
+      "semantic_gap": 0.057415291942020996,
+      "lexical_gap": -0.18181818181818182,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q034",
+      "question": "What does mcp[cli] add to the MCP Python SDK?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/get-started/installation",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-get-started-installation-0",
+        "title": "Installation",
+        "url": "https://py.sdk.modelcontextprotocol.io/get-started/installation",
+        "similarity": 0.8032379629157774,
+        "lexical_score": 0.7777777777777778,
+        "final_score": 0.8421268518046663,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.8032379629157774,
+        "lexical_score": 0.7777777777777778,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.8032379629157774,
+        "lexical_score": 0.7777777777777778,
+        "final_score": 0.8421268518046663
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/get-started"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+        ]
+      }
+    },
+    {
+      "id": "q035",
+      "question": "What does the MCP Inspector do?",
+      "classification": "GOLD_RANK_WORSENED",
+      "diagnosis": "OTHER_REGRESSION",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 3,
+      "rank_change": -2,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-get-started-first-steps-5",
+        "title": "Try it",
+        "url": "https://py.sdk.modelcontextprotocol.io/get-started/first-steps",
+        "similarity": 0.66554536418752,
+        "lexical_score": 0.8333333333333334,
+        "final_score": 0.7072120308541866,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.670159637928009,
+        "lexical_score": 0.5,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.66554536418752,
+        "lexical_score": 0.8333333333333334,
+        "final_score": 0.7072120308541866
+      },
+      "semantic_gap": -0.004614273740489061,
+      "lexical_gap": -0.33333333333333337,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks"
+        ]
+      }
+    },
+    {
+      "id": "q036",
+      "question": "Why does MCP Inspector need Node.js tooling?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk--5",
+        "title": "Run it",
+        "url": "https://py.sdk.modelcontextprotocol.io",
+        "similarity": 0.745805174612382,
+        "lexical_score": 0.625,
+        "final_score": 0.777055174612382,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.745805174612382,
+        "lexical_score": 0.625,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.745805174612382,
+        "lexical_score": 0.625,
+        "final_score": 0.777055174612382
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q037",
+      "question": "What transports does the MCP Python SDK support?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 4,
+      "e6_gold_rank": 4,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/whats-new",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-whats-new-12",
+        "title": "Removed outright",
+        "url": "https://py.sdk.modelcontextprotocol.io/whats-new",
+        "similarity": 0.774780892574218,
+        "lexical_score": 0.5,
+        "final_score": 0.799780892574218,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7271220900750787,
+        "lexical_score": 0.625,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.774780892574218,
+        "lexical_score": 0.5,
+        "final_score": 0.799780892574218
+      },
+      "semantic_gap": 0.04765880249913934,
+      "lexical_gap": 0.125,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/get-started/testing",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients"
+        ]
+      }
+    },
+    {
+      "id": "q038",
+      "question": "How do I connect an MCP client using stdio?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/client/transports",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-client-transports-11",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/client/transports",
+        "similarity": 0.8148939609527588,
+        "lexical_score": 0.75,
+        "final_score": 0.8523939609527588,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.8148939609527588,
+        "lexical_score": 0.75,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.8148939609527588,
+        "lexical_score": 0.75,
+        "final_score": 0.8523939609527588
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/get-started"
+        ]
+      }
+    },
+    {
+      "id": "q039",
+      "question": "Why does MCP require initialization before normal client operations?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/protocol-versions",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-protocol-versions-0",
+        "title": "Protocol versions",
+        "url": "https://py.sdk.modelcontextprotocol.io/protocol-versions",
+        "similarity": 0.7549417389946688,
+        "lexical_score": 0.3333333333333333,
+        "final_score": 0.7716084056613355,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7549417389946688,
+        "lexical_score": 0.3333333333333333,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7549417389946688,
+        "lexical_score": 0.3333333333333333,
+        "final_score": 0.7716084056613355
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/client/oauth-clients"
+        ]
+      }
+    },
+    {
+      "id": "q040",
+      "question": "What is MCP protocol version negotiation for?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/protocol-versions",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-protocol-versions-10",
+        "title": "Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/protocol-versions",
+        "similarity": 0.7926407827185199,
+        "lexical_score": 1.0,
+        "final_score": 0.8426407827185199,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7926407827185199,
+        "lexical_score": 1.0,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7926407827185199,
+        "lexical_score": 1.0,
+        "final_score": 0.8426407827185199
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/run"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+        ]
+      }
+    },
+    {
+      "id": "q042",
+      "question": "How do MCP dependencies work in a tool?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/dependencies",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-handlers-dependencies-0",
+        "title": "Dependencies",
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/dependencies",
+        "similarity": 0.7445247617080679,
+        "lexical_score": 0.42857142857142855,
+        "final_score": 0.7659533331366394,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7445247617080679,
+        "lexical_score": 0.42857142857142855,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7445247617080679,
+        "lexical_score": 0.42857142857142855,
+        "final_score": 0.7659533331366394
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/client"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions"
+        ]
+      }
+    },
+    {
+      "id": "q043",
+      "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-handlers-multi-round-trip-2",
+        "title": "The server side",
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip",
+        "similarity": 0.6847889015204381,
+        "lexical_score": 0.36363636363636365,
+        "final_score": 0.7029707197022563,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.6847889015204381,
+        "lexical_score": 0.36363636363636365,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.6847889015204381,
+        "lexical_score": 0.36363636363636365,
+        "final_score": 0.7029707197022563
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/servers"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks"
+        ]
+      }
+    },
+    {
+      "id": "q044",
+      "question": "How do MCP elicitation results work?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/elicitation",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-handlers-elicitation-10",
+        "title": "docs_src/elicitation/tutorial003.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/elicitation",
+        "similarity": 0.7296126484870911,
+        "lexical_score": 0.5,
+        "final_score": 0.7546126484870911,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.7296126484870911,
+        "lexical_score": 0.5,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7296126484870911,
+        "lexical_score": 0.5,
+        "final_score": 0.7546126484870911
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q045",
+      "question": "Can MCP elicitation schemas have default values?",
+      "classification": "GOLD_RANK_IMPROVED",
+      "diagnosis": "LEXICAL_CANNOT_HELP",
+      "e2_gold_rank": 4,
+      "e6_gold_rank": 2,
+      "rank_change": 2,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-client-callbacks-4",
+        "title": "docs_src/client_callbacks/tutorial002.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/client/callbacks",
+        "similarity": 0.6819133176130046,
+        "lexical_score": 0.42857142857142855,
+        "final_score": 0.703341889041576,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.6797727954184531,
+        "lexical_score": 0.42857142857142855,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.6819133176130046,
+        "lexical_score": 0.42857142857142855,
+        "final_score": 0.703341889041576
+      },
+      "semantic_gap": 0.0021405221945514086,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    },
+    {
+      "id": "q046",
+      "question": "What is structured output in MCP?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 4,
+      "e6_gold_rank": 4,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/client",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-client-10",
+        "title": "`structured_content`: what your application reads",
+        "url": "https://py.sdk.modelcontextprotocol.io/client",
+        "similarity": 0.7280939059313493,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.7614272392646826,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.6869152597734499,
+        "lexical_score": 0.6666666666666666,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7280939059313493,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.7614272392646826
+      },
+      "semantic_gap": 0.041178646157899346,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/servers"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps"
+        ]
+      }
+    },
+    {
+      "id": "q047",
+      "question": "How is a low-level MCP output schema specified?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 2,
+      "e6_gold_rank": 2,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-servers-structured-output-14",
+        "title": "Validation",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output",
+        "similarity": 0.7217624519154539,
+        "lexical_score": 0.375,
+        "final_score": 0.7405124519154539,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7190809584759574,
+        "lexical_score": 0.25,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7217624519154539,
+        "lexical_score": 0.375,
+        "final_score": 0.7405124519154539
+      },
+      "semantic_gap": 0.0026814934394964185,
+      "lexical_gap": -0.125,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts"
+        ]
+      }
+    },
+    {
+      "id": "q048",
+      "question": "What is the difference between FastMCP and the low-level Server?",
+      "classification": "GOLD_RANK_IMPROVED",
+      "diagnosis": "LEXICAL_CANNOT_HELP",
+      "e2_gold_rank": 8,
+      "e6_gold_rank": 6,
+      "rank_change": 2,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-40",
+        "title": "What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.7684602737426758,
+        "lexical_score": 0.8,
+        "final_score": 0.8084602737426758,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.6118857860565186,
+        "lexical_score": 0.8,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7684602737426758,
+        "lexical_score": 0.8,
+        "final_score": 0.8084602737426758
+      },
+      "semantic_gap": 0.15657448768615723,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation"
+        ]
+      }
+    },
+    {
+      "id": "q049",
+      "question": "What changed from MCP Python SDK v1 to v2?",
+      "classification": "UNCHANGED",
+      "diagnosis": "NOT_RANK_CHANGED",
+      "e2_gold_rank": 1,
+      "e6_gold_rank": 1,
+      "rank_change": 0,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "is_gold": true
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-migration-0",
+        "title": "Migration Guide: v1 to v2",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration",
+        "similarity": 0.8204322564344267,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.8537655897677601,
+        "is_gold": true
+      },
+      "gold": {
+        "similarity": 0.8204322564344267,
+        "lexical_score": 0.6666666666666666,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.8204322564344267,
+        "lexical_score": 0.6666666666666666,
+        "final_score": 0.8537655897677601
+      },
+      "semantic_gap": 0.0,
+      "lexical_gap": 0.0,
+      "candidate_set": {
+        "same_candidate_set": false,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host"
+        ],
+        "removed": [
+          "https://py.sdk.modelcontextprotocol.io/run/asgi"
+        ]
+      }
+    },
+    {
+      "id": "q050",
+      "question": "How should I handle an unknown tool name in a low-level MCP server?",
+      "classification": "GOLD_RANK_WORSENED",
+      "diagnosis": "SEMANTIC_AND_LEXICAL_FAVOR_COMPETITOR",
+      "e2_gold_rank": 2,
+      "e6_gold_rank": 3,
+      "rank_change": -1,
+      "e2_top1": {
+        "rank": 1,
+        "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting",
+        "is_gold": false
+      },
+      "e6_top1": {
+        "rank": 1,
+        "id": "mcp-python-sdk-troubleshooting-8",
+        "title": "My host lists zero tools",
+        "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting",
+        "similarity": 0.7909277677536011,
+        "lexical_score": 0.5833333333333334,
+        "final_score": 0.8200944344202677,
+        "is_gold": false
+      },
+      "gold": {
+        "similarity": 0.7345870733261108,
+        "lexical_score": 0.5,
+        "final_score": null
+      },
+      "top1_competitor": {
+        "similarity": 0.7909277677536011,
+        "lexical_score": 0.5833333333333334,
+        "final_score": 0.8200944344202677
+      },
+      "semantic_gap": 0.056340694427490234,
+      "lexical_gap": -0.08333333333333337,
+      "candidate_set": {
+        "same_candidate_set": true,
+        "e2_count": 10,
+        "e6_count": 10,
+        "entered": [],
+        "removed": []
+      }
+    }
+  ]
+}

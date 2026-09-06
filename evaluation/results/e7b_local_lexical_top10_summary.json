@@ -1,0 +1,85 @@
+{
+  "dataset": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\mcp_rag_eval_dataset.jsonl",
+  "question_count": 48,
+  "pipeline": {
+    "baseline": "vector_search_diverse",
+    "local_lexical": true,
+    "candidate_limit": 100,
+    "top_k": 10,
+    "max_chunks_per_source": 1,
+    "alpha": 0.05,
+    "semantic_gaps": [
+      0.02,
+      0.03,
+      0.05
+    ],
+    "lexical_stage": "after_source_diversity",
+    "candidate_set_preserved": "verified",
+    "vector_search_per_question": 1
+  },
+  "configs": [
+    {
+      "experiment": "E7B_gap_0.02",
+      "alpha": 0.05,
+      "semantic_gap": 0.02,
+      "metrics": {
+        "hit@1": 0.3125,
+        "hit@3": 0.5,
+        "hit@5": 0.5833333333333334,
+        "hit@10": 0.6666666666666666,
+        "recall@10": 0.5729166666666666,
+        "mrr": 0.4295634920634921,
+        "questions": 48,
+        "hits@10": 32,
+        "misses@10": 16,
+        "avg_lexical_latency_ms": 1.4046124949042376,
+        "median_lexical_latency_ms": 1.416750019416213,
+        "p95_lexical_latency_ms": 1.8526001367717981,
+        "same_candidate_set": 48,
+        "changed_candidate_set": 0
+      }
+    },
+    {
+      "experiment": "E7B_gap_0.03",
+      "alpha": 0.05,
+      "semantic_gap": 0.03,
+      "metrics": {
+        "hit@1": 0.3333333333333333,
+        "hit@3": 0.5,
+        "hit@5": 0.5833333333333334,
+        "hit@10": 0.6666666666666666,
+        "recall@10": 0.5729166666666666,
+        "mrr": 0.4399801587301588,
+        "questions": 48,
+        "hits@10": 32,
+        "misses@10": 16,
+        "avg_lexical_latency_ms": 1.1363208177499473,
+        "median_lexical_latency_ms": 1.0350499069318175,
+        "p95_lexical_latency_ms": 2.0560999400913715,
+        "same_candidate_set": 48,
+        "changed_candidate_set": 0
+      }
+    },
+    {
+      "experiment": "E7B_gap_0.05",
+      "alpha": 0.05,
+      "semantic_gap": 0.05,
+      "metrics": {
+        "hit@1": 0.3333333333333333,
+        "hit@3": 0.5,
+        "hit@5": 0.5833333333333334,
+        "hit@10": 0.6666666666666666,
+        "recall@10": 0.5729166666666666,
+        "mrr": 0.4399801587301588,
+        "questions": 48,
+        "hits@10": 32,
+        "misses@10": 16,
+        "avg_lexical_latency_ms": 1.1185187613591552,
+        "median_lexical_latency_ms": 0.9801499545574188,
+        "p95_lexical_latency_ms": 1.82819995097816,
+        "same_candidate_set": 48,
+        "changed_candidate_set": 0
+      }
+    }
+  ]
+}

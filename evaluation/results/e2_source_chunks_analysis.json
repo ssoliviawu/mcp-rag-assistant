@@ -1,0 +1,620 @@
+{
+  "config": {
+    "dataset": "mcp_rag_eval_dataset.jsonl",
+    "vector_candidate_limit": 100,
+    "e2_limit": 10,
+    "max_chunks_per_source": 1,
+    "target_ids": [
+      "q021",
+      "q022",
+      "q024",
+      "q048"
+    ]
+  },
+  "results": [
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "status": "GOLD_CHUNK_SELECTED",
+      "vector_candidate_limit": 100,
+      "e2_limit": 10,
+      "max_chunks_per_source": 1,
+      "gold_chunks_in_vector_top100": [
+        {
+          "vector_rank": 18,
+          "similarity": 0.6623979210853577,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Try it",
+          "content": "There is no Inspector for this one: `mcp dev` and `mcp run` only accept an `MCPServer`. The in-memory `Client` doesn't care; it takes a low-level `Server` exactly like it takes an `MCPServer`:\n\n```python title=\"main.py\"\nimport asyncio\n\nfrom mcp import Client\n\nfrom server import server\n\nasync def main() -> None:\n async with Client(server) as client:\n result = await client.call_tool(\"search_books\", {\"query\": \"dune\", \"limit\": 5})\n print(result.content)\n\nasyncio.run(main())\n```\n\n```text\n[TextContent(type='text', text=\"Found 3 books matching 'dune' (showing up to 5).\", annotations=None, meta=None)]\n```\n\nThe same text the `@mcp.tool()` version produced. Two honest differences:\n\n* `result.structured_content` is `None`. The high-level server wraps a `-> str` into `{\"result\": ...}` for you; here nobody builds what you didn't build.\n* `list_tools` returns the schema **you** typed, character for character. The high-level version had `\"title\": \"Query\"` on every property and a `\"title\": \"search_booksArguments\"` at the root: Pydantic artifacts. Down here, if it's on the wire, you put it there.",
+          "selected_by_e2": true
+        },
+        {
+          "vector_rank": 49,
+          "similarity": 0.6343055963516235,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The low-level Server",
+          "content": "`@mcp.tool()` is a layer. Underneath it is a second server class, `Server`, that speaks raw MCP: you hand it the protocol objects and it puts them on the wire, unchanged.\n\n`MCPServer` is built on top of it. You drop down when the convenience layer is in the way:\n\n* You need to emit an **exact** schema (loaded from a file, generated from a database), not one derived from a Python signature.\n* You need full control of the result: `_meta`, `is_error`, every key of `structured_content`.\n* You need to handle a method MCP doesn't define.\n\nFor everything else, stay on `MCPServer`.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 52,
+          "similarity": 0.6324257096736822,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The other handlers",
+          "content": "Each of these is one idea you now have the vocabulary for; each has its own page.\n\n* `on_call_tool`, `on_get_prompt`, and `on_read_resource` may return an `InputRequiredResult` instead of their normal result to pause the call and ask the client for input; see **[Multi-round-trip requests](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/index.md)**. True to this tier, nothing is installed for you: where `MCPServer` seals `requestState` by default, here the `request_state` you set crosses the wire exactly as written until you opt in with `server.middleware.append(RequestStateBoundary(RequestStateSecurity(keys=[...]), default_audience=server.name))`: one line (both names import from `mcp.server.request_state`) for the identical sealing and verification `MCPServer` performs (**[Protecting `requestState`](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/index.md#protecting-requeststate)**).\n* `on_list_resources`, `on_read_resource`, `on_list_prompts`, `on_get_prompt`, `on_completion` are the same `(ctx, params) -> result` shape for the other primitives.\n* `on_subscriptions_listen` serves the 2026-07-28 `subscriptions/listen` stream. Pass a `ListenHandler` built over a `SubscriptionBus` and publish events to the bus from your other handlers; see **[Subscriptions](https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/index.md)** for the full composition.\n* `server.streamable_http_app()` returns the same Starlette app `MCPServer`'s does; deploy it the way **[Running your server](https://py.sdk.modelcontextprotocol.io/run/index.md)** deploys any other ASGI app. There is no `server.run(transport=...)` down here: `server.run(read_stream, write_stream, server.create_initialization_options())` drives one connection over a pair of streams, and that one line is the whole story.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 97,
+          "similarity": 0.6144167184829712,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Nothing is checked for you",
+          "content": "`MCPServer` rejects a bad argument before your function ever runs, validating the call against the schema it generated (**[Tools](https://py.sdk.modelcontextprotocol.io/servers/tools/index.md)**).\n\n`Server` does not do that. Your `input_schema` is *advertised* to the client; it is never *applied* to `params.arguments`.\n\n!!! check\n Call `search_books` without `limit` and your `args[\"limit\"]` raises `KeyError`. The client sees:\n\n ```text\n MCPError: Internal server error\n ```\n\n A JSON-RPC error, code `-32603`, with a deliberately generic message: the SDK won't leak your traceback to a remote caller. The model never finds out what it did wrong, so it can't retry. (In a test, `raise_exceptions=True` surfaces the real exception instead; see **[Testing](https://py.sdk.modelcontextprotocol.io/get-started/testing/index.md)**.)\n\nThat generalises. An exception raised from a low-level handler is **always** a protocol error, never an `is_error=True` tool result. If you want the model to read the failure and recover, validate `params.arguments` yourself and return `CallToolResult(content=[TextContent(...)], is_error=True)`. The two kinds of failure are the subject of **[Handling errors](https://py.sdk.modelcontextprotocol.io/servers/handling-errors/index.md)**.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 98,
+          "similarity": 0.6143589615821838,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "docs_src/lowlevel/tutorial003.py",
+          "content": "from mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n CallToolRequestParams,\n CallToolResult,\n ListToolsResult,\n PaginatedRequestParams,\n TextContent,\n Tool,\n)\n\nSEARCH_BOOKS = Tool(\n name=\"search_books\",\n description=\"Search the catalog by title or author.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n \"required\": [\"query\", \"limit\"],\n },\n output_schema={\n \"type\": \"object\",\n \"properties\": {\"matches\": {\"type\": \"integer\"}, \"query\": {\"type\": \"string\"}},\n \"required\": [\"matches\", \"query\"],\n },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n return ListToolsResult(tools=[SEARCH_BOOKS])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n args = params.arguments or {}\n data = {\"matches\": 3, \"query\": args[\"query\"]}\n return CallToolResult(\n content=[TextContent(type=\"text\", text=f\"Found 3 books matching {args['query']!r}.\")],\n structured_content=data,\n )\n\nserver = Server(\"Bookshop\", version=\"2.0.0\", on_list_tools=list_tools, on_call_tool=call_tool)\n```\n\nCall it and the result carries both representations:\n\n```json\n{\n \"content\": [{\"type\": \"text\", \"text\": \"Found 3 books matching 'dune'.\"}],\n \"structuredContent\": {\"matches\": 3, \"query\": \"dune\"},\n \"isError\": false,\n \"resultType\": \"complete\",\n \"_meta\": {\"io.modelcontextprotocol/serverInfo\": {\"name\": \"Bookshop\", \"version\": \"2.0.0\"}}\n}\n```\n\nThe `_meta` block is the server's identity stamp: the SDK adds it to every 2026-era result, with the `version` from the constructor (a server that sets none reports an empty string). A server that must not identify itself can strip the key with a middleware, which owns the results it returns.\n\nThe server never compares the two fields. This SDK's `Client` does: return `structured_content` that doesn't satisfy the `output_schema` you declared and `call_tool` raises a `RuntimeError` that starts with `Invalid structured content returned by tool search_books` and goes on to quote the `jsonschema` failure. Promising a schema is cheap; keeping it is on you. The whole ladder of return types and schemas is in **[Structured Output](https://py.sdk.modelcontextprotocol.io/servers/structured-output/index.md)**.",
+          "selected_by_e2": false
+        }
+      ],
+      "e2_gold_chunks": [
+        {
+          "e2_rank": 8,
+          "vector_rank": 18,
+          "similarity": 0.6623979210853577,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Try it",
+          "content": "There is no Inspector for this one: `mcp dev` and `mcp run` only accept an `MCPServer`. The in-memory `Client` doesn't care; it takes a low-level `Server` exactly like it takes an `MCPServer`:\n\n```python title=\"main.py\"\nimport asyncio\n\nfrom mcp import Client\n\nfrom server import server\n\nasync def main() -> None:\n async with Client(server) as client:\n result = await client.call_tool(\"search_books\", {\"query\": \"dune\", \"limit\": 5})\n print(result.content)\n\nasyncio.run(main())\n```\n\n```text\n[TextContent(type='text', text=\"Found 3 books matching 'dune' (showing up to 5).\", annotations=None, meta=None)]\n```\n\nThe same text the `@mcp.tool()` version produced. Two honest differences:\n\n* `result.structured_content` is `None`. The high-level server wraps a `-> str` into `{\"result\": ...}` for you; here nobody builds what you didn't build.\n* `list_tools` returns the schema **you** typed, character for character. The high-level version had `\"title\": \"Query\"` on every property and a `\"title\": \"search_booksArguments\"` at the root: Pydantic artifacts. Down here, if it's on the wire, you put it there."
+        }
+      ],
+      "e2_results": [
+        {
+          "e2_rank": 1,
+          "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "title": "What is unchanged on `MCPServer`",
+          "similarity": 0.8051773905754089,
+          "content": "Beyond the changes covered in this section, the everyday `FastMCP` surface carries over to `MCPServer` as-is:\n\n- **Decorators.** `@mcp.tool()`, `@mcp.resource()`, `@mcp.prompt()`, and `@mcp.completion()` take the same arguments and handler signatures as v1. The lowlevel [`on_completion` reshape](#lowlevel-server-decorator-based-handlers-replaced-with-constructor-on_-params) applies only to the lowlevel `Server`; a high-level `@mcp.completion()` handler is still called as `(ref, argument, context)`.\n- **Tool return handling.** A returned `CallToolResult` (including an `Annotated[CallToolResult, YourModel]` output schema, and `_meta`) is passed through, `Image` and `Audio` convert to content blocks as before, ready-made content blocks are kept as-is, and dict, list, scalar, and model returns are wrapped into `content` and `structured_content` by the same rules.\n- **Listing and registration methods.** `list_tools()`, `list_resources()`, `list_resource_templates()`, and `list_prompts()` return the same lists and are still what the protocol handlers call, so subclass overrides still take effect. `add_tool()`, `add_resource()`, and `add_prompt()` are unchanged.\n- **Helpers.** `Image.to_image_content()`, `Audio.to_audio_content()`, and the prompt `Message`, `UserMessage`, and `AssistantMessage` classes.\n- **Lifespan.** The `lifespan=` constructor argument and `ctx.request_context.lifespan_context` work as before, and the class is still generic over the lifespan result: `FastMCP[MyState]` becomes `MCPServer[MyState]`. (`Context`'s own type parameters did change; see [`RequestContext` type parameters simplified](#requestcontext-type-parameters-simplified).)\n- **Tool internals.** `Tool`, `Tool.from_function()`, `FuncMetadata`, `ArgModelBase`, and `func_metadata()` keep their v1 shapes; the one change is the now-required `context` argument to `Tool.run()`, described [below](#mcpservercall_tool-read_resource-get_prompt-now-accept-a-context-parameter).\n- **Auxiliary import paths.** `TransportSecuritySettings` (`mcp.server.transport_security`) and `AcceptedElicitation`/`DeclinedElicitation`/`CancelledElicitation` (`mcp.server.elicitation`) have not moved; the server auth surface is inventoried under [Unchanged auth surfaces](#unchanged-auth-surfaces)."
+        },
+        {
+          "e2_rank": 2,
+          "source": "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "title": "Mounting it",
+          "similarity": 0.7191778421401978,
+          "content": "The moment the MCP server is *part* of a bigger application, you put the app inside a `Mount`. And the moment you do that, the lifespan becomes your problem:\n\n```python title=\"server.py\" hl_lines=\"18-21 25-26\""
+        },
+        {
+          "e2_rank": 3,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "title": "Advanced",
+          "similarity": 0.7059395663810344,
+          "content": "Everything an ordinary server or client needs has a topical home in the sections above.\nThis section is the escape hatches you reach for when `MCPServer`'s convenience\nlayer is in the way:\n\n* **[The low-level Server](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/index.md)**: the class `MCPServer` is built on.\n Hand-written schemas, `on_*` handlers, nothing checked for you, and custom JSON-RPC\n methods of your own.\n* **[Pagination](https://py.sdk.modelcontextprotocol.io/advanced/pagination/index.md)** and **[Middleware](https://py.sdk.modelcontextprotocol.io/advanced/middleware/index.md)**: two things you\n can *only* do on the low-level `Server`.\n* **[Extensions](https://py.sdk.modelcontextprotocol.io/advanced/extensions/index.md)** and **[MCP Apps](https://py.sdk.modelcontextprotocol.io/advanced/apps/index.md)**: the protocol's\n extension surface. Compose extension packages into a server, or write your own.\n\nA few things you might reasonably look for here live where you'd actually use them\ninstead:\n\n* **Authorization** is under **[Running your server](https://py.sdk.modelcontextprotocol.io/run/index.md)** because you\n protect a server where you deploy it.\n* **OAuth**, **identity assertion**, connecting to **multiple servers**, and the\n response **cache** are all under **[Clients](https://py.sdk.modelcontextprotocol.io/client/index.md)**.\n* **Multi-round-trip requests** and **Subscriptions** are under\n **[Inside your handler](https://py.sdk.modelcontextprotocol.io/handlers/index.md)** because both are things a\n handler *does*.\n* **URI templates** is under **[Servers](https://py.sdk.modelcontextprotocol.io/servers/index.md)**, next to Resources.\n* **[Protocol versions](https://py.sdk.modelcontextprotocol.io/protocol-versions/index.md)** and\n **[Deprecated features](https://py.sdk.modelcontextprotocol.io/deprecated/index.md)** each have their own top-level page.\n\nIf you're not sure whether you need this section, you don't."
+        },
+        {
+          "e2_rank": 4,
+          "source": "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "title": "Optional extras",
+          "similarity": 0.6892968416213989,
+          "content": "* `mcp[cli]` adds [`typer`](https://typer.tiangolo.com/) and [`python-dotenv`](https://pypi.org/project/python-dotenv/) for the `mcp` command-line tool (`mcp dev`, `mcp run`, `mcp install`). You'll want this during development; you may not need it in a deployed server.\n* `mcp[rich]` adds [`rich`](https://rich.readthedocs.io/) for nicer server logs."
+        },
+        {
+          "e2_rank": 5,
+          "source": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "title": "`FastMCP` is now `MCPServer`",
+          "similarity": 0.6762994930922694,
+          "content": "The high-level server class was renamed, and its module with it. This is the first thing every v1 server hits, because the old import path is gone rather than deprecated:\n\n```python\nfrom mcp.server import MCPServer # v1: from mcp.server.fastmcp import FastMCP\n\nmcp = MCPServer(\"Demo\") # v1: FastMCP(\"Demo\")\n```\n\nIt is also, for a decorator-built server, most of the port. `@mcp.tool()`, `@mcp.resource()`, and `@mcp.prompt()` accept what they accepted in v1 (`@mcp.resource()` adds one optional `security=` keyword), and the input schema still comes from your type hints. Around the edges: everything under `mcp.server.fastmcp.*` now lives under `mcp.server.mcpserver.*`, `ctx.fastmcp` is `ctx.mcp_server`, `get_context()` is gone (declare a `ctx: Context` parameter instead), and the exception base `FastMCPError` is `MCPServerError`. The **[Migration Guide](https://py.sdk.modelcontextprotocol.io/migration/index.md#fastmcp-renamed-to-mcpserver)** has the import table."
+        },
+        {
+          "e2_rank": 6,
+          "source": "https://py.sdk.modelcontextprotocol.io/",
+          "title": "Where to go next",
+          "similarity": 0.6727184057235718,
+          "content": "* **[Get started](https://py.sdk.modelcontextprotocol.io/get-started/index.md)** takes you from install to a working, tested server.\n* Building an application that *uses* MCP servers? Start with **[Clients](https://py.sdk.modelcontextprotocol.io/client/index.md)**.\n* Already have a FastAPI or Starlette app? **[Add to an existing app](https://py.sdk.modelcontextprotocol.io/run/asgi/index.md)** mounts an MCP server inside it.\n* Hunting an exact error message? **[Troubleshooting](https://py.sdk.modelcontextprotocol.io/troubleshooting/index.md)** is keyed by the verbatim text.\n* Wondering what changed in v2? **[What's new in v2](https://py.sdk.modelcontextprotocol.io/whats-new/index.md)** is the five-minute tour.\n* Migrating from v1? Start with the **[Migration Guide](https://py.sdk.modelcontextprotocol.io/migration/index.md)**.\n* Hunting for an exact signature? The **[API Reference](https://py.sdk.modelcontextprotocol.io/api/mcp/)** is generated from the source.\n* Reading with an LLM? This documentation is also published in the [llms.txt](https://llmstxt.org/) format:\n [llms.txt](https://py.sdk.modelcontextprotocol.io/llms.txt) is an index of the pages, and\n [llms-full.txt](https://py.sdk.modelcontextprotocol.io/llms-full.txt) contains every page in a single file."
+        },
+        {
+          "e2_rank": 7,
+          "source": "https://py.sdk.modelcontextprotocol.io/run/",
+          "title": "Running your server",
+          "similarity": 0.6680518784461213,
+          "content": "`mcp.run()` starts the server.\n\nThe only decision you make is the **transport**: how the bytes between your server and its client actually move."
+        },
+        {
+          "e2_rank": 8,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Try it",
+          "similarity": 0.6623979210853577,
+          "content": "There is no Inspector for this one: `mcp dev` and `mcp run` only accept an `MCPServer`. The in-memory `Client` doesn't care; it takes a low-level `Server` exactly like it takes an `MCPServer`:\n\n```python title=\"main.py\"\nimport asyncio\n\nfrom mcp import Client\n\nfrom server import server\n\nasync def main() -> None:\n async with Client(server) as client:\n result = await client.call_tool(\"search_books\", {\"query\": \"dune\", \"limit\": 5})\n print(result.content)\n\nasyncio.run(main())\n```\n\n```text\n[TextContent(type='text', text=\"Found 3 books matching 'dune' (showing up to 5).\", annotations=None, meta=None)]\n```\n\nThe same text the `@mcp.tool()` version produced. Two honest differences:\n\n* `result.structured_content` is `None`. The high-level server wraps a `-> str` into `{\"result\": ...}` for you; here nobody builds what you didn't build.\n* `list_tools` returns the schema **you** typed, character for character. The high-level version had `\"title\": \"Query\"` on every property and a `\"title\": \"search_booksArguments\"` at the root: Pydantic artifacts. Down here, if it's on the wire, you put it there."
+        },
+        {
+          "e2_rank": 9,
+          "source": "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "title": "Where to go next",
+          "similarity": 0.6620211601257324,
+          "content": "Once you have a server running, the rest of these docs are a reference, not a course.\nEvery page stands on its own, so jump straight to what you need:\n\n* What a server exposes (tools, resources, prompts) is **[Servers](https://py.sdk.modelcontextprotocol.io/servers/index.md)**.\n* What's available inside the functions you register is **[Inside your handler](https://py.sdk.modelcontextprotocol.io/handlers/index.md)**.\n* Getting it in front of clients (stdio, HTTP, your existing FastAPI app) is **[Running your server](https://py.sdk.modelcontextprotocol.io/run/index.md)**.\n* Building the other side, an application that *uses* MCP servers, is **[Clients](https://py.sdk.modelcontextprotocol.io/client/index.md)**."
+        },
+        {
+          "e2_rank": 10,
+          "source": "https://py.sdk.modelcontextprotocol.io/servers/",
+          "title": "Servers",
+          "similarity": 0.6617769200139323,
+          "content": "An `MCPServer` exposes three primitives to a connected client. They differ by who\ndecides to use them:\n\n* A **[tool](https://py.sdk.modelcontextprotocol.io/servers/tools/index.md)** is an action the *model* picks and calls. This is\n the page most people want first, and\n **[Structured Output](https://py.sdk.modelcontextprotocol.io/servers/structured-output/index.md)** is its reference companion:\n everything about the shape of what a tool returns.\n* A **[resource](https://py.sdk.modelcontextprotocol.io/servers/resources/index.md)** is read-only data the *application*\n chooses to read. **[URI templates](https://py.sdk.modelcontextprotocol.io/servers/uri-templates/index.md)** is its reference\n companion: the full addressing syntax and the path-safety rules.\n* A **[prompt](https://py.sdk.modelcontextprotocol.io/servers/prompts/index.md)** is a message template a *person* invokes by\n name, from a menu or a slash command.\n\nAround the three primitives, the rest of what a server declares:\n\n* **[Completions](https://py.sdk.modelcontextprotocol.io/servers/completions/index.md)** is server-side autocomplete for prompt\n and resource-template arguments.\n* **[Images, audio & icons](https://py.sdk.modelcontextprotocol.io/servers/media/index.md)** covers everything a tool can\n return besides text, and the icons a client shows next to your server.\n* **[Handling errors](https://py.sdk.modelcontextprotocol.io/servers/handling-errors/index.md)** explains the difference between an\n error the model can recover from and one it must never see.\n\nEvery page here stands on its own; jump straight to the one you need. If you haven't\nbuilt a server yet, start with **[First steps](https://py.sdk.modelcontextprotocol.io/get-started/first-steps/index.md)** instead.\n\nWhat happens *inside* the functions you register (the `Context`, dependency injection,\nasking the user for more input mid-call) is the next section,\n**[Inside your handler](https://py.sdk.modelcontextprotocol.io/handlers/index.md)**."
+        }
+      ]
+    },
+    {
+      "id": "q022",
+      "question": "How do I define a tool with the low-level MCP Server?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "status": "GOLD_CHUNK_SELECTED",
+      "vector_candidate_limit": 100,
+      "e2_limit": 10,
+      "max_chunks_per_source": 1,
+      "gold_chunks_in_vector_top100": [
+        {
+          "vector_rank": 1,
+          "similarity": 0.7698676860490274,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The low-level Server",
+          "content": "`@mcp.tool()` is a layer. Underneath it is a second server class, `Server`, that speaks raw MCP: you hand it the protocol objects and it puts them on the wire, unchanged.\n\n`MCPServer` is built on top of it. You drop down when the convenience layer is in the way:\n\n* You need to emit an **exact** schema (loaded from a file, generated from a database), not one derived from a Python signature.\n* You need full control of the result: `_meta`, `is_error`, every key of `structured_content`.\n* You need to handle a method MCP doesn't define.\n\nFor everything else, stay on `MCPServer`.",
+          "selected_by_e2": true
+        },
+        {
+          "vector_rank": 7,
+          "similarity": 0.7228470775071342,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Try it",
+          "content": "There is no Inspector for this one: `mcp dev` and `mcp run` only accept an `MCPServer`. The in-memory `Client` doesn't care; it takes a low-level `Server` exactly like it takes an `MCPServer`:\n\n```python title=\"main.py\"\nimport asyncio\n\nfrom mcp import Client\n\nfrom server import server\n\nasync def main() -> None:\n async with Client(server) as client:\n result = await client.call_tool(\"search_books\", {\"query\": \"dune\", \"limit\": 5})\n print(result.content)\n\nasyncio.run(main())\n```\n\n```text\n[TextContent(type='text', text=\"Found 3 books matching 'dune' (showing up to 5).\", annotations=None, meta=None)]\n```\n\nThe same text the `@mcp.tool()` version produced. Two honest differences:\n\n* `result.structured_content` is `None`. The high-level server wraps a `-> str` into `{\"result\": ...}` for you; here nobody builds what you didn't build.\n* `list_tools` returns the schema **you** typed, character for character. The high-level version had `\"title\": \"Query\"` on every property and a `\"title\": \"search_booksArguments\"` at the root: Pydantic artifacts. Down here, if it's on the wire, you put it there.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 8,
+          "similarity": 0.7213595460629949,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "docs_src/lowlevel/tutorial004.py",
+          "content": "from mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n CallToolRequestParams,\n CallToolResult,\n ListToolsResult,\n PaginatedRequestParams,\n TextContent,\n Tool,\n)\n\nSEARCH_BOOKS = Tool(\n name=\"search_books\",\n description=\"Search the catalog by title or author.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n \"required\": [\"query\", \"limit\"],\n },\n output_schema={\n \"type\": \"object\",\n \"properties\": {\"matches\": {\"type\": \"integer\"}, \"query\": {\"type\": \"string\"}},\n \"required\": [\"matches\", \"query\"],\n },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n return ListToolsResult(tools=[SEARCH_BOOKS])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n args = params.arguments or {}\n data = {\"matches\": 3, \"query\": args[\"query\"]}\n return CallToolResult(\n content=[TextContent(type=\"text\", text=f\"Found 3 books matching {args['query']!r}.\")],\n structured_content=data,\n _meta={\"bookshop/record_ids\": [\"bk_17\", \"bk_42\", \"bk_99\"]},\n )\n\nserver = Server(\"Bookshop\", on_list_tools=list_tools, on_call_tool=call_tool)\n```\n\n* You construct it as `_meta=`, the wire name. The client reads it back as `result.meta`.\n* Namespace your keys (`bookshop/record_ids`). The `io.modelcontextprotocol/*` keys are reserved by the protocol.\n\n!!! warning\n `_meta` is a convention between you and the client application, not a guarantee about what reaches\n the model. The host decides what it renders. Never put a secret in any part of a tool result.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 9,
+          "similarity": 0.7205591964388488,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "docs_src/lowlevel/tutorial002.py",
+          "content": "from mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n CallToolRequestParams,\n CallToolResult,\n ListToolsResult,\n PaginatedRequestParams,\n TextContent,\n Tool,\n)\n\nSEARCH_BOOKS = Tool(\n name=\"search_books\",\n description=\"Search the catalog by title or author.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n \"required\": [\"query\", \"limit\"],\n },\n)\n\nADD_BOOK = Tool(\n name=\"add_book\",\n description=\"Add a book to the catalog.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"title\": {\"type\": \"string\"}, \"author\": {\"type\": \"string\"}, \"year\": {\"type\": \"integer\"}},\n \"required\": [\"title\", \"author\", \"year\"],\n },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n return ListToolsResult(tools=[SEARCH_BOOKS, ADD_BOOK])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n args = params.arguments or {}\n if params.name == \"search_books\":\n text = f\"Found 3 books matching {args['query']!r} (showing up to {args['limit']}).\"\n elif params.name == \"add_book\":\n text = f\"Added {args['title']!r} by {args['author']} ({args['year']}).\"\n else:\n raise ValueError(f\"Unknown tool: {params.name}\")\n return CallToolResult(content=[TextContent(type=\"text\", text=text)])\n\nserver = Server(\"Bookshop\", on_list_tools=list_tools, on_call_tool=call_tool)\n```\n\n* `list_tools` advertises both. `call_tool` dispatches on the name.\n* The `else` branch matters: `Server` will happily forward a `tools/call` for a name you never listed straight into your handler. Raising there turns the call into the same `-32603` as above.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 13,
+          "similarity": 0.7159286649354712,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "docs_src/lowlevel/tutorial001.py",
+          "content": "from mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n CallToolRequestParams,\n CallToolResult,\n ListToolsResult,\n PaginatedRequestParams,\n TextContent,\n Tool,\n)\n\nSEARCH_BOOKS = Tool(\n name=\"search_books\",\n description=\"Search the catalog by title or author.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n \"required\": [\"query\", \"limit\"],\n },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n return ListToolsResult(tools=[SEARCH_BOOKS])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n args = params.arguments or {}\n text = f\"Found 3 books matching {args['query']!r} (showing up to {args['limit']}).\"\n return CallToolResult(content=[TextContent(type=\"text\", text=text)])\n\nserver = Server(\"Bookshop\", on_list_tools=list_tools, on_call_tool=call_tool)\n```\n\nThree things changed, and they are the whole low-level API:\n\n* **Handlers are constructor parameters.** `on_list_tools=` and `on_call_tool=` go into `Server(...)`. There are no decorators down here, and every handler has the same shape: `async (ctx, params) -> result`.\n* **You write the input schema.** `Tool.input_schema` is a plain JSON Schema `dict`. Nobody derives it from type hints, because there are no type hints to derive it from.\n* **You build the result.** `CallToolResult(content=[TextContent(...)])`, by hand. Nothing is wrapped, converted, or inferred from a return annotation.\n\n`params` is the parsed request: `CallToolRequestParams` gives you `.name` and `.arguments`. `ctx` is a `ServerRequestContext`: `ctx.session` for talking back to the client, `ctx.lifespan_context`, `ctx.request_id`, and `ctx.meta`, the request's inbound `_meta`.\n\n!!! info\n If you've used FastAPI, you already know this relationship. `MCPServer` is the decorators-and-type-hints layer; `Server` is the Starlette underneath. They are not rivals: `MCPServer` constructs a `Server` and registers handlers exactly like these on it.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 25,
+          "similarity": 0.6966997746587118,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "docs_src/lowlevel/tutorial003.py",
+          "content": "from mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n CallToolRequestParams,\n CallToolResult,\n ListToolsResult,\n PaginatedRequestParams,\n TextContent,\n Tool,\n)\n\nSEARCH_BOOKS = Tool(\n name=\"search_books\",\n description=\"Search the catalog by title or author.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n \"required\": [\"query\", \"limit\"],\n },\n output_schema={\n \"type\": \"object\",\n \"properties\": {\"matches\": {\"type\": \"integer\"}, \"query\": {\"type\": \"string\"}},\n \"required\": [\"matches\", \"query\"],\n },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n return ListToolsResult(tools=[SEARCH_BOOKS])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n args = params.arguments or {}\n data = {\"matches\": 3, \"query\": args[\"query\"]}\n return CallToolResult(\n content=[TextContent(type=\"text\", text=f\"Found 3 books matching {args['query']!r}.\")],\n structured_content=data,\n )\n\nserver = Server(\"Bookshop\", version=\"2.0.0\", on_list_tools=list_tools, on_call_tool=call_tool)\n```\n\nCall it and the result carries both representations:\n\n```json\n{\n \"content\": [{\"type\": \"text\", \"text\": \"Found 3 books matching 'dune'.\"}],\n \"structuredContent\": {\"matches\": 3, \"query\": \"dune\"},\n \"isError\": false,\n \"resultType\": \"complete\",\n \"_meta\": {\"io.modelcontextprotocol/serverInfo\": {\"name\": \"Bookshop\", \"version\": \"2.0.0\"}}\n}\n```\n\nThe `_meta` block is the server's identity stamp: the SDK adds it to every 2026-era result, with the `version` from the constructor (a server that sets none reports an empty string). A server that must not identify itself can strip the key with a middleware, which owns the results it returns.\n\nThe server never compares the two fields. This SDK's `Client` does: return `structured_content` that doesn't satisfy the `output_schema` you declared and `call_tool` raises a `RuntimeError` that starts with `Invalid structured content returned by tool search_books` and goes on to quote the `jsonschema` failure. Promising a schema is cheap; keeping it is on you. The whole ladder of return types and schemas is in **[Structured Output](https://py.sdk.modelcontextprotocol.io/servers/structured-output/index.md)**.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 36,
+          "similarity": 0.6855842845935531,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The same tool, by hand",
+          "content": "This is the `search_books` tool that **[Tools](https://py.sdk.modelcontextprotocol.io/servers/tools/index.md)** writes in nine lines of `@mcp.tool()`, with the sugar removed:\n\n```python title=\"server.py\" hl_lines=\"22 26 32\"",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 40,
+          "similarity": 0.6843156406691397,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Capabilities follow your handlers",
+          "content": "A `Server` advertises exactly the method families you gave it handlers for. The `Bookshop` above passes `on_list_tools` and `on_call_tool` and nothing else, so a client connecting to it sees:\n\n```json\n{\"tools\": {\"listChanged\": false}}\n```\n\nNo `resources`, no `prompts`: there is nothing to back them. Pass `on_list_prompts` and `prompts` appears; pass `on_completion` and `completions` appears.\n\n`MCPServer` always advertises tools, resources and prompts, whether you registered any or not, because its managers always exist. Down here the declaration *is* the constructor call.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 45,
+          "similarity": 0.6810782716087648,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The other handlers",
+          "content": "Each of these is one idea you now have the vocabulary for; each has its own page.\n\n* `on_call_tool`, `on_get_prompt`, and `on_read_resource` may return an `InputRequiredResult` instead of their normal result to pause the call and ask the client for input; see **[Multi-round-trip requests](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/index.md)**. True to this tier, nothing is installed for you: where `MCPServer` seals `requestState` by default, here the `request_state` you set crosses the wire exactly as written until you opt in with `server.middleware.append(RequestStateBoundary(RequestStateSecurity(keys=[...]), default_audience=server.name))`: one line (both names import from `mcp.server.request_state`) for the identical sealing and verification `MCPServer` performs (**[Protecting `requestState`](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/index.md#protecting-requeststate)**).\n* `on_list_resources`, `on_read_resource`, `on_list_prompts`, `on_get_prompt`, `on_completion` are the same `(ctx, params) -> result` shape for the other primitives.\n* `on_subscriptions_listen` serves the 2026-07-28 `subscriptions/listen` stream. Pass a `ListenHandler` built over a `SubscriptionBus` and publish events to the bus from your other handlers; see **[Subscriptions](https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/index.md)** for the full composition.\n* `server.streamable_http_app()` returns the same Starlette app `MCPServer`'s does; deploy it the way **[Running your server](https://py.sdk.modelcontextprotocol.io/run/index.md)** deploys any other ASGI app. There is no `server.run(transport=...)` down here: `server.run(read_stream, write_stream, server.create_initialization_options())` drives one connection over a pair of streams, and that one line is the whole story.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 65,
+          "similarity": 0.6696989930034932,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "docs_src/lowlevel/tutorial006.py",
+          "content": "from pydantic import BaseModel\n\nfrom mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n CallToolRequestParams,\n CallToolResult,\n ListToolsResult,\n PaginatedRequestParams,\n RequestParams,\n TextContent,\n Tool,\n)\n\nSEARCH_BOOKS = Tool(\n name=\"search_books\",\n description=\"Search the catalog by title or author.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n \"required\": [\"query\", \"limit\"],\n },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n return ListToolsResult(tools=[SEARCH_BOOKS])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n args = params.arguments or {}\n text = f\"Found 3 books matching {args['query']!r} (showing up to {args['limit']}).\"\n return CallToolResult(content=[TextContent(type=\"text\", text=text)])\n\nclass ReindexParams(RequestParams):\n full: bool = False\n\nclass ReindexResult(BaseModel):\n indexed: int\n\nasync def reindex(ctx: ServerRequestContext, params: ReindexParams) -> ReindexResult:\n return ReindexResult(indexed=3)\n\nserver = Server(\"Bookshop\", on_list_tools=list_tools, on_call_tool=call_tool)\nserver.add_request_handler(\"bookshop/reindex\", ReindexParams, reindex)\n```\n\n* The first argument is the method string. Notifications have a twin, `add_notification_handler`.\n* `params_type` is the model the incoming `params` are validated against **before** your handler runs, so custom methods *do* get the validation tools don't. Subclass `RequestParams` so the `_meta` field parses like every other method's.\n* The handler returns a `BaseModel`, a `dict`, or `None`. The SDK serialises it into the JSON-RPC result.\n\nOne honest caveat: the high-level `Client` only has verbs for the methods MCP defines, so there is no `client.reindex()`. A vendor method is for a peer that already knows it exists: a client you also ship, or another service of yours speaking JSON-RPC.\n\nOne method you cannot claim:\n\n```text\nValueError: 'initialize' is handled by the server runner and cannot be overridden;\nuse Server.middleware to observe or wrap initialization\n```\n\nThe handshake belongs to the runner. `server/discover`, `ping`, and every other built-in are yours to replace.\n\n!!! tip\n `Server.middleware`, mentioned in that error, wraps **every** inbound message, including `initialize`. If what you want is to observe or rewrite traffic rather than answer a new method, start at **[Middleware](https://py.sdk.modelcontextprotocol.io/advanced/middleware/index.md)**.",
+          "selected_by_e2": false
+        }
+      ],
+      "e2_gold_chunks": [
+        {
+          "e2_rank": 1,
+          "vector_rank": 1,
+          "similarity": 0.7698676860490274,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The low-level Server",
+          "content": "`@mcp.tool()` is a layer. Underneath it is a second server class, `Server`, that speaks raw MCP: you hand it the protocol objects and it puts them on the wire, unchanged.\n\n`MCPServer` is built on top of it. You drop down when the convenience layer is in the way:\n\n* You need to emit an **exact** schema (loaded from a file, generated from a database), not one derived from a Python signature.\n* You need full control of the result: `_meta`, `is_error`, every key of `structured_content`.\n* You need to handle a method MCP doesn't define.\n\nFor everything else, stay on `MCPServer`."
+        }
+      ],
+      "e2_results": [
+        {
+          "e2_rank": 1,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The low-level Server",
+          "similarity": 0.7698676860490274,
+          "content": "`@mcp.tool()` is a layer. Underneath it is a second server class, `Server`, that speaks raw MCP: you hand it the protocol objects and it puts them on the wire, unchanged.\n\n`MCPServer` is built on top of it. You drop down when the convenience layer is in the way:\n\n* You need to emit an **exact** schema (loaded from a file, generated from a database), not one derived from a Python signature.\n* You need full control of the result: `_meta`, `is_error`, every key of `structured_content`.\n* You need to handle a method MCP doesn't define.\n\nFor everything else, stay on `MCPServer`."
+        },
+        {
+          "e2_rank": 2,
+          "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "title": "What is unchanged on `MCPServer`",
+          "similarity": 0.7526058253519797,
+          "content": "Beyond the changes covered in this section, the everyday `FastMCP` surface carries over to `MCPServer` as-is:\n\n- **Decorators.** `@mcp.tool()`, `@mcp.resource()`, `@mcp.prompt()`, and `@mcp.completion()` take the same arguments and handler signatures as v1. The lowlevel [`on_completion` reshape](#lowlevel-server-decorator-based-handlers-replaced-with-constructor-on_-params) applies only to the lowlevel `Server`; a high-level `@mcp.completion()` handler is still called as `(ref, argument, context)`.\n- **Tool return handling.** A returned `CallToolResult` (including an `Annotated[CallToolResult, YourModel]` output schema, and `_meta`) is passed through, `Image` and `Audio` convert to content blocks as before, ready-made content blocks are kept as-is, and dict, list, scalar, and model returns are wrapped into `content` and `structured_content` by the same rules.\n- **Listing and registration methods.** `list_tools()`, `list_resources()`, `list_resource_templates()`, and `list_prompts()` return the same lists and are still what the protocol handlers call, so subclass overrides still take effect. `add_tool()`, `add_resource()`, and `add_prompt()` are unchanged.\n- **Helpers.** `Image.to_image_content()`, `Audio.to_audio_content()`, and the prompt `Message`, `UserMessage`, and `AssistantMessage` classes.\n- **Lifespan.** The `lifespan=` constructor argument and `ctx.request_context.lifespan_context` work as before, and the class is still generic over the lifespan result: `FastMCP[MyState]` becomes `MCPServer[MyState]`. (`Context`'s own type parameters did change; see [`RequestContext` type parameters simplified](#requestcontext-type-parameters-simplified).)\n- **Tool internals.** `Tool`, `Tool.from_function()`, `FuncMetadata`, `ArgModelBase`, and `func_metadata()` keep their v1 shapes; the one change is the now-required `context` argument to `Tool.run()`, described [below](#mcpservercall_tool-read_resource-get_prompt-now-accept-a-context-parameter).\n- **Auxiliary import paths.** `TransportSecuritySettings` (`mcp.server.transport_security`) and `AcceptedElicitation`/`DeclinedElicitation`/`CancelledElicitation` (`mcp.server.elicitation`) have not moved; the server auth surface is inventoried under [Unchanged auth surfaces](#unchanged-auth-surfaces)."
+        },
+        {
+          "e2_rank": 3,
+          "source": "https://py.sdk.modelcontextprotocol.io/servers/",
+          "title": "Servers",
+          "similarity": 0.7296416703187006,
+          "content": "An `MCPServer` exposes three primitives to a connected client. They differ by who\ndecides to use them:\n\n* A **[tool](https://py.sdk.modelcontextprotocol.io/servers/tools/index.md)** is an action the *model* picks and calls. This is\n the page most people want first, and\n **[Structured Output](https://py.sdk.modelcontextprotocol.io/servers/structured-output/index.md)** is its reference companion:\n everything about the shape of what a tool returns.\n* A **[resource](https://py.sdk.modelcontextprotocol.io/servers/resources/index.md)** is read-only data the *application*\n chooses to read. **[URI templates](https://py.sdk.modelcontextprotocol.io/servers/uri-templates/index.md)** is its reference\n companion: the full addressing syntax and the path-safety rules.\n* A **[prompt](https://py.sdk.modelcontextprotocol.io/servers/prompts/index.md)** is a message template a *person* invokes by\n name, from a menu or a slash command.\n\nAround the three primitives, the rest of what a server declares:\n\n* **[Completions](https://py.sdk.modelcontextprotocol.io/servers/completions/index.md)** is server-side autocomplete for prompt\n and resource-template arguments.\n* **[Images, audio & icons](https://py.sdk.modelcontextprotocol.io/servers/media/index.md)** covers everything a tool can\n return besides text, and the icons a client shows next to your server.\n* **[Handling errors](https://py.sdk.modelcontextprotocol.io/servers/handling-errors/index.md)** explains the difference between an\n error the model can recover from and one it must never see.\n\nEvery page here stands on its own; jump straight to the one you need. If you haven't\nbuilt a server yet, start with **[First steps](https://py.sdk.modelcontextprotocol.io/get-started/first-steps/index.md)** instead.\n\nWhat happens *inside* the functions you register (the `Context`, dependency injection,\nasking the user for more input mid-call) is the next section,\n**[Inside your handler](https://py.sdk.modelcontextprotocol.io/handlers/index.md)**."
+        },
+        {
+          "e2_rank": 4,
+          "source": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "title": "Tools",
+          "similarity": 0.7275285449590085,
+          "content": "A **tool** is a function the model can call.\n\nYou declare one by putting `@mcp.tool()` on a plain Python function. That's the whole API."
+        },
+        {
+          "e2_rank": 5,
+          "source": "https://py.sdk.modelcontextprotocol.io/client/",
+          "title": "docs_src/client/tutorial002.py",
+          "similarity": 0.7204865550414905,
+          "content": "from mcp import Client\nfrom mcp.server import MCPServer\n\nmcp = MCPServer(\"Bookshop\")\n\n@mcp.tool(title=\"Search the catalog\")\ndef search_books(query: str, limit: int = 10) -> str:\n \"\"\"Search the catalog by title or author.\"\"\"\n return f\"Found 3 books matching {query!r} (showing up to {limit}).\"\n\nasync def main() -> None:\n async with Client(mcp) as client:\n result = await client.list_tools()\n for tool in result.tools:\n print(tool.name)\n print(tool.title)\n print(tool.description)\n print(tool.input_schema)\n```\n\n`list_tools()` returns a `ListToolsResult`; the tools are in `.tools`. Each one is the complete definition a host would hand to a model:\n\n```python\ntool.name # 'search_books'\ntool.title # 'Search the catalog'\ntool.description # 'Search the catalog by title or author.'\n```\n\nand `tool.input_schema` is the JSON Schema the server derived from the function's type hints:\n\n```json\n{\n \"type\": \"object\",\n \"properties\": {\n \"query\": {\"title\": \"Query\", \"type\": \"string\"},\n \"limit\": {\"default\": 10, \"title\": \"Limit\", \"type\": \"integer\"}\n },\n \"required\": [\"query\"],\n \"title\": \"search_booksArguments\"\n}\n```\n\nThat schema is everything a UI needs to render an argument form, and everything a model needs to produce valid arguments.\n\n!!! tip\n `title` is optional, so a UI showing tools to a human has to pick: the `title` if there is one,\n the `name` if not. `from mcp.shared.metadata_utils import get_display_name` does exactly that,\n for tools, resources, resource templates and prompts."
+        },
+        {
+          "e2_rank": 6,
+          "source": "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "title": "My host lists zero tools",
+          "similarity": 0.7204304074728054,
+          "content": "There is no error string for this, which is exactly why it is hard to search. The SDK never drops a registered tool from `tools/list`, so work outward:\n\n* **Did the server start at all?** `@mcp.tool` without parentheses raises at import time, and a crashed server looks a lot like an empty one in some hosts. Run `python server.py` yourself.\n* **Is the tool on the `mcp` the host is running?** A second `MCPServer(...)` in another module is a different, empty server. Check which object the host's command actually imports.\n* **Did two tools share a name?** Then one of them is gone. Look for `Tool already exists:` in the server log.\n* **Is the host's list stale?** Adding a tool after startup only reaches clients that handle `notifications/tools/list_changed`. Restarting the host is the blunt fix.\n* **Did something write to `stdout` outside the diverted window?** While serving, the SDK diverts *flushed* stray stdout to stderr (best-effort: an environment that replaces the standard streams is served as-is), but output flushed to stdout earlier (a wrapper script echoing, an import-time `print()` in an unbuffered process) or a buffered `print()` drained at interpreter exit lands on the protocol stream, and one junk line can make the host drop the connection, which some hosts render as a server with nothing in it. Log with the `logging` module instead. The rest of the host-side checklist is on **[Connect to a real host](https://py.sdk.modelcontextprotocol.io/get-started/real-host/index.md)**.\n\nAn \"invalid\" tool name is *not* on that list: a non-conforming name logs a warning but the tool is registered and listed anyway."
+        },
+        {
+          "e2_rank": 7,
+          "source": "https://py.sdk.modelcontextprotocol.io/",
+          "title": "docs_src/index/tutorial001.py",
+          "similarity": 0.7195258809266374,
+          "content": "from mcp.server import MCPServer\n\nmcp = MCPServer(\"Demo\")\n\n@mcp.tool()\ndef add(a: int, b: int) -> int:\n \"\"\"Add two numbers.\"\"\"\n return a + b\n\n@mcp.resource(\"greeting://{name}\")\ndef greeting(name: str) -> str:\n \"\"\"Greet someone by name.\"\"\"\n return f\"Hello, {name}!\"\n```\n\nThat's a complete MCP server.\n\nIt exposes one **tool**, `add`, and one templated **resource**, `greeting://{name}`."
+        },
+        {
+          "e2_rank": 8,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "title": "docs_src/extensions/tutorial003.py",
+          "similarity": 0.7151338797648147,
+          "content": "from collections.abc import Sequence\nfrom typing import Any\n\nfrom mcp import Client\nfrom mcp.server.extension import Extension, ToolBinding\nfrom mcp.server.mcpserver import MCPServer\n\ndef stamp(text: str) -> str:\n \"\"\"Stamp a message with the office seal.\"\"\"\n return f\"[stamped] {text}\"\n\nclass Stamps(Extension):\n \"\"\"A purely additive extension: one tool, one capability entry.\"\"\"\n\n identifier = \"com.example/stamps\"\n\n def settings(self) -> dict[str, Any]:\n return {\"sealed\": True}\n\n def tools(self) -> Sequence[ToolBinding]:\n return [ToolBinding(fn=stamp)]\n\nmcp = MCPServer(\"post-office\", extensions=[Stamps()])\n\nasync def main() -> None:\n async with Client(mcp) as client:\n print(client.server_capabilities.extensions)\n # {'com.example/stamps': {'sealed': True}}\n result = await client.call_tool(\"stamp\", {\"text\": \"hello\"})\n print(result.content)\n # [TextContent(text='[stamped] hello')]\n```\n\n* `tools()` returns `ToolBinding`s. The server registers each one exactly as if you\n had called `mcp.add_tool(...)` yourself: same schema generation, same `Context`\n injection, same everything.\n* `settings()` is the value advertised at `capabilities.extensions[\"com.example/stamps\"]`.\n Return `{}` (the default) to advertise the extension with no settings.\n* The extension never receives the server. It declares contributions as data;\n `MCPServer` consumes them. There is no `self.server` to mutate.\n\nAnd `main()` is the proof, an in-memory client straight against `mcp`:\n\n```python title=\"server.py\" hl_lines=\"29-34\""
+        },
+        {
+          "e2_rank": 9,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "title": "Advanced",
+          "similarity": 0.7143299068618043,
+          "content": "Everything an ordinary server or client needs has a topical home in the sections above.\nThis section is the escape hatches you reach for when `MCPServer`'s convenience\nlayer is in the way:\n\n* **[The low-level Server](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/index.md)**: the class `MCPServer` is built on.\n Hand-written schemas, `on_*` handlers, nothing checked for you, and custom JSON-RPC\n methods of your own.\n* **[Pagination](https://py.sdk.modelcontextprotocol.io/advanced/pagination/index.md)** and **[Middleware](https://py.sdk.modelcontextprotocol.io/advanced/middleware/index.md)**: two things you\n can *only* do on the low-level `Server`.\n* **[Extensions](https://py.sdk.modelcontextprotocol.io/advanced/extensions/index.md)** and **[MCP Apps](https://py.sdk.modelcontextprotocol.io/advanced/apps/index.md)**: the protocol's\n extension surface. Compose extension packages into a server, or write your own.\n\nA few things you might reasonably look for here live where you'd actually use them\ninstead:\n\n* **Authorization** is under **[Running your server](https://py.sdk.modelcontextprotocol.io/run/index.md)** because you\n protect a server where you deploy it.\n* **OAuth**, **identity assertion**, connecting to **multiple servers**, and the\n response **cache** are all under **[Clients](https://py.sdk.modelcontextprotocol.io/client/index.md)**.\n* **Multi-round-trip requests** and **Subscriptions** are under\n **[Inside your handler](https://py.sdk.modelcontextprotocol.io/handlers/index.md)** because both are things a\n handler *does*.\n* **URI templates** is under **[Servers](https://py.sdk.modelcontextprotocol.io/servers/index.md)**, next to Resources.\n* **[Protocol versions](https://py.sdk.modelcontextprotocol.io/protocol-versions/index.md)** and\n **[Deprecated features](https://py.sdk.modelcontextprotocol.io/deprecated/index.md)** each have their own top-level page.\n\nIf you're not sure whether you need this section, you don't."
+        },
+        {
+          "e2_rank": 10,
+          "source": "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "title": "Recap",
+          "similarity": 0.7125340446789262,
+          "content": "* A **host** is the LLM app, a **client** is its MCP-speaking half, a **server** is what you build.\n* Tools are **model**-controlled, resources are **application**-controlled, prompts are **user**-controlled.\n* One decorator per primitive: `@mcp.tool()`, `@mcp.resource(uri)`, `@mcp.prompt()`. Name, description, and schema come from the function.\n* A URI with a `{param}` makes a resource **template**, listed separately from concrete resources.\n* The server's **capabilities** are declared for you, and a client only asks for what a server declares.\n* `Client(mcp)` connects to the server object in memory: your test harness from day one.\n\nNext up is **[Connect to a real host](https://py.sdk.modelcontextprotocol.io/get-started/real-host/index.md)**: this server inside Claude Desktop or an IDE, for real. Then **[Testing](https://py.sdk.modelcontextprotocol.io/get-started/testing/index.md)**: one page, one in-memory client, and you're never guessing whether it works. After that, each primitive gets its own page, starting with the one the model drives: **[Tools](https://py.sdk.modelcontextprotocol.io/servers/tools/index.md)**."
+        }
+      ]
+    },
+    {
+      "id": "q024",
+      "question": "How does a low-level MCP server dispatch multiple tools?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "status": "GOLD_CHUNK_SELECTED",
+      "vector_candidate_limit": 100,
+      "e2_limit": 10,
+      "max_chunks_per_source": 1,
+      "gold_chunks_in_vector_top100": [
+        {
+          "vector_rank": 3,
+          "similarity": 0.7081658840179443,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The low-level Server",
+          "content": "`@mcp.tool()` is a layer. Underneath it is a second server class, `Server`, that speaks raw MCP: you hand it the protocol objects and it puts them on the wire, unchanged.\n\n`MCPServer` is built on top of it. You drop down when the convenience layer is in the way:\n\n* You need to emit an **exact** schema (loaded from a file, generated from a database), not one derived from a Python signature.\n* You need full control of the result: `_meta`, `is_error`, every key of `structured_content`.\n* You need to handle a method MCP doesn't define.\n\nFor everything else, stay on `MCPServer`.",
+          "selected_by_e2": true
+        },
+        {
+          "vector_rank": 14,
+          "similarity": 0.6868477277068942,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Capabilities follow your handlers",
+          "content": "A `Server` advertises exactly the method families you gave it handlers for. The `Bookshop` above passes `on_list_tools` and `on_call_tool` and nothing else, so a client connecting to it sees:\n\n```json\n{\"tools\": {\"listChanged\": false}}\n```\n\nNo `resources`, no `prompts`: there is nothing to back them. Pass `on_list_prompts` and `prompts` appears; pass `on_completion` and `completions` appears.\n\n`MCPServer` always advertises tools, resources and prompts, whether you registered any or not, because its managers always exist. Down here the declaration *is* the constructor call.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 21,
+          "similarity": 0.6798692727244816,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The other handlers",
+          "content": "Each of these is one idea you now have the vocabulary for; each has its own page.\n\n* `on_call_tool`, `on_get_prompt`, and `on_read_resource` may return an `InputRequiredResult` instead of their normal result to pause the call and ask the client for input; see **[Multi-round-trip requests](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/index.md)**. True to this tier, nothing is installed for you: where `MCPServer` seals `requestState` by default, here the `request_state` you set crosses the wire exactly as written until you opt in with `server.middleware.append(RequestStateBoundary(RequestStateSecurity(keys=[...]), default_audience=server.name))`: one line (both names import from `mcp.server.request_state`) for the identical sealing and verification `MCPServer` performs (**[Protecting `requestState`](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/index.md#protecting-requeststate)**).\n* `on_list_resources`, `on_read_resource`, `on_list_prompts`, `on_get_prompt`, `on_completion` are the same `(ctx, params) -> result` shape for the other primitives.\n* `on_subscriptions_listen` serves the 2026-07-28 `subscriptions/listen` stream. Pass a `ListenHandler` built over a `SubscriptionBus` and publish events to the bus from your other handlers; see **[Subscriptions](https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/index.md)** for the full composition.\n* `server.streamable_http_app()` returns the same Starlette app `MCPServer`'s does; deploy it the way **[Running your server](https://py.sdk.modelcontextprotocol.io/run/index.md)** deploys any other ASGI app. There is no `server.run(transport=...)` down here: `server.run(read_stream, write_stream, server.create_initialization_options())` drives one connection over a pair of streams, and that one line is the whole story.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 27,
+          "similarity": 0.6741838455200195,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Try it",
+          "content": "There is no Inspector for this one: `mcp dev` and `mcp run` only accept an `MCPServer`. The in-memory `Client` doesn't care; it takes a low-level `Server` exactly like it takes an `MCPServer`:\n\n```python title=\"main.py\"\nimport asyncio\n\nfrom mcp import Client\n\nfrom server import server\n\nasync def main() -> None:\n async with Client(server) as client:\n result = await client.call_tool(\"search_books\", {\"query\": \"dune\", \"limit\": 5})\n print(result.content)\n\nasyncio.run(main())\n```\n\n```text\n[TextContent(type='text', text=\"Found 3 books matching 'dune' (showing up to 5).\", annotations=None, meta=None)]\n```\n\nThe same text the `@mcp.tool()` version produced. Two honest differences:\n\n* `result.structured_content` is `None`. The high-level server wraps a `-> str` into `{\"result\": ...}` for you; here nobody builds what you didn't build.\n* `list_tools` returns the schema **you** typed, character for character. The high-level version had `\"title\": \"Query\"` on every property and a `\"title\": \"search_booksArguments\"` at the root: Pydantic artifacts. Down here, if it's on the wire, you put it there.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 29,
+          "similarity": 0.6727725267410278,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "docs_src/lowlevel/tutorial003.py",
+          "content": "from mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n CallToolRequestParams,\n CallToolResult,\n ListToolsResult,\n PaginatedRequestParams,\n TextContent,\n Tool,\n)\n\nSEARCH_BOOKS = Tool(\n name=\"search_books\",\n description=\"Search the catalog by title or author.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n \"required\": [\"query\", \"limit\"],\n },\n output_schema={\n \"type\": \"object\",\n \"properties\": {\"matches\": {\"type\": \"integer\"}, \"query\": {\"type\": \"string\"}},\n \"required\": [\"matches\", \"query\"],\n },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n return ListToolsResult(tools=[SEARCH_BOOKS])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n args = params.arguments or {}\n data = {\"matches\": 3, \"query\": args[\"query\"]}\n return CallToolResult(\n content=[TextContent(type=\"text\", text=f\"Found 3 books matching {args['query']!r}.\")],\n structured_content=data,\n )\n\nserver = Server(\"Bookshop\", version=\"2.0.0\", on_list_tools=list_tools, on_call_tool=call_tool)\n```\n\nCall it and the result carries both representations:\n\n```json\n{\n \"content\": [{\"type\": \"text\", \"text\": \"Found 3 books matching 'dune'.\"}],\n \"structuredContent\": {\"matches\": 3, \"query\": \"dune\"},\n \"isError\": false,\n \"resultType\": \"complete\",\n \"_meta\": {\"io.modelcontextprotocol/serverInfo\": {\"name\": \"Bookshop\", \"version\": \"2.0.0\"}}\n}\n```\n\nThe `_meta` block is the server's identity stamp: the SDK adds it to every 2026-era result, with the `version` from the constructor (a server that sets none reports an empty string). A server that must not identify itself can strip the key with a middleware, which owns the results it returns.\n\nThe server never compares the two fields. This SDK's `Client` does: return `structured_content` that doesn't satisfy the `output_schema` you declared and `call_tool` raises a `RuntimeError` that starts with `Invalid structured content returned by tool search_books` and goes on to quote the `jsonschema` failure. Promising a schema is cheap; keeping it is on you. The whole ladder of return types and schemas is in **[Structured Output](https://py.sdk.modelcontextprotocol.io/servers/structured-output/index.md)**.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 37,
+          "similarity": 0.6656949123326008,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "docs_src/lowlevel/tutorial001.py",
+          "content": "from mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n CallToolRequestParams,\n CallToolResult,\n ListToolsResult,\n PaginatedRequestParams,\n TextContent,\n Tool,\n)\n\nSEARCH_BOOKS = Tool(\n name=\"search_books\",\n description=\"Search the catalog by title or author.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n \"required\": [\"query\", \"limit\"],\n },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n return ListToolsResult(tools=[SEARCH_BOOKS])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n args = params.arguments or {}\n text = f\"Found 3 books matching {args['query']!r} (showing up to {args['limit']}).\"\n return CallToolResult(content=[TextContent(type=\"text\", text=text)])\n\nserver = Server(\"Bookshop\", on_list_tools=list_tools, on_call_tool=call_tool)\n```\n\nThree things changed, and they are the whole low-level API:\n\n* **Handlers are constructor parameters.** `on_list_tools=` and `on_call_tool=` go into `Server(...)`. There are no decorators down here, and every handler has the same shape: `async (ctx, params) -> result`.\n* **You write the input schema.** `Tool.input_schema` is a plain JSON Schema `dict`. Nobody derives it from type hints, because there are no type hints to derive it from.\n* **You build the result.** `CallToolResult(content=[TextContent(...)])`, by hand. Nothing is wrapped, converted, or inferred from a return annotation.\n\n`params` is the parsed request: `CallToolRequestParams` gives you `.name` and `.arguments`. `ctx` is a `ServerRequestContext`: `ctx.session` for talking back to the client, `ctx.lifespan_context`, `ctx.request_id`, and `ctx.meta`, the request's inbound `_meta`.\n\n!!! info\n If you've used FastAPI, you already know this relationship. `MCPServer` is the decorators-and-type-hints layer; `Server` is the Starlette underneath. They are not rivals: `MCPServer` constructs a `Server` and registers handlers exactly like these on it.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 41,
+          "similarity": 0.6621823508197773,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "docs_src/lowlevel/tutorial004.py",
+          "content": "from mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n CallToolRequestParams,\n CallToolResult,\n ListToolsResult,\n PaginatedRequestParams,\n TextContent,\n Tool,\n)\n\nSEARCH_BOOKS = Tool(\n name=\"search_books\",\n description=\"Search the catalog by title or author.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n \"required\": [\"query\", \"limit\"],\n },\n output_schema={\n \"type\": \"object\",\n \"properties\": {\"matches\": {\"type\": \"integer\"}, \"query\": {\"type\": \"string\"}},\n \"required\": [\"matches\", \"query\"],\n },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n return ListToolsResult(tools=[SEARCH_BOOKS])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n args = params.arguments or {}\n data = {\"matches\": 3, \"query\": args[\"query\"]}\n return CallToolResult(\n content=[TextContent(type=\"text\", text=f\"Found 3 books matching {args['query']!r}.\")],\n structured_content=data,\n _meta={\"bookshop/record_ids\": [\"bk_17\", \"bk_42\", \"bk_99\"]},\n )\n\nserver = Server(\"Bookshop\", on_list_tools=list_tools, on_call_tool=call_tool)\n```\n\n* You construct it as `_meta=`, the wire name. The client reads it back as `result.meta`.\n* Namespace your keys (`bookshop/record_ids`). The `io.modelcontextprotocol/*` keys are reserved by the protocol.\n\n!!! warning\n `_meta` is a convention between you and the client application, not a guarantee about what reaches\n the model. The host decides what it renders. Never put a secret in any part of a tool result.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 56,
+          "similarity": 0.6553606185531996,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "docs_src/lowlevel/tutorial002.py",
+          "content": "from mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n CallToolRequestParams,\n CallToolResult,\n ListToolsResult,\n PaginatedRequestParams,\n TextContent,\n Tool,\n)\n\nSEARCH_BOOKS = Tool(\n name=\"search_books\",\n description=\"Search the catalog by title or author.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n \"required\": [\"query\", \"limit\"],\n },\n)\n\nADD_BOOK = Tool(\n name=\"add_book\",\n description=\"Add a book to the catalog.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"title\": {\"type\": \"string\"}, \"author\": {\"type\": \"string\"}, \"year\": {\"type\": \"integer\"}},\n \"required\": [\"title\", \"author\", \"year\"],\n },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n return ListToolsResult(tools=[SEARCH_BOOKS, ADD_BOOK])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n args = params.arguments or {}\n if params.name == \"search_books\":\n text = f\"Found 3 books matching {args['query']!r} (showing up to {args['limit']}).\"\n elif params.name == \"add_book\":\n text = f\"Added {args['title']!r} by {args['author']} ({args['year']}).\"\n else:\n raise ValueError(f\"Unknown tool: {params.name}\")\n return CallToolResult(content=[TextContent(type=\"text\", text=text)])\n\nserver = Server(\"Bookshop\", on_list_tools=list_tools, on_call_tool=call_tool)\n```\n\n* `list_tools` advertises both. `call_tool` dispatches on the name.\n* The `else` branch matters: `Server` will happily forward a `tools/call` for a name you never listed straight into your handler. Raising there turns the call into the same `-32603` as above.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 95,
+          "similarity": 0.6380835175514221,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The same tool, by hand",
+          "content": "This is the `search_books` tool that **[Tools](https://py.sdk.modelcontextprotocol.io/servers/tools/index.md)** writes in nine lines of `@mcp.tool()`, with the sugar removed:\n\n```python title=\"server.py\" hl_lines=\"22 26 32\"",
+          "selected_by_e2": false
+        }
+      ],
+      "e2_gold_chunks": [
+        {
+          "e2_rank": 3,
+          "vector_rank": 3,
+          "similarity": 0.7081658840179443,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The low-level Server",
+          "content": "`@mcp.tool()` is a layer. Underneath it is a second server class, `Server`, that speaks raw MCP: you hand it the protocol objects and it puts them on the wire, unchanged.\n\n`MCPServer` is built on top of it. You drop down when the convenience layer is in the way:\n\n* You need to emit an **exact** schema (loaded from a file, generated from a database), not one derived from a Python signature.\n* You need full control of the result: `_meta`, `is_error`, every key of `structured_content`.\n* You need to handle a method MCP doesn't define.\n\nFor everything else, stay on `MCPServer`."
+        }
+      ],
+      "e2_results": [
+        {
+          "e2_rank": 1,
+          "source": "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "title": "Deploy & scale",
+          "similarity": 0.7405514717102051,
+          "content": "Your server works. Now it needs a real hostname, and more than one worker behind it.\n\nAlmost none of that is MCP's business. You bring the ASGI server, the process manager, the load balancer. What this page has is the short list of things that *are* MCP's business: one setting that gates every deployment, and the two places where \"more than one worker\" changes what the SDK does."
+        },
+        {
+          "e2_rank": 2,
+          "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "title": "What is unchanged on `MCPServer`",
+          "similarity": 0.72431480884552,
+          "content": "Beyond the changes covered in this section, the everyday `FastMCP` surface carries over to `MCPServer` as-is:\n\n- **Decorators.** `@mcp.tool()`, `@mcp.resource()`, `@mcp.prompt()`, and `@mcp.completion()` take the same arguments and handler signatures as v1. The lowlevel [`on_completion` reshape](#lowlevel-server-decorator-based-handlers-replaced-with-constructor-on_-params) applies only to the lowlevel `Server`; a high-level `@mcp.completion()` handler is still called as `(ref, argument, context)`.\n- **Tool return handling.** A returned `CallToolResult` (including an `Annotated[CallToolResult, YourModel]` output schema, and `_meta`) is passed through, `Image` and `Audio` convert to content blocks as before, ready-made content blocks are kept as-is, and dict, list, scalar, and model returns are wrapped into `content` and `structured_content` by the same rules.\n- **Listing and registration methods.** `list_tools()`, `list_resources()`, `list_resource_templates()`, and `list_prompts()` return the same lists and are still what the protocol handlers call, so subclass overrides still take effect. `add_tool()`, `add_resource()`, and `add_prompt()` are unchanged.\n- **Helpers.** `Image.to_image_content()`, `Audio.to_audio_content()`, and the prompt `Message`, `UserMessage`, and `AssistantMessage` classes.\n- **Lifespan.** The `lifespan=` constructor argument and `ctx.request_context.lifespan_context` work as before, and the class is still generic over the lifespan result: `FastMCP[MyState]` becomes `MCPServer[MyState]`. (`Context`'s own type parameters did change; see [`RequestContext` type parameters simplified](#requestcontext-type-parameters-simplified).)\n- **Tool internals.** `Tool`, `Tool.from_function()`, `FuncMetadata`, `ArgModelBase`, and `func_metadata()` keep their v1 shapes; the one change is the now-required `context` argument to `Tool.run()`, described [below](#mcpservercall_tool-read_resource-get_prompt-now-accept-a-context-parameter).\n- **Auxiliary import paths.** `TransportSecuritySettings` (`mcp.server.transport_security`) and `AcceptedElicitation`/`DeclinedElicitation`/`CancelledElicitation` (`mcp.server.elicitation`) have not moved; the server auth surface is inventoried under [Unchanged auth surfaces](#unchanged-auth-surfaces)."
+        },
+        {
+          "e2_rank": 3,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The low-level Server",
+          "similarity": 0.7081658840179443,
+          "content": "`@mcp.tool()` is a layer. Underneath it is a second server class, `Server`, that speaks raw MCP: you hand it the protocol objects and it puts them on the wire, unchanged.\n\n`MCPServer` is built on top of it. You drop down when the convenience layer is in the way:\n\n* You need to emit an **exact** schema (loaded from a file, generated from a database), not one derived from a Python signature.\n* You need full control of the result: `_meta`, `is_error`, every key of `structured_content`.\n* You need to handle a method MCP doesn't define.\n\nFor everything else, stay on `MCPServer`."
+        },
+        {
+          "e2_rank": 4,
+          "source": "https://py.sdk.modelcontextprotocol.io/",
+          "title": "docs_src/index/tutorial001.py",
+          "similarity": 0.7069342485744707,
+          "content": "from mcp.server import MCPServer\n\nmcp = MCPServer(\"Demo\")\n\n@mcp.tool()\ndef add(a: int, b: int) -> int:\n \"\"\"Add two numbers.\"\"\"\n return a + b\n\n@mcp.resource(\"greeting://{name}\")\ndef greeting(name: str) -> str:\n \"\"\"Greet someone by name.\"\"\"\n return f\"Hello, {name}!\"\n```\n\nThat's a complete MCP server.\n\nIt exposes one **tool**, `add`, and one templated **resource**, `greeting://{name}`."
+        },
+        {
+          "e2_rank": 5,
+          "source": "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "title": "docs_src/session_groups/tutorial003.py",
+          "similarity": 0.7036078395609773,
+          "content": "import asyncio\n\nfrom mcp import ClientSessionGroup, StdioServerParameters\n\nasync def main() -> None:\n library = StdioServerParameters(command=\"uv\", args=[\"run\", \"mcp\", \"run\", \"library_server.py\"])\n web = StdioServerParameters(command=\"uv\", args=[\"run\", \"mcp\", \"run\", \"web_server.py\"])\n\n async with ClientSessionGroup() as group:\n await group.connect_to_server(library)\n await group.connect_to_server(web)\n\n result = await group.call_tool(\"search\", {\"query\": \"model context protocol\"})\n print(result.structured_content)\n\nif __name__ == \"__main__\":\n asyncio.run(main())\n```\n\n* `connect_to_server` takes transport parameters, not a server object: `StdioServerParameters` (from `mcp`) to launch a subprocess, or `StreamableHttpParameters` / `SseServerParameters` (from `mcp.client.session_group`) for a server already listening on a URL.\n* `group.tools` is a `dict[str, Tool]` of every connected server's tools. `group.resources` and `group.prompts` are the same shape.\n* `group.call_tool(name, arguments)` looks the name up, finds the session that owns it, and forwards the call. You never say which server.\n\n!!! check\n Put `client.py` next to the two servers and run it. The second `connect_to_server` refuses:\n\n ```text\n mcp.shared.exceptions.MCPError: {'search'} already exist in group tools.\n ```\n\n That is an `MCPError`, raised before anything from the second server is registered. A name must\n be unique across the **whole** group, and two servers you don't control will collide eventually."
+        },
+        {
+          "e2_rank": 6,
+          "source": "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "title": "docs_src/opentelemetry/tutorial001.py",
+          "similarity": 0.7020554155723877,
+          "content": "from mcp.server import MCPServer\n\nmcp = MCPServer(\"Bookshop\")\n\n@mcp.tool()\ndef search_books(query: str) -> str:\n \"\"\"Search the catalog by title or author.\"\"\"\n return f\"Found 3 books matching {query!r}.\"\n```\n\nThat is a complete, traced server. Call `search_books` and a span is created for it. The same is\ntrue for the low-level `Server`: the tracing lives on both."
+        },
+        {
+          "e2_rank": 7,
+          "source": "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "title": "Capabilities",
+          "similarity": 0.6978509842068555,
+          "content": "You saw three tabs in the Inspector. How did it know there were three?\n\nWhen a client connects, the server declares its **capabilities**: which families of requests it will answer. The client uses that declaration to decide what to even ask for. You never wrote it; `MCPServer` declares it for you.\n\nLook at it yourself. The SDK's `Client` accepts the server object directly and connects to it **in memory** (no subprocess, no port):\n\n```python\nimport asyncio\n\nfrom mcp import Client\n\nfrom server import mcp\n\nasync def main() -> None:\n async with Client(mcp) as client:\n print(client.server_capabilities.model_dump(exclude_none=True))\n\nasyncio.run(main())\n```\n\n```text\n{'prompts': {'list_changed': True}, 'resources': {'subscribe': True, 'list_changed': True}, 'tools': {'list_changed': True}}\n```\n\nThat dictionary is your server's declared **capabilities**. It's the first thing every connecting client learns:\n\n| Capability | The client may now call |\n|-------------|------------------------------------------------------------|\n| `tools` | `tools/list`, `tools/call` |\n| `resources` | `resources/list`, `resources/templates/list`, `resources/read` |\n| `prompts` | `prompts/list`, `prompts/get` |\n\n`MCPServer` serves all three primitives, so all three are always declared.\n\nNotice what isn't there. `completions` (argument autocomplete for resource templates and prompts) needs a handler you write, this server doesn't have one, so the capability is absent and a well-behaved client won't ask. That's the rule for everything optional: register the thing and the capability appears; **[Completions](https://py.sdk.modelcontextprotocol.io/servers/completions/index.md)** proves it.\n\n!!! info\n `Client(mcp)` is the same in-memory client every example in these docs is tested with, and\n it's how you'll test yours. It gets a whole page: **[Testing](https://py.sdk.modelcontextprotocol.io/get-started/testing/index.md)**."
+        },
+        {
+          "e2_rank": 8,
+          "source": "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "title": "Recap",
+          "similarity": 0.6930223703384399,
+          "content": "* One `streamable_http_app()` serves both protocol eras. The SDK routes each request by its `MCP-Protocol-Version` header; there is nothing to configure and no era knob to look for.\n* A legacy client costs you a session: an in-process `Mcp-Session-Id` record with no distributed store behind it. More than one worker means **sticky routing**, or the wrong worker answers `404 Session not found`. **[Deploy & scale](https://py.sdk.modelcontextprotocol.io/run/deploy/index.md)** has the multi-worker story.\n* `stateless_http=True` is the one knob, and it is **legacy-leg-only**. It buys free load balancing for legacy clients at the price of both server-to-client channels on that leg: server-initiated requests raise `NoBackChannelError` (a top-level error at the client, not an `is_error` result), and notifications are dropped.\n* A `2026-07-28` connection is sessionless either way. `stateless_http` never touches it.\n* Your handler code forks on era in exactly one place: change notifications. `ctx.notify_*` reaches `subscriptions/listen` clients; `ctx.session.send_*` reaches legacy sessions. Call both.\n* Everything else (including asking the user for input, via `Resolve`) is era-portable by construction. Write the modern thing once."
+        },
+        {
+          "e2_rank": 9,
+          "source": "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "title": "Two servers, one app",
+          "similarity": 0.6903786659240723,
+          "content": "Each `MCPServer` is its own app with its own session manager. Mount as many as you like; enter every manager from the one host lifespan:\n\n```python title=\"server.py\" hl_lines=\"27-30 35-36\""
+        },
+        {
+          "e2_rank": 10,
+          "source": "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "title": "docs_src/client_transports/tutorial001.py",
+          "similarity": 0.6840906739234924,
+          "content": "from mcp import Client\nfrom mcp.server import MCPServer\n\nmcp = MCPServer(\"Bookshop\")\n\n@mcp.tool()\ndef search_books(query: str) -> str:\n \"\"\"Search the catalog by title or author.\"\"\"\n return f\"Found 3 books matching {query!r}.\"\n\nasync def main() -> None:\n async with Client(mcp) as client:\n result = await client.call_tool(\"search_books\", {\"query\": \"dune\"})\n print(result.structured_content)\n```\n\nNo subprocess, no port, no bytes on a wire. The client and the server are two objects in the same process, and the call still goes through the real protocol layer: `search_books` is listed, validated and invoked exactly as it would be over HTTP.\n\nThat makes it two things at once:\n\n* **A test harness.** Every example in this documentation is exercised this way, and the **[Testing](https://py.sdk.modelcontextprotocol.io/get-started/testing/index.md)** page builds the whole pattern around it.\n* **An embedding API.** An application that constructs the server doesn't need a network hop to call its tools."
+        }
+      ]
+    },
+    {
+      "id": "q048",
+      "question": "What is the difference between FastMCP and the low-level Server?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "status": "GOLD_CHUNK_SELECTED",
+      "vector_candidate_limit": 100,
+      "e2_limit": 10,
+      "max_chunks_per_source": 1,
+      "gold_chunks_in_vector_top100": [
+        {
+          "vector_rank": 17,
+          "similarity": 0.6118857860565186,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Try it",
+          "content": "There is no Inspector for this one: `mcp dev` and `mcp run` only accept an `MCPServer`. The in-memory `Client` doesn't care; it takes a low-level `Server` exactly like it takes an `MCPServer`:\n\n```python title=\"main.py\"\nimport asyncio\n\nfrom mcp import Client\n\nfrom server import server\n\nasync def main() -> None:\n async with Client(server) as client:\n result = await client.call_tool(\"search_books\", {\"query\": \"dune\", \"limit\": 5})\n print(result.content)\n\nasyncio.run(main())\n```\n\n```text\n[TextContent(type='text', text=\"Found 3 books matching 'dune' (showing up to 5).\", annotations=None, meta=None)]\n```\n\nThe same text the `@mcp.tool()` version produced. Two honest differences:\n\n* `result.structured_content` is `None`. The high-level server wraps a `-> str` into `{\"result\": ...}` for you; here nobody builds what you didn't build.\n* `list_tools` returns the schema **you** typed, character for character. The high-level version had `\"title\": \"Query\"` on every property and a `\"title\": \"search_booksArguments\"` at the root: Pydantic artifacts. Down here, if it's on the wire, you put it there.",
+          "selected_by_e2": true
+        },
+        {
+          "vector_rank": 32,
+          "similarity": 0.5859239101409912,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Recap",
+          "content": "* The low-level `Server` takes its handlers as `on_*` **constructor parameters**; every handler is `async (ctx, params) -> result`.\n* You write the `input_schema` dict and you build the `CallToolResult`. Nothing is derived, wrapped, or validated for you.\n* An exception in a handler is a `-32603` protocol error. A tool error the model can read is a `CallToolResult` with `is_error=True` that **you** return.\n* `_meta` on the result is addressed to the client application, not the model.\n* `Server[T]` is generic in what its lifespan yields; `ctx.lifespan_context` is a typed `T`.\n* `add_request_handler(method, params_type, handler)` serves any method. `initialize` is reserved.\n* The capabilities a `Server` advertises are derived from which handlers you registered.\n\n`Client(server)` treated both servers identically because they *are* the same protocol, which is the whole point. The next layer down isn't a class at all: it's **[Middleware](https://py.sdk.modelcontextprotocol.io/advanced/middleware/index.md)**.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 77,
+          "similarity": 0.5621606633471692,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The other handlers",
+          "content": "Each of these is one idea you now have the vocabulary for; each has its own page.\n\n* `on_call_tool`, `on_get_prompt`, and `on_read_resource` may return an `InputRequiredResult` instead of their normal result to pause the call and ask the client for input; see **[Multi-round-trip requests](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/index.md)**. True to this tier, nothing is installed for you: where `MCPServer` seals `requestState` by default, here the `request_state` you set crosses the wire exactly as written until you opt in with `server.middleware.append(RequestStateBoundary(RequestStateSecurity(keys=[...]), default_audience=server.name))`: one line (both names import from `mcp.server.request_state`) for the identical sealing and verification `MCPServer` performs (**[Protecting `requestState`](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/index.md#protecting-requeststate)**).\n* `on_list_resources`, `on_read_resource`, `on_list_prompts`, `on_get_prompt`, `on_completion` are the same `(ctx, params) -> result` shape for the other primitives.\n* `on_subscriptions_listen` serves the 2026-07-28 `subscriptions/listen` stream. Pass a `ListenHandler` built over a `SubscriptionBus` and publish events to the bus from your other handlers; see **[Subscriptions](https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/index.md)** for the full composition.\n* `server.streamable_http_app()` returns the same Starlette app `MCPServer`'s does; deploy it the way **[Running your server](https://py.sdk.modelcontextprotocol.io/run/index.md)** deploys any other ASGI app. There is no `server.run(transport=...)` down here: `server.run(read_stream, write_stream, server.create_initialization_options())` drives one connection over a pair of streams, and that one line is the whole story.",
+          "selected_by_e2": false
+        },
+        {
+          "vector_rank": 81,
+          "similarity": 0.5611101984977722,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "The low-level Server",
+          "content": "`@mcp.tool()` is a layer. Underneath it is a second server class, `Server`, that speaks raw MCP: you hand it the protocol objects and it puts them on the wire, unchanged.\n\n`MCPServer` is built on top of it. You drop down when the convenience layer is in the way:\n\n* You need to emit an **exact** schema (loaded from a file, generated from a database), not one derived from a Python signature.\n* You need full control of the result: `_meta`, `is_error`, every key of `structured_content`.\n* You need to handle a method MCP doesn't define.\n\nFor everything else, stay on `MCPServer`.",
+          "selected_by_e2": false
+        }
+      ],
+      "e2_gold_chunks": [
+        {
+          "e2_rank": 8,
+          "vector_rank": 17,
+          "similarity": 0.6118857860565186,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Try it",
+          "content": "There is no Inspector for this one: `mcp dev` and `mcp run` only accept an `MCPServer`. The in-memory `Client` doesn't care; it takes a low-level `Server` exactly like it takes an `MCPServer`:\n\n```python title=\"main.py\"\nimport asyncio\n\nfrom mcp import Client\n\nfrom server import server\n\nasync def main() -> None:\n async with Client(server) as client:\n result = await client.call_tool(\"search_books\", {\"query\": \"dune\", \"limit\": 5})\n print(result.content)\n\nasyncio.run(main())\n```\n\n```text\n[TextContent(type='text', text=\"Found 3 books matching 'dune' (showing up to 5).\", annotations=None, meta=None)]\n```\n\nThe same text the `@mcp.tool()` version produced. Two honest differences:\n\n* `result.structured_content` is `None`. The high-level server wraps a `-> str` into `{\"result\": ...}` for you; here nobody builds what you didn't build.\n* `list_tools` returns the schema **you** typed, character for character. The high-level version had `\"title\": \"Query\"` on every property and a `\"title\": \"search_booksArguments\"` at the root: Pydantic artifacts. Down here, if it's on the wire, you put it there."
+        }
+      ],
+      "e2_results": [
+        {
+          "e2_rank": 1,
+          "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "title": "What is unchanged on `MCPServer`",
+          "similarity": 0.7684602737426758,
+          "content": "Beyond the changes covered in this section, the everyday `FastMCP` surface carries over to `MCPServer` as-is:\n\n- **Decorators.** `@mcp.tool()`, `@mcp.resource()`, `@mcp.prompt()`, and `@mcp.completion()` take the same arguments and handler signatures as v1. The lowlevel [`on_completion` reshape](#lowlevel-server-decorator-based-handlers-replaced-with-constructor-on_-params) applies only to the lowlevel `Server`; a high-level `@mcp.completion()` handler is still called as `(ref, argument, context)`.\n- **Tool return handling.** A returned `CallToolResult` (including an `Annotated[CallToolResult, YourModel]` output schema, and `_meta`) is passed through, `Image` and `Audio` convert to content blocks as before, ready-made content blocks are kept as-is, and dict, list, scalar, and model returns are wrapped into `content` and `structured_content` by the same rules.\n- **Listing and registration methods.** `list_tools()`, `list_resources()`, `list_resource_templates()`, and `list_prompts()` return the same lists and are still what the protocol handlers call, so subclass overrides still take effect. `add_tool()`, `add_resource()`, and `add_prompt()` are unchanged.\n- **Helpers.** `Image.to_image_content()`, `Audio.to_audio_content()`, and the prompt `Message`, `UserMessage`, and `AssistantMessage` classes.\n- **Lifespan.** The `lifespan=` constructor argument and `ctx.request_context.lifespan_context` work as before, and the class is still generic over the lifespan result: `FastMCP[MyState]` becomes `MCPServer[MyState]`. (`Context`'s own type parameters did change; see [`RequestContext` type parameters simplified](#requestcontext-type-parameters-simplified).)\n- **Tool internals.** `Tool`, `Tool.from_function()`, `FuncMetadata`, `ArgModelBase`, and `func_metadata()` keep their v1 shapes; the one change is the now-required `context` argument to `Tool.run()`, described [below](#mcpservercall_tool-read_resource-get_prompt-now-accept-a-context-parameter).\n- **Auxiliary import paths.** `TransportSecuritySettings` (`mcp.server.transport_security`) and `AcceptedElicitation`/`DeclinedElicitation`/`CancelledElicitation` (`mcp.server.elicitation`) have not moved; the server auth surface is inventoried under [Unchanged auth surfaces](#unchanged-auth-surfaces)."
+        },
+        {
+          "e2_rank": 2,
+          "source": "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "title": "Mounting it",
+          "similarity": 0.6327266097068787,
+          "content": "The moment the MCP server is *part* of a bigger application, you put the app inside a `Mount`. And the moment you do that, the lifespan becomes your problem:\n\n```python title=\"server.py\" hl_lines=\"18-21 25-26\""
+        },
+        {
+          "e2_rank": 3,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "title": "Advanced",
+          "similarity": 0.6321061096064958,
+          "content": "Everything an ordinary server or client needs has a topical home in the sections above.\nThis section is the escape hatches you reach for when `MCPServer`'s convenience\nlayer is in the way:\n\n* **[The low-level Server](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/index.md)**: the class `MCPServer` is built on.\n Hand-written schemas, `on_*` handlers, nothing checked for you, and custom JSON-RPC\n methods of your own.\n* **[Pagination](https://py.sdk.modelcontextprotocol.io/advanced/pagination/index.md)** and **[Middleware](https://py.sdk.modelcontextprotocol.io/advanced/middleware/index.md)**: two things you\n can *only* do on the low-level `Server`.\n* **[Extensions](https://py.sdk.modelcontextprotocol.io/advanced/extensions/index.md)** and **[MCP Apps](https://py.sdk.modelcontextprotocol.io/advanced/apps/index.md)**: the protocol's\n extension surface. Compose extension packages into a server, or write your own.\n\nA few things you might reasonably look for here live where you'd actually use them\ninstead:\n\n* **Authorization** is under **[Running your server](https://py.sdk.modelcontextprotocol.io/run/index.md)** because you\n protect a server where you deploy it.\n* **OAuth**, **identity assertion**, connecting to **multiple servers**, and the\n response **cache** are all under **[Clients](https://py.sdk.modelcontextprotocol.io/client/index.md)**.\n* **Multi-round-trip requests** and **Subscriptions** are under\n **[Inside your handler](https://py.sdk.modelcontextprotocol.io/handlers/index.md)** because both are things a\n handler *does*.\n* **URI templates** is under **[Servers](https://py.sdk.modelcontextprotocol.io/servers/index.md)**, next to Resources.\n* **[Protocol versions](https://py.sdk.modelcontextprotocol.io/protocol-versions/index.md)** and\n **[Deprecated features](https://py.sdk.modelcontextprotocol.io/deprecated/index.md)** each have their own top-level page.\n\nIf you're not sure whether you need this section, you don't."
+        },
+        {
+          "e2_rank": 4,
+          "source": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "title": "`FastMCP` is now `MCPServer`",
+          "similarity": 0.6288016217232728,
+          "content": "The high-level server class was renamed, and its module with it. This is the first thing every v1 server hits, because the old import path is gone rather than deprecated:\n\n```python\nfrom mcp.server import MCPServer # v1: from mcp.server.fastmcp import FastMCP\n\nmcp = MCPServer(\"Demo\") # v1: FastMCP(\"Demo\")\n```\n\nIt is also, for a decorator-built server, most of the port. `@mcp.tool()`, `@mcp.resource()`, and `@mcp.prompt()` accept what they accepted in v1 (`@mcp.resource()` adds one optional `security=` keyword), and the input schema still comes from your type hints. Around the edges: everything under `mcp.server.fastmcp.*` now lives under `mcp.server.mcpserver.*`, `ctx.fastmcp` is `ctx.mcp_server`, `get_context()` is gone (declare a `ctx: Context` parameter instead), and the exception base `FastMCPError` is `MCPServerError`. The **[Migration Guide](https://py.sdk.modelcontextprotocol.io/migration/index.md#fastmcp-renamed-to-mcpserver)** has the import table."
+        },
+        {
+          "e2_rank": 5,
+          "source": "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "title": "Recap",
+          "similarity": 0.6208504438400269,
+          "content": "* A **host** is the LLM app, a **client** is its MCP-speaking half, a **server** is what you build.\n* Tools are **model**-controlled, resources are **application**-controlled, prompts are **user**-controlled.\n* One decorator per primitive: `@mcp.tool()`, `@mcp.resource(uri)`, `@mcp.prompt()`. Name, description, and schema come from the function.\n* A URI with a `{param}` makes a resource **template**, listed separately from concrete resources.\n* The server's **capabilities** are declared for you, and a client only asks for what a server declares.\n* `Client(mcp)` connects to the server object in memory: your test harness from day one.\n\nNext up is **[Connect to a real host](https://py.sdk.modelcontextprotocol.io/get-started/real-host/index.md)**: this server inside Claude Desktop or an IDE, for real. Then **[Testing](https://py.sdk.modelcontextprotocol.io/get-started/testing/index.md)**: one page, one in-memory client, and you're never guessing whether it works. After that, each primitive gets its own page, starting with the one the model drives: **[Tools](https://py.sdk.modelcontextprotocol.io/servers/tools/index.md)**."
+        },
+        {
+          "e2_rank": 6,
+          "source": "https://py.sdk.modelcontextprotocol.io/servers/",
+          "title": "Servers",
+          "similarity": 0.6190615480858551,
+          "content": "An `MCPServer` exposes three primitives to a connected client. They differ by who\ndecides to use them:\n\n* A **[tool](https://py.sdk.modelcontextprotocol.io/servers/tools/index.md)** is an action the *model* picks and calls. This is\n the page most people want first, and\n **[Structured Output](https://py.sdk.modelcontextprotocol.io/servers/structured-output/index.md)** is its reference companion:\n everything about the shape of what a tool returns.\n* A **[resource](https://py.sdk.modelcontextprotocol.io/servers/resources/index.md)** is read-only data the *application*\n chooses to read. **[URI templates](https://py.sdk.modelcontextprotocol.io/servers/uri-templates/index.md)** is its reference\n companion: the full addressing syntax and the path-safety rules.\n* A **[prompt](https://py.sdk.modelcontextprotocol.io/servers/prompts/index.md)** is a message template a *person* invokes by\n name, from a menu or a slash command.\n\nAround the three primitives, the rest of what a server declares:\n\n* **[Completions](https://py.sdk.modelcontextprotocol.io/servers/completions/index.md)** is server-side autocomplete for prompt\n and resource-template arguments.\n* **[Images, audio & icons](https://py.sdk.modelcontextprotocol.io/servers/media/index.md)** covers everything a tool can\n return besides text, and the icons a client shows next to your server.\n* **[Handling errors](https://py.sdk.modelcontextprotocol.io/servers/handling-errors/index.md)** explains the difference between an\n error the model can recover from and one it must never see.\n\nEvery page here stands on its own; jump straight to the one you need. If you haven't\nbuilt a server yet, start with **[First steps](https://py.sdk.modelcontextprotocol.io/get-started/first-steps/index.md)** instead.\n\nWhat happens *inside* the functions you register (the `Context`, dependency injection,\nasking the user for more input mid-call) is the next section,\n**[Inside your handler](https://py.sdk.modelcontextprotocol.io/handlers/index.md)**."
+        },
+        {
+          "e2_rank": 7,
+          "source": "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "title": "Where to go next",
+          "similarity": 0.6163678169250488,
+          "content": "Once you have a server running, the rest of these docs are a reference, not a course.\nEvery page stands on its own, so jump straight to what you need:\n\n* What a server exposes (tools, resources, prompts) is **[Servers](https://py.sdk.modelcontextprotocol.io/servers/index.md)**.\n* What's available inside the functions you register is **[Inside your handler](https://py.sdk.modelcontextprotocol.io/handlers/index.md)**.\n* Getting it in front of clients (stdio, HTTP, your existing FastAPI app) is **[Running your server](https://py.sdk.modelcontextprotocol.io/run/index.md)**.\n* Building the other side, an application that *uses* MCP servers, is **[Clients](https://py.sdk.modelcontextprotocol.io/client/index.md)**."
+        },
+        {
+          "e2_rank": 8,
+          "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "title": "Try it",
+          "similarity": 0.6118857860565186,
+          "content": "There is no Inspector for this one: `mcp dev` and `mcp run` only accept an `MCPServer`. The in-memory `Client` doesn't care; it takes a low-level `Server` exactly like it takes an `MCPServer`:\n\n```python title=\"main.py\"\nimport asyncio\n\nfrom mcp import Client\n\nfrom server import server\n\nasync def main() -> None:\n async with Client(server) as client:\n result = await client.call_tool(\"search_books\", {\"query\": \"dune\", \"limit\": 5})\n print(result.content)\n\nasyncio.run(main())\n```\n\n```text\n[TextContent(type='text', text=\"Found 3 books matching 'dune' (showing up to 5).\", annotations=None, meta=None)]\n```\n\nThe same text the `@mcp.tool()` version produced. Two honest differences:\n\n* `result.structured_content` is `None`. The high-level server wraps a `-> str` into `{\"result\": ...}` for you; here nobody builds what you didn't build.\n* `list_tools` returns the schema **you** typed, character for character. The high-level version had `\"title\": \"Query\"` on every property and a `\"title\": \"search_booksArguments\"` at the root: Pydantic artifacts. Down here, if it's on the wire, you put it there."
+        },
+        {
+          "e2_rank": 9,
+          "source": "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "title": "Optional extras",
+          "similarity": 0.6039602756500244,
+          "content": "* `mcp[cli]` adds [`typer`](https://typer.tiangolo.com/) and [`python-dotenv`](https://pypi.org/project/python-dotenv/) for the `mcp` command-line tool (`mcp dev`, `mcp run`, `mcp install`). You'll want this during development; you may not need it in a deployed server.\n* `mcp[rich]` adds [`rich`](https://rich.readthedocs.io/) for nicer server logs."
+        },
+        {
+          "e2_rank": 10,
+          "source": "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "title": "The low-level composition",
+          "similarity": 0.6024131774902344,
+          "content": "Down on the low-level `Server` there is no pre-wired anything, and the same parts assemble in three lines:\n\n```python title=\"server.py\" hl_lines=\"8-9 47\""
+        }
+      ]
+    }
+  ]
+}

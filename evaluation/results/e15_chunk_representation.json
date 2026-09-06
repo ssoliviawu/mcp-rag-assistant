@@ -1,0 +1,2091 @@
+{
+  "experiment": "E15_chunk_representation",
+  "input": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\evaluation\\results\\e13_vector_error_profile.json",
+  "question_count": 48,
+  "overall": {
+    "questions": 48,
+    "length": {
+      "top1_avg_chars": 880.3958333333334,
+      "gold_avg_chars": 778.5833333333334,
+      "top1_median_chars": 617.0,
+      "gold_median_chars": 617.0,
+      "avg_length_ratio": 1.6318674975095186,
+      "median_length_ratio": 1.0,
+      "top1_longer_count": 13
+    },
+    "words": {
+      "top1_avg_words": 128.04166666666666,
+      "gold_avg_words": 115.60416666666667,
+      "top1_median_words": 95.5,
+      "gold_median_words": 100.0,
+      "avg_word_ratio": 1.4488640234631591,
+      "median_word_ratio": 1.0
+    },
+    "code": {
+      "top1_avg_code_ratio": 0.4625,
+      "gold_avg_code_ratio": 0.5291666666666667,
+      "avg_code_ratio_difference": -0.06666666666666667,
+      "top1_code_heavy": 32,
+      "gold_code_heavy": 35
+    },
+    "ranking": {
+      "avg_semantic_gap": 0.024060392268250495,
+      "median_semantic_gap": 0.00610937481146695,
+      "avg_lexical_gap": -0.016153348965848965,
+      "median_lexical_gap": 0.0
+    }
+  },
+  "by_rank_bucket": {
+    "TOP1": {
+      "questions": 22,
+      "length": {
+        "top1_avg_chars": 646.6818181818181,
+        "gold_avg_chars": 646.6818181818181,
+        "top1_median_chars": 606.0,
+        "gold_median_chars": 606.0,
+        "avg_length_ratio": 1.0,
+        "median_length_ratio": 1.0,
+        "top1_longer_count": 0
+      },
+      "words": {
+        "top1_avg_words": 100.95454545454545,
+        "gold_avg_words": 100.95454545454545,
+        "top1_median_words": 93.0,
+        "gold_median_words": 93.0,
+        "avg_word_ratio": 1.0,
+        "median_word_ratio": 1.0
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.39090909090909093,
+        "gold_avg_code_ratio": 0.39090909090909093,
+        "avg_code_ratio_difference": 0.0,
+        "top1_code_heavy": 14,
+        "gold_code_heavy": 14
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.0,
+        "median_semantic_gap": 0.0,
+        "avg_lexical_gap": 0.0,
+        "median_lexical_gap": 0.0
+      }
+    },
+    "TOP2_3": {
+      "questions": 9,
+      "length": {
+        "top1_avg_chars": 811,
+        "gold_avg_chars": 708.3333333333334,
+        "top1_median_chars": 381,
+        "gold_median_chars": 617,
+        "avg_length_ratio": 2.4084087131996923,
+        "median_length_ratio": 0.656896551724138,
+        "top1_longer_count": 4
+      },
+      "words": {
+        "top1_avg_words": 114.33333333333333,
+        "gold_avg_words": 102.77777777777777,
+        "top1_median_words": 70,
+        "gold_median_words": 100,
+        "avg_word_ratio": 1.8210174927555336,
+        "median_word_ratio": 0.7
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.5333333333333333,
+        "gold_avg_code_ratio": 0.5555555555555556,
+        "avg_code_ratio_difference": -0.022222222222222223,
+        "top1_code_heavy": 5,
+        "gold_code_heavy": 7
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.02637539050514374,
+        "median_semantic_gap": 0.02510086147753343,
+        "avg_lexical_gap": -0.21693121693121692,
+        "median_lexical_gap": -0.1428571428571429
+      }
+    },
+    "TOP4_10": {
+      "questions": 14,
+      "length": {
+        "top1_avg_chars": 1111.642857142857,
+        "gold_avg_chars": 963.5714285714286,
+        "top1_median_chars": 966.5,
+        "gold_median_chars": 673.5,
+        "avg_length_ratio": 2.138048250144309,
+        "median_length_ratio": 1.5730498259910024,
+        "top1_longer_count": 7
+      },
+      "words": {
+        "top1_avg_words": 161.14285714285714,
+        "gold_avg_words": 137,
+        "top1_median_words": 146.0,
+        "gold_median_words": 107.0,
+        "avg_word_ratio": 1.946773384661857,
+        "median_word_ratio": 1.7353429027113239
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.4428571428571429,
+        "gold_avg_code_ratio": 0.6285714285714286,
+        "avg_code_ratio_difference": -0.1857142857142857,
+        "top1_code_heavy": 10,
+        "gold_code_heavy": 11
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.03723546690013342,
+        "median_semantic_gap": 0.03718238355104864,
+        "avg_lexical_gap": 0.08407287157287158,
+        "median_lexical_gap": 0.09545454545454543
+      }
+    },
+    "TOP11_20": {
+      "questions": 3,
+      "length": {
+        "top1_avg_chars": 1723.3333333333333,
+        "gold_avg_chars": 1093.3333333333333,
+        "top1_median_chars": 2277,
+        "gold_median_chars": 1096,
+        "avg_length_ratio": 1.5737619865464434,
+        "median_length_ratio": 2.0775547445255476,
+        "top1_longer_count": 2
+      },
+      "words": {
+        "top1_avg_words": 213.33333333333334,
+        "gold_avg_words": 161.66666666666666,
+        "top1_median_words": 275,
+        "gold_median_words": 166,
+        "avg_word_ratio": 1.3004961020552799,
+        "median_word_ratio": 1.6566265060240963
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.8666666666666667,
+        "gold_avg_code_ratio": 1.0,
+        "avg_code_ratio_difference": -0.1333333333333333,
+        "top1_code_heavy": 3,
+        "gold_code_heavy": 3
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.13207459257595408,
+        "median_semantic_gap": 0.14277946949005127,
+        "avg_lexical_gap": 0.0,
+        "median_lexical_gap": 0.0
+      }
+    }
+  },
+  "by_top1_source_type": {
+    "migration": {
+      "questions": 14,
+      "length": {
+        "top1_avg_chars": 1170.0714285714287,
+        "gold_avg_chars": 1143.5,
+        "top1_median_chars": 808.0,
+        "gold_median_chars": 1088.0,
+        "avg_length_ratio": 1.322011579587868,
+        "median_length_ratio": 0.6759368706212998,
+        "top1_longer_count": 5
+      },
+      "words": {
+        "top1_avg_words": 151.07142857142858,
+        "gold_avg_words": 161.5,
+        "top1_median_words": 116.5,
+        "gold_median_words": 155.0,
+        "avg_word_ratio": 1.0718122153674146,
+        "median_word_ratio": 0.6863828404289893
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.5571428571428572,
+        "gold_avg_code_ratio": 0.7142857142857143,
+        "avg_code_ratio_difference": -0.15714285714285714,
+        "top1_code_heavy": 9,
+        "gold_code_heavy": 13
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.05189993738249956,
+        "median_semantic_gap": 0.031025437026802938,
+        "avg_lexical_gap": -0.12692743764172337,
+        "median_lexical_gap": -0.05555555555555558
+      }
+    },
+    "servers": {
+      "questions": 13,
+      "length": {
+        "top1_avg_chars": 604.6153846153846,
+        "gold_avg_chars": 580.6153846153846,
+        "top1_median_chars": 617,
+        "gold_median_chars": 617,
+        "avg_length_ratio": 1.2685956813019519,
+        "median_length_ratio": 1.0,
+        "top1_longer_count": 2
+      },
+      "words": {
+        "top1_avg_words": 95.76923076923077,
+        "gold_avg_words": 87.6923076923077,
+        "top1_median_words": 93,
+        "gold_median_words": 93,
+        "avg_word_ratio": 1.2578404454992478,
+        "median_word_ratio": 1.0
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.4461538461538462,
+        "gold_avg_code_ratio": 0.5230769230769231,
+        "avg_code_ratio_difference": -0.07692307692307691,
+        "top1_code_heavy": 11,
+        "gold_code_heavy": 11
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.008365075133068176,
+        "median_semantic_gap": 0.0,
+        "avg_lexical_gap": 0.07326007326007326,
+        "median_lexical_gap": 0.0
+      }
+    },
+    "other": {
+      "questions": 6,
+      "length": {
+        "top1_avg_chars": 635.6666666666666,
+        "gold_avg_chars": 511.6666666666667,
+        "top1_median_chars": 578.5,
+        "gold_median_chars": 471.0,
+        "avg_length_ratio": 1.3263157894736841,
+        "median_length_ratio": 1.0,
+        "top1_longer_count": 1
+      },
+      "words": {
+        "top1_avg_words": 98,
+        "gold_avg_words": 83,
+        "top1_median_words": 94.0,
+        "gold_median_words": 75.0,
+        "avg_word_ratio": 1.25,
+        "median_word_ratio": 1.0
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.23333333333333334,
+        "gold_avg_code_ratio": 0.2,
+        "avg_code_ratio_difference": 0.03333333333333333,
+        "top1_code_heavy": 3,
+        "gold_code_heavy": 2
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.007943133749856557,
+        "median_semantic_gap": 0.0,
+        "avg_lexical_gap": -0.020833333333333332,
+        "median_lexical_gap": 0.0
+      }
+    },
+    "low_level": {
+      "questions": 3,
+      "length": {
+        "top1_avg_chars": 804.6666666666666,
+        "gold_avg_chars": 444.3333333333333,
+        "top1_median_chars": 580,
+        "gold_median_chars": 580,
+        "avg_length_ratio": 4.549464518384339,
+        "median_length_ratio": 1.0,
+        "top1_longer_count": 1
+      },
+      "words": {
+        "top1_avg_words": 104.33333333333333,
+        "gold_avg_words": 73,
+        "top1_median_words": 100,
+        "gold_median_words": 93,
+        "avg_word_ratio": 2.860904328646264,
+        "median_word_ratio": 1.0
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.5333333333333333,
+        "gold_avg_code_ratio": 0.33333333333333337,
+        "avg_code_ratio_difference": 0.2,
+        "top1_code_heavy": 2,
+        "gold_code_heavy": 2
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.009797481145801886,
+        "median_semantic_gap": 0.0028025281731082208,
+        "avg_lexical_gap": -0.3009259259259259,
+        "median_lexical_gap": -0.125
+      }
+    },
+    "handlers": {
+      "questions": 3,
+      "length": {
+        "top1_avg_chars": 1018,
+        "gold_avg_chars": 1018,
+        "top1_median_chars": 824,
+        "gold_median_chars": 824,
+        "avg_length_ratio": 1.0,
+        "median_length_ratio": 1.0,
+        "top1_longer_count": 0
+      },
+      "words": {
+        "top1_avg_words": 148.66666666666666,
+        "gold_avg_words": 148.66666666666666,
+        "top1_median_words": 121,
+        "gold_median_words": 121,
+        "avg_word_ratio": 1.0,
+        "median_word_ratio": 1.0
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.6666666666666667,
+        "gold_avg_code_ratio": 0.6666666666666667,
+        "avg_code_ratio_difference": 0.0,
+        "top1_code_heavy": 2,
+        "gold_code_heavy": 2
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.0,
+        "median_semantic_gap": 0.0,
+        "avg_lexical_gap": 0.0,
+        "median_lexical_gap": 0.0
+      }
+    },
+    "structured_output": {
+      "questions": 2,
+      "length": {
+        "top1_avg_chars": 471.5,
+        "gold_avg_chars": 365.5,
+        "top1_median_chars": 471.5,
+        "gold_median_chars": 365.5,
+        "avg_length_ratio": 1.726027397260274,
+        "median_length_ratio": 1.726027397260274,
+        "top1_longer_count": 1
+      },
+      "words": {
+        "top1_avg_words": 68.5,
+        "gold_avg_words": 51,
+        "top1_median_words": 68.5,
+        "gold_median_words": 51.0,
+        "avg_word_ratio": 1.7954545454545454,
+        "median_word_ratio": 1.7954545454545454
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.7,
+        "gold_avg_code_ratio": 0.6,
+        "avg_code_ratio_difference": 0.1,
+        "top1_code_heavy": 2,
+        "gold_code_heavy": 1
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.0013407467197482092,
+        "median_semantic_gap": 0.0013407467197482092,
+        "avg_lexical_gap": 0.0625,
+        "median_lexical_gap": 0.0625
+      }
+    },
+    "troubleshooting": {
+      "questions": 2,
+      "length": {
+        "top1_avg_chars": 1636,
+        "gold_avg_chars": 1131.5,
+        "top1_median_chars": 1636.0,
+        "gold_median_chars": 1131.5,
+        "avg_length_ratio": 1.8963816665642224,
+        "median_length_ratio": 1.8963816665642224,
+        "top1_longer_count": 1
+      },
+      "words": {
+        "top1_avg_words": 279,
+        "gold_avg_words": 187.5,
+        "top1_median_words": 279.0,
+        "gold_median_words": 187.5,
+        "avg_word_ratio": 1.9022727272727273,
+        "median_word_ratio": 1.9022727272727273
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.8,
+        "gold_avg_code_ratio": 0.7,
+        "avg_code_ratio_difference": 0.10000000000000003,
+        "top1_code_heavy": 2,
+        "gold_code_heavy": 2
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.04082461392912312,
+        "median_semantic_gap": 0.04082461392912312,
+        "avg_lexical_gap": 0.041666666666666685,
+        "median_lexical_gap": 0.041666666666666685
+      }
+    },
+    "run": {
+      "questions": 2,
+      "length": {
+        "top1_avg_chars": 1086.5,
+        "gold_avg_chars": 435,
+        "top1_median_chars": 1086.5,
+        "gold_median_chars": 435.0,
+        "avg_length_ratio": 3.418103448275862,
+        "median_length_ratio": 3.418103448275862,
+        "top1_longer_count": 1
+      },
+      "words": {
+        "top1_avg_words": 185,
+        "gold_avg_words": 74.5,
+        "top1_median_words": 185.0,
+        "gold_median_words": 74.5,
+        "avg_word_ratio": 3.4112244897959183,
+        "median_word_ratio": 3.4112244897959183
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.2,
+        "gold_avg_code_ratio": 0.30000000000000004,
+        "avg_code_ratio_difference": -0.1,
+        "top1_code_heavy": 1,
+        "gold_code_heavy": 1
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.04490043981714087,
+        "median_semantic_gap": 0.04490043981714087,
+        "avg_lexical_gap": 0.101010101010101,
+        "median_lexical_gap": 0.101010101010101
+      }
+    },
+    "client": {
+      "questions": 2,
+      "length": {
+        "top1_avg_chars": 707.5,
+        "gold_avg_chars": 564.5,
+        "top1_median_chars": 707.5,
+        "gold_median_chars": 564.5,
+        "avg_length_ratio": 1.9794520547945205,
+        "median_length_ratio": 1.9794520547945205,
+        "top1_longer_count": 1
+      },
+      "words": {
+        "top1_avg_words": 107,
+        "gold_avg_words": 84.5,
+        "top1_median_words": 107.0,
+        "gold_median_words": 84.5,
+        "avg_word_ratio": 2.0227272727272725,
+        "median_word_ratio": 2.0227272727272725
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.1,
+        "gold_avg_code_ratio": 0.1,
+        "avg_code_ratio_difference": 0.0,
+        "top1_code_heavy": 0,
+        "gold_code_heavy": 0
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.019940079447035797,
+        "median_semantic_gap": 0.019940079447035797,
+        "avg_lexical_gap": 0.25,
+        "median_lexical_gap": 0.25
+      }
+    },
+    "advanced": {
+      "questions": 1,
+      "length": {
+        "top1_avg_chars": 933,
+        "gold_avg_chars": 1365,
+        "top1_median_chars": 933,
+        "gold_median_chars": 1365,
+        "avg_length_ratio": 0.6835164835164835,
+        "median_length_ratio": 0.6835164835164835,
+        "top1_longer_count": 0
+      },
+      "words": {
+        "top1_avg_words": 160,
+        "gold_avg_words": 190,
+        "top1_median_words": 160,
+        "gold_median_words": 190,
+        "avg_word_ratio": 0.8421052631578947,
+        "median_word_ratio": 0.8421052631578947
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.0,
+        "gold_avg_code_ratio": 1.0,
+        "avg_code_ratio_difference": -1.0,
+        "top1_code_heavy": 0,
+        "gold_code_heavy": 1
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.02849072302850264,
+        "median_semantic_gap": 0.02849072302850264,
+        "avg_lexical_gap": 0.16666666666666669,
+        "median_lexical_gap": 0.16666666666666669
+      }
+    }
+  },
+  "migration_vs_non_migration": {
+    "migration": {
+      "questions": 14,
+      "length": {
+        "top1_avg_chars": 1170.0714285714287,
+        "gold_avg_chars": 1143.5,
+        "top1_median_chars": 808.0,
+        "gold_median_chars": 1088.0,
+        "avg_length_ratio": 1.322011579587868,
+        "median_length_ratio": 0.6759368706212998,
+        "top1_longer_count": 5
+      },
+      "words": {
+        "top1_avg_words": 151.07142857142858,
+        "gold_avg_words": 161.5,
+        "top1_median_words": 116.5,
+        "gold_median_words": 155.0,
+        "avg_word_ratio": 1.0718122153674146,
+        "median_word_ratio": 0.6863828404289893
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.5571428571428572,
+        "gold_avg_code_ratio": 0.7142857142857143,
+        "avg_code_ratio_difference": -0.15714285714285714,
+        "top1_code_heavy": 9,
+        "gold_code_heavy": 13
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.05189993738249956,
+        "median_semantic_gap": 0.031025437026802938,
+        "avg_lexical_gap": -0.12692743764172337,
+        "median_lexical_gap": -0.05555555555555558
+      }
+    },
+    "non_migration": {
+      "questions": 34,
+      "length": {
+        "top1_avg_chars": 761.1176470588235,
+        "gold_avg_chars": 628.3235294117648,
+        "top1_median_chars": 617.0,
+        "gold_median_chars": 582.5,
+        "avg_length_ratio": 1.7594552284184335,
+        "median_length_ratio": 1.0,
+        "top1_longer_count": 8
+      },
+      "words": {
+        "top1_avg_words": 118.55882352941177,
+        "gold_avg_words": 96.70588235294117,
+        "top1_median_words": 95.5,
+        "gold_median_words": 93.0,
+        "avg_word_ratio": 1.6041206503261127,
+        "median_word_ratio": 1.0
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.4235294117647059,
+        "gold_avg_code_ratio": 0.45294117647058824,
+        "avg_code_ratio_difference": -0.029411764705882346,
+        "top1_code_heavy": 23,
+        "gold_code_heavy": 22
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.012597050162383232,
+        "median_semantic_gap": 0.0,
+        "avg_lexical_gap": 0.029459511077158138,
+        "median_lexical_gap": 0.0
+      }
+    }
+  },
+  "code_heavy_vs_non_code_heavy": {
+    "code_heavy": {
+      "questions": 32,
+      "length": {
+        "top1_avg_chars": 1069.6875,
+        "gold_avg_chars": 779.25,
+        "top1_median_chars": 781.0,
+        "gold_median_chars": 617.0,
+        "avg_length_ratio": 2.0075347635179686,
+        "median_length_ratio": 1.0,
+        "top1_longer_count": 12
+      },
+      "words": {
+        "top1_avg_words": 152.8125,
+        "gold_avg_words": 117.59375,
+        "top1_median_words": 122.0,
+        "gold_median_words": 100.0,
+        "avg_word_ratio": 1.725360035615001,
+        "median_word_ratio": 1.0
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.6375000000000001,
+        "gold_avg_code_ratio": 0.61875,
+        "avg_code_ratio_difference": 0.01875000000000001,
+        "top1_code_heavy": 32,
+        "gold_code_heavy": 28
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.028348141912039534,
+        "median_semantic_gap": 0.009789368112107177,
+        "avg_lexical_gap": 0.022024936868686867,
+        "median_lexical_gap": 0.0
+      }
+    },
+    "non_code_heavy": {
+      "questions": 16,
+      "length": {
+        "top1_avg_chars": 501.8125,
+        "gold_avg_chars": 777.25,
+        "top1_median_chars": 406.5,
+        "gold_median_chars": 598.5,
+        "avg_length_ratio": 0.8805329654926187,
+        "median_length_ratio": 1.0,
+        "top1_longer_count": 1
+      },
+      "words": {
+        "top1_avg_words": 78.5,
+        "gold_avg_words": 111.625,
+        "top1_median_words": 68.0,
+        "gold_median_words": 93.0,
+        "avg_word_ratio": 0.8958719991594755,
+        "median_word_ratio": 1.0
+      },
+      "code": {
+        "top1_avg_code_ratio": 0.1125,
+        "gold_avg_code_ratio": 0.35000000000000003,
+        "avg_code_ratio_difference": -0.23750000000000002,
+        "top1_code_heavy": 0,
+        "gold_code_heavy": 7
+      },
+      "ranking": {
+        "avg_semantic_gap": 0.015484892980672418,
+        "median_semantic_gap": 0.0014012640865541104,
+        "avg_lexical_gap": -0.09250992063492064,
+        "median_lexical_gap": 0.0
+      }
+    }
+  },
+  "gold_rank_11_20": [
+    {
+      "id": "q010",
+      "question": "How do I access MCP Context inside a tool?",
+      "gold_rank": 13,
+      "top1_source_type": "migration",
+      "gold_source_type": "handlers",
+      "top1": {
+        "title": "`MCPServer.get_context()` removed",
+        "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.get_context()` removed",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.8064065344818275,
+        "lexical_score": 0.5714285714285714,
+        "content_chars": 616,
+        "content_words": 90,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "docs_src/context/tutorial002.py",
+        "section": "docs_src/context/tutorial002.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+        "similarity": 0.7095367139301738,
+        "lexical_score": 0.5714285714285714,
+        "content_chars": 1088,
+        "content_words": 153,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.09686982055165372,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "gold_rank": 18,
+      "top1_source_type": "migration",
+      "gold_source_type": "low_level",
+      "top1": {
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.8051773905754089,
+        "lexical_score": 0.45454545454545453,
+        "content_chars": 2277,
+        "content_words": 275,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Try it",
+        "section": "docs_src/lowlevel/tutorial001.py > Try it",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.6623979210853577,
+        "lexical_score": 0.45454545454545453,
+        "content_chars": 1096,
+        "content_words": 166,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.14277946949005127,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q048",
+      "question": "What is the difference between FastMCP and the low-level Server?",
+      "gold_rank": 17,
+      "top1_source_type": "migration",
+      "gold_source_type": "low_level",
+      "top1": {
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7684602737426758,
+        "lexical_score": 0.7,
+        "content_chars": 2277,
+        "content_words": 275,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Try it",
+        "section": "docs_src/lowlevel/tutorial001.py > Try it",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.6118857860565186,
+        "lexical_score": 0.7,
+        "content_chars": 1096,
+        "content_words": 166,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.15657448768615723,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    }
+  ],
+  "largest_length_ratio_cases": [
+    {
+      "id": "q001",
+      "question": "How do I create an MCP tool in Python?",
+      "gold_rank": 3,
+      "length_ratio": 12.411764705882353,
+      "top1": {
+        "title": "docs_src/lowlevel/tutorial002.py",
+        "section": "docs_src/lowlevel/tutorial002.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7784006595611628,
+        "lexical_score": 0.25,
+        "content_chars": 1688,
+        "content_words": 191,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Tools",
+        "section": "Tools",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7518107442968653,
+        "lexical_score": 0.375,
+        "content_chars": 136,
+        "content_words": 26,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.026589915264297437,
+        "lexical_gap_top1_minus_gold": -0.125,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q033",
+      "question": "How do I run an MCP Python server with the development CLI?",
+      "gold_rank": 6,
+      "length_ratio": 6.179310344827586,
+      "top1": {
+        "title": "The `mcp` command",
+        "section": "docs_src/run/tutorial003.py > The `mcp` command",
+        "url": "https://py.sdk.modelcontextprotocol.io/run/",
+        "similarity": 0.8120296597480774,
+        "lexical_score": 0.5454545454545454,
+        "content_chars": 1792,
+        "content_words": 300,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Run it",
+        "section": "docs_src/index/tutorial001.py > Run it",
+        "url": "https://py.sdk.modelcontextprotocol.io/",
+        "similarity": 0.7546143678060564,
+        "lexical_score": 0.45454545454545453,
+        "content_chars": 290,
+        "content_words": 49,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.057415291942020996,
+        "lexical_gap_top1_minus_gold": 0.09090909090909088,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q020",
+      "question": "What is the low-level MCP Server class used for?",
+      "gold_rank": 6,
+      "length_ratio": 3.9258620689655173,
+      "top1": {
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7504549026489258,
+        "lexical_score": 0.7,
+        "content_chars": 2277,
+        "content_words": 275,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.691150426864624,
+        "lexical_score": 0.6,
+        "content_chars": 580,
+        "content_words": 100,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.05930447578430176,
+        "lexical_gap_top1_minus_gold": 0.09999999999999998,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q016",
+      "question": "Can an MCP tool return a plain untyped class?",
+      "gold_rank": 6,
+      "length_ratio": 3.808641975308642,
+      "top1": {
+        "title": "Recap",
+        "section": "docs_src/tools/tutorial005.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7034300952127576,
+        "lexical_score": 0.75,
+        "content_chars": 617,
+        "content_words": 93,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "A class without type hints",
+        "section": "docs_src/structured_output/tutorial008.py > A class without type hints",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+        "similarity": 0.6876869592759947,
+        "lexical_score": 0.25,
+        "content_chars": 162,
+        "content_words": 29,
+        "code_ratio": 0.6,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.01574313593676291,
+        "lexical_gap_top1_minus_gold": 0.5,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q023",
+      "question": "What arguments does a low-level MCP tool handler receive?",
+      "gold_rank": 4,
+      "length_ratio": 3.696551724137931,
+      "top1": {
+        "title": "Lowlevel `Server`: decorator-based handlers replaced with constructor `on_*` params",
+        "section": "After (v2) — the authenticated OAuth client (usually what you want) > Lowlevel Server > Lowlevel `Server`: decorator-based handlers replaced with constructor `on_*` params",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7582829368626226,
+        "lexical_score": 0.5555555555555556,
+        "content_chars": 2144,
+        "content_words": 258,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7213329242865502,
+        "lexical_score": 0.2222222222222222,
+        "content_chars": 580,
+        "content_words": 100,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.036950012576072444,
+        "lexical_gap_top1_minus_gold": 0.33333333333333337,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q046",
+      "question": "What is structured output in MCP?",
+      "gold_rank": 4,
+      "length_ratio": 2.958904109589041,
+      "top1": {
+        "title": "`structured_content`: what your application reads",
+        "section": "docs_src/client/tutorial003.py > `content`: what the model reads > `structured_content`: what your application reads",
+        "url": "https://py.sdk.modelcontextprotocol.io/client/",
+        "similarity": 0.7280939059313493,
+        "lexical_score": 0.5,
+        "content_chars": 432,
+        "content_words": 67,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "best_gold": {
+        "title": "Structured output, by hand",
+        "section": "docs_src/lowlevel/tutorial002.py > Structured output, by hand",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.6882137470372777,
+        "lexical_score": 0.0,
+        "content_chars": 146,
+        "content_words": 22,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.03988015889407159,
+        "lexical_gap_top1_minus_gold": 0.5,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q037",
+      "question": "What transports does the MCP Python SDK support?",
+      "gold_rank": 7,
+      "length_ratio": 2.957894736842105,
+      "top1": {
+        "title": "Removed outright",
+        "section": "docs_src/whats_new/tutorial001.py > The wire types moved to `mcp-types`, and every field is snake_case > Removed outright",
+        "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+        "similarity": 0.774780892574218,
+        "lexical_score": 0.5,
+        "content_chars": 1124,
+        "content_words": 150,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Client transports",
+        "section": "Client transports",
+        "url": "https://py.sdk.modelcontextprotocol.io/client/transports/",
+        "similarity": 0.7271220900750787,
+        "lexical_score": 0.625,
+        "content_chars": 380,
+        "content_words": 60,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.04765880249913934,
+        "lexical_gap_top1_minus_gold": -0.125,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q050",
+      "question": "How should I handle an unknown tool name in a low-level MCP server?",
+      "gold_rank": 2,
+      "length_ratio": 2.820689655172414,
+      "top1": {
+        "title": "My host lists zero tools",
+        "section": "docs_src/troubleshooting/tutorial002.py > My host lists zero tools",
+        "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+        "similarity": 0.7909277677536011,
+        "lexical_score": 0.5833333333333334,
+        "content_chars": 1636,
+        "content_words": 279,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7345870733261108,
+        "lexical_score": 0.5,
+        "content_chars": 580,
+        "content_words": 100,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.056340694427490234,
+        "lexical_gap_top1_minus_gold": 0.08333333333333337,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q047",
+      "question": "How is a low-level MCP output schema specified?",
+      "gold_rank": 2,
+      "length_ratio": 2.452054794520548,
+      "top1": {
+        "title": "Validation",
+        "section": "docs_src/structured_output/tutorial006.py > Validation",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+        "similarity": 0.7217624519154539,
+        "lexical_score": 0.125,
+        "content_chars": 358,
+        "content_words": 57,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Structured output, by hand",
+        "section": "docs_src/lowlevel/tutorial002.py > Structured output, by hand",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7190809584759574,
+        "lexical_score": 0.0,
+        "content_chars": 146,
+        "content_words": 22,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.0026814934394964185,
+        "lexical_gap_top1_minus_gold": 0.125,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q031",
+      "question": "How do I make an MCP resource?",
+      "gold_rank": 6,
+      "length_ratio": 2.174025974025974,
+      "top1": {
+        "title": "Recap",
+        "section": "docs_src/resources/tutorial003.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+        "similarity": 0.7465498447418213,
+        "lexical_score": 0.5,
+        "content_chars": 837,
+        "content_words": 140,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "docs_src/index/tutorial001.py",
+        "section": "docs_src/index/tutorial001.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/",
+        "similarity": 0.7091350902157965,
+        "lexical_score": 0.3333333333333333,
+        "content_chars": 385,
+        "content_words": 57,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.03741475452602483,
+        "lexical_gap_top1_minus_gold": 0.16666666666666669,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "gold_rank": 18,
+      "length_ratio": 2.0775547445255476,
+      "top1": {
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.8051773905754089,
+        "lexical_score": 0.45454545454545453,
+        "content_chars": 2277,
+        "content_words": 275,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Try it",
+        "section": "docs_src/lowlevel/tutorial001.py > Try it",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.6623979210853577,
+        "lexical_score": 0.45454545454545453,
+        "content_chars": 1096,
+        "content_words": 166,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.14277946949005127,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q048",
+      "question": "What is the difference between FastMCP and the low-level Server?",
+      "gold_rank": 17,
+      "length_ratio": 2.0775547445255476,
+      "top1": {
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7684602737426758,
+        "lexical_score": 0.7,
+        "content_chars": 2277,
+        "content_words": 275,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Try it",
+        "section": "docs_src/lowlevel/tutorial001.py > Try it",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.6118857860565186,
+        "lexical_score": 0.7,
+        "content_chars": 1096,
+        "content_words": 166,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.15657448768615723,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q009",
+      "question": "How can an MCP tool report progress?",
+      "gold_rank": 3,
+      "length_ratio": 2.016016016016016,
+      "top1": {
+        "title": "`ProgressContext` and `progress()` context manager removed",
+        "section": "After (v2) — the authenticated OAuth client (usually what you want) > `ProgressContext` and `progress()` context manager removed",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7584778440452294,
+        "lexical_score": 0.5714285714285714,
+        "content_chars": 2014,
+        "content_words": 264,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "docs_src/progress/tutorial001.py",
+        "section": "docs_src/progress/tutorial001.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/progress/",
+        "similarity": 0.7007262885137637,
+        "lexical_score": 0.7142857142857143,
+        "content_chars": 999,
+        "content_words": 157,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.057751555531465715,
+        "lexical_gap_top1_minus_gold": -0.1428571428571429,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q002",
+      "question": "How are MCP tool input schemas generated from Python functions?",
+      "gold_rank": 1,
+      "length_ratio": 1.0,
+      "top1": {
+        "title": "Recap",
+        "section": "docs_src/tools/tutorial005.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7704817882323801,
+        "lexical_score": 0.6,
+        "content_chars": 617,
+        "content_words": 93,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Recap",
+        "section": "docs_src/tools/tutorial005.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7704817882323801,
+        "lexical_score": 0.6,
+        "content_chars": 617,
+        "content_words": 93,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.0,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q004",
+      "question": "How do I describe an MCP tool parameter?",
+      "gold_rank": 1,
+      "length_ratio": 1.0,
+      "top1": {
+        "title": "Tools",
+        "section": "Tools",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7538640352406536,
+        "lexical_score": 0.2857142857142857,
+        "content_chars": 136,
+        "content_words": 26,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "best_gold": {
+        "title": "Tools",
+        "section": "Tools",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7538640352406536,
+        "lexical_score": 0.2857142857142857,
+        "content_chars": 136,
+        "content_words": 26,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.0,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q005",
+      "question": "How do I define an enum parameter for an MCP tool?",
+      "gold_rank": 1,
+      "length_ratio": 1.0,
+      "top1": {
+        "title": "Recap",
+        "section": "docs_src/tools/tutorial005.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7588984596400997,
+        "lexical_score": 0.6666666666666666,
+        "content_chars": 617,
+        "content_words": 93,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Recap",
+        "section": "docs_src/tools/tutorial005.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7588984596400997,
+        "lexical_score": 0.6666666666666666,
+        "content_chars": 617,
+        "content_words": 93,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.0,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q006",
+      "question": "How do I use a Pydantic model as an MCP tool input?",
+      "gold_rank": 1,
+      "length_ratio": 1.0,
+      "top1": {
+        "title": "Recap",
+        "section": "docs_src/tools/tutorial005.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7909454578724776,
+        "lexical_score": 0.7,
+        "content_chars": 617,
+        "content_words": 93,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Recap",
+        "section": "docs_src/tools/tutorial005.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7909454578724776,
+        "lexical_score": 0.7,
+        "content_chars": 617,
+        "content_words": 93,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.0,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q007",
+      "question": "What is the difference between an MCP tool and a resource?",
+      "gold_rank": 1,
+      "length_ratio": 1.0,
+      "top1": {
+        "title": "Resources",
+        "section": "Resources",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+        "similarity": 0.8405345678329468,
+        "lexical_score": 0.6,
+        "content_chars": 349,
+        "content_words": 62,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "best_gold": {
+        "title": "Resources",
+        "section": "Resources",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+        "similarity": 0.8405345678329468,
+        "lexical_score": 0.6,
+        "content_chars": 349,
+        "content_words": 62,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.0,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q015",
+      "question": "Can an MCP tool return a TypedDict?",
+      "gold_rank": 1,
+      "length_ratio": 1.0,
+      "top1": {
+        "title": "docs_src/structured_output/tutorial003.py",
+        "section": "docs_src/structured_output/tutorial003.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+        "similarity": 0.7576377391815186,
+        "lexical_score": 0.6666666666666666,
+        "content_chars": 585,
+        "content_words": 80,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "docs_src/structured_output/tutorial003.py",
+        "section": "docs_src/structured_output/tutorial003.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+        "similarity": 0.7576377391815186,
+        "lexical_score": 0.6666666666666666,
+        "content_chars": 585,
+        "content_words": 80,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.0,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q022",
+      "question": "How do I define a tool with the low-level MCP Server?",
+      "gold_rank": 1,
+      "length_ratio": 1.0,
+      "top1": {
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7698676860490274,
+        "lexical_score": 0.5,
+        "content_chars": 580,
+        "content_words": 100,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7698676860490274,
+        "lexical_score": 0.5,
+        "content_chars": 580,
+        "content_words": 100,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.0,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    }
+  ],
+  "largest_semantic_gap_cases": [
+    {
+      "id": "q048",
+      "question": "What is the difference between FastMCP and the low-level Server?",
+      "gold_rank": 17,
+      "top1": {
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7684602737426758,
+        "lexical_score": 0.7,
+        "content_chars": 2277,
+        "content_words": 275,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Try it",
+        "section": "docs_src/lowlevel/tutorial001.py > Try it",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.6118857860565186,
+        "lexical_score": 0.7,
+        "content_chars": 1096,
+        "content_words": 166,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.15657448768615723,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "gold_rank": 18,
+      "top1": {
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.8051773905754089,
+        "lexical_score": 0.45454545454545453,
+        "content_chars": 2277,
+        "content_words": 275,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Try it",
+        "section": "docs_src/lowlevel/tutorial001.py > Try it",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.6623979210853577,
+        "lexical_score": 0.45454545454545453,
+        "content_chars": 1096,
+        "content_words": 166,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.14277946949005127,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q010",
+      "question": "How do I access MCP Context inside a tool?",
+      "gold_rank": 13,
+      "top1": {
+        "title": "`MCPServer.get_context()` removed",
+        "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.get_context()` removed",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.8064065344818275,
+        "lexical_score": 0.5714285714285714,
+        "content_chars": 616,
+        "content_words": 90,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "docs_src/context/tutorial002.py",
+        "section": "docs_src/context/tutorial002.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+        "similarity": 0.7095367139301738,
+        "lexical_score": 0.5714285714285714,
+        "content_chars": 1088,
+        "content_words": 153,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.09686982055165372,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q017",
+      "question": "How do I return CallToolResult directly from an MCP tool?",
+      "gold_rank": 8,
+      "top1": {
+        "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+        "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()` returns `CallToolResult`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.8277878761291504,
+        "lexical_score": 0.4444444444444444,
+        "content_chars": 537,
+        "content_words": 69,
+        "code_ratio": 0.0,
+        "code_heavy": false
+      },
+      "best_gold": {
+        "title": "docs_src/lowlevel/tutorial001.py",
+        "section": "docs_src/lowlevel/tutorial001.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.743748858943651,
+        "lexical_score": 0.5555555555555556,
+        "content_chars": 2074,
+        "content_words": 256,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.08403901718549944,
+        "lexical_gap_top1_minus_gold": -0.11111111111111116,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q020",
+      "question": "What is the low-level MCP Server class used for?",
+      "gold_rank": 6,
+      "top1": {
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7504549026489258,
+        "lexical_score": 0.7,
+        "content_chars": 2277,
+        "content_words": 275,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.691150426864624,
+        "lexical_score": 0.6,
+        "content_chars": 580,
+        "content_words": 100,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.05930447578430176,
+        "lexical_gap_top1_minus_gold": 0.09999999999999998,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q009",
+      "question": "How can an MCP tool report progress?",
+      "gold_rank": 3,
+      "top1": {
+        "title": "`ProgressContext` and `progress()` context manager removed",
+        "section": "After (v2) — the authenticated OAuth client (usually what you want) > `ProgressContext` and `progress()` context manager removed",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7584778440452294,
+        "lexical_score": 0.5714285714285714,
+        "content_chars": 2014,
+        "content_words": 264,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "docs_src/progress/tutorial001.py",
+        "section": "docs_src/progress/tutorial001.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/progress/",
+        "similarity": 0.7007262885137637,
+        "lexical_score": 0.7142857142857143,
+        "content_chars": 999,
+        "content_words": 157,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.057751555531465715,
+        "lexical_gap_top1_minus_gold": -0.1428571428571429,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q033",
+      "question": "How do I run an MCP Python server with the development CLI?",
+      "gold_rank": 6,
+      "top1": {
+        "title": "The `mcp` command",
+        "section": "docs_src/run/tutorial003.py > The `mcp` command",
+        "url": "https://py.sdk.modelcontextprotocol.io/run/",
+        "similarity": 0.8120296597480774,
+        "lexical_score": 0.5454545454545454,
+        "content_chars": 1792,
+        "content_words": 300,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Run it",
+        "section": "docs_src/index/tutorial001.py > Run it",
+        "url": "https://py.sdk.modelcontextprotocol.io/",
+        "similarity": 0.7546143678060564,
+        "lexical_score": 0.45454545454545453,
+        "content_chars": 290,
+        "content_words": 49,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.057415291942020996,
+        "lexical_gap_top1_minus_gold": 0.09090909090909088,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q050",
+      "question": "How should I handle an unknown tool name in a low-level MCP server?",
+      "gold_rank": 2,
+      "top1": {
+        "title": "My host lists zero tools",
+        "section": "docs_src/troubleshooting/tutorial002.py > My host lists zero tools",
+        "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+        "similarity": 0.7909277677536011,
+        "lexical_score": 0.5833333333333334,
+        "content_chars": 1636,
+        "content_words": 279,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7345870733261108,
+        "lexical_score": 0.5,
+        "content_chars": 580,
+        "content_words": 100,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.056340694427490234,
+        "lexical_gap_top1_minus_gold": 0.08333333333333337,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q014",
+      "question": "Can an MCP tool return a Pydantic model?",
+      "gold_rank": 4,
+      "top1": {
+        "title": "Recap",
+        "section": "docs_src/tools/tutorial005.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.771835602169171,
+        "lexical_score": 1.0,
+        "content_chars": 617,
+        "content_words": 93,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "docs_src/structured_output/tutorial005.py",
+        "section": "docs_src/structured_output/tutorial005.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+        "similarity": 0.7162475159020725,
+        "lexical_score": 0.7142857142857143,
+        "content_chars": 1212,
+        "content_words": 135,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.055588086267098547,
+        "lexical_gap_top1_minus_gold": 0.2857142857142857,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q037",
+      "question": "What transports does the MCP Python SDK support?",
+      "gold_rank": 7,
+      "top1": {
+        "title": "Removed outright",
+        "section": "docs_src/whats_new/tutorial001.py > The wire types moved to `mcp-types`, and every field is snake_case > Removed outright",
+        "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+        "similarity": 0.774780892574218,
+        "lexical_score": 0.5,
+        "content_chars": 1124,
+        "content_words": 150,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Client transports",
+        "section": "Client transports",
+        "url": "https://py.sdk.modelcontextprotocol.io/client/transports/",
+        "similarity": 0.7271220900750787,
+        "lexical_score": 0.625,
+        "content_chars": 380,
+        "content_words": 60,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.04765880249913934,
+        "lexical_gap_top1_minus_gold": -0.125,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q046",
+      "question": "What is structured output in MCP?",
+      "gold_rank": 4,
+      "top1": {
+        "title": "`structured_content`: what your application reads",
+        "section": "docs_src/client/tutorial003.py > `content`: what the model reads > `structured_content`: what your application reads",
+        "url": "https://py.sdk.modelcontextprotocol.io/client/",
+        "similarity": 0.7280939059313493,
+        "lexical_score": 0.5,
+        "content_chars": 432,
+        "content_words": 67,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "best_gold": {
+        "title": "Structured output, by hand",
+        "section": "docs_src/lowlevel/tutorial002.py > Structured output, by hand",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.6882137470372777,
+        "lexical_score": 0.0,
+        "content_chars": 146,
+        "content_words": 22,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.03988015889407159,
+        "lexical_gap_top1_minus_gold": 0.5,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q031",
+      "question": "How do I make an MCP resource?",
+      "gold_rank": 6,
+      "top1": {
+        "title": "Recap",
+        "section": "docs_src/resources/tutorial003.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+        "similarity": 0.7465498447418213,
+        "lexical_score": 0.5,
+        "content_chars": 837,
+        "content_words": 140,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "docs_src/index/tutorial001.py",
+        "section": "docs_src/index/tutorial001.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/",
+        "similarity": 0.7091350902157965,
+        "lexical_score": 0.3333333333333333,
+        "content_chars": 385,
+        "content_words": 57,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.03741475452602483,
+        "lexical_gap_top1_minus_gold": 0.16666666666666669,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q023",
+      "question": "What arguments does a low-level MCP tool handler receive?",
+      "gold_rank": 4,
+      "top1": {
+        "title": "Lowlevel `Server`: decorator-based handlers replaced with constructor `on_*` params",
+        "section": "After (v2) — the authenticated OAuth client (usually what you want) > Lowlevel Server > Lowlevel `Server`: decorator-based handlers replaced with constructor `on_*` params",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7582829368626226,
+        "lexical_score": 0.5555555555555556,
+        "content_chars": 2144,
+        "content_words": 258,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7213329242865502,
+        "lexical_score": 0.2222222222222222,
+        "content_chars": 580,
+        "content_words": 100,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.036950012576072444,
+        "lexical_gap_top1_minus_gold": 0.33333333333333337,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q024",
+      "question": "How does a low-level MCP server dispatch multiple tools?",
+      "gold_rank": 3,
+      "top1": {
+        "title": "Deploy & scale",
+        "section": "Deploy & scale",
+        "url": "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+        "similarity": 0.7405514717102051,
+        "lexical_score": 0.3333333333333333,
+        "content_chars": 381,
+        "content_words": 70,
+        "code_ratio": 0.0,
+        "code_heavy": false
+      },
+      "best_gold": {
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7081658840179443,
+        "lexical_score": 0.2222222222222222,
+        "content_chars": 580,
+        "content_words": 100,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.03238558769226074,
+        "lexical_gap_top1_minus_gold": 0.1111111111111111,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q032",
+      "question": "How do MCP resource subscriptions work?",
+      "gold_rank": 4,
+      "top1": {
+        "title": "MCP Apps",
+        "section": "MCP Apps",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+        "similarity": 0.710989317625443,
+        "lexical_score": 0.5,
+        "content_chars": 933,
+        "content_words": 160,
+        "code_ratio": 0.0,
+        "code_heavy": false
+      },
+      "best_gold": {
+        "title": "docs_src/subscriptions/tutorial003.py",
+        "section": "docs_src/subscriptions/tutorial003.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+        "similarity": 0.6824985945969404,
+        "lexical_score": 0.3333333333333333,
+        "content_chars": 1365,
+        "content_words": 190,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.02849072302850264,
+        "lexical_gap_top1_minus_gold": 0.16666666666666669,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q001",
+      "question": "How do I create an MCP tool in Python?",
+      "gold_rank": 3,
+      "top1": {
+        "title": "docs_src/lowlevel/tutorial002.py",
+        "section": "docs_src/lowlevel/tutorial002.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7784006595611628,
+        "lexical_score": 0.25,
+        "content_chars": 1688,
+        "content_words": 191,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "Tools",
+        "section": "Tools",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7518107442968653,
+        "lexical_score": 0.375,
+        "content_chars": 136,
+        "content_words": 26,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.026589915264297437,
+        "lexical_gap_top1_minus_gold": -0.125,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": true
+      }
+    },
+    {
+      "id": "q018",
+      "question": "How do I mark an MCP tool result as an error?",
+      "gold_rank": 6,
+      "top1": {
+        "title": "My host lists zero tools",
+        "section": "docs_src/troubleshooting/tutorial002.py > My host lists zero tools",
+        "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+        "similarity": 0.7573195695877075,
+        "lexical_score": 0.5555555555555556,
+        "content_chars": 1636,
+        "content_words": 279,
+        "code_ratio": 0.8,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "docs_src/handling_errors/tutorial001.py",
+        "section": "docs_src/handling_errors/tutorial001.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+        "similarity": 0.7320110361569515,
+        "lexical_score": 0.5555555555555556,
+        "content_chars": 1683,
+        "content_words": 275,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.02530853343075601,
+        "lexical_gap_top1_minus_gold": 0.0,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q019",
+      "question": "How do I use _meta in an MCP tool result?",
+      "gold_rank": 2,
+      "top1": {
+        "title": "_meta remains the supported place for custom data, per the MCP spec",
+        "section": "_meta remains the supported place for custom data, per the MCP spec",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7751080065836954,
+        "lexical_score": 0.2222222222222222,
+        "content_chars": 230,
+        "content_words": 28,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "best_gold": {
+        "title": "docs_src/lowlevel/tutorial004.py",
+        "section": "docs_src/lowlevel/tutorial004.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.750007145106162,
+        "lexical_score": 0.5555555555555556,
+        "content_chars": 1612,
+        "content_words": 181,
+        "code_ratio": 1.0,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.02510086147753343,
+        "lexical_gap_top1_minus_gold": -0.33333333333333337,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q003",
+      "question": "How do I make an MCP tool parameter optional?",
+      "gold_rank": 3,
+      "top1": {
+        "title": "_meta remains the supported place for custom data, per the MCP spec",
+        "section": "_meta remains the supported place for custom data, per the MCP spec",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7363773584365845,
+        "lexical_score": 0.125,
+        "content_chars": 230,
+        "content_words": 28,
+        "code_ratio": 0.2,
+        "code_heavy": false
+      },
+      "best_gold": {
+        "title": "Recap",
+        "section": "docs_src/tools/tutorial005.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7128139946703317,
+        "lexical_score": 0.875,
+        "content_chars": 617,
+        "content_words": 93,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.023563363766252787,
+        "lexical_gap_top1_minus_gold": -0.75,
+        "top1_longer_than_gold": false,
+        "top1_more_code_than_gold": false
+      }
+    },
+    {
+      "id": "q016",
+      "question": "Can an MCP tool return a plain untyped class?",
+      "gold_rank": 6,
+      "top1": {
+        "title": "Recap",
+        "section": "docs_src/tools/tutorial005.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7034300952127576,
+        "lexical_score": 0.75,
+        "content_chars": 617,
+        "content_words": 93,
+        "code_ratio": 0.4,
+        "code_heavy": true
+      },
+      "best_gold": {
+        "title": "A class without type hints",
+        "section": "docs_src/structured_output/tutorial008.py > A class without type hints",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+        "similarity": 0.6876869592759947,
+        "lexical_score": 0.25,
+        "content_chars": 162,
+        "content_words": 29,
+        "code_ratio": 0.6,
+        "code_heavy": true
+      },
+      "comparison": {
+        "semantic_gap_top1_minus_gold": 0.01574313593676291,
+        "lexical_gap_top1_minus_gold": 0.5,
+        "top1_longer_than_gold": true,
+        "top1_more_code_than_gold": false
+      }
+    }
+  ]
+}

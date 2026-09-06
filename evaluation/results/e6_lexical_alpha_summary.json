@@ -1,0 +1,97 @@
+{
+  "dataset": "mcp_rag_eval_dataset.jsonl",
+  "total_questions": 50,
+  "evaluated_questions": 48,
+  "excluded_spec_questions": 2,
+  "excluded_spec_question_ids": [
+    "q025",
+    "q041"
+  ],
+  "experiment_config": {
+    "method": "vector + lexical boost + source diversity",
+    "candidate_limit": 100,
+    "top_k": 10,
+    "max_chunks_per_source": 1,
+    "alphas": [
+      0.02,
+      0.05,
+      0.1
+    ]
+  },
+  "experiments": [
+    {
+      "id": "E6_02",
+      "name": "vector_lexical_alpha_002",
+      "description": "Vector + lexical boost + source diversity (alpha=0.02)",
+      "mode": "vector_lexical_boost",
+      "candidate_limit": 100,
+      "top_k": 10,
+      "reranker": false,
+      "dedup": true,
+      "alpha": 0.02
+    },
+    {
+      "id": "E6_05",
+      "name": "vector_lexical_alpha_005",
+      "description": "Vector + lexical boost + source diversity (alpha=0.05)",
+      "mode": "vector_lexical_boost",
+      "candidate_limit": 100,
+      "top_k": 10,
+      "reranker": false,
+      "dedup": true,
+      "alpha": 0.05
+    },
+    {
+      "id": "E6_10",
+      "name": "vector_lexical_alpha_010",
+      "description": "Vector + lexical boost + source diversity (alpha=0.10)",
+      "mode": "vector_lexical_boost",
+      "candidate_limit": 100,
+      "top_k": 10,
+      "reranker": false,
+      "dedup": true,
+      "alpha": 0.1
+    }
+  ],
+  "results": {
+    "E6_02": {
+      "num_questions": 48,
+      "hit@1": 0.4583333333333333,
+      "hit@3": 0.7291666666666666,
+      "hit@5": 0.8958333333333334,
+      "hit@10": 1.0,
+      "recall@5": 0.7708333333333334,
+      "recall@10": 0.875,
+      "mrr": 0.6356977513227513,
+      "avg_latency_ms": 382.4120833333333,
+      "median_latency_ms": 79.59,
+      "p95_latency_ms": 111.964
+    },
+    "E6_05": {
+      "num_questions": 48,
+      "hit@1": 0.4791666666666667,
+      "hit@3": 0.7083333333333334,
+      "hit@5": 0.8958333333333334,
+      "hit@10": 1.0,
+      "recall@5": 0.7708333333333334,
+      "recall@10": 0.875,
+      "mrr": 0.6366815476190476,
+      "avg_latency_ms": 76.88833333333334,
+      "median_latency_ms": 74.84,
+      "p95_latency_ms": 86.28
+    },
+    "E6_10": {
+      "num_questions": 48,
+      "hit@1": 0.4791666666666667,
+      "hit@3": 0.6666666666666666,
+      "hit@5": 0.8958333333333334,
+      "hit@10": 1.0,
+      "recall@5": 0.78125,
+      "recall@10": 0.875,
+      "mrr": 0.6276868386243386,
+      "avg_latency_ms": 96.893125,
+      "median_latency_ms": 88.83500000000001,
+      "p95_latency_ms": 138.40499999999997
+    }
+  }
+}

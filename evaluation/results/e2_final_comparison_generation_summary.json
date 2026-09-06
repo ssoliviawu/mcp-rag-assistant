@@ -1,0 +1,32 @@
+{
+  "experiment": "E2_final_comparison_generation",
+  "description": "Controlled end-to-end generation baseline using the historical E2 vector + source dedup retrieval pipeline on the same 48 non-spec questions used by E30.",
+  "dataset": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\mcp_rag_eval_dataset.jsonl",
+  "question_count": 48,
+  "successful_questions": 48,
+  "failed_questions": 0,
+  "excluded_questions": [
+    "q025",
+    "q041"
+  ],
+  "retrieval": {
+    "mode": "vector_dedup",
+    "candidate_limit": 100,
+    "top_k": 10,
+    "max_chunks_per_source": 1
+  },
+  "generation": {
+    "model": "agnes-2.5-flash",
+    "max_output_tokens": 1500,
+    "context_max_chars": 12000
+  },
+  "latency": {
+    "avg_generation_latency_ms": 7169.287189598738,
+    "avg_total_latency_ms": 7246.24773125106,
+    "total_wall_clock_ms": 425896.9525999855
+  },
+  "output": {
+    "details": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\evaluation\\results\\e2_final_comparison_generation_details.json",
+    "summary": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\evaluation\\results\\e2_final_comparison_generation_summary.json"
+  }
+}

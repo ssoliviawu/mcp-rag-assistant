@@ -1,0 +1,2520 @@
+{
+  "summary": {
+    "dataset": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\mcp_rag_eval_dataset.jsonl",
+    "generation_results": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\evaluation\\results\\rag_generation_details.json",
+    "question_count": 50,
+    "successful_questions": 50,
+    "failed_questions": 0,
+    "generation_model": "agnes-2.5-flash",
+    "judge_model": "agnes-2.5-flash",
+    "metrics": {
+      "answer_correctness": {
+        "avg_score": 1.54,
+        "max_score": 2,
+        "normalized_score": 0.77
+      },
+      "faithfulness": {
+        "avg_score": 1.98,
+        "max_score": 2,
+        "normalized_score": 0.99
+      },
+      "citation_correctness": {
+        "avg_score": 1.82,
+        "max_score": 2,
+        "normalized_score": 0.91
+      },
+      "overall": {
+        "avg_score": 1.7808,
+        "normalized_score": 0.8904
+      }
+    },
+    "labels": {
+      "pass": 27,
+      "partial": 17,
+      "fail": 6
+    },
+    "retrieval_vs_generation": {
+      "retrieval_hits": {
+        "count": 32,
+        "avg_overall_score": 1.7822
+      },
+      "retrieval_misses": {
+        "count": 18,
+        "avg_overall_score": 1.7783
+      }
+    },
+    "evaluation": {
+      "avg_judge_latency_ms": 4728.98,
+      "total_latency_ms": 351584.03,
+      "avg_latency_ms": 7031.68
+    },
+    "errors": []
+  },
+  "results": [
+    {
+      "id": "q001",
+      "question": "How do I create an MCP tool in Python?",
+      "expected_answer": "Use @mcp.tool() on a Python function. The function name becomes the tool name, its docstring becomes the description, and its type hints are used to derive the input schema.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "https://py.sdk.modelcontextprotocol.io/"
+      ],
+      "generated_answer": "There are two ways to create an MCP tool in Python, depending on your level of abstraction:\n\n## High-level: Use the `@mcp.tool()` decorator\n\nA **tool** is a function the model can call. You declare one by putting `@mcp.tool()` on a plain Python function. That's the whole API.\n\n```python\nfrom mcp.server import MCPServer\n\nmcp = MCPServer(\"Bookshop\")\n\n@mcp.tool(title=\"Search the catalog\")\ndef search_books(query: str, limit: int = 10) -> str:\n    \"\"\"Search the catalog by title or author.\"\"\"\n    return f\"Found 3 books matching {query!r} (showing up to {limit}).\"\n```\n\nThe server derives the JSON Schema for the tool's arguments from the function's type hints.\n\n([Source](https://py.sdk.modelcontextprotocol.io/servers/tools/), [Source](https://py.sdk.modelcontextprotocol.io/client/))\n\n## Low-level: Define `Tool` objects manually\n\nAt the low level, you construct `Tool` objects directly and return them from `list_tools`, then handle calls in `call_tool`:\n\n```python\nfrom mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n    CallToolRequestParams,\n    CallToolResult,\n    ListToolsResult,\n    PaginatedRequestParams,\n    TextContent,\n    Tool,\n)\n\nSEARCH_BOOKS = Tool(\n    name=\"search_books\",\n    description=\"Search the catalog by title or author.\",\n    input_schema={\n        \"type\": \"object\",\n        \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n        \"required\": [\"query\", \"limit\"],\n    },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n    return ListToolsResult(tools=[SEARCH_BOOKS])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n    args = params.arguments or {}\n    if params.name == \"search_books\":\n        text = f\"Found 3 books matching {args['query']!r} (showing up to {args['limit']}).\"\n        return CallToolResult(content=[TextContent(type=\"text\", text=text)])\n    else:\n        raise ValueError(f\"Unknown tool: {params.name}\")\n\nserver = Server(\"Bookshop\", on_list_tools=list_tools, on_call_tool=call_tool)\n```\n\n([Source](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/))",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly describes using @mcp.tool() and that type hints derive the input schema, covering all key points from the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation, including the decorator API and low-level Tool object approach."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All three citations reference relevant sources from the retrieved documentation that support the corresponding claims in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 9441.91,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6153
+        }
+      }
+    },
+    {
+      "id": "q002",
+      "question": "How are MCP tool input schemas generated from Python functions?",
+      "expected_answer": "For FastMCP tools, the SDK derives the input schema from the function signature and type hints. Defaults make parameters optional.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "https://py.sdk.modelcontextprotocol.io/protocol/"
+      ],
+      "generated_answer": "Based on the provided documentation, MCP tool input schemas are generated directly from **Python function type hints**. Here is how it works:\n\n- **Type hints are the input schema.** The SDK derives the JSON Schema from the function's parameter type annotations.\n- **Defaults make arguments optional.** Parameters with default values are not required in the schema.\n- **`Annotated[..., Field(...)]`** adds descriptions and constraints to individual parameters.\n- **`Literal`** adds enum constraints.\n- **A Pydantic model parameter** is used when you want to accept a structured \"body\" of arguments.\n\nThe resulting schema is a JSON Schema object that includes everything a model needs to produce valid arguments and everything a UI needs to render an argument form. For example, the function:\n\n```python\n@mcp.tool(title=\"Search the catalog\")\ndef search_books(query: str, limit: int = 10) -> str:\n    \"\"\"Search the catalog by title or author.\"\"\"\n    ...\n```\n\nproduces this schema:\n\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"query\": {\"title\": \"Query\", \"type\": \"string\"},\n    \"limit\": {\"default\": 10, \"title\": \"Limit\", \"type\": \"integer\"}\n  },\n  \"required\": [\"query\"],\n  \"title\": \"search_booksArguments\"\n}\n```\n\nAt the low level (using `Server` instead of `MCPServer`), there are no type hints to derive from, so you write the `input_schema` as a plain JSON Schema `dict` yourself.\n\n**Sources:**\n- https://py.sdk.modelcontextprotocol.io/servers/tools/\n- https://py.sdk.modelcontextprotocol.io/client/\n- https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly states that schemas are derived from type hints and defaults make parameters optional, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation from the tools and client pages."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited URLs are relevant sources that support the claims made in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 2587.86,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6183
+        }
+      }
+    },
+    {
+      "id": "q003",
+      "question": "How do I make an MCP tool parameter optional?",
+      "expected_answer": "Give the parameter a default value. The generated tool schema treats that parameter as optional.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools/"
+      ],
+      "generated_answer": "To make an MCP tool parameter optional, **give it a default value** in the function signature. As the documentation states:\n\n> \"Type hints are the input schema. **Defaults make arguments optional.**\"\n\nFor example:\n\n```python\n@mcp.tool()\ndef search_books(query: str, limit: int = 10) -> str:\n    ...\n```\n\nHere, `limit` is optional because it has a default of `10`. The generated JSON Schema will include `\"default\": 10` for that parameter, and the argument will not appear in the `required` list.",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly identifies giving a parameter a default value as the method, matching the expected explanation."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "The claim is directly supported by the retrieved documentation quote and example from the tools recap page."
+        },
+        "citation_correctness": {
+          "score": 1,
+          "reason": "The answer is correct and faithful but omits the required source URL citation."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 6852.87,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5948
+        }
+      }
+    },
+    {
+      "id": "q004",
+      "question": "How do I describe an MCP tool parameter?",
+      "expected_answer": "Use Annotated together with Pydantic Field, for example Annotated[str, Field(description='...')]. The description is included in the generated schema.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools/"
+      ],
+      "generated_answer": "Based on the provided documentation, MCP tool parameters are described using **JSON Schema** inside the `input_schema` field of a `Tool` definition.\n\nHere is what the documentation shows:\n\n**Structure** — the `input_schema` is an object with `type`, `properties`, and `required`:\n\n```python\nSEARCH_BOOKS = Tool(\n    name=\"search_books\",\n    description=\"Search the catalog by title or author.\",\n    input_schema={\n        \"type\": \"object\",\n        \"properties\": {\n            \"query\": {\"type\": \"string\"},\n            \"limit\": {\"type\": \"integer\"}\n        },\n        \"required\": [\"query\", \"limit\"],\n    },\n)\n```\n\n**Key details from the documentation:**\n\n- The schema is **advertised but never applied** by the SDK: *\"nothing checks the arguments before your handler runs\"* (`https://py.sdk.modelcontextprotocol.io/whats-new/`).\n- `input_schema` is everything a UI needs to render an argument form and everything a model needs to produce valid arguments (`https://py.sdk.modelcontextprotocol.io/client/`).\n- Parameters with no default are treated as **required**; those with a default are optional. For example, `limit: int = 10` appears as `\"default\": 10` and is not in `required` (`https://py.sdk.modelcontextprotocol.io/client/`).\n- The SDK can derive this schema automatically from a function's type hints when using the `@mcp.tool()` decorator (`https://py.sdk.modelcontextprotocol.io/client/`).\n\n**For prompts** (not tools), the documentation notes a different format: prompt arguments are *\"a flat list of **named string values**\"* with `name`, `description`, and `required` fields — not a JSON Schema (`https://py.sdk.modelcontextprotocol.io/servers/prompts/`).",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "The answer describes JSON Schema parameter description but misses the expected Annotated + Pydantic Field approach entirely."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are supported by the retrieved documentation, including JSON Schema structure and source citations."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Citations correctly reference the retrieved documentation sources and support the claims made."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 4643.79,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6278
+        }
+      }
+    },
+    {
+      "id": "q005",
+      "question": "How do I define an enum parameter for an MCP tool?",
+      "expected_answer": "Use typing.Literal in the tool function signature. The SDK uses it to express the allowed enum values in the schema.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools/"
+      ],
+      "generated_answer": "You use `Literal` to define an enum parameter for an MCP tool.\n\nAs stated in the documentation:\n\n> `Literal` adds enums.\n\nThis is part of the MCP Py SDK's tool definition pattern, where type hints form the input schema. Here's how it works in practice:\n\n```python\nfrom typing import Literal\nfrom mcp.server import MCPServer\n\nmcp = MCPServer(\"MyServer\")\n\n@mcp.tool()\ndef my_tool(choice: Literal[\"a\", \"b\", \"c\"]) -> str:\n    \"\"\"Choose an option.\"\"\"\n    return choice\n```\n\nThe `Literal` type hint tells the SDK to generate an enum-style constraint in the tool's input schema, so the model can only pass one of the specified values.",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/lifespan/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/client/transports/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly identifies typing.Literal as the way to define enum parameters, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "The claims are fully supported by the retrieved context, which states that Literal adds enums to the input schema."
+        },
+        "citation_correctness": {
+          "score": 1,
+          "reason": "The answer references the documentation content but does not include the source URL as a proper citation."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3657.79,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5431
+        }
+      }
+    },
+    {
+      "id": "q006",
+      "question": "How do I use a Pydantic model as an MCP tool input?",
+      "expected_answer": "Define a Pydantic BaseModel and use it as a tool parameter. The SDK derives a structured JSON Schema from the model.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "https://py.sdk.modelcontextprotocol.io/protocol/"
+      ],
+      "generated_answer": "Based on the documentation, a **Pydantic model parameter** is how you take a structured \"body\" as input for an MCP tool.\n\nFrom the [Recap](https://py.sdk.modelcontextprotocol.io/servers/tools/):\n\n> A Pydantic model parameter is how you take a structured \"body\".\n\nThis is in contrast to individual typed arguments (e.g., `city: str, days: int`), where each parameter maps to its own field in the tool's input schema. Using a Pydantic model lets you define a grouped set of fields as a single parameter, and the SDK handles input validation automatically — bad arguments are rejected with an error the model can read and recover from.\n\nThe documentation does not provide a detailed code example of a Pydantic model used as a tool *input* parameter (the examples focus on using it for *structured output* returns). If you need more specifics beyond this, the provided documentation is insufficient.",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "It correctly identifies using a Pydantic model parameter for structured input, but omits the SDK deriving a structured JSON Schema from the model."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved Recap documentation, including the quoted sentence and validation behavior."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited source URL matches the relevant documentation and the quoted content is accurately attributed."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 7535.24,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 7291
+        }
+      }
+    },
+    {
+      "id": "q007",
+      "question": "What is the difference between an MCP tool and a resource?",
+      "expected_answer": "Tools are functions that the model can invoke to perform actions, while resources expose data or context that clients can read.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/resources",
+        "https://py.sdk.modelcontextprotocol.io/servers/tools"
+      ],
+      "generated_answer": "Based on the documentation, the difference is:\n\n- A **tool** is something the **model** decides to call. It is a function the model can invoke.\n- A **resource** is something the **application** decides to load (such as a config file, a record, or a document) and put in front of the model as context. It is data the application reads and exposes for the model to consume.\n\nIn short: tools are主动 called by the model, while resources are被动 loaded by the application and provided to the model.\n\n**Sources:**\n- [Resources](https://py.sdk.modelcontextprotocol.io/servers/resources/)\n- [Tools](https://py.sdk.modelcontextprotocol.io/servers/tools/)",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/migration/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The generated answer correctly distinguishes tools as model-invocable functions and resources as application-loaded data, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation context about tools and resources."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs are from the relevant sources and directly support the claims made in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3682.21,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 4678
+        }
+      }
+    },
+    {
+      "id": "q008",
+      "question": "How do MCP tool errors work in FastMCP?",
+      "expected_answer": "For expected tool-execution failures, raise an ordinary exception (or return CallToolResult(is_error=True, ...) when you need explicit control): the SDK turns it into an error result that the model sees and can recover from. Unexpected exceptions become a sanitized -32603 protocol error, while raising MCPError produces a top-level JSON-RPC error the model never sees. Never return an error message as a normal result: is_error would be False, so the model reads it as a successful answer.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+        "https://py.sdk.modelcontextprotocol.io/whats-new/"
+      ],
+      "generated_answer": "Based on the provided documentation, here is how MCP tool errors work in FastMCP:\n\n## Two paths for tool errors\n\nThere are two distinct ways a tool can signal an error, and the model's ability to react to them differs:\n\n**1. Raise any exception → model sees the error**\nWhen you raise any exception (other than `MCPError`) inside a tool handler, the call returns `is_error=True` with your message in `content`. The model reads it and can retry. This is the default path for tool *execution* failures.\n\n**2. Raise `MCPError` → call itself fails (JSON-RPC error)**\nWhen you raise `MCPError` (or any subclass), the call itself fails with a top-level JSON-RPC error. The model sees nothing; the host deals with it. The `code`, `message`, and `data` survive intact. Use this when the request itself should be rejected — for example, missing client capability, elicitation required, or invalid parameters.\n\n> The deciding question is: *could a smarter model have avoided this?* Yes → exception. No → `MCPError`. ([Source](https://py.sdk.modelcontextprotocol.io/servers/handling-errors/))\n\n## Unhandled exceptions are sanitized\n\nAn unexpected exception raised in a handler becomes a **sanitized** protocol error: `-32603` `\"Internal server error\"`. The model never sees the original exception message. ([Source](https://py.sdk.modelcontextprotocol.io/migration/))\n\n## Bad arguments are rejected before the handler runs\n\nBad arguments are validated against the schema before your function runs — you do not need to `raise` for those. ([Source](https://py.sdk.modelcontextprotocol.io/servers/handling-errors/))\n\n## Importing error types\n\n```python\nfrom mcp import MCPError\nfrom mcp.types import INVALID_PARAMS  # error-code constants\n```",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "Covers exceptions and MCPError paths correctly but omits returning CallToolResult(is_error=True) directly and the warning about never returning errors with is_error=False."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation context."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Citations reference appropriate sources that support the corresponding claims."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 5876.75,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6767
+        }
+      }
+    },
+    {
+      "id": "q009",
+      "question": "How can an MCP tool report progress?",
+      "expected_answer": "Request a Context parameter in the tool signature and use ctx.report_progress() to report progress during execution.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/progress"
+      ],
+      "generated_answer": "An MCP tool reports progress using `ctx.report_progress(progress, total=None, message=None)` inside an `MCPServer` handler, or `ctx.session.report_progress(progress, total, message)` from a lowlevel `Server` handler.\n\n**Example with `MCPServer` (recommended):**\n\n```python\n@mcp.tool()\nasync def my_tool(x: int, ctx: Context) -> str:\n    await ctx.report_progress(25, 100, message=\"step 1\")\n    await ctx.report_progress(50, 100)  # absolute value, not a delta\n    return \"done\"\n```\n\n**Example with lowlevel `Server`:**\n\n```python\nawait ctx.session.report_progress(50, 100, message=\"halfway\")\n```\n\n**Important differences from the old `ProgressContext`:**\n\n- `report_progress` takes the **absolute current value**, not a delta. You must keep the running total yourself.\n- `report_progress` is a **no-op** when the caller did not request progress (it no longer raises `ValueError` like the old `progress()` context manager did).\n- `total` and `message` are optional. The spec requires `progress` to **increase** with every report — never repeat a value or go backwards.\n\n**Source:**\n- https://py.sdk.modelcontextprotocol.io/migration/\n- https://py.sdk.modelcontextprotocol.io/handlers/progress/",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/progress/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/client/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The generated answer correctly identifies requesting a Context parameter and using ctx.report_progress(), covering both key elements from the expected answer with additional accurate detail."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims in the generated answer are directly supported by the retrieved documentation, including absolute values, no-op behavior, and lowlevel Server usage."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs are relevant sources from the retrieved context and clearly support the claims made in the generated answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3698.09,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6145
+        }
+      }
+    },
+    {
+      "id": "q010",
+      "question": "How do I access MCP Context inside a tool?",
+      "expected_answer": "Add a parameter annotated with the Context type to the tool function. FastMCP automatically injects the context.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/context"
+      ],
+      "generated_answer": "In MCP v2, you access Context inside a tool by using **parameter injection** with the `Context` type. The `get_context()` method has been removed; context is now injected by the framework and passed explicitly as a parameter.\n\n**How to do it:**\n\n```python\nfrom mcp.server.mcpserver import Context\n\n@mcp.tool()\nasync def my_tool(x: int, ctx: Context) -> str:\n    await ctx.report_progress(1, 2)\n    return str(x)\n```\n\nThe `ctx` parameter is provided automatically by the framework — you do not need to call any method to retrieve it.\n\n**Source:**\n- https://py.sdk.modelcontextprotocol.io/migration/\n- https://py.sdk.modelcontextprotocol.io/handlers/context/",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "Correctly states that adding a Context-annotated parameter allows automatic framework injection, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved migration and context documentation."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs are relevant sources from the retrieved documentation that support the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3386.64,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5427
+        }
+      }
+    },
+    {
+      "id": "q011",
+      "question": "What information is available from MCP Context?",
+      "expected_answer": "Context provides capabilities such as request_id, client_id, access to the FastMCP server, logging, progress reporting, resource reading, and request metadata.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/context"
+      ],
+      "generated_answer": "Based on the provided documentation, the MCP `Context` object provides the following information and capabilities:\n\n## `ctx.read_resource(uri)`\nResolves a URI through the same registry that serves `resources/read`, returning an iterable of `ReadResourceContents` objects. Each object has:\n- **`.content`** — the resource content (e.g., `'fiction, non-fiction, poetry'`)\n- **`.mime_type`** — the content MIME type (e.g., `'text/plain'`)\n\n## `ctx.input_responses`\nA dictionary that holds answers to elicitation requests on retry rounds. Keys correspond to the request keys defined in an `InputRequiredResult`. On the first round, it is empty (`{}`); on subsequent rounds, it contains the user's answers.\n\nExample usage from the documentation:\n```python\nanswer = (ctx.input_responses or {}).get(\"audience\")\n```\n\n## General characteristics\n- Context is **injected explicitly** as a parameter (`ctx: Context`) into handlers — there is **no ambient `ContextVar`** to read from (unlike v1's `mcp.get_context()`).\n- A tool whose only parameter is `Context` has an input schema with **no properties**, so the model calls it with `{}`.\n\n---\n\nThe documentation does not provide a complete reference listing all properties and methods of `Context`. The items above are the only ones explicitly described in the provided context.\n\n**Sources:**\n- [Migration: `MCPServer.get_context()` removed](https://py.sdk.modelcontextprotocol.io/migration/)\n- [docs_src/context/tutorial002.py](https://py.sdk.modelcontextprotocol.io/handlers/context/)\n- [docs_src/mrtr/tutorial004.py](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/)",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "The answer covers resource reading and input responses but misses several expected items like request_id, logging, progress reporting, and FastMCP server access."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation without unsupported assertions or hallucinations."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited sources are relevant and appropriately support the claims made in the generated answer."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3456.45,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5581
+        }
+      }
+    },
+    {
+      "id": "q012",
+      "question": "How do I return structured output from an MCP tool?",
+      "expected_answer": "Use a return type that the SDK can convert to a schema, such as a Pydantic model, TypedDict, typed class, dict[str, T], or supported primitive/generic type.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output",
+        "https://py.sdk.modelcontextprotocol.io/servers/tools"
+      ],
+      "generated_answer": "Based on the documentation, here's how to return structured output from an MCP tool:\n\n## Approaches to Structured Output\n\n### 1. Automatic Structured Output (Recommended)\n\nSimply return a structured value from your tool function. The MCP SDK automatically uses type hints to produce a schema.\n\n```python\n@mcp.tool()\ndef my_tool() -> MyPydanticModel:\n    return MyPydanticModel(...)\n```\n\nAs the docs state: **\"Type hints are the input schema\"** and **Structured Output is what happens to the value you `return`** [Source](https://py.sdk.modelcontextprotocol.io/servers/tools/).\n\n### 2. Manual Structured Output\n\nYou can declare an `output_schema` on the `Tool` and set `structured_content` on the result yourself:\n\n> \"Declare `output_schema` on the `Tool` and put `structured_content` on the result. Both are yours\" [Source](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/)\n\n### 3. Enforcing Structured Output\n\nUse `structured_output=True` on the decorator to require structured output:\n\n```python\n@mcp.tool(structured_output=True)\ndef weather_report(city: str) -> str:\n    ...\n```\n\nWith this setting, **\"a tool whose return type can't produce a schema raises at import time instead of falling back to text\"** [Source](https://py.sdk.modelcontextprotocol.io/servers/structured-output/).\n\nConversely, `structured_output=False` means no output schema, no wrapping, no validation — `structured_content` will be `None` and `content` will be the string you returned [Source](https://py.sdk.modelcontextprotocol.io/servers/structured-output/).\n\n## What the Client Receives\n\n- **`content`** — what the model reads (human-readable text)\n- **`structured_content`** — the tool's return value as JSON, matching the tool's declared `output_schema` [Source](https://py.sdk.modelcontextprotocol.io/client/)\n\n## Using Pydantic Models\n\nA **Pydantic model parameter** is how you take a structured \"body\" [Source](https://py.sdk.modelcontextprotocol.io/servers/tools/).",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/servers/media/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "The answer explains structured output mechanisms but omits key return types from the expected answer like TypedDict, typed class, and dict[str, T]."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation context without unsupported assertions."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All cited URLs correspond to relevant sources that support the respective claims in the answer."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 7106.12,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 4984
+        }
+      }
+    },
+    {
+      "id": "q013",
+      "question": "What happens when an MCP tool returns a primitive type?",
+      "expected_answer": "The primitive result is wrapped in a structured result under a result field when structured output is generated.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+      ],
+      "generated_answer": "When an MCP tool returns a primitive type (a scalar), it is **wrapped in `{\"result\": ...}`**.\n\nThis is stated in the [structured output recap](https://py.sdk.modelcontextprotocol.io/servers/structured-output/):\n\n> \"Scalars, lists, tuples and unions are wrapped in `{\"result\": ...}`. Models, `TypedDict`s, dataclasses, annotated classes and `dict[str, ...]` are objects already and stay as they are.\"\n\nSo if a tool returns a string, integer, boolean, or other scalar value, the SDK wraps it into a JSON object with a `result` key containing that value. This differs from complex types (models, dataclasses, etc.), which are passed through as-is.",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly states that primitive types are wrapped in a result field, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "The claim is fully supported by the retrieved structured output recap documentation."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited URL correctly points to the structured output recap page that supports the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 2459.81,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5680
+        }
+      }
+    },
+    {
+      "id": "q014",
+      "question": "Can an MCP tool return a Pydantic model?",
+      "expected_answer": "Yes. Pydantic BaseModel subclasses are supported for structured output, and the SDK derives and validates the output schema.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+      ],
+      "generated_answer": "Yes. An MCP tool can return a Pydantic model directly.\n\n**Example from the documentation:**\n\n```python\nclass Book(BaseModel):\n    title: str\n    author: str\n    year: int\n\n@mcp.tool()\ndef lookup_book(title: str) -> Book:\n    \"\"\"Look up a book by its exact title.\"\"\"\n    return Book(title=\"Dune\", author=\"Frank Herbert\", year=1965)\n```\n\nThe server returns the Pydantic model, and on the client side the result includes both text and structured content:\n\n```python\nresult.structured_content  # {'title': 'Dune', 'author': 'Frank Herbert', 'year': 1965}\n```\n\nYou can also return a **list** of Pydantic models. Each item is flattened into its own `TextContent` block for the model, and `structured_content` becomes an array:\n\n```python\nclass WeatherData(BaseModel):\n    temperature: float\n    humidity: float\n    conditions: str\n\n@mcp.tool()\ndef get_forecast(city: str, days: int) -> list[WeatherData]:\n    \"\"\"Daily forecast for a city.\"\"\"\n    return [WeatherData(temperature=16.2 + day, humidity=0.83, conditions=\"Overcast\") for day in range(days)]\n```\n\n[https://py.sdk.modelcontextprotocol.io/servers/structured-output/](https://py.sdk.modelcontextprotocol.io/servers/structured-output/)\n[https://py.sdk.modelcontextprotocol.io/client/](https://py.sdk.modelcontextprotocol.io/client/)",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly confirms Pydantic models can be returned and provides accurate examples covering single models and lists."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation, including structured content behavior and list flattening."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs correspond to relevant sources in the retrieved documentation that support the answer's claims."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3432.13,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6320
+        }
+      }
+    },
+    {
+      "id": "q015",
+      "question": "Can an MCP tool return a TypedDict?",
+      "expected_answer": "Yes. TypedDicts are supported for structured output and their type information is used to generate the schema.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+      ],
+      "generated_answer": "Yes, an MCP tool can return a `TypedDict`.\n\nAccording to the documentation, you can define a `TypedDict` and use it as a return type for a tool:\n\n```python\nfrom typing import TypedDict\n\nclass WeatherData(TypedDict):\n    temperature: float\n    humidity: float\n    conditions: str\n\n@mcp.tool()\ndef get_weather(city: str) -> WeatherData:\n    \"\"\"Current weather for a city.\"\"\"\n    return WeatherData(temperature=16.2, humidity=0.83, conditions=\"Overcast\")\n```\n\nThe documentation explains that a `TypedDict` is a plain `dict` at runtime, so you build and return a regular dictionary. The schema, validation, and `structured_content` are identical to using a Pydantic `BaseModel`, except that `TypedDict` does not support descriptions.\n\n**Source:** [Structured Output Tutorial 003](https://py.sdk.modelcontextprotocol.io/servers/structured-output/)",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly confirms TypedDict support and covers schema generation, matching the expected answer's key points."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims about TypedDict runtime behavior, schema generation, and structured_content are directly supported by the retrieved documentation."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited URL matches the relevant source and directly supports the claims made in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3644.06,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6067
+        }
+      }
+    },
+    {
+      "id": "q016",
+      "question": "Can an MCP tool return a plain untyped class?",
+      "expected_answer": "A class without type hints cannot be converted into a structured output schema, so its result is unstructured.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+      ],
+      "generated_answer": "Yes, an MCP tool can return a plain untyped class, but doing so will result in **unstructured output**.\n\nAccording to the documentation, there is \"one way to end up unstructured without asking for it: return a class that has **no annotations on its body**.\" ([Structured Output docs](https://py.sdk.modelcontextprotocol.io/servers/structured-output/))\n\n[Structured Output](https://py.sdk.modelcontextprotocol.io/servers/structured-output/index.md) is what happens to the value you `return`. When you return a class with no annotations, the SDK cannot derive a schema from it, so the output will not be structured.",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly confirms a plain untyped class can be returned but results in unstructured output, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation, including the quote about unannotated classes producing unstructured output."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs are from the retrieved context and appropriately support the claims made in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3581.65,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6457
+        }
+      }
+    },
+    {
+      "id": "q017",
+      "question": "How do I return CallToolResult directly from an MCP tool?",
+      "expected_answer": "Declare the tool return type as CallToolResult and construct it explicitly, for example with TextContent. This gives direct control over content, errors, structuredContent, and metadata.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/server/",
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "generated_answer": "Based on the documentation, there are two contexts for returning `CallToolResult` directly:\n\n**1. Low-level `Server` handlers** — you build and return `CallToolResult` by hand:\n\n```python\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n    args = params.arguments or {}\n    text = f\"Found 3 books matching {args['query']!r}.\"\n    return CallToolResult(content=[TextContent(type=\"text\", text=text)])\n```\n\nThis is shown in the low-level server documentation (`docs_src/lowlevel",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/middleware/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly shows constructing CallToolResult with TextContent in a low-level handler, matching the expected approach of explicit return type declaration and construction."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "The low-level server example and explanation are directly supported by the retrieved documentation from the low-level server source."
+        },
+        "citation_correctness": {
+          "score": 1,
+          "reason": "The answer references the low-level server documentation but is truncated before providing a complete URL citation."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 5323.21,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6739
+        }
+      }
+    },
+    {
+      "id": "q018",
+      "question": "How do I mark an MCP tool result as an error?",
+      "expected_answer": "Return CallToolResult with isError=True when you need explicit control over the error response.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/handling-errors"
+      ],
+      "generated_answer": "Based on the documentation, you mark an MCP tool result as an error by **raising an exception** from the tool function, rather than returning an error message.\n\n**Tool errors are the default for any exception your tool raises.** For example:\n\n```python\n@mcp.tool()\ndef get_author(title: str) -> str:\n    if title not in CATALOG:\n        raise ValueError(f\"No book titled {title!r} in the catalog.\")\n    return CATALOG[title]\n```\n\nWhen this raises a `ValueError`, the result will have `is_error=True`, and the exception's message (prefixed with the tool name) will appear in `content`.\n\n**Important:** Never `return` an error message from a tool. A returned string has `is_error=False`, so it looks like the tool succeeded. As the documentation states: \"raise. The flag is the signal.\"\n\nIf you need to produce a deliberate protocol-level error (e.g., for an unknown tool), you can raise `MCPError` with a specific error code:\n\n```python\nfrom mcp import MCPError\nfrom mcp.types import INVALID_PARAMS\n\nraise MCPError(INVALID_PARAMS, f\"Unknown tool: {params.name}\")\n```\n\n[source](https://py.sdk.modelcontextprotocol.io/servers/handling-errors/)",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/testing/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "The answer covers raising exceptions as the default error approach but misses the expected technique of returning CallToolResult with is_error=True for explicit control."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims about raising exceptions and MCPError are directly supported by the retrieved documentation context."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited source URL is relevant and the documentation supports the claims made in the generated answer."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 5872.92,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6151
+        }
+      }
+    },
+    {
+      "id": "q019",
+      "question": "How do I use _meta in an MCP tool result?",
+      "expected_answer": "Return CallToolResult with the _meta field. Metadata can carry information for client applications, but secrets should not be placed there because host behavior determines what is exposed.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "generated_answer": "## How to Use `_meta` in an MCP Tool Result\n\n**Purpose:** `_meta` is the supported place for custom data in MCP tool results, per the MCP spec. If you relied on extra fields round-tripping through MCP types, move that data into `_meta`.\n\n**How to use it:**\n\n1. **Construct it as `_meta=`** in the `CallToolResult`. The client reads it back as `result.meta`.\n\n2. **Namespace your keys** (e.g., `bookshop/record_ids`). Keys matching `io.modelcontextprotocol/*` are reserved by the protocol.\n\nExample from the low-level server docs:\n\n```python\nfrom mcp.types import CallToolResult, TextContent\n\nreturn CallToolResult(\n    content=[TextContent(type=\"text\", text=f\"Found 3 books matching {args['query']!r}.\")],\n    structured_content=data,\n    _meta={\"bookshop/record_ids\": [\"bk_17\", \"bk_42\", \"bk_99\"]},\n)\n```\n\n**Important caveats:**\n\n- `_meta` is a convention between you and the client application, **not a guarantee about what reaches the model**. The host decides what it renders.\n- **Never put a secret in any part of a tool result.**\n\nSources:\n- https://py.sdk.modelcontextprotocol.io/migration/\n- https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly describes how to use _meta in CallToolResult, including key namespacing and the warning about secrets, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation, including the code example and the warning about secrets and host behavior."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs are relevant sources that directly support the claims made in the generated answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 4807.13,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6115
+        }
+      }
+    },
+    {
+      "id": "q020",
+      "question": "What is the low-level MCP Server class used for?",
+      "expected_answer": "The low-level Server gives direct control over protocol objects, exact schemas, results, metadata, and custom protocol methods. FastMCP is the higher-level convenience layer.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "generated_answer": "The low-level `Server` class is used when you need capabilities beyond `MCPServer`'s convenience layer. According to the documentation, you drop down to it in these cases:\n\n* **Exact schemas**: You need to emit an exact schema (loaded from a file, generated from a database), rather than one derived from a Python signature.\n* **Full control of the result**: You need direct control over `_meta`, `is_error`, and every key of `structured_content`.\n* **Custom methods**: You need to handle a method MCP doesn't define.\n\nIt is described as the class `MCPServer` is built on, using \"hand-written schemas, `on_*` handlers, nothing checked for you, and custom JSON-RPC methods of your own\" ([source](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/)).\n\nFor everything else, the documentation recommends staying on `MCPServer` ([source](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/)).",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly identifies the three use cases for the low-level Server and matches the key points of the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation context, including exact schemas, result control, and custom methods."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The citations correctly point to the low-level server documentation page, which supports all cited claims."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3870.55,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 4668
+        }
+      }
+    },
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "expected_answer": "Use the low-level Server when you need an exact manually supplied schema, full control over CallToolResult fields, or support for methods not defined by the higher-level API. Otherwise FastMCP is recommended.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "generated_answer": "Based on the documentation, you should use the low-level `Server` instead of `MCPServer` when **`MCPServer`'s convenience layer is in the way** — it is described as an **\"escape hatch.\"**\n\nSpecifically, the low-level `Server` is needed for:\n\n1. **Hand-written schemas and custom JSON-RPC methods** — \"Nothing checked for you, and custom JSON-RPC methods of your own.\"\n2. **Pagination** — The documentation states pagination can *\"only* be done on the low-level `Server`.\"\n3. **Middleware** — Similarly, middleware can *\"only* be done on the low-level `Server`.\"\n4. **Extensions and MCP Apps** — For composing extension packages into a server or writing your own custom extensions.\n\nThe documentation also notes that if you're not sure whether you need the low-level server, **you don't**.",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/servers/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The generated answer covers hand-written schemas, custom JSON-RPC methods, pagination, middleware, and extensions, which align well with the expected answer's key points."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the Advanced section of the retrieved documentation context."
+        },
+        "citation_correctness": {
+          "score": 1,
+          "reason": "The answer references the Advanced section but does not include an explicit citation URL for its claims."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 7305.17,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5427
+        }
+      }
+    },
+    {
+      "id": "q022",
+      "question": "How do I define a tool with the low-level MCP Server?",
+      "expected_answer": "Create a Tool object with a JSON Schema input_schema, implement list_tools and call_tool handlers, and pass those handlers to Server.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "generated_answer": "Based on the provided documentation, the exact procedure for defining a tool with the low-level `Server` class is **not described**.\n\nThe documentation states that `@mcp.tool()` is a convenience layer built on top of a lower-level `Server` class that \"speaks raw MCP: you hand it the protocol objects and it puts them on the wire, unchanged\" ([Source](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/)). It lists scenarios where you would drop down to the low-level server:\n\n- You need to emit an **exact** schema (loaded from a file, generated from a database), not one derived from a Python signature\n- You need full control of the result: `_meta`, `is_error`, every key of `structured_content`\n- You need to handle a method MCP doesn't define\n\nHowever, the provided context does **not** include the actual API or code for registering a tool directly on the low-level `Server`. It only explains *why* you would use it, not *how*. The documentation explicitly covers the high-level `@mcp.tool()` decorator approach and the `MCPServer` wrapper, but not the low-level server tool definition procedure.\n\nIf you need low-level server tool registration details, the provided documentation is insufficient. You may want to consult the [low-level server guide](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/) directly for more complete examples.",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 0,
+          "reason": "The generated answer does not provide the procedure described in the expected answer; it only states the information is unavailable in the context."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "The answer accurately describes what the retrieved context does and does not contain, with no hallucinated claims."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited URL is a relevant source from the retrieved documentation that supports the answer's claims."
+        },
+        "overall_score": 1.33,
+        "overall_label": "FAIL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 6414.53,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6131
+        }
+      }
+    },
+    {
+      "id": "q023",
+      "question": "What arguments does a low-level MCP tool handler receive?",
+      "expected_answer": "The handler receives a ServerRequestContext and CallToolRequestParams. The request parameters provide the tool name and arguments.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "generated_answer": "A low-level MCP tool handler receives **two arguments**:\n\n1. **`ctx: ServerRequestContext`** — the request context containing `session`, `lifespan_context`, `request_id`, `meta`, and `protocol_version`.\n2. **`params: CallToolRequestParams`** — the typed request parameters, giving you `params.name` and `params.arguments`.\n\n**Example:**\n\n```python\nasync def handle_call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n    return CallToolResult(\n        content=[TextContent(type=\"text\", text=f\"Called {params.name}\")],\n        is_error=False,\n    )\n\nserver = Server(\"my-server\", on_call_tool=handle_call_tool)\n```\n\n**Key points:**\n- Everything is typed and explicit — nothing is unpacked, wrapped, or converted for you.\n- `params.arguments` can be `None` (v1 defaulted it to `{}`), so you need to handle that yourself.\n- The automatic `jsonschema` input/output validation that the old `call_tool()` decorator performed has been removed.\n\n**Sources:**\n- https://py.sdk.modelcontextprotocol.io/migration/\n- https://py.sdk.modelcontextprotocol.io/whats-new/\n- https://py.sdk.modelcontextprotocol.io/advanced/extensions/\n- https://py.sdk.modelcontextprotocol.io/handlers/",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/servers/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly identifies both arguments (ServerRequestContext and CallToolRequestParams) and states that params provide the tool name and arguments, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation, including the handler signature, ctx fields, params properties, and validation behavior."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited sources are relevant and the retrieved context from those pages supports the claims made in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 5644.28,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 6380
+        }
+      }
+    },
+    {
+      "id": "q024",
+      "question": "How does a low-level MCP server dispatch multiple tools?",
+      "expected_answer": "The on_call_tool handler is the common entry point and can route based on params.name, while list_tools advertises the available Tool definitions.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "generated_answer": "The provided documentation context does not contain enough information to answer how a low-level MCP server dispatches multiple tools.\n\nThe context mentions the low-level `Server` class — noting that it \"speaks raw MCP\" and that you \"hand it the protocol objects and it puts them on the wire, unchanged\" — but it does not describe the internal dispatch mechanism for multiple tools on that class. It only lists the scenarios where you would choose the low-level `Server` over `MCPServer` (e.g., needing an exact schema, full control of results, or handling methods MCP doesn't define).\n\n**Source:** [The low-level Server](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/)",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/client/transports/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 0,
+          "reason": "The generated answer fails to provide the expected information about on_call_tool routing and list_tools advertising available tools."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "The claim that the retrieved context lacks dispatch details is accurate since no snippet describes on_call_tool routing."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited source URL is relevant and appropriately referenced in the generated answer."
+        },
+        "overall_score": 1.33,
+        "overall_label": "FAIL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 7249.79,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5004
+        }
+      }
+    },
+    {
+      "id": "q025",
+      "question": "What JSON Schema version does MCP use for tool schemas?",
+      "expected_answer": "MCP uses JSON Schema 2020-12 for tool input schemas, output schemas, and elicitation schemas.",
+      "relevant_sources": [],
+      "generated_answer": "The provided documentation does not specify which JSON Schema version MCP uses for tool schemas. It mentions that `input_schema` and `output_schema` are JSON Schemas generated from Python type hints (using **pydantic**), but it does not name a specific JSON Schema version (e.g., Draft 2020-12, Draft 7, etc.).\n\n**Source:** [The low-level Server](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/), [Tools](https://py.sdk.modelcontextprotocol.io/servers/tools/), [Structured Output](https://py.sdk.modelcontextprotocol.io/servers/structured-output/)",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 0,
+          "reason": "The generated answer states the docs do not specify the JSON Schema version, but the expected answer explicitly states MCP uses JSON Schema 2020-12."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "The generated answer correctly reflects that the retrieved documentation does not mention a specific JSON Schema version."
+        },
+        "citation_correctness": {
+          "score": 1,
+          "reason": "Citations reference relevant sections, but those sources do not contain the specific version information the answer discusses."
+        },
+        "overall_score": 1.0,
+        "overall_label": "FAIL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3941.7,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5257
+        }
+      }
+    },
+    {
+      "id": "q026",
+      "question": "How can Pydantic generate an MCP JSON Schema?",
+      "expected_answer": "Use a Pydantic model as a tool parameter or return type and the SDK derives the JSON Schema from it automatically (the same mechanism as Pydantic's model_json_schema()). As a parameter the model becomes a nested $defs reference; as the return type it becomes the output schema directly. Field descriptions/constraints, Literal enums, and defaults (making properties optional) are carried into the generated schema.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output/"
+      ],
+      "generated_answer": "Based on the documentation, Pydantic generates an MCP JSON Schema in two ways depending on where the model is used:\n\n**1. As a tool input parameter — nested as a `$defs` reference**\n\nWhen a Pydantic model is used as a parameter to a `@mcp.tool()` function, the schema is nested inside the tool's input schema as a `$defs` reference. The model is filled in as a JSON object, and the function receives a validated Pydantic instance with attributes (e.g., `.title`, `.author`, `.year`).\n\n```python\nclass Book(BaseModel):\n    title: str\n    author: str\n    year: int = Field(ge=1450, description=\"Year of first publication.\")\n```\n\nYou can also mix plain parameters with model parameters, use nested models, and use lists of models.\n\n**2. As a tool return type — the model is the schema directly**\n\nWhen a Pydantic model is declared as the return type annotation of a `@mcp.tool()`, the model **is** the schema — no wrapper, no `result` key:\n\n```python\nclass WeatherData(BaseModel):\n    temperature: float = Field(description=\"Degrees Celsius.\")\n    humidity: float = Field(description=\"Relative humidity, 0 to 1.\")\n    conditions: str\n\n@mcp.tool()\ndef get_weather(city: str) -> WeatherData:\n    ...\n```\n\nThis produces:\n\n```json\n{\n    \"properties\": {\n        \"temperature\": {\"description\": \"Degrees Celsius.\", \"title\": \"Temperature\", \"type\": \"number\"},\n        \"humidity\": {\"description\": \"Relative humidity, 0 to 1.\", \"title\": \"Humidity\", \"type\": \"number\"},\n        \"conditions\": {\"title\": \"Conditions\", \"type\": \"string\"}\n    },\n    \"required\": [\"temperature\", \"humidity\", \"conditions\"],\n    \"title\": \"WeatherData\",\n    \"type\": \"object\"\n}\n```\n\n`Field(description=...)` on input fields works the same way on output fields — the same `Field` that describes inputs describes outputs.\n\n**Additional notes:**\n- All Pydantic model fields in protocol types use **snake_case** names for Python attribute access, but the JSON wire format remains **camelCase** via Pydantic aliases. When serializing models yourself, pass `by_alias=True` to produce wire-format keys.\n- The models accept both spellings at construction time, so old camelCase names still work as constructor kwargs.\n\nSources:\n- https://py.sdk.modelcontextprotocol.io/servers/tools/\n- https://py.sdk.modelcontextprotocol.io/servers/structured-output/\n- https://py.sdk.modelcontextprotocol.io/migration/",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/run/authorization/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "Covers the main points about $defs references and return-type schemas, but omits defaults making properties optional and Literal enums mentioned in the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation context from tools and structured-output pages."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All three cited URLs are relevant and the claims they support are drawn from the retrieved documentation."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 4461.24,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 7186
+        }
+      }
+    },
+    {
+      "id": "q027",
+      "question": "How do I create an MCP prompt in Python?",
+      "expected_answer": "Use @mcp.prompt() on a function. The function name becomes the prompt name and its docstring becomes the description.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/prompts/"
+      ],
+      "generated_answer": "To create an MCP prompt in Python, use the `@mcp.prompt()` decorator on a function:\n\n```python\nfrom mcp.server import MCPServer\n\nmcp = MCPServer(\"Demo\")\n\n@mcp.prompt()\ndef summarize(text: str) -> str:\n \"\"\"Summarize a piece of text in one sentence.\"\"\"\n return f\"Summarize the following text in one sentence:\\n\\n{text}\"\n```\n\n**Key details:**\n\n* The prompt **name** is taken from the function name, and the **description** from the docstring.\n* You can add a `title=` parameter and use `Field(description=...)` for what appears in the client's UI.\n* Prompt **arguments are a flat list of named strings** (no schema). A parameter with a default is optional.\n* Return a `str` and it becomes one user message. Return a list of `UserMessage` / `AssistantMessage` to seed a multi-turn conversation.\n* A missing required argument fails the whole request — there is no per-prompt error result.\n* Arguments are passed as a dict of `str -> str`: `get_prompt(name, arguments)`.\n\nSource: https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly explains using @mcp.prompt() decorator, with name from function and description from docstring, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by retrieved documentation sources including the prompt decorator behavior and argument handling details."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited source URL is relevant and supports the generated answer's claims about creating MCP prompts."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 2370.78,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5641
+        }
+      }
+    },
+    {
+      "id": "q028",
+      "question": "Who controls an MCP prompt?",
+      "expected_answer": "Prompts are user-controlled: the client lists prompts, the user selects one, and the user supplies its arguments.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/prompts/"
+      ],
+      "generated_answer": "Prompts are **user-controlled**: the client lists them, the user picks one and fills in the arguments. [[Source](https://py.sdk.modelcontextprotocol.io/servers/prompts/)]",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The generated answer matches the expected answer in meaning, stating prompts are user-controlled with the client listing them and the user selecting and filling arguments."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "The retrieved documentation explicitly states prompts are user-controlled, with the client listing them and the user picking and filling arguments."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The citation points to the prompts documentation page, which is among the relevant sources and directly supports the claim."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3507.74,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 4464
+        }
+      }
+    },
+    {
+      "id": "q029",
+      "question": "What type are MCP prompt arguments?",
+      "expected_answer": "Prompt arguments are a flat list of named strings rather than a JSON object schema. A parameter with a default is optional.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/prompts/"
+      ],
+      "generated_answer": "MCP prompt arguments are **a flat list of named strings (no schema)**. [Source](https://py.sdk.modelcontextprotocol.io/servers/prompts/)\n\nThis means they lack a formal type schema — each argument is simply a named string value. A parameter with a default value is considered optional.",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly states prompt arguments are a flat list of named strings without a schema, and that parameters with defaults are optional, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "Both claims are directly supported by the retrieved documentation stating 'Arguments are a flat list of named strings (no schema)' and 'A parameter with a default is optional.'"
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The citation points to the correct source page that explicitly contains the information about prompt arguments being a flat list of named strings."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3414.88,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 4933
+        }
+      }
+    },
+    {
+      "id": "q030",
+      "question": "How can an MCP prompt create a multi-turn conversation?",
+      "expected_answer": "A prompt can return a list of UserMessage and AssistantMessage objects to seed a multi-turn conversation.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/prompts/"
+      ],
+      "generated_answer": "Based on the provided documentation, an MCP prompt can create a multi-turn conversation by returning an `InputRequiredResult` instead of its normal prompt messages, which pauses the call and asks the client for user input. On the retry round, the prompt reads the user's answers from `ctx.input_responses` and returns the final messages.\n\nHere is how it works, as shown in the documentation:\n\n1. The `@mcp.prompt()` function receives a `Context` parameter.\n2. It first checks `ctx.input_responses` for any previously collected answers.\n3. If the needed input is missing, it returns an `InputRequiredResult` containing an `ElicitRequest` (with a message and schema) to ask the user for that input.\n4. On the retry round, `ctx.input_responses` now holds the user's answers under the same keys, and the function returns its ordinary result — the prompt messages.\n\nAn example from the documentation:\n\n```python\n@mcp.prompt()\nasync def briefing(ctx: Context) -> list[UserMessage] | InputRequiredResult:\n    \"\"\"Draft a briefing tuned to its audience.\"\"\"\n    answer = (ctx.input_responses or {}).get(\"audience\")\n    if not isinstance(answer, ElicitResult) or answer.content is None:\n        return InputRequiredResult(input_requests={\"audience\": ASK_AUDIENCE})\n    return [UserMessage(f\"Write a briefing for {answer.content['audience']}.\")]\n```\n\n**Key notes from the documentation:**\n- Only template resources and prompts that take a `Context` can participate in multi-round-trip requests; static `@mcp.resource()` functions do not, as they take no `Context` and therefore cannot read the retry.\n- The prompt request must render identically across retry rounds (build it only from the tool's arguments and other stable data), per the multi-round-trip rule.\n- On pre-2026 sessions, returning an `InputRequiredResult` from a prompt results in a `-32603` error.\n\n**Sources:**\n- https://py.sdk.modelcontextprotocol.io/servers/prompts/\n- https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/index.md",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/sampling-and-roots/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "It describes a multi-turn mechanism via InputRequiredResult but does not directly address the expected answer of returning UserMessage and AssistantMessage objects to seed conversation."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims about InputRequiredResult, ctx.input_responses, and retry behavior are directly supported by the retrieved multi-round-trip documentation."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited sources are relevant and the retrieved documentation supports the claims made in the answer."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 4581.56,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5870
+        }
+      }
+    },
+    {
+      "id": "q031",
+      "question": "How do I make an MCP resource?",
+      "expected_answer": "Register a resource with @mcp.resource() and provide a URI template when appropriate. A resource function returns the resource content.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/",
+        "https://py.sdk.modelcontextprotocol.io/server/"
+      ],
+      "generated_answer": "## How to Make an MCP Resource\n\nTo create an MCP resource, decorate a function with `@mcp.resource(uri)` on an `MCPServer` instance. The **URI** is the address, the **return value** is the content, and the **docstring** is the description.\n\n### Basic Example\n\n```python\nfrom mcp.server import MCPServer\n\nmcp = MCPServer(\"Demo\")\n\n@mcp.resource(\"greeting://{name}\")\ndef greeting(name: str) -> str:\n    \"\"\"Greet someone by name.\"\"\"\n    return f\"Hello, {name}!\"\n```\n\n### Key Rules\n\n* **Placeholders make templates**: A `{placeholder}` in the URI makes it a **template** resource. It's listed under `resources/templates/list`, and one function serves every URI that matches. Placeholder names must equal the function's parameter names — get it wrong and you find out at import time, not in production. Your function runs when the resource is **read**, not when it's listed.\n* **Return types are mapped automatically**:\n  * `str` becomes text\n  * `bytes` becomes a base64 blob\n  * Anything else becomes JSON text\n  * Use `mime_type=` to label it\n* **Tools are for the model to act. Resources are for the application to read.**\n\n### Concrete vs. Template Resources\n\nYou can define both concrete resources (fixed URI) and template resources (parameterized URI):\n\n```python\n@mcp.resource(\"catalog://genres\")\ndef genres() -> list[str]:\n    \"\"\"The genres the catalog is organised by.\"\"\"\n    return [\"fiction\", \"non-fiction\", \"poetry\"]\n\n@mcp.resource(\"catalog://genres/{genre}\")\ndef books_in_genre(genre: str) -> str:\n    \"\"\"Every title we stock in one genre.\"\"\"\n    return f\"3 books filed under {genre}.\"\n```\n\nClients interact with them via separate methods:\n* `list_resources()` returns the **concrete** resources (fixed URIs)\n* `list_resource_templates()` returns the **parameterised** ones\n* `read_resource(uri)` works on both — pass a plain `str` URI and the server matches it to the template\n\n### Sources\n\n* https://py.sdk.modelcontextprotocol.io/servers/resources/\n* https://py.sdk.modelcontextprotocol.io/\n* https://py.sdk.modelcontextprotocol.io/client/",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly explains registering a resource with @mcp.resource(), URI templates, and that the function returns content, fully covering the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation, including decorator usage, URI templates, return types, and client methods."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All cited URLs correspond to relevant retrieved sources that support the claims made in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 7105.96,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5678
+        }
+      }
+    },
+    {
+      "id": "q032",
+      "question": "How do MCP resource subscriptions work?",
+      "expected_answer": "In v2 the client opens one long-lived stream with subscriptions/listen (client.listen(...)), naming the notification kinds it wants; typed change events arrive on that single stream, and each event is a cue to refetch, not a payload. The server signals a resource change with ctx.notify_resource_updated(uri). Middleware can refuse a listen request per caller, and multi-replica deployments can plug in a shared SubscriptionBus.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+        "https://py.sdk.modelcontextprotocol.io/whats-new/"
+      ],
+      "generated_answer": "# MCP Resource Subscriptions\n\nResource subscriptions were consolidated into `subscriptions/listen`, replacing the older standalone HTTP GET stream and `resources/subscribe`. The client opens **one long-lived stream** and names the notification kinds it wants.\n\n## How it works\n\nOn the **server side**:\n- `MCPServer` serves subscriptions out of the box.\n- You publish updates with `await ctx.notify_resource_updated(uri)` (and `notify_tools_changed()`, etc.).\n- A middleware can refuse a listen request per caller.\n- Multi-replica deployments plug in a shared `SubscriptionBus`.\n\nOn the **client side**:\n```python\nasync with client.listen(tools_list_changed=True, resource_subscriptions=[BOARD]) as sub:\n    async for event in sub:\n        match event:\n            case ResourceUpdated(uri=uri):\n                print(await read_board(client, uri))\n            case ToolsListChanged():\n                tools = await client.list_tools()\n                print(\"tools:\", [tool.name for tool in tools.tools])\n```\n\n- `sub.honored` contains the subset of subscriptions the server agreed to deliver.\n\n## Key contract\n\nEach typed event is a **cue to refetch**, never a payload. Entering `client.listen(...)` sends the request and waits for acknowledgment, so the stream is live when the block starts.\n\n## Source URLs\n- [Subscriptions](https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/index.md)\n- [Change notifications become one stream](https://py.sdk.modelcontextprotocol.io/whats-new/)\n- [Subscriptions (Clients)](https://py.sdk.modelcontextprotocol.io/client/subscriptions/index.md)",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/run/authorization/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/client/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly covers all key points from the expected answer: one long-lived stream via subscriptions/listen, typed events as refetch cues, ctx.notify_resource_updated, middleware refusal, and SubscriptionBus."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "Every claim in the generated answer is directly supported by the retrieved documentation, including the whats-new and subscriptions handler pages."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All cited URLs are relevant sources from the retrieved documentation that directly support the claims made in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 4412.52,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5305
+        }
+      }
+    },
+    {
+      "id": "q033",
+      "question": "How do I run an MCP Python server with the development CLI?",
+      "expected_answer": "Run uv run mcp dev server.py. The development command starts the server and opens the MCP Inspector.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/",
+        "https://py.sdk.modelcontextprotocol.io/get-started/"
+      ],
+      "generated_answer": "You run an MCP Python server with the development CLI using `mcp dev`:\n\n```console\nuv run mcp dev server.py\nuv run mcp dev server.py --with pandas --with numpy\nuv run mcp dev server.py --with-editable .\n```\n\n**Key details:**\n\n- `--with` adds packages to the environment the command builds.\n- `--with-editable` installs your own package into that environment.\n- `mcp dev` needs `npx` on your `PATH` because the MCP Inspector is a Node.js app.\n- `mcp dev` only understands `MCPServer`; if you build with the low-level `Server`, you run it yourself instead.\n\nAfter running it, open the URL it prints to access the interactive MCP Inspector UI.\n\n**Sources:**\n- https://py.sdk.modelcontextprotocol.io/run/\n- https://py.sdk.modelcontextprotocol.io/\n- https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly identifies `uv run mcp dev server.py` as the command and mentions the MCP Inspector, matching the expected answer with useful additional details."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims, including `--with`, `--with-editable`, `npx` requirement, and `MCPServer` limitation, are directly supported by the retrieved documentation."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All three cited URLs are among the relevant sources and the documentation clearly supports the claims made in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3924.43,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 4113
+        }
+      }
+    },
+    {
+      "id": "q034",
+      "question": "What does mcp[cli] add to the MCP Python SDK?",
+      "expected_answer": "The cli extra adds Typer and python-dotenv for the mcp command-line tools such as mcp dev, mcp run, and mcp install.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/get-started/installation/"
+      ],
+      "generated_answer": "The `[cli]` extra installs the `mcp` command-line tool. According to the documentation:\n\n- \"The `[cli]` extra installs a small command-line tool around all of this.\"\n- \"The `[cli]` extra gives you the `mcp` command; you'll want it for development.\"\n\nThis provides commands such as `mcp dev`, `mcp run`, `mcp install`, and `mcp version` for working with MCP servers.\n\n**Sources:**\n- https://py.sdk.modelcontextprotocol.io/get-started/installation/\n- https://py.sdk.modelcontextprotocol.io/",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "The generated answer mentions the CLI commands but omits the specific dependencies (Typer and python-dotenv) that the expected answer identifies as what mcp[cli] adds."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims in the generated answer are directly supported by the retrieved documentation context."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs are relevant sources from the retrieved documentation that support the claims made."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3612.21,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5151
+        }
+      }
+    },
+    {
+      "id": "q035",
+      "question": "What does the MCP Inspector do?",
+      "expected_answer": "The Inspector provides an interactive UI for testing and inspecting an MCP server, including calling tools and viewing their generated input forms.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/",
+        "https://py.sdk.modelcontextprotocol.io/get-started/"
+      ],
+      "generated_answer": "Based on the documentation, here is what the MCP Inspector does:\n\n**The MCP Inspector is a development tool for testing MCP servers.** It launches your server as a subprocess and connects to it over stdio, exactly like a real MCP host would ([source](https://py.sdk.modelcontextprotocol.io/run/)).\n\nSpecifically, it provides:\n\n- **Tabs for each primitive** (Tools, Resources, Prompts) that you can walk through in order ([source](https://py.sdk.modelcontextprotocol.io/get-started/first-steps/))\n- **Auto-built forms from type hints** — for example, a tool with `a: int, b: int` gets rendered with required integer fields for each parameter ([source](https://py.sdk.modelcontextprotocol.io/docs_src/index/tutorial001.py)), and tools with more parameters like `query` and `limit` receive matching required fields ([source](https://py.sdk.modelcontextprotocol.io/servers/tools/))\n- **The ability to call tools**, read resources, and render prompts interactively to verify they work correctly ([source](https://py.sdk.modelcontextprotocol.io/get-started/first-steps/), [source](https://py.sdk.modelcontextprotocol.io/servers/tools/), [source](https://py.sdk.modelcontextprotocol.io/servers/prompts/))\n\nYou start it by running:\n```console\nuv run mcp dev server.py\n```\nThen open the printed URL in a browser ([source](https://py.sdk.modelcontextprotocol.io/get-started/first-steps/)).",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly describes the MCP Inspector as an interactive UI for testing MCP servers, calling tools, and viewing generated input forms, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims in the generated answer are directly supported by the retrieved documentation context about the Inspector's functionality and usage."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All cited URLs appear in the retrieved documentation and appropriately support the corresponding claims in the generated answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 5357.05,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 4401
+        }
+      }
+    },
+    {
+      "id": "q036",
+      "question": "Why does MCP Inspector need Node.js tooling?",
+      "expected_answer": "The Inspector is a Node.js application, so mcp dev requires npx to be available on PATH.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/"
+      ],
+      "generated_answer": "The MCP Inspector is a **Node.js app**, which is why `mcp dev` requires `npx` to be on your `PATH` in order to run it.\n\n**Source URLs:**\n- https://py.sdk.modelcontextprotocol.io/\n- https://py.sdk.modelcontextprotocol.io/run/",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly states that the Inspector is a Node.js app and that mcp dev requires npx on PATH, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "Both claims are directly supported by the retrieved documentation stating the Inspector is a Node.js app needing npx on PATH."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs are from the retrieved context and directly support the claims made in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 2845.67,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5295
+        }
+      }
+    },
+    {
+      "id": "q037",
+      "question": "What transports does the MCP Python SDK support?",
+      "expected_answer": "The SDK supports standard transports including stdio, SSE, and Streamable HTTP.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/client/transports",
+        "https://py.sdk.modelcontextprotocol.io/v1"
+      ],
+      "generated_answer": "Based on the provided documentation, the MCP Python SDK supports:\n\n1. **stdio** — for a local subprocess\n2. **streamable-http** — for a port\n\nAdditionally, the documentation notes that **SSE is superseded** and the **WebSocket transport** (both sides, and the `mcp[ws]` extra) was **removed outright** in v2 because it was never part of the MCP specification ([Source](https://py.sdk.modelcontextprotocol.io/run/)).\n\nYou can configure these transports by passing arguments to `mcp.run()`, such as `host`, `port`, and `streamable_http_path` ([Source](https://py.sdk.modelcontextprotocol.io/run/)).",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/testing/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "Correctly identifies stdio and streamable-http as supported transports, and accurately notes SSE is superseded and WebSocket was removed."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation, including transport status and removal notes."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Cites the correct source URL (run/) that contains the transport information referenced in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 6664.8,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5062
+        }
+      }
+    },
+    {
+      "id": "q038",
+      "question": "How do I connect an MCP client using stdio?",
+      "expected_answer": "Create StdioServerParameters for the server command and use mcp.client.stdio.stdio_client to obtain read and write streams, then create a ClientSession and initialize it.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/client",
+        "https://py.sdk.modelcontextprotocol.io/client/transports"
+      ],
+      "generated_answer": "To connect an MCP client using stdio, pass a `stdio_client(...)` wrapped transport to `Client`:\n\n```python\nfrom mcp import Client, StdioServerParameters\nfrom mcp.client.stdio import stdio_client\n\nparams = StdioServerParameters(command=\"uv\", args=[\"run\", \"mcp\", \"run\", \"your_server.py\"])\n\nasync def main():\n    async with Client(stdio_client(params)) as client:\n        # client is now connected\n        ...\n```\n\nKey points from the documentation:\n\n- **Use `stdio_client(StdioServerParameters(...))`** — never pass the `StdioServerParameters` object alone to `Client` ([source](https://py.sdk.modelcontextprotocol.io/client/transports/)).\n- `stdio_client` wraps a subprocess; the subprocess gets an **allow-listed environment**, not your own. Use the `env=` parameter to add to it ([source](https://py.sdk.modelcontextprotocol.io/client/transports/)).\n- A transport is anything you can `async with x as (read, write)`. `Client` hands anything that isn't a server object or a URL straight to that protocol ([source](https://py.sdk.modelcontextprotocol.io/client/transports/)).\n\nFor a **server** side, calling `mcp.run()` with no arguments starts a stdio server that blocks, reads protocol messages on stdin, and writes them on stdout ([source](https://py.sdk.modelcontextprotocol.io/get-started/real-host/)).",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly describes using StdioServerParameters with stdio_client passed to Client, which aligns with the documented modern approach for stdio connections."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved context, including the subprocess environment detail and the transport protocol description."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All four citations reference appropriate source URLs that support the corresponding claims in the generated answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 4668.24,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5520
+        }
+      }
+    },
+    {
+      "id": "q039",
+      "question": "Why does MCP require initialization before normal client operations?",
+      "expected_answer": "The initialize handshake lets both sides establish compatible protocol information before exchanging normal MCP messages.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/protocol/",
+        "https://py.sdk.modelcontextprotocol.io/protocol-versions"
+      ],
+      "generated_answer": "Based on the provided documentation, there is **no explicit statement** explaining *why* MCP requires initialization before normal client operations. The documentation describes *what* the initialize handshake does and *when* it applies, but does not provide a rationale for why it is required.\n\nHere is what the documentation does say about initialization:\n\n- **Protocol versions** era: \"Servers released before 2026-07-28 open every connection with the **`initialize` handshake**: the client proposes a version, the server counters, the client acknowledges, all before the first useful request.\"\n- **Modern era (2026-07-28)**: \"A 2026-07-28 client does not open a connection, negotiate, and then talk. Every request carries its protocol version, client info, and client capabilities in `_meta`.\"\n- The SDK's `Client` \"does the right thing by default: it probes `server/discover` once and falls back to the `initialize` handshake if the server is older.\"\n\nThe documentation explains the **mechanism** of initialization but does not explicitly state the **purpose or reason** for requiring it.\n\n**Sources:**\n- [Protocol versions](https://py.sdk.modelcontextprotocol.io/protocol-versions/)\n- [No handshake, no session](https://py.sdk.modelcontextprotocol.io/whats-new/)\n- [Serving legacy clients](https://py.sdk.modelcontextprotocol.io/run/legacy-clients/)",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/client/oauth-clients/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "The answer correctly notes the mechanism but fails to convey the purpose that initialization establishes compatible protocol information, which is the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims in the generated answer are directly supported by the retrieved documentation context."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited sources are relevant and the retrieved documentation clearly supports the claims made in the answer."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 4442.97,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5311
+        }
+      }
+    },
+    {
+      "id": "q040",
+      "question": "What is MCP protocol version negotiation for?",
+      "expected_answer": "It ensures the client and server agree on a compatible protocol version before exchanging messages.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/protocol/",
+        "https://py.sdk.modelcontextprotocol.io/protocol-versions"
+      ],
+      "generated_answer": "Based on the provided documentation, MCP protocol version negotiation serves to determine which \"era\" of the protocol a client and server will use for their communication, bridging two distinct protocol eras:\n\n1. **The handshake era** (up to spec version `2025-11-25`), which uses the `initialize` handshake.\n2. **The modern era** (`2026-07-28`), which uses `server/discover`.\n\nThe `Client` bridges these two eras. By default, `mode=\"auto\"` is used, which probes for the modern `server/discover` method and falls back to the `initialize` handshake if the server is older. This ensures compatibility: a modern client can connect to both legacy and modern servers without requiring configuration from the server side.\n\nThe negotiation determines:\n- Whether the connection uses the older session-based handshake (with `Mcp-Session-Id`) or the newer stateless approach (no session, no handshake).\n- Which protocol version (`client.protocol_version`) is actually negotiated, answerable via that property.\n- Whether features like server-initiated requests (sampling, push elicitation) are available, which require `mode=\"legacy\"` to force the handshake.\n\n**Source URLs:**\n- [Protocol Versions - Recap](https://py.sdk.modelcontextprotocol.io/protocol-versions/)\n- [Serving legacy clients](https://py.sdk.modelcontextprotocol.io/run/legacy-clients/)\n- [No handshake, no session](https://py.sdk.modelcontextprotocol.io/whats-new/)",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "The answer focuses on mechanism details rather than clearly stating the core purpose: ensuring client and server agree on a compatible protocol version before exchanging messages."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims about protocol eras, mode=auto, fallback behavior, and server-initiated requests are directly supported by the retrieved documentation."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All three cited URLs are from the retrieved relevant sources and the claims in the answer are supported by those sources."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 5955.7,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5261
+        }
+      }
+    },
+    {
+      "id": "q041",
+      "question": "How do MCP tool names need to be formatted?",
+      "expected_answer": "Tool names are case-sensitive and should be 1–128 characters using ASCII letters, digits, underscore, dash, or dot; spaces and other special characters should be avoided.",
+      "relevant_sources": [],
+      "generated_answer": "The provided documentation does not contain sufficient information to answer this question. It mentions that tool names have formatting rules (referencing \"non-conforming name\" and \"invalid tool name\"), but it does not specify what those formatting requirements are.\n\nThe only naming format explicitly defined in the provided context is for extension identifiers, which must follow a `vendor-prefix/name` pattern (dot-separated labels, each starting with a letter, ending with a letter or digit, with a slash separating the prefix from the name) — but this applies to extensions, not tool names.\n\nSource: [My host lists zero tools](https://py.sdk.modelcontextprotocol.io/troubleshooting/) mentions tool name conformity but does not describe the format rules.",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 0,
+          "reason": "The generated answer fails to provide the tool name formatting rules specified in the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "The generated answer accurately reflects the retrieved documentation's lack of tool name formatting details."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited source is from the retrieved documentation and appropriately supports the claim."
+        },
+        "overall_score": 1.33,
+        "overall_label": "FAIL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 2943.64,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 4922
+        }
+      }
+    },
+    {
+      "id": "q042",
+      "question": "How do MCP dependencies work in a tool?",
+      "expected_answer": "A dependency can be declared as a parameter that is resolved by the SDK rather than supplied by the model. The resolved value is not included in the tool input schema.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/"
+      ],
+      "generated_answer": "Based on the documentation, here's how MCP dependencies work in a tool:\n\n## How Dependencies Work\n\n**Dependencies are parameters filled by your own functions.** You annotate the parameter, name the function, and the SDK calls it before your tool runs ([Source](https://py.sdk.modelcontextprotocol.io/handlers/dependencies/)).\n\n### Declaring a Dependency\n\nYou declare a dependency using `Annotated[..., Resolve(your_function)]` on the parameter. The function you reference can:\n- Ask the user (`Elicit`)\n- Sample the client's LLM (`Sample`)\n- List the client's roots (`ListRoots`)\n\nAnd the SDK returns the `InputRequiredResult` for you ([Source](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/)).\n\n### Example\n\n```python\nfrom typing import Annotated\nfrom pydantic import BaseModel\nfrom mcp.server.mcpserver import AcceptedElicitation, Elicit, ElicitationResult, Resolve\n\nclass Quantity(BaseModel):\n    copies: int\n\nasync def ask_quantity() -> Elicit[Quantity]:\n    \"\"\"Resolver: ask the user how many copies to put aside.\"\"\"\n    return Elicit(\"How many copies?\", Quantity)\n\n@mcp.tool()\nasync def reserve(title: str, quantity: Annotated[ElicitationResult[Quantity], Resolve(ask_quantity)]) -> str:\n    \"\"\"Reserve copies of a book, asking the user how many.\"\"\"\n    if isinstance(quantity, AcceptedElicitation):\n        return f\"Reserved {quantity.data.copies} of {title!r}.\"\n    return \"Nothing reserved.\"\n```\n\n([Source](https://py.sdk.modelcontextprotocol.io/run/legacy-clients/))\n\n### How It Works Under the Hood\n\nThe `Resolve` reads the connection's negotiated protocol version and picks the appropriate mechanism automatically:\n- On `2026-07-28`: `Resolve` returned the question inside the tool result, and the client retried the call with the answer\n- On `2025-11-25`: `Resolve` sent a live `elicitation/create` request mid-call and waited\n\nYour tool body sees an `AcceptedElicitation` either way—you write it once and it works across versions ([Source](https://py.sdk.modelcontextprotocol.io/run/legacy-clients/)).\n\n### Important Limitations\n\n- A call has only **one** `input_responses`/`request_state` channel, so a tool that uses `Resolve(...)` parameters **cannot** also return `InputRequiredResult` from its body ([Source](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/))\n- A declared `InputRequiredResult` return is rejected at registration (`InvalidSignature`)\n- An undeclared `InputRequiredResult` fails the call at runtime ([Source](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/))",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "Covers dependency declaration and SDK resolution but omits that the resolved value is excluded from the tool input schema, a key point in the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation context without hallucination or contradiction."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All cited URLs correspond to relevant retrieved sources that support the claims made."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3923.4,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5311
+        }
+      }
+    },
+    {
+      "id": "q043",
+      "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+      "expected_answer": "Dependencies supply values that should never come from the model - for example a price looked up from your records, a confirmation only a person can give, or information from the client (Elicit, Sample, ListRoots). The SDK resolves them through protocol round-trips before the tool body runs, which a plain helper cannot do: a helper cannot pause the call with an InputRequiredResult and collect the answer via ctx.input_responses. Resolved dependencies are also not part of the model-facing tool input schema.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+        "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/"
+      ],
+      "generated_answer": "The provided documentation context does not contain information about why you would use an MCP dependency instead of calling a helper directly. The context mentions dependencies in the context of tools using `InputRequiredResult`, `Elicit`, `Sample`, and `ListRoots`, but does not explain the rationale for using MCP dependencies over direct helper calls.",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 0,
+          "reason": "The generated answer claims the documentation lacks relevant information, but it fails to explain why MCP dependencies are used instead of helpers, missing key points from the expected answer."
+        },
+        "faithfulness": {
+          "score": 1,
+          "reason": "The answer references some concepts from the retrieved context but incorrectly asserts the information is absent, which partially contradicts the available documentation."
+        },
+        "citation_correctness": {
+          "score": 0,
+          "reason": "No citations are provided despite the question expecting documentation references to support the explanation."
+        },
+        "overall_score": 0.33,
+        "overall_label": "FAIL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 3553.54,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 4907
+        }
+      }
+    },
+    {
+      "id": "q044",
+      "question": "How do MCP elicitation results work?",
+      "expected_answer": "The elicitation result contains an action of accept, decline, or cancel, and validated data when the user accepts.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/elicitation"
+      ],
+      "generated_answer": "Based on the provided documentation, here is how MCP elicitation results work:\n\n## Elicitation Callback\n\nAn elicitation callback is `async (context, params) -> ElicitResult`. It is registered on the client when constructing a `Client`:\n\n```python\nelicitation_callback=handle_elicitation\n```\n\nThe callback is both the handler and the **capability declaration** — it is how the server learns this client can be asked for elicitation.\n\n## Input (`params`)\n\n`params` is a union of two elicitation modes:\n\n- **Form mode** (`params.mode == \"form\"`): carries `params.message` (the question) and `params.requested_schema` (a JSON Schema of the answer the server wants). A real client renders a form from the schema; tests may auto-fill with a canned answer.\n- **URL mode** (`params.mode == \"url\"`): carries `params.url` instead of a schema. The client shows the URL to the user and returns the action they chose, with no `content`.\n\n`context` is a `ClientRequestContext` providing the live session, the server's `request_id`, and any attached `meta`.\n\n## Output (`ElicitResult`)\n\nThe callback returns an `ElicitResult` with one of three actions:\n\n1. **`action=\"accept\"`** — Optionally carries `content={...}` with the user's input (for form mode).\n2. **`action=\"decline\"`**\n3. **`action=\"cancel\"`**\n\nThe only other option is `ErrorData(...)`, which refuses the request and fails the whole call.\n\nFor URL mode, you return the action **without any `content`**:\n\n```python\nif isinstance(params, ElicitRequestURLParams):\n    print(f\"Open this link to continue: {params.url}\")\n    return ElicitResult(action=\"accept\")\n```\n\nFor form mode:\n\n```python\nreturn ElicitResult(action=\"accept\", content={\"name\": \"Ada Lovelace\"})\n```\n\n## Important Notes\n\n- **Elicitation is a request from the server to the client**, and on a classic-handshake session it only exists with `mode=\"legacy\"`. On the 2026-07-28 connection, tool calls drive the same loop internally and the intermediate rounds are invisible to the caller (`call_tool` returns a plain `CallToolResult`).\n- If the callback is omitted, the SDK's stand-in callback answers every elicitation with an error, and `call_tool` raises `MCPError` with the message *\"Elicitation not supported\"*.\n- The loop is bounded: `Client(..., input_required_max_rounds=10)` is the default cap. A server that keeps returning `InputRequiredResult` past that limit causes `call_tool` to raise.\n- One callback serves both pre-2026 back-channel RPCs and 2026-era in-band requests, since the identical `ElicitRequest` payloads are dispatched to the same callback.",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly identifies the three actions (accept, decline, cancel) and notes that content is included on accept, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims about elicitation modes, actions, content, and callbacks are directly supported by the retrieved documentation context."
+        },
+        "citation_correctness": {
+          "score": 0,
+          "reason": "The generated answer provides no citations or source URLs despite the relevant source being available and citations being expected."
+        },
+        "overall_score": 1.33,
+        "overall_label": "FAIL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 5522.81,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 7548
+        }
+      }
+    },
+    {
+      "id": "q045",
+      "question": "Can MCP elicitation schemas have default values?",
+      "expected_answer": "Yes. Default values are included in the JSON schema sent to clients so forms can be pre-populated.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/elicitation"
+      ],
+      "generated_answer": "Yes, MCP elicitation schemas can have default values. According to the documentation:\n\n> \"a default pre-fills the input and makes the field optional\"\n\n[Source](https://py.sdk.modelcontextprotocol.io/handlers/elicitation/): https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+      "retrieval": {
+        "hit": false,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/lifespan/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly states that MCP elicitation schemas can have default values, aligning with the expected answer's key point."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "The claim is directly supported by the retrieved documentation stating that default values pre-fill input and make fields optional."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited URL is the correct source from the retrieved documentation that supports the claim about default values."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 2826.88,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5949
+        }
+      }
+    },
+    {
+      "id": "q046",
+      "question": "What is structured output in MCP?",
+      "expected_answer": "Structured output lets a tool provide machine-readable data in addition to human-readable content, using an output schema and structured content.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/server/",
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "generated_answer": "Based on the documentation, **structured output** in MCP refers to how the value a tool `return`s is handled — specifically, returning it as JSON that matches the tool's declared `output_schema`, with no string parsing or guessing required.\n\nHere are the key points:\n\n- **`structured_content`** is the tool's return value as JSON, matching the tool's declared `output_schema`.\n- **`content`** is for the model; **`structured_content`** is for code. When both are present, they say the same thing on purpose.\n- If **no `output_schema`** is declared (the default), `structured_content` is `None` and `content` is the string you returned — no wrapping, no validation.\n- Setting **`structured_output=True`** turns automatic schema detection into a requirement: a tool whose return type can't produce a schema raises at **import time** instead of falling back to text.\n- You can also do it **by hand**: declare `output_schema` on the `Tool` and put `structured_content` on the result. Both are yours to control.\n\n**Sources:**\n- https://py.sdk.modelcontextprotocol.io/client/\n- https://py.sdk.modelcontextprotocol.io/servers/structured-output/\n- https://py.sdk.modelcontextprotocol.io/servers/tools/\n- https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/media/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly describes structured output, covering output_schema, structured_content, and the distinction between content and structured_content as in the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation, including structured_content behavior, structured_output flag, and manual declaration."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All cited URLs are relevant sources from the retrieved documentation and support the claims made in the answer."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 4375.72,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 4078
+        }
+      }
+    },
+    {
+      "id": "q047",
+      "question": "How is a low-level MCP output schema specified?",
+      "expected_answer": "Set output_schema on the Tool definition and place the corresponding machine-readable data in structured_content on CallToolResult.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "generated_answer": "Based on the provided documentation:\n\nIn the low-level MCP server, a structured output schema is specified by **declaring `output_schema` on the `Tool` and putting `structured_content` on the result**. Both are yours to manage manually. [Source](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/)\n\nAdditionally, the `output_schema` is used to **validate whatever your function returns before it leaves the server**. [Source](https://py.sdk.modelcontextprotocol.io/servers/structured-output/)\n\nThe documentation does not provide the full code example or further details on the exact shape of `output_schema` or how `structured_content` is constructed in the low-level context. The provided documentation is insufficient to give a more detailed answer.",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly states both key points: declaring output_schema on the Tool and using structured_content on the result, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation, which explicitly states to declare output_schema on Tool and structured_content on the result."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs are from the relevant retrieved sources and each citation supports the claim it accompanies."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 4309.32,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5196
+        }
+      }
+    },
+    {
+      "id": "q048",
+      "question": "What is the difference between FastMCP and the low-level Server?",
+      "expected_answer": "FastMCP is the decorators-and-type-hints convenience layer, while Server is the lower-level protocol layer where schemas, handlers, and results are constructed explicitly.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "generated_answer": "Based on the provided documentation, here are the key differences:\n\n**`FastMCP` (now `MCPServer`) is a high-level server class** with a convenience layer that:\n- Automatically wraps tool return types (e.g., a `-> str` return gets wrapped into `{\"result\": ...}`)\n- Adds Pydantic artifacts to schemas (like `\"title\"` on properties and root-level titles)\n- Handles decorator-based registration (`@mcp.tool()`, `@mcp.resource()`, `@mcp.prompt()`, `@mcp.completion()`)\n- Is what `mcp dev` and `mcp run` accept\n\n**The low-level `Server`** (the class `MCPServer` is built on) differs in that it:\n- Uses hand-written schemas and `on_*` handlers\n- Has \"nothing checked for you\"\n- Supports custom JSON-RPC methods of your own\n- Returns schemas exactly as typed — if it's on the wire, you put it there\n- `result.structured_content` will be `None` unless you explicitly build it\n- `list_tools` returns the schema character for character, without automatic Pydantic title artifacts\n\nAs the documentation states: *\"The low-level Server: the class `MCPServer` is built on. Hand-written schemas, `on_*` handlers, nothing checked for you, and custom JSON-RPC methods of your own.\"* ([Advanced](https://py.sdk.modelcontextprotocol.io/advanced/))\n\nAdditionally, **pagination** and **middleware** can *only* be done on the low-level `Server` ([Advanced](https://py.sdk.modelcontextprotocol.io/advanced/)).",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly identifies FastMCP as the convenience layer and the low-level Server as the explicit protocol layer, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims about both FastMCP and the low-level Server are directly supported by the retrieved documentation context."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The answer cites the Advanced page URL appropriately for key claims, and the cited sources support the content provided."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 5641.75,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5213
+        }
+      }
+    },
+    {
+      "id": "q049",
+      "question": "What changed from MCP Python SDK v1 to v2?",
+      "expected_answer": "v2 is a major version with breaking changes. The SDK documentation provides a migration guide, and packages that are not ready to migrate should keep an mcp<2 upper bound.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/migration/",
+        "https://py.sdk.modelcontextprotocol.io/v1/"
+      ],
+      "generated_answer": "Based on the provided documentation, here are the key changes from MCP Python SDK v1 to v2:\n\n**Two major shifts occurred in v2:**\n\n1. **The SDK was rebuilt** — This includes:\n   - A new engine under both the client and the server\n   - A first-class `Client`\n   - A set of renames that a v1 codebase encounters on its first import ([Source](https://py.sdk.modelcontextprotocol.io/whats-new/))\n\n2. **The protocol moved** — v2 speaks the **2026-07-28 revision of MCP**, which:\n   - Removes the connection handshake\n   - Removes the session\n   - Removes every server-initiated request\n   - Still does not strand the clients you already have ([Source](https://py.sdk.modelcontextprotocol.io/whats-new/))\n\n**General improvements in v2:**\n- Breaking changes introduced to improve the API\n- Better alignment with the MCP specification\n- Improved type safety ([Source](https://py.sdk.modelcontextprotocol.io/migration/))\n\n**Version note:**\n- v2 is now the stable line (`pip install mcp` installs 2.x)\n- The v1.x maintenance line continues to receive critical bug fixes and security patches\n- The full list of breaking changes with before-and-after code is covered in the **[Migration Guide](https://py.sdk.modelcontextprotocol.io/migration/index.md)** ([Source](https://py.sdk.modelcontextprotocol.io/whats-new/), [Source](https://py.sdk.modelcontextprotocol.io/get-started/installation/))",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/client/oauth-clients/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "Covers breaking changes and migration guide but omits the explicit <2 upper bound recommendation for unmigrated packages from the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation with accurate references."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All cited URLs are valid, relevant sources from the retrieved documentation that support the claims made."
+        },
+        "overall_score": 1.67,
+        "overall_label": "PARTIAL"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 5234.05,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5068
+        }
+      }
+    },
+    {
+      "id": "q050",
+      "question": "How should I handle an unknown tool name in a low-level MCP server?",
+      "expected_answer": "The call handler should explicitly detect unknown names and raise an appropriate MCP error rather than silently dispatching an unsupported tool.",
+      "relevant_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/"
+      ],
+      "generated_answer": "In a low-level MCP server, you should raise `MCPError(INVALID_PARAMS, f\"Unknown tool: {params.name}\")` in your `call_tool` handler.\n\n**Why not use `ValueError`?** A `ValueError` raised in the handler would reach the model as an opaque `-32603` (\"Internal server error\") sanitized protocol error — the model never sees the message. Using `MCPError` passes the error through with its code and message intact, delivering the spec's own `-32602` response for an unknown tool.\n\nExample from the documentation:\n\n```python\nfrom mcp import MCPError\nfrom mcp.types import INVALID_PARAMS, CallToolRequestParams, CallToolResult\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n    if params.name != \"search_books\":\n        raise MCPError(INVALID_PARAMS, f\"Unknown tool: {params.name}\")\n    # ... handle the tool\n```\n\n**Source:** [docs_src/whats_new/tutorial001.py](https://py.sdk.modelcontextprotocol.io/whats-new/)",
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/testing/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/"
+        ]
+      },
+      "evaluation": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly identifies raising MCPError with INVALID_PARAMS for unknown tools, matching the expected guidance to explicitly detect unknown names and raise an MCP error."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation, including the error code behavior and the ValueError explanation."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited source URL is among the retrieved documentation and clearly supports the generated answer's claims."
+        },
+        "overall_score": 2.0,
+        "overall_label": "PASS"
+      },
+      "judge": {
+        "model": "agnes-2.5-flash",
+        "latency_ms": 5319.29,
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": 5659
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "experiment": "E26_e23_conditional_vs_e25_c7",
+  "question_count": 48,
+  "e23": {
+    "experiment": "E23_conditional_section",
+    "representation": "conditional",
+    "metrics_recalculated": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "mrr": 0.7802083333333334
+    }
+  },
+  "e25": {
+    "experiment": "E25_section_rule_combinations",
+    "combination": "C7_all_three",
+    "rules": [
+      "recap",
+      "installation",
+      "requirements"
+    ],
+    "metrics_recalculated": {
+      "hit@1": 0.6666666666666666,
+      "hit@3": 0.9166666666666666,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "mrr": 0.7975694444444446
+    }
+  },
+  "rank_change": {
+    "improved": 1,
+    "worsened": 0,
+    "unchanged": 47,
+    "new_hit": 0,
+    "new_miss": 0
+  },
+  "top1_change": {
+    "changed": 2,
+    "became_gold": 0,
+    "lost_gold": 0
+  },
+  "delta": {
+    "hit@1": 0.02083333333333326,
+    "hit@3": 0.02083333333333326,
+    "hit@5": 0.02083333333333337,
+    "hit@10": 0.0,
+    "mrr": 0.01736111111111116
+  },
+  "diagnostic": {
+    "improved_questions": [
+      "q031"
+    ],
+    "worsened_questions": [],
+    "top1_became_gold_questions": [],
+    "top1_lost_gold_questions": []
+  }
+}

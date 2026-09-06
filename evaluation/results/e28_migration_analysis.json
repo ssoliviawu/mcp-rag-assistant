@@ -1,0 +1,358 @@
+{
+  "configuration": "C7_all_three",
+  "migration_top1_count": 10,
+  "migration_top1_cases": [
+    {
+      "id": "q003",
+      "question": "How do I make an MCP tool parameter optional?",
+      "gold_rank": 2,
+      "margin": 0.028712987899780273,
+      "migration_top1": {
+        "title": "`MCPServer.call_tool()`, `read_resource()`, `get_prompt()` now accept a `context` parameter",
+        "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()`, `read_resource()`, `get_prompt()` now accept a `context` parameter",
+        "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7325817346572876,
+        "content": ""
+      },
+      "gold": {
+        "title": "Optional arguments",
+        "section": "docs_src/tools/tutorial001.py > Optional arguments",
+        "source": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "similarity": 0.7038687467575073,
+        "content": ""
+      },
+      "migration_chunks_in_top10": [
+        {
+          "rank": 1,
+          "title": "`MCPServer.call_tool()`, `read_resource()`, `get_prompt()` now accept a `context` parameter",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()`, `read_resource()`, `get_prompt()` now accept a `context` parameter",
+          "similarity": 0.7325817346572876
+        }
+      ]
+    },
+    {
+      "id": "q009",
+      "question": "How can an MCP tool report progress?",
+      "gold_rank": 2,
+      "margin": 0.02092689275741577,
+      "migration_top1": {
+        "title": "server",
+        "section": "server",
+        "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7471672892570496,
+        "content": ""
+      },
+      "gold": {
+        "title": "Report it from the tool",
+        "section": "Progress > Report it from the tool",
+        "source": "https://py.sdk.modelcontextprotocol.io/handlers/progress/",
+        "similarity": 0.7262403964996338,
+        "content": ""
+      },
+      "migration_chunks_in_top10": [
+        {
+          "rank": 1,
+          "title": "server",
+          "section": "server",
+          "similarity": 0.7471672892570496
+        }
+      ]
+    },
+    {
+      "id": "q010",
+      "question": "How do I access MCP Context inside a tool?",
+      "gold_rank": 5,
+      "margin": 0.07035249471664429,
+      "migration_top1": {
+        "title": "`MCPServer.get_context()` removed",
+        "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.get_context()` removed",
+        "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7828311324119568,
+        "content": ""
+      },
+      "gold": {
+        "title": "docs_src/context/tutorial002.py",
+        "section": "docs_src/context/tutorial002.py",
+        "source": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+        "similarity": 0.7124786376953125,
+        "content": ""
+      },
+      "migration_chunks_in_top10": [
+        {
+          "rank": 1,
+          "title": "`MCPServer.get_context()` removed",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.get_context()` removed",
+          "similarity": 0.7828311324119568
+        }
+      ]
+    },
+    {
+      "id": "q013",
+      "question": "What happens when an MCP tool returns a primitive type?",
+      "gold_rank": 3,
+      "margin": 0.022036075592041016,
+      "migration_top1": {
+        "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+        "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()` returns `CallToolResult`",
+        "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7073378562927246,
+        "content": ""
+      },
+      "gold": {
+        "title": "Recap",
+        "section": "docs_src/structured_output/tutorial009.py > Recap",
+        "source": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+        "similarity": 0.6853017807006836,
+        "content": ""
+      },
+      "migration_chunks_in_top10": [
+        {
+          "rank": 1,
+          "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()` returns `CallToolResult`",
+          "similarity": 0.7073378562927246
+        }
+      ]
+    },
+    {
+      "id": "q017",
+      "question": "How do I return CallToolResult directly from an MCP tool?",
+      "gold_rank": 4,
+      "margin": 0.12400859594345093,
+      "migration_top1": {
+        "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+        "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()` returns `CallToolResult`",
+        "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.852553129196167,
+        "content": ""
+      },
+      "gold": {
+        "title": "docs_src/lowlevel/tutorial001.py",
+        "section": "docs_src/lowlevel/tutorial001.py",
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7285445332527161,
+        "content": ""
+      },
+      "migration_chunks_in_top10": [
+        {
+          "rank": 1,
+          "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()` returns `CallToolResult`",
+          "similarity": 0.852553129196167
+        }
+      ]
+    },
+    {
+      "id": "q018",
+      "question": "How do I mark an MCP tool result as an error?",
+      "gold_rank": 2,
+      "margin": 0.0054242610931396484,
+      "migration_top1": {
+        "title": "`MCPError` raised from an `@mcp.tool()` handler now surfaces as a JSON-RPC error",
+        "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPError` raised from an `@mcp.tool()` handler now surfaces as a JSON-RPC error",
+        "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7308299541473389,
+        "content": ""
+      },
+      "gold": {
+        "title": "Handling errors",
+        "section": "Handling errors",
+        "source": "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+        "similarity": 0.7254056930541992,
+        "content": ""
+      },
+      "migration_chunks_in_top10": [
+        {
+          "rank": 1,
+          "title": "`MCPError` raised from an `@mcp.tool()` handler now surfaces as a JSON-RPC error",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPError` raised from an `@mcp.tool()` handler now surfaces as a JSON-RPC error",
+          "similarity": 0.7308299541473389
+        }
+      ]
+    },
+    {
+      "id": "q019",
+      "question": "How do I use _meta in an MCP tool result?",
+      "gold_rank": 2,
+      "margin": 0.07404696941375732,
+      "migration_top1": {
+        "title": "_meta remains the supported place for custom data, per the MCP spec",
+        "section": "_meta remains the supported place for custom data, per the MCP spec",
+        "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7967395782470703,
+        "content": ""
+      },
+      "gold": {
+        "title": "docs_src/lowlevel/tutorial004.py",
+        "section": "docs_src/lowlevel/tutorial004.py",
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.722692608833313,
+        "content": ""
+      },
+      "migration_chunks_in_top10": [
+        {
+          "rank": 1,
+          "title": "_meta remains the supported place for custom data, per the MCP spec",
+          "section": "_meta remains the supported place for custom data, per the MCP spec",
+          "similarity": 0.7967395782470703
+        }
+      ]
+    },
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "gold_rank": 3,
+      "margin": 0.01529085636138916,
+      "migration_top1": {
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7492616176605225,
+        "content": ""
+      },
+      "gold": {
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.7339707612991333,
+        "content": ""
+      },
+      "migration_chunks_in_top10": [
+        {
+          "rank": 1,
+          "title": "What is unchanged on `MCPServer`",
+          "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+          "similarity": 0.7492616176605225
+        }
+      ]
+    },
+    {
+      "id": "q037",
+      "question": "What transports does the MCP Python SDK support?",
+      "gold_rank": 4,
+      "margin": 0.009966075420379639,
+      "migration_top1": {
+        "title": "`mcp.types` moved to the `mcp-types` package",
+        "section": "Migration Guide: v1 to v2 > Types and wire format > `mcp.types` moved to the `mcp-types` package",
+        "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7483817338943481,
+        "content": ""
+      },
+      "gold": {
+        "title": "Client transports",
+        "section": "Client transports",
+        "source": "https://py.sdk.modelcontextprotocol.io/client/transports/",
+        "similarity": 0.7384156584739685,
+        "content": ""
+      },
+      "migration_chunks_in_top10": [
+        {
+          "rank": 1,
+          "title": "`mcp.types` moved to the `mcp-types` package",
+          "section": "Migration Guide: v1 to v2 > Types and wire format > `mcp.types` moved to the `mcp-types` package",
+          "similarity": 0.7483817338943481
+        }
+      ]
+    },
+    {
+      "id": "q048",
+      "question": "What is the difference between FastMCP and the low-level Server?",
+      "gold_rank": 3,
+      "margin": 0.024727702140808105,
+      "migration_top1": {
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "source": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "similarity": 0.7070479393005371,
+        "content": ""
+      },
+      "gold": {
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "similarity": 0.682320237159729,
+        "content": ""
+      },
+      "migration_chunks_in_top10": [
+        {
+          "rank": 1,
+          "title": "What is unchanged on `MCPServer`",
+          "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+          "similarity": 0.7070479393005371
+        }
+      ]
+    }
+  ],
+  "all_migration_top10": [
+    {
+      "id": "q003",
+      "rank": 1,
+      "title": "`MCPServer.call_tool()`, `read_resource()`, `get_prompt()` now accept a `context` parameter",
+      "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()`, `read_resource()`, `get_prompt()` now accept a `context` parameter",
+      "similarity": 0.7325817346572876
+    },
+    {
+      "id": "q009",
+      "rank": 1,
+      "title": "server",
+      "section": "server",
+      "similarity": 0.7471672892570496
+    },
+    {
+      "id": "q010",
+      "rank": 1,
+      "title": "`MCPServer.get_context()` removed",
+      "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.get_context()` removed",
+      "similarity": 0.7828311324119568
+    },
+    {
+      "id": "q013",
+      "rank": 1,
+      "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+      "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()` returns `CallToolResult`",
+      "similarity": 0.7073378562927246
+    },
+    {
+      "id": "q017",
+      "rank": 1,
+      "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+      "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()` returns `CallToolResult`",
+      "similarity": 0.852553129196167
+    },
+    {
+      "id": "q018",
+      "rank": 1,
+      "title": "`MCPError` raised from an `@mcp.tool()` handler now surfaces as a JSON-RPC error",
+      "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPError` raised from an `@mcp.tool()` handler now surfaces as a JSON-RPC error",
+      "similarity": 0.7308299541473389
+    },
+    {
+      "id": "q019",
+      "rank": 1,
+      "title": "_meta remains the supported place for custom data, per the MCP spec",
+      "section": "_meta remains the supported place for custom data, per the MCP spec",
+      "similarity": 0.7967395782470703
+    },
+    {
+      "id": "q021",
+      "rank": 1,
+      "title": "What is unchanged on `MCPServer`",
+      "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+      "similarity": 0.7492616176605225
+    },
+    {
+      "id": "q037",
+      "rank": 1,
+      "title": "`mcp.types` moved to the `mcp-types` package",
+      "section": "Migration Guide: v1 to v2 > Types and wire format > `mcp.types` moved to the `mcp-types` package",
+      "similarity": 0.7483817338943481
+    },
+    {
+      "id": "q048",
+      "rank": 1,
+      "title": "What is unchanged on `MCPServer`",
+      "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+      "similarity": 0.7070479393005371
+    }
+  ]
+}

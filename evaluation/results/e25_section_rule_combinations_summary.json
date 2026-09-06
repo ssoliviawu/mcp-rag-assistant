@@ -1,0 +1,3072 @@
+{
+  "experiment": "E25_section_rule_combinations",
+  "dataset": "mcp_rag_eval_dataset.jsonl",
+  "question_count": 48,
+  "chunks": 751,
+  "candidate_limit": 100,
+  "top_k": 10,
+  "max_chunks_per_source": 1,
+  "candidate_rules": [
+    "installation",
+    "recap",
+    "requirements"
+  ],
+  "combinations": {
+    "C0_none": {
+      "generic_rules": []
+    },
+    "C1_recap": {
+      "generic_rules": [
+        "recap"
+      ]
+    },
+    "C2_installation": {
+      "generic_rules": [
+        "installation"
+      ]
+    },
+    "C3_requirements": {
+      "generic_rules": [
+        "requirements"
+      ]
+    },
+    "C4_recap_installation": {
+      "generic_rules": [
+        "installation",
+        "recap"
+      ]
+    },
+    "C5_recap_requirements": {
+      "generic_rules": [
+        "recap",
+        "requirements"
+      ]
+    },
+    "C6_installation_requirements": {
+      "generic_rules": [
+        "installation",
+        "requirements"
+      ]
+    },
+    "C7_all_three": {
+      "generic_rules": [
+        "installation",
+        "recap",
+        "requirements"
+      ]
+    }
+  },
+  "representations": {
+    "C0_none": {
+      "hit@1": 0.6041666666666666,
+      "hit@3": 0.875,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.75625
+    },
+    "C1_recap": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.9166666666666666,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7871527777777777
+    },
+    "C2_installation": {
+      "hit@1": 0.6041666666666666,
+      "hit@3": 0.875,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.75625
+    },
+    "C3_requirements": {
+      "hit@1": 0.6041666666666666,
+      "hit@3": 0.875,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.75625
+    },
+    "C4_recap_installation": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.9166666666666666,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7871527777777777
+    },
+    "C5_recap_requirements": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.9166666666666666,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7871527777777777
+    },
+    "C6_installation_requirements": {
+      "hit@1": 0.625,
+      "hit@3": 0.875,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7666666666666666
+    },
+    "C7_all_three": {
+      "hit@1": 0.6666666666666666,
+      "hit@3": 0.9166666666666666,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7975694444444444
+    }
+  },
+  "ranking": [
+    {
+      "combination": "C7_all_three",
+      "generic_rules": [
+        "installation",
+        "recap",
+        "requirements"
+      ],
+      "rule_count": 3,
+      "hit@1": 0.6666666666666666,
+      "hit@3": 0.9166666666666666,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7975694444444444
+    },
+    {
+      "combination": "C1_recap",
+      "generic_rules": [
+        "recap"
+      ],
+      "rule_count": 1,
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.9166666666666666,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7871527777777777
+    },
+    {
+      "combination": "C4_recap_installation",
+      "generic_rules": [
+        "installation",
+        "recap"
+      ],
+      "rule_count": 2,
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.9166666666666666,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7871527777777777
+    },
+    {
+      "combination": "C5_recap_requirements",
+      "generic_rules": [
+        "recap",
+        "requirements"
+      ],
+      "rule_count": 2,
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.9166666666666666,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7871527777777777
+    },
+    {
+      "combination": "C6_installation_requirements",
+      "generic_rules": [
+        "installation",
+        "requirements"
+      ],
+      "rule_count": 2,
+      "hit@1": 0.625,
+      "hit@3": 0.875,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7666666666666666
+    },
+    {
+      "combination": "C0_none",
+      "generic_rules": [],
+      "rule_count": 0,
+      "hit@1": 0.6041666666666666,
+      "hit@3": 0.875,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.75625
+    },
+    {
+      "combination": "C2_installation",
+      "generic_rules": [
+        "installation"
+      ],
+      "rule_count": 1,
+      "hit@1": 0.6041666666666666,
+      "hit@3": 0.875,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.75625
+    },
+    {
+      "combination": "C3_requirements",
+      "generic_rules": [
+        "requirements"
+      ],
+      "rule_count": 1,
+      "hit@1": 0.6041666666666666,
+      "hit@3": 0.875,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.75625
+    }
+  ],
+  "comparison_vs_c7": {
+    "C0_none": {
+      "vs": "C7_all_three",
+      "improved": 2,
+      "worsened": 6,
+      "unchanged": 40,
+      "new_hit": 0,
+      "new_miss": 0,
+      "transitions": [
+        {
+          "id": "q001",
+          "question": "How do I create an MCP tool in Python?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q002",
+          "question": "How are MCP tool input schemas generated from Python functions?",
+          "c7_rank": 1,
+          "current_rank": 4,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q003",
+          "question": "How do I make an MCP tool parameter optional?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q004",
+          "question": "How do I describe an MCP tool parameter?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q005",
+          "question": "How do I define an enum parameter for an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q006",
+          "question": "How do I use a Pydantic model as an MCP tool input?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q007",
+          "question": "What is the difference between an MCP tool and a resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q008",
+          "question": "How do MCP tool errors work in FastMCP?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q009",
+          "question": "How can an MCP tool report progress?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q010",
+          "question": "How do I access MCP Context inside a tool?",
+          "c7_rank": 5,
+          "current_rank": 5,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q011",
+          "question": "What information is available from MCP Context?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q012",
+          "question": "How do I return structured output from an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q013",
+          "question": "What happens when an MCP tool returns a primitive type?",
+          "c7_rank": 3,
+          "current_rank": 10,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q014",
+          "question": "Can an MCP tool return a Pydantic model?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q015",
+          "question": "Can an MCP tool return a TypedDict?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q016",
+          "question": "Can an MCP tool return a plain untyped class?",
+          "c7_rank": 2,
+          "current_rank": 1,
+          "transition": "IMPROVED"
+        },
+        {
+          "id": "q017",
+          "question": "How do I return CallToolResult directly from an MCP tool?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q018",
+          "question": "How do I mark an MCP tool result as an error?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q019",
+          "question": "How do I use _meta in an MCP tool result?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q020",
+          "question": "What is the low-level MCP Server class used for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q021",
+          "question": "When should I use the low-level MCP Server instead of FastMCP?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q022",
+          "question": "How do I define a tool with the low-level MCP Server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q023",
+          "question": "What arguments does a low-level MCP tool handler receive?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q024",
+          "question": "How does a low-level MCP server dispatch multiple tools?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q026",
+          "question": "How can Pydantic generate an MCP JSON Schema?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q027",
+          "question": "How do I create an MCP prompt in Python?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q028",
+          "question": "Who controls an MCP prompt?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q029",
+          "question": "What type are MCP prompt arguments?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q030",
+          "question": "How can an MCP prompt create a multi-turn conversation?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q031",
+          "question": "How do I make an MCP resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q032",
+          "question": "How do MCP resource subscriptions work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q033",
+          "question": "How do I run an MCP Python server with the development CLI?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q034",
+          "question": "What does mcp[cli] add to the MCP Python SDK?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q035",
+          "question": "What does the MCP Inspector do?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q036",
+          "question": "Why does MCP Inspector need Node.js tooling?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q037",
+          "question": "What transports does the MCP Python SDK support?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q038",
+          "question": "How do I connect an MCP client using stdio?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q039",
+          "question": "Why does MCP require initialization before normal client operations?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q040",
+          "question": "What is MCP protocol version negotiation for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q042",
+          "question": "How do MCP dependencies work in a tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q043",
+          "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q044",
+          "question": "How do MCP elicitation results work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q045",
+          "question": "Can MCP elicitation schemas have default values?",
+          "c7_rank": 2,
+          "current_rank": 1,
+          "transition": "IMPROVED"
+        },
+        {
+          "id": "q046",
+          "question": "What is structured output in MCP?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q047",
+          "question": "How is a low-level MCP output schema specified?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q048",
+          "question": "What is the difference between FastMCP and the low-level Server?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q049",
+          "question": "What changed from MCP Python SDK v1 to v2?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q050",
+          "question": "How should I handle an unknown tool name in a low-level MCP server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        }
+      ]
+    },
+    "C1_recap": {
+      "vs": "C7_all_three",
+      "improved": 0,
+      "worsened": 1,
+      "unchanged": 47,
+      "new_hit": 0,
+      "new_miss": 0,
+      "transitions": [
+        {
+          "id": "q001",
+          "question": "How do I create an MCP tool in Python?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q002",
+          "question": "How are MCP tool input schemas generated from Python functions?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q003",
+          "question": "How do I make an MCP tool parameter optional?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q004",
+          "question": "How do I describe an MCP tool parameter?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q005",
+          "question": "How do I define an enum parameter for an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q006",
+          "question": "How do I use a Pydantic model as an MCP tool input?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q007",
+          "question": "What is the difference between an MCP tool and a resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q008",
+          "question": "How do MCP tool errors work in FastMCP?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q009",
+          "question": "How can an MCP tool report progress?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q010",
+          "question": "How do I access MCP Context inside a tool?",
+          "c7_rank": 5,
+          "current_rank": 5,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q011",
+          "question": "What information is available from MCP Context?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q012",
+          "question": "How do I return structured output from an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q013",
+          "question": "What happens when an MCP tool returns a primitive type?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q014",
+          "question": "Can an MCP tool return a Pydantic model?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q015",
+          "question": "Can an MCP tool return a TypedDict?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q016",
+          "question": "Can an MCP tool return a plain untyped class?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q017",
+          "question": "How do I return CallToolResult directly from an MCP tool?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q018",
+          "question": "How do I mark an MCP tool result as an error?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q019",
+          "question": "How do I use _meta in an MCP tool result?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q020",
+          "question": "What is the low-level MCP Server class used for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q021",
+          "question": "When should I use the low-level MCP Server instead of FastMCP?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q022",
+          "question": "How do I define a tool with the low-level MCP Server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q023",
+          "question": "What arguments does a low-level MCP tool handler receive?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q024",
+          "question": "How does a low-level MCP server dispatch multiple tools?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q026",
+          "question": "How can Pydantic generate an MCP JSON Schema?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q027",
+          "question": "How do I create an MCP prompt in Python?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q028",
+          "question": "Who controls an MCP prompt?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q029",
+          "question": "What type are MCP prompt arguments?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q030",
+          "question": "How can an MCP prompt create a multi-turn conversation?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q031",
+          "question": "How do I make an MCP resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q032",
+          "question": "How do MCP resource subscriptions work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q033",
+          "question": "How do I run an MCP Python server with the development CLI?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q034",
+          "question": "What does mcp[cli] add to the MCP Python SDK?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q035",
+          "question": "What does the MCP Inspector do?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q036",
+          "question": "Why does MCP Inspector need Node.js tooling?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q037",
+          "question": "What transports does the MCP Python SDK support?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q038",
+          "question": "How do I connect an MCP client using stdio?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q039",
+          "question": "Why does MCP require initialization before normal client operations?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q040",
+          "question": "What is MCP protocol version negotiation for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q042",
+          "question": "How do MCP dependencies work in a tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q043",
+          "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q044",
+          "question": "How do MCP elicitation results work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q045",
+          "question": "Can MCP elicitation schemas have default values?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q046",
+          "question": "What is structured output in MCP?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q047",
+          "question": "How is a low-level MCP output schema specified?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q048",
+          "question": "What is the difference between FastMCP and the low-level Server?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q049",
+          "question": "What changed from MCP Python SDK v1 to v2?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q050",
+          "question": "How should I handle an unknown tool name in a low-level MCP server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        }
+      ]
+    },
+    "C2_installation": {
+      "vs": "C7_all_three",
+      "improved": 2,
+      "worsened": 6,
+      "unchanged": 40,
+      "new_hit": 0,
+      "new_miss": 0,
+      "transitions": [
+        {
+          "id": "q001",
+          "question": "How do I create an MCP tool in Python?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q002",
+          "question": "How are MCP tool input schemas generated from Python functions?",
+          "c7_rank": 1,
+          "current_rank": 4,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q003",
+          "question": "How do I make an MCP tool parameter optional?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q004",
+          "question": "How do I describe an MCP tool parameter?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q005",
+          "question": "How do I define an enum parameter for an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q006",
+          "question": "How do I use a Pydantic model as an MCP tool input?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q007",
+          "question": "What is the difference between an MCP tool and a resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q008",
+          "question": "How do MCP tool errors work in FastMCP?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q009",
+          "question": "How can an MCP tool report progress?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q010",
+          "question": "How do I access MCP Context inside a tool?",
+          "c7_rank": 5,
+          "current_rank": 5,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q011",
+          "question": "What information is available from MCP Context?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q012",
+          "question": "How do I return structured output from an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q013",
+          "question": "What happens when an MCP tool returns a primitive type?",
+          "c7_rank": 3,
+          "current_rank": 10,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q014",
+          "question": "Can an MCP tool return a Pydantic model?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q015",
+          "question": "Can an MCP tool return a TypedDict?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q016",
+          "question": "Can an MCP tool return a plain untyped class?",
+          "c7_rank": 2,
+          "current_rank": 1,
+          "transition": "IMPROVED"
+        },
+        {
+          "id": "q017",
+          "question": "How do I return CallToolResult directly from an MCP tool?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q018",
+          "question": "How do I mark an MCP tool result as an error?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q019",
+          "question": "How do I use _meta in an MCP tool result?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q020",
+          "question": "What is the low-level MCP Server class used for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q021",
+          "question": "When should I use the low-level MCP Server instead of FastMCP?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q022",
+          "question": "How do I define a tool with the low-level MCP Server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q023",
+          "question": "What arguments does a low-level MCP tool handler receive?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q024",
+          "question": "How does a low-level MCP server dispatch multiple tools?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q026",
+          "question": "How can Pydantic generate an MCP JSON Schema?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q027",
+          "question": "How do I create an MCP prompt in Python?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q028",
+          "question": "Who controls an MCP prompt?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q029",
+          "question": "What type are MCP prompt arguments?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q030",
+          "question": "How can an MCP prompt create a multi-turn conversation?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q031",
+          "question": "How do I make an MCP resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q032",
+          "question": "How do MCP resource subscriptions work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q033",
+          "question": "How do I run an MCP Python server with the development CLI?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q034",
+          "question": "What does mcp[cli] add to the MCP Python SDK?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q035",
+          "question": "What does the MCP Inspector do?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q036",
+          "question": "Why does MCP Inspector need Node.js tooling?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q037",
+          "question": "What transports does the MCP Python SDK support?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q038",
+          "question": "How do I connect an MCP client using stdio?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q039",
+          "question": "Why does MCP require initialization before normal client operations?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q040",
+          "question": "What is MCP protocol version negotiation for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q042",
+          "question": "How do MCP dependencies work in a tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q043",
+          "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q044",
+          "question": "How do MCP elicitation results work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q045",
+          "question": "Can MCP elicitation schemas have default values?",
+          "c7_rank": 2,
+          "current_rank": 1,
+          "transition": "IMPROVED"
+        },
+        {
+          "id": "q046",
+          "question": "What is structured output in MCP?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q047",
+          "question": "How is a low-level MCP output schema specified?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q048",
+          "question": "What is the difference between FastMCP and the low-level Server?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q049",
+          "question": "What changed from MCP Python SDK v1 to v2?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q050",
+          "question": "How should I handle an unknown tool name in a low-level MCP server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        }
+      ]
+    },
+    "C3_requirements": {
+      "vs": "C7_all_three",
+      "improved": 2,
+      "worsened": 6,
+      "unchanged": 40,
+      "new_hit": 0,
+      "new_miss": 0,
+      "transitions": [
+        {
+          "id": "q001",
+          "question": "How do I create an MCP tool in Python?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q002",
+          "question": "How are MCP tool input schemas generated from Python functions?",
+          "c7_rank": 1,
+          "current_rank": 4,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q003",
+          "question": "How do I make an MCP tool parameter optional?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q004",
+          "question": "How do I describe an MCP tool parameter?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q005",
+          "question": "How do I define an enum parameter for an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q006",
+          "question": "How do I use a Pydantic model as an MCP tool input?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q007",
+          "question": "What is the difference between an MCP tool and a resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q008",
+          "question": "How do MCP tool errors work in FastMCP?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q009",
+          "question": "How can an MCP tool report progress?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q010",
+          "question": "How do I access MCP Context inside a tool?",
+          "c7_rank": 5,
+          "current_rank": 5,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q011",
+          "question": "What information is available from MCP Context?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q012",
+          "question": "How do I return structured output from an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q013",
+          "question": "What happens when an MCP tool returns a primitive type?",
+          "c7_rank": 3,
+          "current_rank": 10,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q014",
+          "question": "Can an MCP tool return a Pydantic model?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q015",
+          "question": "Can an MCP tool return a TypedDict?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q016",
+          "question": "Can an MCP tool return a plain untyped class?",
+          "c7_rank": 2,
+          "current_rank": 1,
+          "transition": "IMPROVED"
+        },
+        {
+          "id": "q017",
+          "question": "How do I return CallToolResult directly from an MCP tool?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q018",
+          "question": "How do I mark an MCP tool result as an error?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q019",
+          "question": "How do I use _meta in an MCP tool result?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q020",
+          "question": "What is the low-level MCP Server class used for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q021",
+          "question": "When should I use the low-level MCP Server instead of FastMCP?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q022",
+          "question": "How do I define a tool with the low-level MCP Server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q023",
+          "question": "What arguments does a low-level MCP tool handler receive?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q024",
+          "question": "How does a low-level MCP server dispatch multiple tools?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q026",
+          "question": "How can Pydantic generate an MCP JSON Schema?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q027",
+          "question": "How do I create an MCP prompt in Python?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q028",
+          "question": "Who controls an MCP prompt?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q029",
+          "question": "What type are MCP prompt arguments?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q030",
+          "question": "How can an MCP prompt create a multi-turn conversation?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q031",
+          "question": "How do I make an MCP resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q032",
+          "question": "How do MCP resource subscriptions work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q033",
+          "question": "How do I run an MCP Python server with the development CLI?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q034",
+          "question": "What does mcp[cli] add to the MCP Python SDK?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q035",
+          "question": "What does the MCP Inspector do?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q036",
+          "question": "Why does MCP Inspector need Node.js tooling?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q037",
+          "question": "What transports does the MCP Python SDK support?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q038",
+          "question": "How do I connect an MCP client using stdio?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q039",
+          "question": "Why does MCP require initialization before normal client operations?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q040",
+          "question": "What is MCP protocol version negotiation for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q042",
+          "question": "How do MCP dependencies work in a tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q043",
+          "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q044",
+          "question": "How do MCP elicitation results work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q045",
+          "question": "Can MCP elicitation schemas have default values?",
+          "c7_rank": 2,
+          "current_rank": 1,
+          "transition": "IMPROVED"
+        },
+        {
+          "id": "q046",
+          "question": "What is structured output in MCP?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q047",
+          "question": "How is a low-level MCP output schema specified?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q048",
+          "question": "What is the difference between FastMCP and the low-level Server?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q049",
+          "question": "What changed from MCP Python SDK v1 to v2?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q050",
+          "question": "How should I handle an unknown tool name in a low-level MCP server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        }
+      ]
+    },
+    "C4_recap_installation": {
+      "vs": "C7_all_three",
+      "improved": 0,
+      "worsened": 1,
+      "unchanged": 47,
+      "new_hit": 0,
+      "new_miss": 0,
+      "transitions": [
+        {
+          "id": "q001",
+          "question": "How do I create an MCP tool in Python?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q002",
+          "question": "How are MCP tool input schemas generated from Python functions?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q003",
+          "question": "How do I make an MCP tool parameter optional?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q004",
+          "question": "How do I describe an MCP tool parameter?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q005",
+          "question": "How do I define an enum parameter for an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q006",
+          "question": "How do I use a Pydantic model as an MCP tool input?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q007",
+          "question": "What is the difference between an MCP tool and a resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q008",
+          "question": "How do MCP tool errors work in FastMCP?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q009",
+          "question": "How can an MCP tool report progress?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q010",
+          "question": "How do I access MCP Context inside a tool?",
+          "c7_rank": 5,
+          "current_rank": 5,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q011",
+          "question": "What information is available from MCP Context?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q012",
+          "question": "How do I return structured output from an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q013",
+          "question": "What happens when an MCP tool returns a primitive type?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q014",
+          "question": "Can an MCP tool return a Pydantic model?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q015",
+          "question": "Can an MCP tool return a TypedDict?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q016",
+          "question": "Can an MCP tool return a plain untyped class?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q017",
+          "question": "How do I return CallToolResult directly from an MCP tool?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q018",
+          "question": "How do I mark an MCP tool result as an error?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q019",
+          "question": "How do I use _meta in an MCP tool result?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q020",
+          "question": "What is the low-level MCP Server class used for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q021",
+          "question": "When should I use the low-level MCP Server instead of FastMCP?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q022",
+          "question": "How do I define a tool with the low-level MCP Server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q023",
+          "question": "What arguments does a low-level MCP tool handler receive?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q024",
+          "question": "How does a low-level MCP server dispatch multiple tools?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q026",
+          "question": "How can Pydantic generate an MCP JSON Schema?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q027",
+          "question": "How do I create an MCP prompt in Python?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q028",
+          "question": "Who controls an MCP prompt?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q029",
+          "question": "What type are MCP prompt arguments?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q030",
+          "question": "How can an MCP prompt create a multi-turn conversation?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q031",
+          "question": "How do I make an MCP resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q032",
+          "question": "How do MCP resource subscriptions work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q033",
+          "question": "How do I run an MCP Python server with the development CLI?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q034",
+          "question": "What does mcp[cli] add to the MCP Python SDK?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q035",
+          "question": "What does the MCP Inspector do?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q036",
+          "question": "Why does MCP Inspector need Node.js tooling?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q037",
+          "question": "What transports does the MCP Python SDK support?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q038",
+          "question": "How do I connect an MCP client using stdio?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q039",
+          "question": "Why does MCP require initialization before normal client operations?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q040",
+          "question": "What is MCP protocol version negotiation for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q042",
+          "question": "How do MCP dependencies work in a tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q043",
+          "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q044",
+          "question": "How do MCP elicitation results work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q045",
+          "question": "Can MCP elicitation schemas have default values?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q046",
+          "question": "What is structured output in MCP?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q047",
+          "question": "How is a low-level MCP output schema specified?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q048",
+          "question": "What is the difference between FastMCP and the low-level Server?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q049",
+          "question": "What changed from MCP Python SDK v1 to v2?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q050",
+          "question": "How should I handle an unknown tool name in a low-level MCP server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        }
+      ]
+    },
+    "C5_recap_requirements": {
+      "vs": "C7_all_three",
+      "improved": 0,
+      "worsened": 1,
+      "unchanged": 47,
+      "new_hit": 0,
+      "new_miss": 0,
+      "transitions": [
+        {
+          "id": "q001",
+          "question": "How do I create an MCP tool in Python?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q002",
+          "question": "How are MCP tool input schemas generated from Python functions?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q003",
+          "question": "How do I make an MCP tool parameter optional?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q004",
+          "question": "How do I describe an MCP tool parameter?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q005",
+          "question": "How do I define an enum parameter for an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q006",
+          "question": "How do I use a Pydantic model as an MCP tool input?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q007",
+          "question": "What is the difference between an MCP tool and a resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q008",
+          "question": "How do MCP tool errors work in FastMCP?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q009",
+          "question": "How can an MCP tool report progress?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q010",
+          "question": "How do I access MCP Context inside a tool?",
+          "c7_rank": 5,
+          "current_rank": 5,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q011",
+          "question": "What information is available from MCP Context?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q012",
+          "question": "How do I return structured output from an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q013",
+          "question": "What happens when an MCP tool returns a primitive type?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q014",
+          "question": "Can an MCP tool return a Pydantic model?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q015",
+          "question": "Can an MCP tool return a TypedDict?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q016",
+          "question": "Can an MCP tool return a plain untyped class?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q017",
+          "question": "How do I return CallToolResult directly from an MCP tool?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q018",
+          "question": "How do I mark an MCP tool result as an error?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q019",
+          "question": "How do I use _meta in an MCP tool result?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q020",
+          "question": "What is the low-level MCP Server class used for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q021",
+          "question": "When should I use the low-level MCP Server instead of FastMCP?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q022",
+          "question": "How do I define a tool with the low-level MCP Server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q023",
+          "question": "What arguments does a low-level MCP tool handler receive?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q024",
+          "question": "How does a low-level MCP server dispatch multiple tools?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q026",
+          "question": "How can Pydantic generate an MCP JSON Schema?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q027",
+          "question": "How do I create an MCP prompt in Python?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q028",
+          "question": "Who controls an MCP prompt?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q029",
+          "question": "What type are MCP prompt arguments?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q030",
+          "question": "How can an MCP prompt create a multi-turn conversation?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q031",
+          "question": "How do I make an MCP resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q032",
+          "question": "How do MCP resource subscriptions work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q033",
+          "question": "How do I run an MCP Python server with the development CLI?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q034",
+          "question": "What does mcp[cli] add to the MCP Python SDK?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q035",
+          "question": "What does the MCP Inspector do?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q036",
+          "question": "Why does MCP Inspector need Node.js tooling?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q037",
+          "question": "What transports does the MCP Python SDK support?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q038",
+          "question": "How do I connect an MCP client using stdio?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q039",
+          "question": "Why does MCP require initialization before normal client operations?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q040",
+          "question": "What is MCP protocol version negotiation for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q042",
+          "question": "How do MCP dependencies work in a tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q043",
+          "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q044",
+          "question": "How do MCP elicitation results work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q045",
+          "question": "Can MCP elicitation schemas have default values?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q046",
+          "question": "What is structured output in MCP?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q047",
+          "question": "How is a low-level MCP output schema specified?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q048",
+          "question": "What is the difference between FastMCP and the low-level Server?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q049",
+          "question": "What changed from MCP Python SDK v1 to v2?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q050",
+          "question": "How should I handle an unknown tool name in a low-level MCP server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        }
+      ]
+    },
+    "C6_installation_requirements": {
+      "vs": "C7_all_three",
+      "improved": 2,
+      "worsened": 5,
+      "unchanged": 41,
+      "new_hit": 0,
+      "new_miss": 0,
+      "transitions": [
+        {
+          "id": "q001",
+          "question": "How do I create an MCP tool in Python?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q002",
+          "question": "How are MCP tool input schemas generated from Python functions?",
+          "c7_rank": 1,
+          "current_rank": 4,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q003",
+          "question": "How do I make an MCP tool parameter optional?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q004",
+          "question": "How do I describe an MCP tool parameter?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q005",
+          "question": "How do I define an enum parameter for an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q006",
+          "question": "How do I use a Pydantic model as an MCP tool input?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q007",
+          "question": "What is the difference between an MCP tool and a resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q008",
+          "question": "How do MCP tool errors work in FastMCP?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q009",
+          "question": "How can an MCP tool report progress?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q010",
+          "question": "How do I access MCP Context inside a tool?",
+          "c7_rank": 5,
+          "current_rank": 5,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q011",
+          "question": "What information is available from MCP Context?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q012",
+          "question": "How do I return structured output from an MCP tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q013",
+          "question": "What happens when an MCP tool returns a primitive type?",
+          "c7_rank": 3,
+          "current_rank": 10,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q014",
+          "question": "Can an MCP tool return a Pydantic model?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q015",
+          "question": "Can an MCP tool return a TypedDict?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q016",
+          "question": "Can an MCP tool return a plain untyped class?",
+          "c7_rank": 2,
+          "current_rank": 1,
+          "transition": "IMPROVED"
+        },
+        {
+          "id": "q017",
+          "question": "How do I return CallToolResult directly from an MCP tool?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q018",
+          "question": "How do I mark an MCP tool result as an error?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q019",
+          "question": "How do I use _meta in an MCP tool result?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q020",
+          "question": "What is the low-level MCP Server class used for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q021",
+          "question": "When should I use the low-level MCP Server instead of FastMCP?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q022",
+          "question": "How do I define a tool with the low-level MCP Server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q023",
+          "question": "What arguments does a low-level MCP tool handler receive?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q024",
+          "question": "How does a low-level MCP server dispatch multiple tools?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q026",
+          "question": "How can Pydantic generate an MCP JSON Schema?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q027",
+          "question": "How do I create an MCP prompt in Python?",
+          "c7_rank": 1,
+          "current_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q028",
+          "question": "Who controls an MCP prompt?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q029",
+          "question": "What type are MCP prompt arguments?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q030",
+          "question": "How can an MCP prompt create a multi-turn conversation?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q031",
+          "question": "How do I make an MCP resource?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q032",
+          "question": "How do MCP resource subscriptions work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q033",
+          "question": "How do I run an MCP Python server with the development CLI?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q034",
+          "question": "What does mcp[cli] add to the MCP Python SDK?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q035",
+          "question": "What does the MCP Inspector do?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q036",
+          "question": "Why does MCP Inspector need Node.js tooling?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q037",
+          "question": "What transports does the MCP Python SDK support?",
+          "c7_rank": 4,
+          "current_rank": 4,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q038",
+          "question": "How do I connect an MCP client using stdio?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q039",
+          "question": "Why does MCP require initialization before normal client operations?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q040",
+          "question": "What is MCP protocol version negotiation for?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q042",
+          "question": "How do MCP dependencies work in a tool?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q043",
+          "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q044",
+          "question": "How do MCP elicitation results work?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q045",
+          "question": "Can MCP elicitation schemas have default values?",
+          "c7_rank": 2,
+          "current_rank": 1,
+          "transition": "IMPROVED"
+        },
+        {
+          "id": "q046",
+          "question": "What is structured output in MCP?",
+          "c7_rank": 2,
+          "current_rank": 2,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q047",
+          "question": "How is a low-level MCP output schema specified?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q048",
+          "question": "What is the difference between FastMCP and the low-level Server?",
+          "c7_rank": 3,
+          "current_rank": 3,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q049",
+          "question": "What changed from MCP Python SDK v1 to v2?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        },
+        {
+          "id": "q050",
+          "question": "How should I handle an unknown tool name in a low-level MCP server?",
+          "c7_rank": 1,
+          "current_rank": 1,
+          "transition": "UNCHANGED"
+        }
+      ]
+    }
+  },
+  "pairwise_comparison": {
+    "C0_none": {
+      "C1_recap": {
+        "improved": 5,
+        "worsened": 2,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C2_installation": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C3_requirements": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C4_recap_installation": {
+        "improved": 5,
+        "worsened": 2,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C5_recap_requirements": {
+        "improved": 5,
+        "worsened": 2,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C6_installation_requirements": {
+        "improved": 1,
+        "worsened": 0,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C7_all_three": {
+        "improved": 6,
+        "worsened": 2,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      }
+    },
+    "C1_recap": {
+      "C0_none": {
+        "improved": 2,
+        "worsened": 5,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C2_installation": {
+        "improved": 2,
+        "worsened": 5,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C3_requirements": {
+        "improved": 2,
+        "worsened": 5,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C4_recap_installation": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C5_recap_requirements": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C6_installation_requirements": {
+        "improved": 3,
+        "worsened": 5,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C7_all_three": {
+        "improved": 1,
+        "worsened": 0,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      }
+    },
+    "C2_installation": {
+      "C0_none": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C1_recap": {
+        "improved": 5,
+        "worsened": 2,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C3_requirements": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C4_recap_installation": {
+        "improved": 5,
+        "worsened": 2,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C5_recap_requirements": {
+        "improved": 5,
+        "worsened": 2,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C6_installation_requirements": {
+        "improved": 1,
+        "worsened": 0,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C7_all_three": {
+        "improved": 6,
+        "worsened": 2,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      }
+    },
+    "C3_requirements": {
+      "C0_none": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C1_recap": {
+        "improved": 5,
+        "worsened": 2,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C2_installation": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C4_recap_installation": {
+        "improved": 5,
+        "worsened": 2,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C5_recap_requirements": {
+        "improved": 5,
+        "worsened": 2,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C6_installation_requirements": {
+        "improved": 1,
+        "worsened": 0,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C7_all_three": {
+        "improved": 6,
+        "worsened": 2,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      }
+    },
+    "C4_recap_installation": {
+      "C0_none": {
+        "improved": 2,
+        "worsened": 5,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C1_recap": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C2_installation": {
+        "improved": 2,
+        "worsened": 5,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C3_requirements": {
+        "improved": 2,
+        "worsened": 5,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C5_recap_requirements": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C6_installation_requirements": {
+        "improved": 3,
+        "worsened": 5,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C7_all_three": {
+        "improved": 1,
+        "worsened": 0,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      }
+    },
+    "C5_recap_requirements": {
+      "C0_none": {
+        "improved": 2,
+        "worsened": 5,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C1_recap": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C2_installation": {
+        "improved": 2,
+        "worsened": 5,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C3_requirements": {
+        "improved": 2,
+        "worsened": 5,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C4_recap_installation": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C6_installation_requirements": {
+        "improved": 3,
+        "worsened": 5,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C7_all_three": {
+        "improved": 1,
+        "worsened": 0,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      }
+    },
+    "C6_installation_requirements": {
+      "C0_none": {
+        "improved": 0,
+        "worsened": 1,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C1_recap": {
+        "improved": 5,
+        "worsened": 3,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C2_installation": {
+        "improved": 0,
+        "worsened": 1,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C3_requirements": {
+        "improved": 0,
+        "worsened": 1,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C4_recap_installation": {
+        "improved": 5,
+        "worsened": 3,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C5_recap_requirements": {
+        "improved": 5,
+        "worsened": 3,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C7_all_three": {
+        "improved": 5,
+        "worsened": 2,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      }
+    },
+    "C7_all_three": {
+      "C0_none": {
+        "improved": 2,
+        "worsened": 6,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C1_recap": {
+        "improved": 0,
+        "worsened": 1,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C2_installation": {
+        "improved": 2,
+        "worsened": 6,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C3_requirements": {
+        "improved": 2,
+        "worsened": 6,
+        "unchanged": 40,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C4_recap_installation": {
+        "improved": 0,
+        "worsened": 1,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C5_recap_requirements": {
+        "improved": 0,
+        "worsened": 1,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "C6_installation_requirements": {
+        "improved": 2,
+        "worsened": 5,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      }
+    }
+  },
+  "e23_logic_verification": {
+    "mismatch_count": 0
+  },
+  "experimental_note": "E25 keeps the non-generic section-quality heuristics from E23 and evaluates all 2^3 combinations of the three candidate generic rules identified by E24."
+}

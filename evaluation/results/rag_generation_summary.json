@@ -1,0 +1,29 @@
+{
+  "dataset": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\mcp_rag_eval_dataset.jsonl",
+  "question_count": 50,
+  "successful_questions": 50,
+  "failed_questions": 0,
+  "retrieval": {
+    "mode": "vector_dedup",
+    "candidate_limit": 100,
+    "top_k": 10,
+    "max_chunks_per_source": 1,
+    "retrieval_hit_rate": 0.64,
+    "retrieval_hits": 32,
+    "retrieval_misses": 18,
+    "avg_latency_ms": 71.85
+  },
+  "generation": {
+    "model": "agnes-2.5-flash",
+    "avg_latency_ms": 6346.34
+  },
+  "errors": [],
+  "end_to_end": {
+    "total_latency_ms": 418429.66,
+    "avg_latency_ms": 8368.59
+  },
+  "batch": {
+    "batch_size": 3,
+    "batch_delay_seconds": 4
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "experiment": "E21_full_database_representation",
+  "dataset": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\mcp_rag_eval_dataset.jsonl",
+  "chunks": 751,
+  "question_count": 48,
+  "candidate_limit": 100,
+  "top_k": 10,
+  "max_chunks_per_source": 1,
+  "representations": [
+    "title_content",
+    "title_section_content"
+  ],
+  "summary": {
+    "title_content": {
+      "hit@1": 0.5833333333333334,
+      "hit@3": 0.8541666666666666,
+      "hit@5": 0.9583333333333334,
+      "hit@10": 1.0,
+      "recall@10": 0.875,
+      "mrr": 0.7336805555555556,
+      "questions": 48,
+      "hits@1": 28,
+      "hits@3": 41,
+      "hits@5": 46,
+      "hits@10": 48,
+      "embedding_seconds": 247.54915910004638,
+      "retrieval_seconds": 1.048713600030169,
+      "avg_retrieval_latency_ms": 21.382870826831397
+    },
+    "title_section_content": {
+      "hit@1": 0.6041666666666666,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7579861111111111,
+      "questions": 48,
+      "hits@1": 29,
+      "hits@3": 43,
+      "hits@5": 47,
+      "hits@10": 48,
+      "embedding_seconds": 246.84533280017786,
+      "retrieval_seconds": 0.8246204999741167,
+      "avg_retrieval_latency_ms": 16.868958322447725
+    }
+  },
+  "comparison": {
+    "hit@1": {
+      "title_content": 0.5833333333333334,
+      "title_section_content": 0.6041666666666666,
+      "delta": 0.02083333333333326
+    },
+    "hit@3": {
+      "title_content": 0.8541666666666666,
+      "title_section_content": 0.8958333333333334,
+      "delta": 0.04166666666666674
+    },
+    "hit@5": {
+      "title_content": 0.9583333333333334,
+      "title_section_content": 0.9791666666666666,
+      "delta": 0.02083333333333326
+    },
+    "hit@10": {
+      "title_content": 1.0,
+      "title_section_content": 1.0,
+      "delta": 0.0
+    },
+    "recall@10": {
+      "title_content": 0.875,
+      "title_section_content": 0.8854166666666666,
+      "delta": 0.01041666666666663
+    },
+    "mrr": {
+      "title_content": 0.7336805555555556,
+      "title_section_content": 0.7579861111111111,
+      "delta": 0.02430555555555558
+    }
+  }
+}

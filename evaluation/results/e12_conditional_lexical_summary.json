@@ -1,0 +1,834 @@
+{
+  "experiment": "E12_conditional_lexical",
+  "dataset": "mcp_rag_eval_dataset.jsonl",
+  "questions": 48,
+  "pipeline": {
+    "candidate_limit": 100,
+    "top_k": 10,
+    "max_chunks_per_source": 1,
+    "alpha": 0.05,
+    "semantic_gap_threshold": 0.01,
+    "lexical_gap_threshold": 0.2
+  },
+  "metrics": {
+    "E6": {
+      "hit@1": 0.5,
+      "hit@3": 0.6666666666666666,
+      "hit@5": 0.8958333333333334,
+      "hit@10": 1.0,
+      "mrr": 0.6519345238095239,
+      "questions": 48,
+      "hits@10": 48,
+      "misses@10": 0
+    },
+    "E12": {
+      "hit@1": 0.4583333333333333,
+      "hit@3": 0.75,
+      "hit@5": 0.875,
+      "hit@10": 1.0,
+      "mrr": 0.6284722222222222,
+      "questions": 48,
+      "hits@10": 48,
+      "misses@10": 0
+    }
+  },
+  "rank_change": {
+    "improved": 5,
+    "worsened": 9,
+    "unchanged": 34
+  },
+  "candidate_statistics": {
+    "avg_candidates": 100,
+    "min_candidates": 100,
+    "max_candidates": 100
+  },
+  "details": [
+    {
+      "id": "q001",
+      "question": "How do I create an MCP tool in Python?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io",
+        "https://py.sdk.modelcontextprotocol.io/servers/tools"
+      ],
+      "e6": {
+        "gold_rank": 4,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 4,
+        "hit@10": true,
+        "conditional_boost_count": 5
+      }
+    },
+    {
+      "id": "q002",
+      "question": "How are MCP tool input schemas generated from Python functions?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "https://py.sdk.modelcontextprotocol.io/protocol"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q003",
+      "question": "How do I make an MCP tool parameter optional?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 4
+      }
+    },
+    {
+      "id": "q004",
+      "question": "How do I describe an MCP tool parameter?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 3
+      }
+    },
+    {
+      "id": "q005",
+      "question": "How do I define an enum parameter for an MCP tool?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q006",
+      "question": "How do I use a Pydantic model as an MCP tool input?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "https://py.sdk.modelcontextprotocol.io/protocol"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 4
+      }
+    },
+    {
+      "id": "q007",
+      "question": "What is the difference between an MCP tool and a resource?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/resources",
+        "https://py.sdk.modelcontextprotocol.io/servers/tools"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 5
+      }
+    },
+    {
+      "id": "q008",
+      "question": "How do MCP tool errors work in FastMCP?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/whats-new",
+        "https://py.sdk.modelcontextprotocol.io/servers/handling-errors"
+      ],
+      "e6": {
+        "gold_rank": 2,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 2,
+        "hit@10": true,
+        "conditional_boost_count": 4
+      }
+    },
+    {
+      "id": "q009",
+      "question": "How can an MCP tool report progress?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/progress"
+      ],
+      "e6": {
+        "gold_rank": 2,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 2,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q010",
+      "question": "How do I access MCP Context inside a tool?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/context"
+      ],
+      "e6": {
+        "gold_rank": 5,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 5,
+        "hit@10": true,
+        "conditional_boost_count": 3
+      }
+    },
+    {
+      "id": "q011",
+      "question": "What information is available from MCP Context?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/context"
+      ],
+      "e6": {
+        "gold_rank": 2,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 3,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q012",
+      "question": "How do I return structured output from an MCP tool?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output",
+        "https://py.sdk.modelcontextprotocol.io/servers/tools"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 8
+      }
+    },
+    {
+      "id": "q013",
+      "question": "What happens when an MCP tool returns a primitive type?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+      ],
+      "e6": {
+        "gold_rank": 4,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 4,
+        "hit@10": true,
+        "conditional_boost_count": 5
+      }
+    },
+    {
+      "id": "q014",
+      "question": "Can an MCP tool return a Pydantic model?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+      ],
+      "e6": {
+        "gold_rank": 4,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 6,
+        "hit@10": true,
+        "conditional_boost_count": 5
+      }
+    },
+    {
+      "id": "q015",
+      "question": "Can an MCP tool return a TypedDict?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 4
+      }
+    },
+    {
+      "id": "q016",
+      "question": "Can an MCP tool return a plain untyped class?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+      ],
+      "e6": {
+        "gold_rank": 5,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 4,
+        "hit@10": true,
+        "conditional_boost_count": 7
+      }
+    },
+    {
+      "id": "q017",
+      "question": "How do I return CallToolResult directly from an MCP tool?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "https://py.sdk.modelcontextprotocol.io/server"
+      ],
+      "e6": {
+        "gold_rank": 4,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 6,
+        "hit@10": true,
+        "conditional_boost_count": 3
+      }
+    },
+    {
+      "id": "q018",
+      "question": "How do I mark an MCP tool result as an error?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/handling-errors"
+      ],
+      "e6": {
+        "gold_rank": 4,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 3,
+        "hit@10": true,
+        "conditional_boost_count": 5
+      }
+    },
+    {
+      "id": "q019",
+      "question": "How do I use _meta in an MCP tool result?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+      ],
+      "e6": {
+        "gold_rank": 2,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 2,
+        "hit@10": true,
+        "conditional_boost_count": 6
+      }
+    },
+    {
+      "id": "q020",
+      "question": "What is the low-level MCP Server class used for?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+      ],
+      "e6": {
+        "gold_rank": 3,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 3,
+        "hit@10": true,
+        "conditional_boost_count": 6
+      }
+    },
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+      ],
+      "e6": {
+        "gold_rank": 7,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 10,
+        "hit@10": true,
+        "conditional_boost_count": 3
+      }
+    },
+    {
+      "id": "q022",
+      "question": "How do I define a tool with the low-level MCP Server?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q023",
+      "question": "What arguments does a low-level MCP tool handler receive?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+      ],
+      "e6": {
+        "gold_rank": 4,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 5,
+        "hit@10": true,
+        "conditional_boost_count": 6
+      }
+    },
+    {
+      "id": "q024",
+      "question": "How does a low-level MCP server dispatch multiple tools?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+      ],
+      "e6": {
+        "gold_rank": 6,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 3,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q026",
+      "question": "How can Pydantic generate an MCP JSON Schema?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/structured-output",
+        "https://py.sdk.modelcontextprotocol.io/servers/tools"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 5
+      }
+    },
+    {
+      "id": "q027",
+      "question": "How do I create an MCP prompt in Python?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/prompts"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 4
+      }
+    },
+    {
+      "id": "q028",
+      "question": "Who controls an MCP prompt?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/prompts"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 4
+      }
+    },
+    {
+      "id": "q029",
+      "question": "What type are MCP prompt arguments?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/prompts"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 6
+      }
+    },
+    {
+      "id": "q030",
+      "question": "How can an MCP prompt create a multi-turn conversation?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/servers/prompts"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 6
+      }
+    },
+    {
+      "id": "q031",
+      "question": "How do I make an MCP resource?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io",
+        "https://py.sdk.modelcontextprotocol.io/server"
+      ],
+      "e6": {
+        "gold_rank": 6,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 6,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q032",
+      "question": "How do MCP resource subscriptions work?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions",
+        "https://py.sdk.modelcontextprotocol.io/whats-new"
+      ],
+      "e6": {
+        "gold_rank": 4,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 4,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q033",
+      "question": "How do I run an MCP Python server with the development CLI?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io",
+        "https://py.sdk.modelcontextprotocol.io/get-started"
+      ],
+      "e6": {
+        "gold_rank": 6,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 6,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q034",
+      "question": "What does mcp[cli] add to the MCP Python SDK?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/get-started/installation"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 4
+      }
+    },
+    {
+      "id": "q035",
+      "question": "What does the MCP Inspector do?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io",
+        "https://py.sdk.modelcontextprotocol.io/get-started"
+      ],
+      "e6": {
+        "gold_rank": 2,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 2,
+        "hit@10": true,
+        "conditional_boost_count": 3
+      }
+    },
+    {
+      "id": "q036",
+      "question": "Why does MCP Inspector need Node.js tooling?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 1
+      }
+    },
+    {
+      "id": "q037",
+      "question": "What transports does the MCP Python SDK support?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/v1",
+        "https://py.sdk.modelcontextprotocol.io/client/transports"
+      ],
+      "e6": {
+        "gold_rank": 4,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 6,
+        "hit@10": true,
+        "conditional_boost_count": 6
+      }
+    },
+    {
+      "id": "q038",
+      "question": "How do I connect an MCP client using stdio?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/client/transports",
+        "https://py.sdk.modelcontextprotocol.io/client"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 4
+      }
+    },
+    {
+      "id": "q039",
+      "question": "Why does MCP require initialization before normal client operations?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/protocol-versions",
+        "https://py.sdk.modelcontextprotocol.io/protocol"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 0
+      }
+    },
+    {
+      "id": "q040",
+      "question": "What is MCP protocol version negotiation for?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/protocol-versions",
+        "https://py.sdk.modelcontextprotocol.io/protocol"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 4
+      }
+    },
+    {
+      "id": "q042",
+      "question": "How do MCP dependencies work in a tool?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/dependencies"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q043",
+      "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip",
+        "https://py.sdk.modelcontextprotocol.io/handlers/dependencies"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 2,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q044",
+      "question": "How do MCP elicitation results work?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/elicitation"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 3
+      }
+    },
+    {
+      "id": "q045",
+      "question": "Can MCP elicitation schemas have default values?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/handlers/elicitation"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 3,
+        "hit@10": true,
+        "conditional_boost_count": 3
+      }
+    },
+    {
+      "id": "q046",
+      "question": "What is structured output in MCP?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "https://py.sdk.modelcontextprotocol.io/server"
+      ],
+      "e6": {
+        "gold_rank": 4,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 3,
+        "hit@10": true,
+        "conditional_boost_count": 4
+      }
+    },
+    {
+      "id": "q047",
+      "question": "How is a low-level MCP output schema specified?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+      ],
+      "e6": {
+        "gold_rank": 2,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 2,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q048",
+      "question": "What is the difference between FastMCP and the low-level Server?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+      ],
+      "e6": {
+        "gold_rank": 6,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 2,
+        "hit@10": true,
+        "conditional_boost_count": 4
+      }
+    },
+    {
+      "id": "q049",
+      "question": "What changed from MCP Python SDK v1 to v2?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/v1",
+        "https://py.sdk.modelcontextprotocol.io/migration"
+      ],
+      "e6": {
+        "gold_rank": 1,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 1,
+        "hit@10": true,
+        "conditional_boost_count": 2
+      }
+    },
+    {
+      "id": "q050",
+      "question": "How should I handle an unknown tool name in a low-level MCP server?",
+      "gold_sources": [
+        "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+      ],
+      "e6": {
+        "gold_rank": 2,
+        "hit@10": true
+      },
+      "e12": {
+        "gold_rank": 3,
+        "hit@10": true,
+        "conditional_boost_count": 5
+      }
+    }
+  ]
+}

@@ -1,0 +1,768 @@
+{
+  "experiment": "E31_final_case_review",
+  "purpose": "Final qualitative review of non-PASS E2 generation cases. No retrieval or generation optimization is performed.",
+  "total_questions": 48,
+  "non_pass_questions": 12,
+  "cases": [
+    {
+      "id": "q004",
+      "question": "How do I describe an MCP tool parameter?",
+      "label": "PARTIAL",
+      "scores": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "The answer omits the expected method of using Annotated with Pydantic Field for parameter descriptions, covering only type hints and low-level JSON Schema instead."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims about type hints, JSON Schema construction, and behavior are directly supported by the retrieved documentation sources."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All cited URLs correspond to relevant sources that substantiate the claims made in the generated answer."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/client/caching/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/middleware/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/sampling-and-roots/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "q011",
+      "question": "What information is available from MCP Context?",
+      "label": "PARTIAL",
+      "scores": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "Covers resource reading, progress reporting, and request metadata but misses client_id, FastMCP server access, and logging mentioned in the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims about ctx.read_resource, ctx.report_progress, ctx.input_responses, and low-level context attributes are supported by the retrieved documentation."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All cited URLs correspond to relevant sources that support the claims made in the generated answer."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/client/caching/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/progress/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/middleware/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/lifespan/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "q012",
+      "question": "How do I return structured output from an MCP tool?",
+      "label": "PARTIAL",
+      "scores": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "The answer describes the manual low-level approach and auto-detection but omits the main SDK method: using return type hints (Pydantic models, TypedDict, etc.) to automatically generate the output schema."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims about output_schema, structured_content, and structured_output are directly supported by the retrieved documentation sources."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs are relevant retrieved sources that support the content described in the answer."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/servers/media/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/middleware/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/progress/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/client/caching/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "label": "PARTIAL",
+      "scores": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "Covers manual schema control and custom methods but omits full control over CallToolResult fields, which is one of the three key items in the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by the retrieved documentation context, including pagination, middleware, hand-written schemas, and custom JSON-RPC methods."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "All cited URLs correspond to relevant sources in the retrieved context and support the claims made in the generated answer."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/run/authorization/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/middleware/",
+          "https://py.sdk.modelcontextprotocol.io/deprecated/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "q022",
+      "question": "How do I define a tool with the low-level MCP Server?",
+      "label": "FAIL",
+      "scores": {
+        "answer_correctness": {
+          "score": 0,
+          "reason": "The answer fails to explain how to define a tool on the low-level Server, instead claiming the documentation lacks examples."
+        },
+        "faithfulness": {
+          "score": 1,
+          "reason": "The answer's claims about the low-level Server are supported by retrieved context, but it incorrectly asserts no examples exist."
+        },
+        "citation_correctness": {
+          "score": 1,
+          "reason": "The cited URLs are relevant to the low-level Server, but they do not demonstrate the tool definition pattern the question asks for."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/testing/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/client/caching/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "q024",
+      "question": "How does a low-level MCP server dispatch multiple tools?",
+      "label": "FAIL",
+      "scores": {
+        "answer_correctness": {
+          "score": 0,
+          "reason": "The answer incorrectly claims the documentation lacks tool dispatch details, but Retrieved Source 28 shows `on_call_tool` routing by tool name, and Source 27 references it as part of the low-level Server API."
+        },
+        "faithfulness": {
+          "score": 0,
+          "reason": "The claim that the documentation does not contain dispatch details is contradicted by Retrieved Source 28, which provides a concrete example of `on_call_tool` routing."
+        },
+        "citation_correctness": {
+          "score": 0,
+          "reason": "No citation is provided for the claim that the documentation lacks details, and the cited Source 3 only describes the low-level Server generally, not tool dispatch."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/middleware/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/client/caching/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/client/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/sampling-and-roots/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "q026",
+      "question": "How can Pydantic generate an MCP JSON Schema?",
+      "label": "PARTIAL",
+      "scores": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "Covers parameter and return type schema generation but omits Literal enums and defaults making properties optional from the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims about $defs references, direct output schemas, and Field descriptions are directly supported by the retrieved documentation."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs are relevant sources from the retrieved documentation that support the answer's claims."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/run/authorization/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/client/oauth-clients/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/client/identity-assertion/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/lifespan/",
+          "https://py.sdk.modelcontextprotocol.io/servers/media/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "q030",
+      "question": "How can an MCP prompt create a multi-turn conversation?",
+      "label": "PARTIAL",
+      "scores": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "The answer describes InputRequiredResult/elicitation instead of directly returning a list of UserMessage and AssistantMessage objects as the expected answer states."
+        },
+        "faithfulness": {
+          "score": 1,
+          "reason": "Technical claims about InputRequiredResult and ctx.input_responses are supported by Retrieved Source 7, but the link to multi-turn conversation is not directly established in the documentation."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited URLs are relevant and appropriate sources for the multi-round-trip and prompts content discussed."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/sampling-and-roots/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/lifespan/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/testing/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/middleware/",
+          "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "q033",
+      "question": "How do I run an MCP Python server with the development CLI?",
+      "label": "PARTIAL",
+      "scores": {
+        "answer_correctness": {
+          "score": 2,
+          "reason": "The answer correctly states the command `uv run mcp dev server.py` and that it starts the server and opens the MCP Inspector, matching the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are supported by the retrieved documentation, including the command, Inspector reference, `--with` options, `npx` requirement, and `[cli]` extra."
+        },
+        "citation_correctness": {
+          "score": 1,
+          "reason": "The answer contains no citations despite relevant source URLs being available in the retrieved context, which should have been referenced."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/testing/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "q034",
+      "question": "What does mcp[cli] add to the MCP Python SDK?",
+      "label": "PARTIAL",
+      "scores": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "Describes CLI tools correctly but omits the specific dependencies (Typer and python-dotenv) mentioned in the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims about CLI subcommands and their behavior are fully supported by the retrieved documentation."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Cites the correct source URL that directly covers the mcp command-line tool functionality."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/testing/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/client/oauth-clients/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/lifespan/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/run/authorization/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/client/caching/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "q038",
+      "question": "How do I connect an MCP client using stdio?",
+      "label": "PARTIAL",
+      "scores": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "The answer correctly describes creating StdioServerParameters and using stdio_client with Client, but omits creating and initializing a ClientSession as specified in the expected answer."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims in the answer are directly supported by the retrieved documentation context, including transport wrapping, environment behavior, and async with usage."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "The cited URLs match the relevant sources and each claim is properly backed by the corresponding retrieved documentation."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/client/session-groups/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/run/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/pagination/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/client/oauth-clients/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/testing/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/progress/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "https://py.sdk.modelcontextprotocol.io/run/authorization/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "q043",
+      "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+      "label": "PARTIAL",
+      "scores": {
+        "answer_correctness": {
+          "score": 1,
+          "reason": "Covers SDK round-trip resolution and one-channel rule but misses key points: values should not come from the model, and resolved dependencies are excluded from the model-facing input schema."
+        },
+        "faithfulness": {
+          "score": 2,
+          "reason": "All claims are directly supported by Retrieved Source 1, which describes dependency resolution, the single-channel rule, and registration/runtime enforcement."
+        },
+        "citation_correctness": {
+          "score": 2,
+          "reason": "Both cited URLs are relevant sources that support the generated answer's key claims about dependencies and multi-round-trip behavior."
+        }
+      },
+      "retrieval": {
+        "hit": true,
+        "retrieved_urls": [
+          "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "https://py.sdk.modelcontextprotocol.io/migration/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+          "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "https://py.sdk.modelcontextprotocol.io/",
+          "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "https://py.sdk.modelcontextprotocol.io/servers/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "https://py.sdk.modelcontextprotocol.io/client/",
+          "https://py.sdk.modelcontextprotocol.io/run/opentelemetry/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "https://py.sdk.modelcontextprotocol.io/handlers/sampling-and-roots/"
+        ],
+        "top5": []
+      },
+      "answer": "",
+      "manual_classification": {
+        "error_type": "",
+        "notes": ""
+      }
+    }
+  ]
+}

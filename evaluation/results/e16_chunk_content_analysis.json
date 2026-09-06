@@ -1,0 +1,1179 @@
+{
+  "experiment": "E16_real_chunk_content_analysis",
+  "input": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\evaluation\\results\\e13_vector_error_profile.json",
+  "question_count": 9,
+  "focus_ids": [
+    "q010",
+    "q021",
+    "q048",
+    "q003",
+    "q011",
+    "q013",
+    "q019",
+    "q045",
+    "q050"
+  ],
+  "results": [
+    {
+      "id": "q010",
+      "question": "How do I access MCP Context inside a tool?",
+      "gold_rank": 13,
+      "e13": {
+        "top1": {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-60",
+          "title": "`MCPServer.get_context()` removed",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.get_context()` removed",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.8064065344818275,
+          "lexical_score": 0.5714285714285714,
+          "content_chars": 616,
+          "content_words": 90,
+          "code_ratio": 1.0,
+          "code_heavy": true,
+          "is_gold": false
+        },
+        "best_gold": {
+          "rank": 13,
+          "id": "mcp-python-sdk-handlers-context-7",
+          "title": "docs_src/context/tutorial002.py",
+          "section": "docs_src/context/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "similarity": 0.7095367139301738,
+          "lexical_score": 0.5714285714285714,
+          "content_chars": 1088,
+          "content_words": 153,
+          "code_ratio": 1.0,
+          "code_heavy": true,
+          "is_gold": true
+        },
+        "comparison": {
+          "semantic_gap_top1_minus_gold": 0.09686982055165372,
+          "lexical_gap_top1_minus_gold": 0.0,
+          "top1_longer_than_gold": false,
+          "top1_more_code_than_gold": false
+        }
+      },
+      "top1_identity_match": "id",
+      "gold_identity_match": "id",
+      "top1_chunk": {
+        "id": "mcp-python-sdk-migration-60",
+        "title": "`MCPServer.get_context()` removed",
+        "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.get_context()` removed",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "content": "`MCPServer.get_context()` has been removed. Context is now injected by the framework and passed explicitly — there is no ambient ContextVar to read from.\n\n**If you were calling `get_context()` from inside a tool/resource/prompt:** use the `ctx: Context` parameter injection instead.\n\n**Before (v1):**\n\n```python\n@mcp.tool()\nasync def my_tool(x: int) -> str:\n ctx = mcp.get_context()\n await ctx.report_progress(1, 2)\n return str(x)\n```\n\n**After (v2):**\n\n```python\nfrom mcp.server.mcpserver import Context\n\n@mcp.tool()\nasync def my_tool(x: int, ctx: Context) -> str:\n await ctx.report_progress(1, 2)\n return str(x)\n```",
+        "chars": 616,
+        "words": 80
+      },
+      "gold_chunk": {
+        "id": "mcp-python-sdk-handlers-context-7",
+        "title": "docs_src/context/tutorial002.py",
+        "section": "docs_src/context/tutorial002.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+        "content": "from mcp.server import MCPServer\nfrom mcp.server.mcpserver import Context\n\nmcp = MCPServer(\"Bookshop\")\n\n@mcp.resource(\"catalog://genres\")\ndef genres() -> str:\n \"\"\"The genres the catalog is organised into.\"\"\"\n return \"fiction, non-fiction, poetry\"\n\n@mcp.tool()\nasync def describe_catalog(ctx: Context) -> str:\n \"\"\"Describe how the catalog is organised.\"\"\"\n [contents] = await ctx.read_resource(\"catalog://genres\")\n return f\"The catalog is organised into: {contents.content}\"\n```\n\n`ctx.read_resource` resolves the URI through the same registry that serves `resources/read`, so a tool gets what a client would get: an iterable of `ReadResourceContents`, one per content block. For this URI there is one:\n\n```python\ncontents.content # 'fiction, non-fiction, poetry'\ncontents.mime_type # 'text/plain'\n```\n\n* `content` is exactly what `genres()` returned. One source of truth: the client browses the resource, your tools consume it, nobody copies the string.\n* `describe_catalog`'s only parameter is the `Context`, so its input schema has **no properties at all**. The model calls it with `{}`.",
+        "chars": 1088,
+        "words": 142
+      },
+      "representation_stats": {
+        "top1": {
+          "content_only": {
+            "chars": 616,
+            "words": 80,
+            "lexical_overlap": 0.5555555555555556
+          },
+          "title_content": {
+            "chars": 651,
+            "words": 82,
+            "lexical_overlap": 0.5555555555555556
+          },
+          "section_content": {
+            "chars": 732,
+            "words": 96,
+            "lexical_overlap": 0.5555555555555556
+          },
+          "title_section_content": {
+            "chars": 767,
+            "words": 98,
+            "lexical_overlap": 0.5555555555555556
+          }
+        },
+        "gold": {
+          "content_only": {
+            "chars": 1088,
+            "words": 142,
+            "lexical_overlap": 0.5555555555555556
+          },
+          "title_content": {
+            "chars": 1121,
+            "words": 143,
+            "lexical_overlap": 0.5555555555555556
+          },
+          "section_content": {
+            "chars": 1121,
+            "words": 143,
+            "lexical_overlap": 0.5555555555555556
+          },
+          "title_section_content": {
+            "chars": 1154,
+            "words": 144,
+            "lexical_overlap": 0.5555555555555556
+          }
+        },
+        "delta": {
+          "content_only": {
+            "char_delta_top1_minus_gold": -472,
+            "word_delta_top1_minus_gold": -62,
+            "lexical_delta_top1_minus_gold": 0.0
+          },
+          "title_content": {
+            "char_delta_top1_minus_gold": -470,
+            "word_delta_top1_minus_gold": -61,
+            "lexical_delta_top1_minus_gold": 0.0
+          },
+          "section_content": {
+            "char_delta_top1_minus_gold": -389,
+            "word_delta_top1_minus_gold": -47,
+            "lexical_delta_top1_minus_gold": 0.0
+          },
+          "title_section_content": {
+            "char_delta_top1_minus_gold": -387,
+            "word_delta_top1_minus_gold": -46,
+            "lexical_delta_top1_minus_gold": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "gold_rank": 18,
+      "e13": {
+        "top1": {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-40",
+          "title": "What is unchanged on `MCPServer`",
+          "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.8051773905754089,
+          "lexical_score": 0.45454545454545453,
+          "content_chars": 2277,
+          "content_words": 275,
+          "code_ratio": 0.8,
+          "code_heavy": true,
+          "is_gold": false
+        },
+        "best_gold": {
+          "rank": 18,
+          "id": "mcp-python-sdk-advanced-low-level-server-3",
+          "title": "Try it",
+          "section": "docs_src/lowlevel/tutorial001.py > Try it",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.6623979210853577,
+          "lexical_score": 0.45454545454545453,
+          "content_chars": 1096,
+          "content_words": 166,
+          "code_ratio": 1.0,
+          "code_heavy": true,
+          "is_gold": true
+        },
+        "comparison": {
+          "semantic_gap_top1_minus_gold": 0.14277946949005127,
+          "lexical_gap_top1_minus_gold": 0.0,
+          "top1_longer_than_gold": true,
+          "top1_more_code_than_gold": false
+        }
+      },
+      "top1_identity_match": "id",
+      "gold_identity_match": "id",
+      "top1_chunk": {
+        "id": "mcp-python-sdk-migration-40",
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "content": "Beyond the changes covered in this section, the everyday `FastMCP` surface carries over to `MCPServer` as-is:\n\n- **Decorators.** `@mcp.tool()`, `@mcp.resource()`, `@mcp.prompt()`, and `@mcp.completion()` take the same arguments and handler signatures as v1. The lowlevel [`on_completion` reshape](#lowlevel-server-decorator-based-handlers-replaced-with-constructor-on_-params) applies only to the lowlevel `Server`; a high-level `@mcp.completion()` handler is still called as `(ref, argument, context)`.\n- **Tool return handling.** A returned `CallToolResult` (including an `Annotated[CallToolResult, YourModel]` output schema, and `_meta`) is passed through, `Image` and `Audio` convert to content blocks as before, ready-made content blocks are kept as-is, and dict, list, scalar, and model returns are wrapped into `content` and `structured_content` by the same rules.\n- **Listing and registration methods.** `list_tools()`, `list_resources()`, `list_resource_templates()`, and `list_prompts()` return the same lists and are still what the protocol handlers call, so subclass overrides still take effect. `add_tool()`, `add_resource()`, and `add_prompt()` are unchanged.\n- **Helpers.** `Image.to_image_content()`, `Audio.to_audio_content()`, and the prompt `Message`, `UserMessage`, and `AssistantMessage` classes.\n- **Lifespan.** The `lifespan=` constructor argument and `ctx.request_context.lifespan_context` work as before, and the class is still generic over the lifespan result: `FastMCP[MyState]` becomes `MCPServer[MyState]`. (`Context`'s own type parameters did change; see [`RequestContext` type parameters simplified](#requestcontext-type-parameters-simplified).)\n- **Tool internals.** `Tool`, `Tool.from_function()`, `FuncMetadata`, `ArgModelBase`, and `func_metadata()` keep their v1 shapes; the one change is the now-required `context` argument to `Tool.run()`, described [below](#mcpservercall_tool-read_resource-get_prompt-now-accept-a-context-parameter).\n- **Auxiliary import paths.** `TransportSecuritySettings` (`mcp.server.transport_security`) and `AcceptedElicitation`/`DeclinedElicitation`/`CancelledElicitation` (`mcp.server.elicitation`) have not moved; the server auth surface is inventoried under [Unchanged auth surfaces](#unchanged-auth-surfaces).",
+        "chars": 2277,
+        "words": 231
+      },
+      "gold_chunk": {
+        "id": "mcp-python-sdk-advanced-low-level-server-3",
+        "title": "Try it",
+        "section": "docs_src/lowlevel/tutorial001.py > Try it",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "content": "There is no Inspector for this one: `mcp dev` and `mcp run` only accept an `MCPServer`. The in-memory `Client` doesn't care; it takes a low-level `Server` exactly like it takes an `MCPServer`:\n\n```python title=\"main.py\"\nimport asyncio\n\nfrom mcp import Client\n\nfrom server import server\n\nasync def main() -> None:\n async with Client(server) as client:\n result = await client.call_tool(\"search_books\", {\"query\": \"dune\", \"limit\": 5})\n print(result.content)\n\nasyncio.run(main())\n```\n\n```text\n[TextContent(type='text', text=\"Found 3 books matching 'dune' (showing up to 5).\", annotations=None, meta=None)]\n```\n\nThe same text the `@mcp.tool()` version produced. Two honest differences:\n\n* `result.structured_content` is `None`. The high-level server wraps a `-> str` into `{\"result\": ...}` for you; here nobody builds what you didn't build.\n* `list_tools` returns the schema **you** typed, character for character. The high-level version had `\"title\": \"Query\"` on every property and a `\"title\": \"search_booksArguments\"` at the root: Pydantic artifacts. Down here, if it's on the wire, you put it there.",
+        "chars": 1096,
+        "words": 151
+      },
+      "representation_stats": {
+        "top1": {
+          "content_only": {
+            "chars": 2277,
+            "words": 231,
+            "lexical_overlap": 0.4166666666666667
+          },
+          "title_content": {
+            "chars": 2311,
+            "words": 236,
+            "lexical_overlap": 0.4166666666666667
+          },
+          "section_content": {
+            "chars": 2392,
+            "words": 248,
+            "lexical_overlap": 0.4166666666666667
+          },
+          "title_section_content": {
+            "chars": 2426,
+            "words": 253,
+            "lexical_overlap": 0.4166666666666667
+          }
+        },
+        "gold": {
+          "content_only": {
+            "chars": 1096,
+            "words": 151,
+            "lexical_overlap": 0.4166666666666667
+          },
+          "title_content": {
+            "chars": 1104,
+            "words": 153,
+            "lexical_overlap": 0.4166666666666667
+          },
+          "section_content": {
+            "chars": 1139,
+            "words": 155,
+            "lexical_overlap": 0.4166666666666667
+          },
+          "title_section_content": {
+            "chars": 1147,
+            "words": 157,
+            "lexical_overlap": 0.4166666666666667
+          }
+        },
+        "delta": {
+          "content_only": {
+            "char_delta_top1_minus_gold": 1181,
+            "word_delta_top1_minus_gold": 80,
+            "lexical_delta_top1_minus_gold": 0.0
+          },
+          "title_content": {
+            "char_delta_top1_minus_gold": 1207,
+            "word_delta_top1_minus_gold": 83,
+            "lexical_delta_top1_minus_gold": 0.0
+          },
+          "section_content": {
+            "char_delta_top1_minus_gold": 1253,
+            "word_delta_top1_minus_gold": 93,
+            "lexical_delta_top1_minus_gold": 0.0
+          },
+          "title_section_content": {
+            "char_delta_top1_minus_gold": 1279,
+            "word_delta_top1_minus_gold": 96,
+            "lexical_delta_top1_minus_gold": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "q048",
+      "question": "What is the difference between FastMCP and the low-level Server?",
+      "gold_rank": 17,
+      "e13": {
+        "top1": {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-40",
+          "title": "What is unchanged on `MCPServer`",
+          "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7684602737426758,
+          "lexical_score": 0.7,
+          "content_chars": 2277,
+          "content_words": 275,
+          "code_ratio": 0.8,
+          "code_heavy": true,
+          "is_gold": false
+        },
+        "best_gold": {
+          "rank": 17,
+          "id": "mcp-python-sdk-advanced-low-level-server-3",
+          "title": "Try it",
+          "section": "docs_src/lowlevel/tutorial001.py > Try it",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.6118857860565186,
+          "lexical_score": 0.7,
+          "content_chars": 1096,
+          "content_words": 166,
+          "code_ratio": 1.0,
+          "code_heavy": true,
+          "is_gold": true
+        },
+        "comparison": {
+          "semantic_gap_top1_minus_gold": 0.15657448768615723,
+          "lexical_gap_top1_minus_gold": 0.0,
+          "top1_longer_than_gold": true,
+          "top1_more_code_than_gold": false
+        }
+      },
+      "top1_identity_match": "id",
+      "gold_identity_match": "id",
+      "top1_chunk": {
+        "id": "mcp-python-sdk-migration-40",
+        "title": "What is unchanged on `MCPServer`",
+        "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "content": "Beyond the changes covered in this section, the everyday `FastMCP` surface carries over to `MCPServer` as-is:\n\n- **Decorators.** `@mcp.tool()`, `@mcp.resource()`, `@mcp.prompt()`, and `@mcp.completion()` take the same arguments and handler signatures as v1. The lowlevel [`on_completion` reshape](#lowlevel-server-decorator-based-handlers-replaced-with-constructor-on_-params) applies only to the lowlevel `Server`; a high-level `@mcp.completion()` handler is still called as `(ref, argument, context)`.\n- **Tool return handling.** A returned `CallToolResult` (including an `Annotated[CallToolResult, YourModel]` output schema, and `_meta`) is passed through, `Image` and `Audio` convert to content blocks as before, ready-made content blocks are kept as-is, and dict, list, scalar, and model returns are wrapped into `content` and `structured_content` by the same rules.\n- **Listing and registration methods.** `list_tools()`, `list_resources()`, `list_resource_templates()`, and `list_prompts()` return the same lists and are still what the protocol handlers call, so subclass overrides still take effect. `add_tool()`, `add_resource()`, and `add_prompt()` are unchanged.\n- **Helpers.** `Image.to_image_content()`, `Audio.to_audio_content()`, and the prompt `Message`, `UserMessage`, and `AssistantMessage` classes.\n- **Lifespan.** The `lifespan=` constructor argument and `ctx.request_context.lifespan_context` work as before, and the class is still generic over the lifespan result: `FastMCP[MyState]` becomes `MCPServer[MyState]`. (`Context`'s own type parameters did change; see [`RequestContext` type parameters simplified](#requestcontext-type-parameters-simplified).)\n- **Tool internals.** `Tool`, `Tool.from_function()`, `FuncMetadata`, `ArgModelBase`, and `func_metadata()` keep their v1 shapes; the one change is the now-required `context` argument to `Tool.run()`, described [below](#mcpservercall_tool-read_resource-get_prompt-now-accept-a-context-parameter).\n- **Auxiliary import paths.** `TransportSecuritySettings` (`mcp.server.transport_security`) and `AcceptedElicitation`/`DeclinedElicitation`/`CancelledElicitation` (`mcp.server.elicitation`) have not moved; the server auth surface is inventoried under [Unchanged auth surfaces](#unchanged-auth-surfaces).",
+        "chars": 2277,
+        "words": 231
+      },
+      "gold_chunk": {
+        "id": "mcp-python-sdk-advanced-low-level-server-3",
+        "title": "Try it",
+        "section": "docs_src/lowlevel/tutorial001.py > Try it",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "content": "There is no Inspector for this one: `mcp dev` and `mcp run` only accept an `MCPServer`. The in-memory `Client` doesn't care; it takes a low-level `Server` exactly like it takes an `MCPServer`:\n\n```python title=\"main.py\"\nimport asyncio\n\nfrom mcp import Client\n\nfrom server import server\n\nasync def main() -> None:\n async with Client(server) as client:\n result = await client.call_tool(\"search_books\", {\"query\": \"dune\", \"limit\": 5})\n print(result.content)\n\nasyncio.run(main())\n```\n\n```text\n[TextContent(type='text', text=\"Found 3 books matching 'dune' (showing up to 5).\", annotations=None, meta=None)]\n```\n\nThe same text the `@mcp.tool()` version produced. Two honest differences:\n\n* `result.structured_content` is `None`. The high-level server wraps a `-> str` into `{\"result\": ...}` for you; here nobody builds what you didn't build.\n* `list_tools` returns the schema **you** typed, character for character. The high-level version had `\"title\": \"Query\"` on every property and a `\"title\": \"search_booksArguments\"` at the root: Pydantic artifacts. Down here, if it's on the wire, you put it there.",
+        "chars": 1096,
+        "words": 151
+      },
+      "representation_stats": {
+        "top1": {
+          "content_only": {
+            "chars": 2277,
+            "words": 231,
+            "lexical_overlap": 0.7
+          },
+          "title_content": {
+            "chars": 2311,
+            "words": 236,
+            "lexical_overlap": 0.7
+          },
+          "section_content": {
+            "chars": 2392,
+            "words": 248,
+            "lexical_overlap": 0.7
+          },
+          "title_section_content": {
+            "chars": 2426,
+            "words": 253,
+            "lexical_overlap": 0.7
+          }
+        },
+        "gold": {
+          "content_only": {
+            "chars": 1096,
+            "words": 151,
+            "lexical_overlap": 0.7
+          },
+          "title_content": {
+            "chars": 1104,
+            "words": 153,
+            "lexical_overlap": 0.7
+          },
+          "section_content": {
+            "chars": 1139,
+            "words": 155,
+            "lexical_overlap": 0.7
+          },
+          "title_section_content": {
+            "chars": 1147,
+            "words": 157,
+            "lexical_overlap": 0.7
+          }
+        },
+        "delta": {
+          "content_only": {
+            "char_delta_top1_minus_gold": 1181,
+            "word_delta_top1_minus_gold": 80,
+            "lexical_delta_top1_minus_gold": 0.0
+          },
+          "title_content": {
+            "char_delta_top1_minus_gold": 1207,
+            "word_delta_top1_minus_gold": 83,
+            "lexical_delta_top1_minus_gold": 0.0
+          },
+          "section_content": {
+            "char_delta_top1_minus_gold": 1253,
+            "word_delta_top1_minus_gold": 93,
+            "lexical_delta_top1_minus_gold": 0.0
+          },
+          "title_section_content": {
+            "char_delta_top1_minus_gold": 1279,
+            "word_delta_top1_minus_gold": 96,
+            "lexical_delta_top1_minus_gold": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "q003",
+      "question": "How do I make an MCP tool parameter optional?",
+      "gold_rank": 3,
+      "e13": {
+        "top1": {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-14",
+          "title": "_meta remains the supported place for custom data, per the MCP spec",
+          "section": "_meta remains the supported place for custom data, per the MCP spec",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7363773584365845,
+          "lexical_score": 0.125,
+          "content_chars": 230,
+          "content_words": 28,
+          "code_ratio": 0.2,
+          "code_heavy": false,
+          "is_gold": false
+        },
+        "best_gold": {
+          "rank": 3,
+          "id": "mcp-python-sdk-servers-tools-15",
+          "title": "Recap",
+          "section": "docs_src/tools/tutorial005.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "similarity": 0.7128139946703317,
+          "lexical_score": 0.875,
+          "content_chars": 617,
+          "content_words": 93,
+          "code_ratio": 0.4,
+          "code_heavy": true,
+          "is_gold": true
+        },
+        "comparison": {
+          "semantic_gap_top1_minus_gold": 0.023563363766252787,
+          "lexical_gap_top1_minus_gold": -0.75,
+          "top1_longer_than_gold": false,
+          "top1_more_code_than_gold": false
+        }
+      },
+      "top1_identity_match": "id",
+      "gold_identity_match": "id",
+      "top1_chunk": {
+        "id": "mcp-python-sdk-migration-14",
+        "title": "_meta remains the supported place for custom data, per the MCP spec",
+        "section": "_meta remains the supported place for custom data, per the MCP spec",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "content": "params = CallToolRequestParams(\n name=\"my_tool\",\n arguments={},\n _meta={\"my_custom_key\": \"value\", \"another\": 123}, # OK, preserved\n)\n```\n\nIf you relied on extra fields round-tripping through MCP types, move that data into `_meta`.",
+        "chars": 230,
+        "words": 29
+      },
+      "gold_chunk": {
+        "id": "mcp-python-sdk-servers-tools-15",
+        "title": "Recap",
+        "section": "docs_src/tools/tutorial005.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "content": "* `@mcp.tool()` on a function makes it a tool. Name from the function, description from the docstring.\n* Type hints **are** the input schema. Defaults make arguments optional.\n* `Annotated[..., Field(...)]` adds descriptions and constraints; `Literal` adds enums.\n* A Pydantic model parameter is how you take a structured \"body\".\n* Bad arguments are rejected for you, with an error the model can read and recover from.\n* `async def` for I/O, plain `def` for everything else.\n\n**[Structured Output](https://py.sdk.modelcontextprotocol.io/servers/structured-output/index.md)** is what happens to the value you `return`.",
+        "chars": 617,
+        "words": 87
+      },
+      "representation_stats": {
+        "top1": {
+          "content_only": {
+            "chars": 230,
+            "words": 29,
+            "lexical_overlap": 0.1111111111111111
+          },
+          "title_content": {
+            "chars": 299,
+            "words": 41,
+            "lexical_overlap": 0.1111111111111111
+          },
+          "section_content": {
+            "chars": 299,
+            "words": 41,
+            "lexical_overlap": 0.1111111111111111
+          },
+          "title_section_content": {
+            "chars": 368,
+            "words": 53,
+            "lexical_overlap": 0.1111111111111111
+          }
+        },
+        "gold": {
+          "content_only": {
+            "chars": 617,
+            "words": 87,
+            "lexical_overlap": 0.8888888888888888
+          },
+          "title_content": {
+            "chars": 624,
+            "words": 88,
+            "lexical_overlap": 0.8888888888888888
+          },
+          "section_content": {
+            "chars": 656,
+            "words": 90,
+            "lexical_overlap": 0.8888888888888888
+          },
+          "title_section_content": {
+            "chars": 663,
+            "words": 91,
+            "lexical_overlap": 0.8888888888888888
+          }
+        },
+        "delta": {
+          "content_only": {
+            "char_delta_top1_minus_gold": -387,
+            "word_delta_top1_minus_gold": -58,
+            "lexical_delta_top1_minus_gold": -0.7777777777777777
+          },
+          "title_content": {
+            "char_delta_top1_minus_gold": -325,
+            "word_delta_top1_minus_gold": -47,
+            "lexical_delta_top1_minus_gold": -0.7777777777777777
+          },
+          "section_content": {
+            "char_delta_top1_minus_gold": -357,
+            "word_delta_top1_minus_gold": -49,
+            "lexical_delta_top1_minus_gold": -0.7777777777777777
+          },
+          "title_section_content": {
+            "char_delta_top1_minus_gold": -295,
+            "word_delta_top1_minus_gold": -38,
+            "lexical_delta_top1_minus_gold": -0.7777777777777777
+          }
+        }
+      }
+    },
+    {
+      "id": "q011",
+      "question": "What information is available from MCP Context?",
+      "gold_rank": 2,
+      "e13": {
+        "top1": {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-60",
+          "title": "`MCPServer.get_context()` removed",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.get_context()` removed",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.695310615934207,
+          "lexical_score": 0.5714285714285714,
+          "content_chars": 616,
+          "content_words": 90,
+          "code_ratio": 1.0,
+          "code_heavy": true,
+          "is_gold": false
+        },
+        "best_gold": {
+          "rank": 2,
+          "id": "mcp-python-sdk-handlers-context-7",
+          "title": "docs_src/context/tutorial002.py",
+          "section": "docs_src/context/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "similarity": 0.6851481011598183,
+          "lexical_score": 0.7142857142857143,
+          "content_chars": 1088,
+          "content_words": 153,
+          "code_ratio": 1.0,
+          "code_heavy": true,
+          "is_gold": true
+        },
+        "comparison": {
+          "semantic_gap_top1_minus_gold": 0.010162514774388676,
+          "lexical_gap_top1_minus_gold": -0.1428571428571429,
+          "top1_longer_than_gold": false,
+          "top1_more_code_than_gold": false
+        }
+      },
+      "top1_identity_match": "id",
+      "gold_identity_match": "id",
+      "top1_chunk": {
+        "id": "mcp-python-sdk-migration-60",
+        "title": "`MCPServer.get_context()` removed",
+        "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.get_context()` removed",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "content": "`MCPServer.get_context()` has been removed. Context is now injected by the framework and passed explicitly — there is no ambient ContextVar to read from.\n\n**If you were calling `get_context()` from inside a tool/resource/prompt:** use the `ctx: Context` parameter injection instead.\n\n**Before (v1):**\n\n```python\n@mcp.tool()\nasync def my_tool(x: int) -> str:\n ctx = mcp.get_context()\n await ctx.report_progress(1, 2)\n return str(x)\n```\n\n**After (v2):**\n\n```python\nfrom mcp.server.mcpserver import Context\n\n@mcp.tool()\nasync def my_tool(x: int, ctx: Context) -> str:\n await ctx.report_progress(1, 2)\n return str(x)\n```",
+        "chars": 616,
+        "words": 80
+      },
+      "gold_chunk": {
+        "id": "mcp-python-sdk-handlers-context-7",
+        "title": "docs_src/context/tutorial002.py",
+        "section": "docs_src/context/tutorial002.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+        "content": "from mcp.server import MCPServer\nfrom mcp.server.mcpserver import Context\n\nmcp = MCPServer(\"Bookshop\")\n\n@mcp.resource(\"catalog://genres\")\ndef genres() -> str:\n \"\"\"The genres the catalog is organised into.\"\"\"\n return \"fiction, non-fiction, poetry\"\n\n@mcp.tool()\nasync def describe_catalog(ctx: Context) -> str:\n \"\"\"Describe how the catalog is organised.\"\"\"\n [contents] = await ctx.read_resource(\"catalog://genres\")\n return f\"The catalog is organised into: {contents.content}\"\n```\n\n`ctx.read_resource` resolves the URI through the same registry that serves `resources/read`, so a tool gets what a client would get: an iterable of `ReadResourceContents`, one per content block. For this URI there is one:\n\n```python\ncontents.content # 'fiction, non-fiction, poetry'\ncontents.mime_type # 'text/plain'\n```\n\n* `content` is exactly what `genres()` returned. One source of truth: the client browses the resource, your tools consume it, nobody copies the string.\n* `describe_catalog`'s only parameter is the `Context`, so its input schema has **no properties at all**. The model calls it with `{}`.",
+        "chars": 1088,
+        "words": 142
+      },
+      "representation_stats": {
+        "top1": {
+          "content_only": {
+            "chars": 616,
+            "words": 80,
+            "lexical_overlap": 0.5714285714285714
+          },
+          "title_content": {
+            "chars": 651,
+            "words": 82,
+            "lexical_overlap": 0.5714285714285714
+          },
+          "section_content": {
+            "chars": 732,
+            "words": 96,
+            "lexical_overlap": 0.5714285714285714
+          },
+          "title_section_content": {
+            "chars": 767,
+            "words": 98,
+            "lexical_overlap": 0.5714285714285714
+          }
+        },
+        "gold": {
+          "content_only": {
+            "chars": 1088,
+            "words": 142,
+            "lexical_overlap": 0.7142857142857143
+          },
+          "title_content": {
+            "chars": 1121,
+            "words": 143,
+            "lexical_overlap": 0.7142857142857143
+          },
+          "section_content": {
+            "chars": 1121,
+            "words": 143,
+            "lexical_overlap": 0.7142857142857143
+          },
+          "title_section_content": {
+            "chars": 1154,
+            "words": 144,
+            "lexical_overlap": 0.7142857142857143
+          }
+        },
+        "delta": {
+          "content_only": {
+            "char_delta_top1_minus_gold": -472,
+            "word_delta_top1_minus_gold": -62,
+            "lexical_delta_top1_minus_gold": -0.1428571428571429
+          },
+          "title_content": {
+            "char_delta_top1_minus_gold": -470,
+            "word_delta_top1_minus_gold": -61,
+            "lexical_delta_top1_minus_gold": -0.1428571428571429
+          },
+          "section_content": {
+            "char_delta_top1_minus_gold": -389,
+            "word_delta_top1_minus_gold": -47,
+            "lexical_delta_top1_minus_gold": -0.1428571428571429
+          },
+          "title_section_content": {
+            "char_delta_top1_minus_gold": -387,
+            "word_delta_top1_minus_gold": -46,
+            "lexical_delta_top1_minus_gold": -0.1428571428571429
+          }
+        }
+      }
+    },
+    {
+      "id": "q013",
+      "question": "What happens when an MCP tool returns a primitive type?",
+      "gold_rank": 5,
+      "e13": {
+        "top1": {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-89",
+          "title": "Lowlevel `Server`: automatic return value wrapping removed",
+          "section": "After (v2) — the authenticated OAuth client (usually what you want) > Lowlevel Server > Lowlevel `Server`: automatic return value wrapping removed",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.6983993412972331,
+          "lexical_score": 0.0,
+          "content_chars": 440,
+          "content_words": 57,
+          "code_ratio": 0.4,
+          "code_heavy": true,
+          "is_gold": false
+        },
+        "best_gold": {
+          "rank": 5,
+          "id": "mcp-python-sdk-servers-structured-output-20",
+          "title": "Recap",
+          "section": "docs_src/structured_output/tutorial009.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "similarity": 0.6889831198474075,
+          "lexical_score": 0.4444444444444444,
+          "content_chars": 767,
+          "content_words": 114,
+          "code_ratio": 0.4,
+          "code_heavy": true,
+          "is_gold": true
+        },
+        "comparison": {
+          "semantic_gap_top1_minus_gold": 0.009416221449825679,
+          "lexical_gap_top1_minus_gold": -0.4444444444444444,
+          "top1_longer_than_gold": false,
+          "top1_more_code_than_gold": false
+        }
+      },
+      "top1_identity_match": "id",
+      "gold_identity_match": "id",
+      "top1_chunk": {
+        "id": "mcp-python-sdk-migration-89",
+        "title": "Lowlevel `Server`: automatic return value wrapping removed",
+        "section": "After (v2) — the authenticated OAuth client (usually what you want) > Lowlevel Server > Lowlevel `Server`: automatic return value wrapping removed",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "content": "The old decorator-based handlers performed significant automatic wrapping of return values. This magic has been removed — handlers now return fully constructed result types. If you want these conveniences, use `MCPServer` (previously `FastMCP`) instead of the lowlevel `Server`.\n\n**`call_tool()` — structured output wrapping removed:**\n\nThe old decorator accepted several return types and auto-wrapped them into `CallToolResult`:\n\n```python",
+        "chars": 440,
+        "words": 57
+      },
+      "gold_chunk": {
+        "id": "mcp-python-sdk-servers-structured-output-20",
+        "title": "Recap",
+        "section": "docs_src/structured_output/tutorial009.py > Recap",
+        "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+        "content": "* The **return type annotation** is the output schema. It's published in `tools/list` as `output_schema`.\n* Scalars, lists, tuples and unions are wrapped in `{\"result\": ...}`. Models, `TypedDict`s, dataclasses, annotated classes and `dict[str, ...]` are objects already and stay as they are.\n* Every result carries `content` (text, for the model) **and** `structured_content` (data, for the application).\n* What you return is validated against the schema. A mismatch is a tool error, not a corrupt result.\n* `structured_output=False` opts a tool out. A class without type hints opts out silently; watch for it.\n\nYou now own everything a tool can say back. Next, the second primitive: **[Resources](https://py.sdk.modelcontextprotocol.io/servers/resources/index.md)**.",
+        "chars": 767,
+        "words": 107
+      },
+      "representation_stats": {
+        "top1": {
+          "content_only": {
+            "chars": 440,
+            "words": 57,
+            "lexical_overlap": 0.0
+          },
+          "title_content": {
+            "chars": 500,
+            "words": 64,
+            "lexical_overlap": 0.0
+          },
+          "section_content": {
+            "chars": 588,
+            "words": 79,
+            "lexical_overlap": 0.1
+          },
+          "title_section_content": {
+            "chars": 648,
+            "words": 86,
+            "lexical_overlap": 0.1
+          }
+        },
+        "gold": {
+          "content_only": {
+            "chars": 767,
+            "words": 107,
+            "lexical_overlap": 0.5
+          },
+          "title_content": {
+            "chars": 774,
+            "words": 108,
+            "lexical_overlap": 0.5
+          },
+          "section_content": {
+            "chars": 818,
+            "words": 110,
+            "lexical_overlap": 0.5
+          },
+          "title_section_content": {
+            "chars": 825,
+            "words": 111,
+            "lexical_overlap": 0.5
+          }
+        },
+        "delta": {
+          "content_only": {
+            "char_delta_top1_minus_gold": -327,
+            "word_delta_top1_minus_gold": -50,
+            "lexical_delta_top1_minus_gold": -0.5
+          },
+          "title_content": {
+            "char_delta_top1_minus_gold": -274,
+            "word_delta_top1_minus_gold": -44,
+            "lexical_delta_top1_minus_gold": -0.5
+          },
+          "section_content": {
+            "char_delta_top1_minus_gold": -230,
+            "word_delta_top1_minus_gold": -31,
+            "lexical_delta_top1_minus_gold": -0.4
+          },
+          "title_section_content": {
+            "char_delta_top1_minus_gold": -177,
+            "word_delta_top1_minus_gold": -25,
+            "lexical_delta_top1_minus_gold": -0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "q019",
+      "question": "How do I use _meta in an MCP tool result?",
+      "gold_rank": 2,
+      "e13": {
+        "top1": {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-14",
+          "title": "_meta remains the supported place for custom data, per the MCP spec",
+          "section": "_meta remains the supported place for custom data, per the MCP spec",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7751080065836954,
+          "lexical_score": 0.2222222222222222,
+          "content_chars": 230,
+          "content_words": 28,
+          "code_ratio": 0.2,
+          "code_heavy": false,
+          "is_gold": false
+        },
+        "best_gold": {
+          "rank": 2,
+          "id": "mcp-python-sdk-advanced-low-level-server-10",
+          "title": "docs_src/lowlevel/tutorial004.py",
+          "section": "docs_src/lowlevel/tutorial004.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.750007145106162,
+          "lexical_score": 0.5555555555555556,
+          "content_chars": 1612,
+          "content_words": 181,
+          "code_ratio": 1.0,
+          "code_heavy": true,
+          "is_gold": true
+        },
+        "comparison": {
+          "semantic_gap_top1_minus_gold": 0.02510086147753343,
+          "lexical_gap_top1_minus_gold": -0.33333333333333337,
+          "top1_longer_than_gold": false,
+          "top1_more_code_than_gold": false
+        }
+      },
+      "top1_identity_match": "id",
+      "gold_identity_match": "id",
+      "top1_chunk": {
+        "id": "mcp-python-sdk-migration-14",
+        "title": "_meta remains the supported place for custom data, per the MCP spec",
+        "section": "_meta remains the supported place for custom data, per the MCP spec",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "content": "params = CallToolRequestParams(\n name=\"my_tool\",\n arguments={},\n _meta={\"my_custom_key\": \"value\", \"another\": 123}, # OK, preserved\n)\n```\n\nIf you relied on extra fields round-tripping through MCP types, move that data into `_meta`.",
+        "chars": 230,
+        "words": 29
+      },
+      "gold_chunk": {
+        "id": "mcp-python-sdk-advanced-low-level-server-10",
+        "title": "docs_src/lowlevel/tutorial004.py",
+        "section": "docs_src/lowlevel/tutorial004.py",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "content": "from mcp.server import Server, ServerRequestContext\nfrom mcp.types import (\n CallToolRequestParams,\n CallToolResult,\n ListToolsResult,\n PaginatedRequestParams,\n TextContent,\n Tool,\n)\n\nSEARCH_BOOKS = Tool(\n name=\"search_books\",\n description=\"Search the catalog by title or author.\",\n input_schema={\n \"type\": \"object\",\n \"properties\": {\"query\": {\"type\": \"string\"}, \"limit\": {\"type\": \"integer\"}},\n \"required\": [\"query\", \"limit\"],\n },\n output_schema={\n \"type\": \"object\",\n \"properties\": {\"matches\": {\"type\": \"integer\"}, \"query\": {\"type\": \"string\"}},\n \"required\": [\"matches\", \"query\"],\n },\n)\n\nasync def list_tools(ctx: ServerRequestContext, params: PaginatedRequestParams | None) -> ListToolsResult:\n return ListToolsResult(tools=[SEARCH_BOOKS])\n\nasync def call_tool(ctx: ServerRequestContext, params: CallToolRequestParams) -> CallToolResult:\n args = params.arguments or {}\n data = {\"matches\": 3, \"query\": args[\"query\"]}\n return CallToolResult(\n content=[TextContent(type=\"text\", text=f\"Found 3 books matching {args['query']!r}.\")],\n structured_content=data,\n _meta={\"bookshop/record_ids\": [\"bk_17\", \"bk_42\", \"bk_99\"]},\n )\n\nserver = Server(\"Bookshop\", on_list_tools=list_tools, on_call_tool=call_tool)\n```\n\n* You construct it as `_meta=`, the wire name. The client reads it back as `result.meta`.\n* Namespace your keys (`bookshop/record_ids`). The `io.modelcontextprotocol/*` keys are reserved by the protocol.\n\n!!! warning\n `_meta` is a convention between you and the client application, not a guarantee about what reaches\n the model. The host decides what it renders. Never put a secret in any part of a tool result.",
+        "chars": 1612,
+        "words": 173
+      },
+      "representation_stats": {
+        "top1": {
+          "content_only": {
+            "chars": 230,
+            "words": 29,
+            "lexical_overlap": 0.2
+          },
+          "title_content": {
+            "chars": 299,
+            "words": 41,
+            "lexical_overlap": 0.2
+          },
+          "section_content": {
+            "chars": 299,
+            "words": 41,
+            "lexical_overlap": 0.2
+          },
+          "title_section_content": {
+            "chars": 368,
+            "words": 53,
+            "lexical_overlap": 0.2
+          }
+        },
+        "gold": {
+          "content_only": {
+            "chars": 1612,
+            "words": 173,
+            "lexical_overlap": 0.5
+          },
+          "title_content": {
+            "chars": 1646,
+            "words": 174,
+            "lexical_overlap": 0.5
+          },
+          "section_content": {
+            "chars": 1646,
+            "words": 174,
+            "lexical_overlap": 0.5
+          },
+          "title_section_content": {
+            "chars": 1680,
+            "words": 175,
+            "lexical_overlap": 0.5
+          }
+        },
+        "delta": {
+          "content_only": {
+            "char_delta_top1_minus_gold": -1382,
+            "word_delta_top1_minus_gold": -144,
+            "lexical_delta_top1_minus_gold": -0.3
+          },
+          "title_content": {
+            "char_delta_top1_minus_gold": -1347,
+            "word_delta_top1_minus_gold": -133,
+            "lexical_delta_top1_minus_gold": -0.3
+          },
+          "section_content": {
+            "char_delta_top1_minus_gold": -1347,
+            "word_delta_top1_minus_gold": -133,
+            "lexical_delta_top1_minus_gold": -0.3
+          },
+          "title_section_content": {
+            "char_delta_top1_minus_gold": -1312,
+            "word_delta_top1_minus_gold": -122,
+            "lexical_delta_top1_minus_gold": -0.3
+          }
+        }
+      }
+    },
+    {
+      "id": "q045",
+      "question": "Can MCP elicitation schemas have default values?",
+      "gold_rank": 6,
+      "e13": {
+        "top1": {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-82",
+          "title": "`Context.elicit()` schema gate validates the rendered schema",
+          "section": "After (v2) — the authenticated OAuth client (usually what you want) > `ProgressContext` and `progress()` context manager removed > `Context.elicit()` schema gate validates the rendered schema",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.691268842891983,
+          "lexical_score": 0.14285714285714285,
+          "content_chars": 1000,
+          "content_words": 142,
+          "code_ratio": 0.2,
+          "code_heavy": false,
+          "is_gold": false
+        },
+        "best_gold": {
+          "rank": 6,
+          "id": "mcp-python-sdk-handlers-elicitation-5",
+          "title": "What the client receives",
+          "section": "docs_src/elicitation/tutorial001.py > What the client receives",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "similarity": 0.6797727954184531,
+          "lexical_score": 0.42857142857142855,
+          "content_chars": 1285,
+          "content_words": 181,
+          "code_ratio": 0.4,
+          "code_heavy": true,
+          "is_gold": true
+        },
+        "comparison": {
+          "semantic_gap_top1_minus_gold": 0.011496047473529836,
+          "lexical_gap_top1_minus_gold": -0.2857142857142857,
+          "top1_longer_than_gold": false,
+          "top1_more_code_than_gold": false
+        }
+      },
+      "top1_identity_match": "id",
+      "gold_identity_match": "id",
+      "top1_chunk": {
+        "id": "mcp-python-sdk-migration-82",
+        "title": "`Context.elicit()` schema gate validates the rendered schema",
+        "section": "After (v2) — the authenticated OAuth client (usually what you want) > `ProgressContext` and `progress()` context manager removed > `Context.elicit()` schema gate validates the rendered schema",
+        "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+        "content": "`Context.elicit()` (and `elicit_with_validation()`) now render the schema first and validate each property against the spec's `PrimitiveSchemaDefinition`, raising `TypeError` at the call site for anything outside it. `Optional[T]` fields render as `{\"type\": ...}` with the field omitted from `required` (previously the non-spec `anyOf` shape). A bare `list[str]` field is rejected because it renders without the required enum items; use `list[Literal[...]]` or `list[str]` with `json_schema_extra` supplying the items. Unions of multiple primitives (e.g. `int | str`) and nested models are rejected.\n\nA schema-mismatched *accepted* answer also fails differently: the call now raises `ValueError` with a stable message (\"Received an accepted elicitation whose content does not match the requested schema\") instead of letting pydantic's `ValidationError` escape with its internals. Code that caught `ValidationError` around `ctx.elicit()` should catch `ValueError` (or rely on the tool's error result).",
+        "chars": 1000,
+        "words": 132
+      },
+      "gold_chunk": {
+        "id": "mcp-python-sdk-handlers-elicitation-5",
+        "title": "What the client receives",
+        "section": "docs_src/elicitation/tutorial001.py > What the client receives",
+        "url": "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+        "content": "The client gets your message and, next to it, a JSON Schema generated from the model:\n\n```json\n{\n \"properties\": {\n \"accept_alternative\": {\n \"description\": \"Try another date?\",\n \"title\": \"Accept Alternative\",\n \"type\": \"boolean\"\n },\n \"date\": {\n \"default\": \"2025-12-26\",\n \"description\": \"Alternative date (YYYY-MM-DD)\",\n \"title\": \"Date\",\n \"type\": \"string\"\n }\n },\n \"required\": [\"accept_alternative\"],\n \"title\": \"AlternativeDate\",\n \"type\": \"object\"\n}\n```\n\nThat schema is the form. `Field(description=...)` is the label; a default pre-fills the input and makes the field optional. It's the same Pydantic-to-JSON-Schema machinery **[Tools](https://py.sdk.modelcontextprotocol.io/servers/tools/index.md)** describes for a tool's arguments.\n\n!!! warning\n An elicitation schema is not as expressive as a tool's input schema. Flat, primitive fields\n only: `str`, `int`, `float`, `bool`, or a `Literal` of strings (it becomes an `enum`).\n Put a model inside the model and `ctx.elicit` raises before anything is sent to the client:\n\n ```text\n TypeError: Elicitation schema field 'address' rendered as {'$ref': '#/$defs/Address'}, which is not a valid PrimitiveSchemaDefinition\n ```\n\n You are interrupting a person mid-task. If the answer needs nesting, it should have been an\n argument to the tool.",
+        "chars": 1285,
+        "words": 168
+      },
+      "representation_stats": {
+        "top1": {
+          "content_only": {
+            "chars": 1000,
+            "words": 132,
+            "lexical_overlap": 0.14285714285714285
+          },
+          "title_content": {
+            "chars": 1062,
+            "words": 139,
+            "lexical_overlap": 0.14285714285714285
+          },
+          "section_content": {
+            "chars": 1193,
+            "words": 158,
+            "lexical_overlap": 0.14285714285714285
+          },
+          "title_section_content": {
+            "chars": 1255,
+            "words": 165,
+            "lexical_overlap": 0.14285714285714285
+          }
+        },
+        "gold": {
+          "content_only": {
+            "chars": 1285,
+            "words": 168,
+            "lexical_overlap": 0.42857142857142855
+          },
+          "title_content": {
+            "chars": 1311,
+            "words": 172,
+            "lexical_overlap": 0.42857142857142855
+          },
+          "section_content": {
+            "chars": 1349,
+            "words": 174,
+            "lexical_overlap": 0.42857142857142855
+          },
+          "title_section_content": {
+            "chars": 1375,
+            "words": 178,
+            "lexical_overlap": 0.42857142857142855
+          }
+        },
+        "delta": {
+          "content_only": {
+            "char_delta_top1_minus_gold": -285,
+            "word_delta_top1_minus_gold": -36,
+            "lexical_delta_top1_minus_gold": -0.2857142857142857
+          },
+          "title_content": {
+            "char_delta_top1_minus_gold": -249,
+            "word_delta_top1_minus_gold": -33,
+            "lexical_delta_top1_minus_gold": -0.2857142857142857
+          },
+          "section_content": {
+            "char_delta_top1_minus_gold": -156,
+            "word_delta_top1_minus_gold": -16,
+            "lexical_delta_top1_minus_gold": -0.2857142857142857
+          },
+          "title_section_content": {
+            "char_delta_top1_minus_gold": -120,
+            "word_delta_top1_minus_gold": -13,
+            "lexical_delta_top1_minus_gold": -0.2857142857142857
+          }
+        }
+      }
+    },
+    {
+      "id": "q050",
+      "question": "How should I handle an unknown tool name in a low-level MCP server?",
+      "gold_rank": 2,
+      "e13": {
+        "top1": {
+          "rank": 1,
+          "id": "mcp-python-sdk-troubleshooting-8",
+          "title": "My host lists zero tools",
+          "section": "docs_src/troubleshooting/tutorial002.py > My host lists zero tools",
+          "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "similarity": 0.7909277677536011,
+          "lexical_score": 0.5833333333333334,
+          "content_chars": 1636,
+          "content_words": 279,
+          "code_ratio": 0.8,
+          "code_heavy": true,
+          "is_gold": false
+        },
+        "best_gold": {
+          "rank": 2,
+          "id": "mcp-python-sdk-advanced-low-level-server-0",
+          "title": "The low-level Server",
+          "section": "The low-level Server",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.7345870733261108,
+          "lexical_score": 0.5,
+          "content_chars": 580,
+          "content_words": 100,
+          "code_ratio": 0.4,
+          "code_heavy": true,
+          "is_gold": true
+        },
+        "comparison": {
+          "semantic_gap_top1_minus_gold": 0.056340694427490234,
+          "lexical_gap_top1_minus_gold": 0.08333333333333337,
+          "top1_longer_than_gold": true,
+          "top1_more_code_than_gold": true
+        }
+      },
+      "top1_identity_match": "id",
+      "gold_identity_match": "id",
+      "top1_chunk": {
+        "id": "mcp-python-sdk-troubleshooting-8",
+        "title": "My host lists zero tools",
+        "section": "docs_src/troubleshooting/tutorial002.py > My host lists zero tools",
+        "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+        "content": "There is no error string for this, which is exactly why it is hard to search. The SDK never drops a registered tool from `tools/list`, so work outward:\n\n* **Did the server start at all?** `@mcp.tool` without parentheses raises at import time, and a crashed server looks a lot like an empty one in some hosts. Run `python server.py` yourself.\n* **Is the tool on the `mcp` the host is running?** A second `MCPServer(...)` in another module is a different, empty server. Check which object the host's command actually imports.\n* **Did two tools share a name?** Then one of them is gone. Look for `Tool already exists:` in the server log.\n* **Is the host's list stale?** Adding a tool after startup only reaches clients that handle `notifications/tools/list_changed`. Restarting the host is the blunt fix.\n* **Did something write to `stdout` outside the diverted window?** While serving, the SDK diverts *flushed* stray stdout to stderr (best-effort: an environment that replaces the standard streams is served as-is), but output flushed to stdout earlier (a wrapper script echoing, an import-time `print()` in an unbuffered process) or a buffered `print()` drained at interpreter exit lands on the protocol stream, and one junk line can make the host drop the connection, which some hosts render as a server with nothing in it. Log with the `logging` module instead. The rest of the host-side checklist is on **[Connect to a real host](https://py.sdk.modelcontextprotocol.io/get-started/real-host/index.md)**.\n\nAn \"invalid\" tool name is *not* on that list: a non-conforming name logs a warning but the tool is registered and listed anyway.",
+        "chars": 1636,
+        "words": 261
+      },
+      "gold_chunk": {
+        "id": "mcp-python-sdk-advanced-low-level-server-0",
+        "title": "The low-level Server",
+        "section": "The low-level Server",
+        "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+        "content": "`@mcp.tool()` is a layer. Underneath it is a second server class, `Server`, that speaks raw MCP: you hand it the protocol objects and it puts them on the wire, unchanged.\n\n`MCPServer` is built on top of it. You drop down when the convenience layer is in the way:\n\n* You need to emit an **exact** schema (loaded from a file, generated from a database), not one derived from a Python signature.\n* You need full control of the result: `_meta`, `is_error`, every key of `structured_content`.\n* You need to handle a method MCP doesn't define.\n\nFor everything else, stay on `MCPServer`.",
+        "chars": 580,
+        "words": 101
+      },
+      "representation_stats": {
+        "top1": {
+          "content_only": {
+            "chars": 1636,
+            "words": 261,
+            "lexical_overlap": 0.5714285714285714
+          },
+          "title_content": {
+            "chars": 1662,
+            "words": 266,
+            "lexical_overlap": 0.5714285714285714
+          },
+          "section_content": {
+            "chars": 1704,
+            "words": 268,
+            "lexical_overlap": 0.5714285714285714
+          },
+          "title_section_content": {
+            "chars": 1730,
+            "words": 273,
+            "lexical_overlap": 0.5714285714285714
+          }
+        },
+        "gold": {
+          "content_only": {
+            "chars": 580,
+            "words": 101,
+            "lexical_overlap": 0.5
+          },
+          "title_content": {
+            "chars": 602,
+            "words": 104,
+            "lexical_overlap": 0.6428571428571429
+          },
+          "section_content": {
+            "chars": 602,
+            "words": 104,
+            "lexical_overlap": 0.6428571428571429
+          },
+          "title_section_content": {
+            "chars": 624,
+            "words": 107,
+            "lexical_overlap": 0.6428571428571429
+          }
+        },
+        "delta": {
+          "content_only": {
+            "char_delta_top1_minus_gold": 1056,
+            "word_delta_top1_minus_gold": 160,
+            "lexical_delta_top1_minus_gold": 0.0714285714285714
+          },
+          "title_content": {
+            "char_delta_top1_minus_gold": 1060,
+            "word_delta_top1_minus_gold": 162,
+            "lexical_delta_top1_minus_gold": -0.07142857142857151
+          },
+          "section_content": {
+            "char_delta_top1_minus_gold": 1102,
+            "word_delta_top1_minus_gold": 164,
+            "lexical_delta_top1_minus_gold": -0.07142857142857151
+          },
+          "title_section_content": {
+            "char_delta_top1_minus_gold": 1106,
+            "word_delta_top1_minus_gold": 166,
+            "lexical_delta_top1_minus_gold": -0.07142857142857151
+          }
+        }
+      }
+    }
+  ]
+}

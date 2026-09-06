@@ -1,0 +1,2031 @@
+{
+  "experiment": "E2_to_E6_05",
+  "alpha": 0.05,
+  "question_count": 48,
+  "changed_count": 13,
+  "improved_count": 4,
+  "worsened_count": 9,
+  "unchanged_count": 35,
+  "classification_counts": {
+    "POSSIBLE_LEXICAL_REGRESSION": 9,
+    "POSSIBLE_IMPROVEMENT": 4
+  },
+  "cases": [
+    {
+      "id": "q001",
+      "question": "How do I create an MCP tool in Python?",
+      "e2_rank": 2,
+      "e6_rank": 3,
+      "rank_change": -1,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_LEXICAL_REGRESSION"
+    },
+    {
+      "id": "q002",
+      "question": "How are MCP tool input schemas generated from Python functions?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q003",
+      "question": "How do I make an MCP tool parameter optional?",
+      "e2_rank": 2,
+      "e6_rank": 1,
+      "rank_change": 1,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_IMPROVEMENT"
+    },
+    {
+      "id": "q004",
+      "question": "How do I describe an MCP tool parameter?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q005",
+      "question": "How do I define an enum parameter for an MCP tool?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q006",
+      "question": "How do I use a Pydantic model as an MCP tool input?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q007",
+      "question": "What is the difference between an MCP tool and a resource?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q008",
+      "question": "How do MCP tool errors work in FastMCP?",
+      "e2_rank": 2,
+      "e6_rank": 2,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q009",
+      "question": "How can an MCP tool report progress?",
+      "e2_rank": 2,
+      "e6_rank": 2,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q010",
+      "question": "How do I access MCP Context inside a tool?",
+      "e2_rank": 5,
+      "e6_rank": 6,
+      "rank_change": -1,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_LEXICAL_REGRESSION"
+    },
+    {
+      "id": "q011",
+      "question": "What information is available from MCP Context?",
+      "e2_rank": 2,
+      "e6_rank": 2,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q012",
+      "question": "How do I return structured output from an MCP tool?",
+      "e2_rank": 2,
+      "e6_rank": 1,
+      "rank_change": 1,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_IMPROVEMENT"
+    },
+    {
+      "id": "q013",
+      "question": "What happens when an MCP tool returns a primitive type?",
+      "e2_rank": 3,
+      "e6_rank": 3,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q014",
+      "question": "Can an MCP tool return a Pydantic model?",
+      "e2_rank": 4,
+      "e6_rank": 4,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q015",
+      "question": "Can an MCP tool return a TypedDict?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q016",
+      "question": "Can an MCP tool return a plain untyped class?",
+      "e2_rank": 4,
+      "e6_rank": 5,
+      "rank_change": -1,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_LEXICAL_REGRESSION"
+    },
+    {
+      "id": "q017",
+      "question": "How do I return CallToolResult directly from an MCP tool?",
+      "e2_rank": 4,
+      "e6_rank": 4,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q018",
+      "question": "How do I mark an MCP tool result as an error?",
+      "e2_rank": 5,
+      "e6_rank": 5,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q019",
+      "question": "How do I use _meta in an MCP tool result?",
+      "e2_rank": 2,
+      "e6_rank": 2,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q020",
+      "question": "What is the low-level MCP Server class used for?",
+      "e2_rank": 3,
+      "e6_rank": 3,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "e2_rank": 8,
+      "e6_rank": 8,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q022",
+      "question": "How do I define a tool with the low-level MCP Server?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q023",
+      "question": "What arguments does a low-level MCP tool handler receive?",
+      "e2_rank": 3,
+      "e6_rank": 4,
+      "rank_change": -1,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_LEXICAL_REGRESSION"
+    },
+    {
+      "id": "q024",
+      "question": "How does a low-level MCP server dispatch multiple tools?",
+      "e2_rank": 3,
+      "e6_rank": 4,
+      "rank_change": -1,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_LEXICAL_REGRESSION"
+    },
+    {
+      "id": "q026",
+      "question": "How can Pydantic generate an MCP JSON Schema?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q027",
+      "question": "How do I create an MCP prompt in Python?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q028",
+      "question": "Who controls an MCP prompt?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q029",
+      "question": "What type are MCP prompt arguments?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q030",
+      "question": "How can an MCP prompt create a multi-turn conversation?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q031",
+      "question": "How do I make an MCP resource?",
+      "e2_rank": 6,
+      "e6_rank": 7,
+      "rank_change": -1,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_LEXICAL_REGRESSION"
+    },
+    {
+      "id": "q032",
+      "question": "How do MCP resource subscriptions work?",
+      "e2_rank": 4,
+      "e6_rank": 4,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q033",
+      "question": "How do I run an MCP Python server with the development CLI?",
+      "e2_rank": 6,
+      "e6_rank": 7,
+      "rank_change": -1,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_LEXICAL_REGRESSION"
+    },
+    {
+      "id": "q034",
+      "question": "What does mcp[cli] add to the MCP Python SDK?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q035",
+      "question": "What does the MCP Inspector do?",
+      "e2_rank": 1,
+      "e6_rank": 3,
+      "rank_change": -2,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_LEXICAL_REGRESSION"
+    },
+    {
+      "id": "q036",
+      "question": "Why does MCP Inspector need Node.js tooling?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q037",
+      "question": "What transports does the MCP Python SDK support?",
+      "e2_rank": 4,
+      "e6_rank": 4,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q038",
+      "question": "How do I connect an MCP client using stdio?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q039",
+      "question": "Why does MCP require initialization before normal client operations?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q040",
+      "question": "What is MCP protocol version negotiation for?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q042",
+      "question": "How do MCP dependencies work in a tool?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q043",
+      "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q044",
+      "question": "How do MCP elicitation results work?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q045",
+      "question": "Can MCP elicitation schemas have default values?",
+      "e2_rank": 4,
+      "e6_rank": 2,
+      "rank_change": 2,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_IMPROVEMENT"
+    },
+    {
+      "id": "q046",
+      "question": "What is structured output in MCP?",
+      "e2_rank": 4,
+      "e6_rank": 4,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q047",
+      "question": "How is a low-level MCP output schema specified?",
+      "e2_rank": 2,
+      "e6_rank": 2,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q048",
+      "question": "What is the difference between FastMCP and the low-level Server?",
+      "e2_rank": 8,
+      "e6_rank": 6,
+      "rank_change": 2,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_IMPROVEMENT"
+    },
+    {
+      "id": "q049",
+      "question": "What changed from MCP Python SDK v1 to v2?",
+      "e2_rank": 1,
+      "e6_rank": 1,
+      "rank_change": 0,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "q050",
+      "question": "How should I handle an unknown tool name in a low-level MCP server?",
+      "e2_rank": 2,
+      "e6_rank": 3,
+      "rank_change": -1,
+      "analysis": {
+        "e2": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        },
+        "e6": {
+          "top1": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "gold": {
+            "title": "",
+            "url": "",
+            "similarity": null,
+            "lexical_score": 0.0
+          },
+          "similarity_gap": null,
+          "lexical_gap": 0.0
+        }
+      },
+      "classification": "POSSIBLE_LEXICAL_REGRESSION"
+    }
+  ]
+}

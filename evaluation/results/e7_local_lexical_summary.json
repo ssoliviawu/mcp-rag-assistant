@@ -1,0 +1,80 @@
+{
+  "dataset": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\mcp_rag_eval_dataset.jsonl",
+  "question_count": 48,
+  "pipeline": {
+    "baseline": "vector_search",
+    "local_lexical": true,
+    "candidate_limit": 100,
+    "top_k": 10,
+    "max_chunks_per_source": 1,
+    "alpha": 0.05,
+    "semantic_gaps": [
+      0.02,
+      0.03,
+      0.05
+    ],
+    "local_swap": {
+      "max_move": 1,
+      "repeated_bubbling": false
+    }
+  },
+  "configs": [
+    {
+      "experiment": "E7_gap_0.02",
+      "alpha": 0.05,
+      "semantic_gap": 0.02,
+      "metrics": {
+        "hit@1": 0.3125,
+        "hit@3": 0.5208333333333334,
+        "hit@5": 0.5833333333333334,
+        "hit@10": 0.6666666666666666,
+        "recall@10": 0.5729166666666666,
+        "mrr": 0.43439980158730157,
+        "questions": 48,
+        "hits@10": 32,
+        "misses@10": 16,
+        "avg_latency_ms": 91.82089167976908,
+        "median_latency_ms": 91.45730000454932,
+        "p95_latency_ms": 107.68670006655157
+      }
+    },
+    {
+      "experiment": "E7_gap_0.03",
+      "alpha": 0.05,
+      "semantic_gap": 0.03,
+      "metrics": {
+        "hit@1": 0.3125,
+        "hit@3": 0.5208333333333334,
+        "hit@5": 0.5833333333333334,
+        "hit@10": 0.6666666666666666,
+        "recall@10": 0.5729166666666666,
+        "mrr": 0.43439980158730157,
+        "questions": 48,
+        "hits@10": 32,
+        "misses@10": 16,
+        "avg_latency_ms": 79.95474373941154,
+        "median_latency_ms": 76.55494997743517,
+        "p95_latency_ms": 97.72090008482337
+      }
+    },
+    {
+      "experiment": "E7_gap_0.05",
+      "alpha": 0.05,
+      "semantic_gap": 0.05,
+      "metrics": {
+        "hit@1": 0.3125,
+        "hit@3": 0.5208333333333334,
+        "hit@5": 0.5833333333333334,
+        "hit@10": 0.6666666666666666,
+        "recall@10": 0.5729166666666666,
+        "mrr": 0.43439980158730157,
+        "questions": 48,
+        "hits@10": 32,
+        "misses@10": 16,
+        "avg_latency_ms": 87.59433958039153,
+        "median_latency_ms": 85.30515001621097,
+        "p95_latency_ms": 115.23310001939535
+      }
+    }
+  ]
+}

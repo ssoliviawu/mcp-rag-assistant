@@ -1,0 +1,956 @@
+{
+  "experiment": "E24_section_rule_ablation",
+  "dataset": "mcp_rag_eval_dataset.jsonl",
+  "question_count": 48,
+  "chunk_count": 751,
+  "candidate_limit": 100,
+  "top_k": 10,
+  "max_chunks_per_source": 1,
+  "baseline": {
+    "name": "E23",
+    "metrics": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7802083333333334
+    }
+  },
+  "ablation_count": 14,
+  "ablations": {
+    "conclusion": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7802083333333334
+    },
+    "contents": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7802083333333334
+    },
+    "create it": {
+      "hit@1": 0.6666666666666666,
+      "hit@3": 0.9166666666666666,
+      "hit@5": 1.0,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7975694444444444
+    },
+    "example": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7802083333333334
+    },
+    "getting started": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7802083333333334
+    },
+    "installation": {
+      "hit@1": 0.625,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7697916666666668
+    },
+    "introduction": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7802083333333334
+    },
+    "overview": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7802083333333334
+    },
+    "recap": {
+      "hit@1": 0.625,
+      "hit@3": 0.8541666666666666,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7604166666666666
+    },
+    "references": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7802083333333334
+    },
+    "requirements": {
+      "hit@1": 0.625,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7697916666666668
+    },
+    "summary": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7802083333333334
+    },
+    "table of contents": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7802083333333334
+    },
+    "try it": {
+      "hit@1": 0.6458333333333334,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7802083333333334
+    }
+  },
+  "comparisons": {
+    "conclusion": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.6458333333333334,
+          "delta": 0.0
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7802083333333334,
+          "delta": 0.0
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": []
+    },
+    "contents": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.6458333333333334,
+          "delta": 0.0
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7802083333333334,
+          "delta": 0.0
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": []
+    },
+    "create it": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.6666666666666666,
+          "delta": 0.02083333333333326
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.9166666666666666,
+          "delta": 0.02083333333333326
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 1.0,
+          "delta": 0.02083333333333337
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7975694444444444,
+          "delta": 0.01736111111111105
+        }
+      },
+      "rank_change": {
+        "improved": 1,
+        "worsened": 0,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [
+        {
+          "id": "q031",
+          "question": "How do I make an MCP resource?",
+          "baseline_rank": 6,
+          "ablation_rank": 1,
+          "transition": "IMPROVED"
+        }
+      ],
+      "worsened_cases": []
+    },
+    "example": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.6458333333333334,
+          "delta": 0.0
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7802083333333334,
+          "delta": 0.0
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": []
+    },
+    "getting started": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.6458333333333334,
+          "delta": 0.0
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7802083333333334,
+          "delta": 0.0
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": []
+    },
+    "installation": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.625,
+          "delta": -0.02083333333333337
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7697916666666668,
+          "delta": -0.01041666666666663
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 1,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": [
+        {
+          "id": "q034",
+          "question": "What does mcp[cli] add to the MCP Python SDK?",
+          "baseline_rank": 1,
+          "ablation_rank": 2,
+          "transition": "WORSENED"
+        }
+      ]
+    },
+    "introduction": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.6458333333333334,
+          "delta": 0.0
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7802083333333334,
+          "delta": 0.0
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": []
+    },
+    "overview": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.6458333333333334,
+          "delta": 0.0
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7802083333333334,
+          "delta": 0.0
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": []
+    },
+    "recap": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.625,
+          "delta": -0.02083333333333337
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8541666666666666,
+          "delta": -0.04166666666666674
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7604166666666666,
+          "delta": -0.019791666666666763
+        }
+      },
+      "rank_change": {
+        "improved": 3,
+        "worsened": 4,
+        "unchanged": 41,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [
+        {
+          "id": "q016",
+          "question": "Can an MCP tool return a plain untyped class?",
+          "baseline_rank": 2,
+          "ablation_rank": 1,
+          "transition": "IMPROVED"
+        },
+        {
+          "id": "q031",
+          "question": "How do I make an MCP resource?",
+          "baseline_rank": 6,
+          "ablation_rank": 5,
+          "transition": "IMPROVED"
+        },
+        {
+          "id": "q045",
+          "question": "Can MCP elicitation schemas have default values?",
+          "baseline_rank": 2,
+          "ablation_rank": 1,
+          "transition": "IMPROVED"
+        }
+      ],
+      "worsened_cases": [
+        {
+          "id": "q002",
+          "question": "How are MCP tool input schemas generated from Python functions?",
+          "baseline_rank": 1,
+          "ablation_rank": 4,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q006",
+          "question": "How do I use a Pydantic model as an MCP tool input?",
+          "baseline_rank": 1,
+          "ablation_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q008",
+          "question": "How do MCP tool errors work in FastMCP?",
+          "baseline_rank": 1,
+          "ablation_rank": 2,
+          "transition": "WORSENED"
+        },
+        {
+          "id": "q013",
+          "question": "What happens when an MCP tool returns a primitive type?",
+          "baseline_rank": 3,
+          "ablation_rank": 10,
+          "transition": "WORSENED"
+        }
+      ]
+    },
+    "references": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.6458333333333334,
+          "delta": 0.0
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7802083333333334,
+          "delta": 0.0
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": []
+    },
+    "requirements": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.625,
+          "delta": -0.02083333333333337
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7697916666666668,
+          "delta": -0.01041666666666663
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 1,
+        "unchanged": 47,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": [
+        {
+          "id": "q034",
+          "question": "What does mcp[cli] add to the MCP Python SDK?",
+          "baseline_rank": 1,
+          "ablation_rank": 2,
+          "transition": "WORSENED"
+        }
+      ]
+    },
+    "summary": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.6458333333333334,
+          "delta": 0.0
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7802083333333334,
+          "delta": 0.0
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": []
+    },
+    "table of contents": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.6458333333333334,
+          "delta": 0.0
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7802083333333334,
+          "delta": 0.0
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": []
+    },
+    "try it": {
+      "metrics": {
+        "hit@1": {
+          "baseline": 0.6458333333333334,
+          "ablation": 0.6458333333333334,
+          "delta": 0.0
+        },
+        "hit@3": {
+          "baseline": 0.8958333333333334,
+          "ablation": 0.8958333333333334,
+          "delta": 0.0
+        },
+        "hit@5": {
+          "baseline": 0.9791666666666666,
+          "ablation": 0.9791666666666666,
+          "delta": 0.0
+        },
+        "hit@10": {
+          "baseline": 1.0,
+          "ablation": 1.0,
+          "delta": 0.0
+        },
+        "recall@10": {
+          "baseline": 0.8854166666666666,
+          "ablation": 0.8854166666666666,
+          "delta": 0.0
+        },
+        "mrr": {
+          "baseline": 0.7802083333333334,
+          "ablation": 0.7802083333333334,
+          "delta": 0.0
+        }
+      },
+      "rank_change": {
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 48,
+        "new_hit": 0,
+        "new_miss": 0
+      },
+      "improved_cases": [],
+      "worsened_cases": []
+    }
+  },
+  "rule_ranking": [
+    {
+      "rule": "recap",
+      "hit@1_delta": -0.02083333333333337,
+      "hit@3_delta": -0.04166666666666674,
+      "hit@5_delta": 0.0,
+      "mrr_delta": -0.019791666666666763,
+      "improved": 3,
+      "worsened": 4,
+      "net_rank_change": -1
+    },
+    {
+      "rule": "installation",
+      "hit@1_delta": -0.02083333333333337,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": -0.01041666666666663,
+      "improved": 0,
+      "worsened": 1,
+      "net_rank_change": -1
+    },
+    {
+      "rule": "requirements",
+      "hit@1_delta": -0.02083333333333337,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": -0.01041666666666663,
+      "improved": 0,
+      "worsened": 1,
+      "net_rank_change": -1
+    },
+    {
+      "rule": "conclusion",
+      "hit@1_delta": 0.0,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": 0.0,
+      "improved": 0,
+      "worsened": 0,
+      "net_rank_change": 0
+    },
+    {
+      "rule": "contents",
+      "hit@1_delta": 0.0,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": 0.0,
+      "improved": 0,
+      "worsened": 0,
+      "net_rank_change": 0
+    },
+    {
+      "rule": "example",
+      "hit@1_delta": 0.0,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": 0.0,
+      "improved": 0,
+      "worsened": 0,
+      "net_rank_change": 0
+    },
+    {
+      "rule": "getting started",
+      "hit@1_delta": 0.0,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": 0.0,
+      "improved": 0,
+      "worsened": 0,
+      "net_rank_change": 0
+    },
+    {
+      "rule": "introduction",
+      "hit@1_delta": 0.0,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": 0.0,
+      "improved": 0,
+      "worsened": 0,
+      "net_rank_change": 0
+    },
+    {
+      "rule": "overview",
+      "hit@1_delta": 0.0,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": 0.0,
+      "improved": 0,
+      "worsened": 0,
+      "net_rank_change": 0
+    },
+    {
+      "rule": "references",
+      "hit@1_delta": 0.0,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": 0.0,
+      "improved": 0,
+      "worsened": 0,
+      "net_rank_change": 0
+    },
+    {
+      "rule": "summary",
+      "hit@1_delta": 0.0,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": 0.0,
+      "improved": 0,
+      "worsened": 0,
+      "net_rank_change": 0
+    },
+    {
+      "rule": "table of contents",
+      "hit@1_delta": 0.0,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": 0.0,
+      "improved": 0,
+      "worsened": 0,
+      "net_rank_change": 0
+    },
+    {
+      "rule": "try it",
+      "hit@1_delta": 0.0,
+      "hit@3_delta": 0.0,
+      "hit@5_delta": 0.0,
+      "mrr_delta": 0.0,
+      "improved": 0,
+      "worsened": 0,
+      "net_rank_change": 0
+    },
+    {
+      "rule": "create it",
+      "hit@1_delta": 0.02083333333333326,
+      "hit@3_delta": 0.02083333333333326,
+      "hit@5_delta": 0.02083333333333337,
+      "mrr_delta": 0.01736111111111105,
+      "improved": 1,
+      "worsened": 0,
+      "net_rank_change": 1
+    }
+  ]
+}

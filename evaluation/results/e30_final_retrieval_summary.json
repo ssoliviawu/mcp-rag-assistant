@@ -1,0 +1,58 @@
+{
+  "experiment": "E30_final_retrieval",
+  "status": "FINAL",
+  "pipeline": {
+    "name": "C7_all_three",
+    "candidate_limit": 100,
+    "top_k": 10,
+    "max_chunks_per_source": 1,
+    "generic_rules": [
+      "installation",
+      "recap",
+      "requirements"
+    ],
+    "embedding_model": "BGEEmbeddingModel",
+    "retrieval": "vector_similarity",
+    "reranker": false,
+    "hybrid": false,
+    "lexical_boost": false,
+    "query_expansion": false
+  },
+  "dataset": {
+    "file": "mcp_rag_eval_dataset.jsonl",
+    "total_original_questions": 50,
+    "evaluated_questions": 48,
+    "excluded_spec_questions": 2,
+    "chunks": 751
+  },
+  "metrics": {
+    "hit@1": 0.6666666666666666,
+    "hit@3": 0.9166666666666666,
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "recall@10": 0.8854166666666666,
+    "mrr": 0.7975694444444444
+  },
+  "latency": {
+    "embedding_all_chunks_seconds": 233.60141590004787,
+    "retrieval_total_seconds": 1.0518298998940736,
+    "retrieval_avg_ms": 20.875962504457373,
+    "retrieval_p50_ms": 19.18025000486523,
+    "retrieval_p95_ms": 36.129189934581504
+  },
+  "rank_distribution": {
+    "rank_1": 32,
+    "rank_2_3": 12,
+    "rank_4_5": 4,
+    "rank_6_10": 0,
+    "miss": 0
+  },
+  "residuals": {
+    "count": 0,
+    "questions": []
+  },
+  "interpretation": {
+    "retrieval_goal": "Final benchmark of frozen E25 C7 retrieval pipeline.",
+    "optimization_status": "Retrieval pipeline is frozen; no new retrieval component is introduced in E30."
+  }
+}

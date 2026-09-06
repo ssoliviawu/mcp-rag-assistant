@@ -1,0 +1,320 @@
+{
+  "experiment": "E25",
+  "description": "Final representation comparison with minimal conditional section filtering",
+  "dataset": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\mcp_rag_eval_dataset.jsonl",
+  "chunks_path": "C:\\Users\\DELL\\Desktop\\MCP RAG Assistant\\data\\chunks.jsonl",
+  "question_count": 48,
+  "chunk_count": 751,
+  "candidate_limit": 100,
+  "top_k": 10,
+  "max_chunks_per_source": 1,
+  "variants": {
+    "A_title_content": {
+      "description": "title + content"
+    },
+    "B_title_section_content": {
+      "description": "title + section + content"
+    },
+    "C_E23_conditional": {
+      "description": "E23 original conditional section rule",
+      "generic_sections": [
+        "conclusion",
+        "contents",
+        "create it",
+        "example",
+        "getting started",
+        "installation",
+        "introduction",
+        "overview",
+        "recap",
+        "references",
+        "requirements",
+        "summary",
+        "table of contents",
+        "try it"
+      ],
+      "max_section_length_chars": 300,
+      "minimum_word_count": 2
+    },
+    "D_minimal_conditional": {
+      "description": "Only exclude recap, installation, requirements",
+      "excluded_sections": [
+        "installation",
+        "recap",
+        "requirements"
+      ]
+    }
+  },
+  "summaries": {
+    "A_title_content": {
+      "variant": "A_title_content",
+      "question_count": 48,
+      "candidate_limit": 100,
+      "top_k": 10,
+      "max_chunks_per_source": 1,
+      "hit@1": 0.5833333333333334,
+      "hit@3": 0.8541666666666666,
+      "hit@5": 0.9583333333333334,
+      "hit@10": 1.0,
+      "recall@10": 0.875,
+      "mrr": 0.7336805555555556,
+      "embedding_time_seconds": 247.00885796546936
+    },
+    "B_title_section_content": {
+      "variant": "B_title_section_content",
+      "question_count": 48,
+      "candidate_limit": 100,
+      "top_k": 10,
+      "max_chunks_per_source": 1,
+      "hit@1": 0.6041666666666666,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.7579861111111111,
+      "embedding_time_seconds": 246.29877829551697
+    },
+    "C_E23_conditional": {
+      "variant": "C_E23_conditional",
+      "question_count": 48,
+      "candidate_limit": 100,
+      "top_k": 10,
+      "max_chunks_per_source": 1,
+      "hit@1": 0.6041666666666666,
+      "hit@3": 0.8958333333333334,
+      "hit@5": 0.9375,
+      "hit@10": 1.0,
+      "recall@10": 0.875,
+      "mrr": 0.7557870370370371,
+      "embedding_time_seconds": 237.64021682739258
+    },
+    "D_minimal_conditional": {
+      "variant": "D_minimal_conditional",
+      "question_count": 48,
+      "candidate_limit": 100,
+      "top_k": 10,
+      "max_chunks_per_source": 1,
+      "hit@1": 0.6041666666666666,
+      "hit@3": 0.875,
+      "hit@5": 0.9791666666666666,
+      "hit@10": 1.0,
+      "recall@10": 0.8854166666666666,
+      "mrr": 0.75625,
+      "embedding_time_seconds": 240.1331615447998
+    }
+  },
+  "comparisons": {
+    "A_title_content_vs_C_E23_conditional": {
+      "improved": [
+        "q002",
+        "q006",
+        "q008",
+        "q010",
+        "q013",
+        "q027",
+        "q034",
+        "q043"
+      ],
+      "worsened": [
+        "q001",
+        "q017",
+        "q018",
+        "q021",
+        "q023",
+        "q031",
+        "q033",
+        "q037",
+        "q046",
+        "q049",
+        "q050"
+      ],
+      "unchanged": [
+        "q003",
+        "q004",
+        "q005",
+        "q007",
+        "q009",
+        "q011",
+        "q012",
+        "q014",
+        "q015",
+        "q016",
+        "q019",
+        "q020",
+        "q022",
+        "q024",
+        "q026",
+        "q028",
+        "q029",
+        "q030",
+        "q032",
+        "q035",
+        "q036",
+        "q038",
+        "q039",
+        "q040",
+        "q042",
+        "q044",
+        "q045",
+        "q047",
+        "q048"
+      ],
+      "improved_count": 8,
+      "worsened_count": 11,
+      "unchanged_count": 29
+    },
+    "B_title_section_content_vs_C_E23_conditional": {
+      "improved": [
+        "q010",
+        "q014",
+        "q037",
+        "q045"
+      ],
+      "worsened": [
+        "q002",
+        "q013",
+        "q018"
+      ],
+      "unchanged": [
+        "q001",
+        "q003",
+        "q004",
+        "q005",
+        "q006",
+        "q007",
+        "q008",
+        "q009",
+        "q011",
+        "q012",
+        "q015",
+        "q016",
+        "q017",
+        "q019",
+        "q020",
+        "q021",
+        "q022",
+        "q023",
+        "q024",
+        "q026",
+        "q027",
+        "q028",
+        "q029",
+        "q030",
+        "q031",
+        "q032",
+        "q033",
+        "q034",
+        "q035",
+        "q036",
+        "q038",
+        "q039",
+        "q040",
+        "q042",
+        "q043",
+        "q044",
+        "q046",
+        "q047",
+        "q048",
+        "q049",
+        "q050"
+      ],
+      "improved_count": 4,
+      "worsened_count": 3,
+      "unchanged_count": 41
+    },
+    "D_minimal_conditional_vs_C_E23_conditional": {
+      "improved": [
+        "q010",
+        "q014",
+        "q045"
+      ],
+      "worsened": [
+        "q002",
+        "q013",
+        "q018"
+      ],
+      "unchanged": [
+        "q001",
+        "q003",
+        "q004",
+        "q005",
+        "q006",
+        "q007",
+        "q008",
+        "q009",
+        "q011",
+        "q012",
+        "q015",
+        "q016",
+        "q017",
+        "q019",
+        "q020",
+        "q021",
+        "q022",
+        "q023",
+        "q024",
+        "q026",
+        "q027",
+        "q028",
+        "q029",
+        "q030",
+        "q031",
+        "q032",
+        "q033",
+        "q034",
+        "q035",
+        "q036",
+        "q037",
+        "q038",
+        "q039",
+        "q040",
+        "q042",
+        "q043",
+        "q044",
+        "q046",
+        "q047",
+        "q048",
+        "q049",
+        "q050"
+      ],
+      "improved_count": 3,
+      "worsened_count": 3,
+      "unchanged_count": 42
+    }
+  },
+  "metric_deltas_vs_e23": {
+    "A_title_content": {
+      "hit@1": -0.02083333333333326,
+      "hit@3": -0.04166666666666674,
+      "hit@5": 0.02083333333333337,
+      "hit@10": 0.0,
+      "recall@10": 0.0,
+      "mrr": -0.022106481481481532
+    },
+    "B_title_section_content": {
+      "hit@1": 0.0,
+      "hit@3": 0.0,
+      "hit@5": 0.04166666666666663,
+      "hit@10": 0.0,
+      "recall@10": 0.01041666666666663,
+      "mrr": 0.0021990740740740478
+    },
+    "D_minimal_conditional": {
+      "hit@1": 0.0,
+      "hit@3": -0.02083333333333337,
+      "hit@5": 0.04166666666666663,
+      "hit@10": 0.0,
+      "recall@10": 0.01041666666666663,
+      "mrr": 0.0004629629629628873
+    }
+  },
+  "best_hit@1": {
+    "variant": "B_title_section_content",
+    "value": 0.6041666666666666
+  },
+  "best_mrr": {
+    "variant": "B_title_section_content",
+    "value": 0.7579861111111111
+  },
+  "total_runtime_seconds": 974.1417112350464
+}

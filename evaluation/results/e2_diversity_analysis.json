@@ -1,0 +1,1087 @@
+[
+  {
+    "id": "q001",
+    "question": "How do I create an MCP tool in Python?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/tools",
+      "https://py.sdk.modelcontextprotocol.io"
+    ],
+    "vector_rank": 3,
+    "e2_rank": 2,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Tools",
+      "section": "Tools",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7518107442968653
+    },
+    "e2_chunk": {
+      "title": "Tools",
+      "section": "Tools",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7518107442968653
+    }
+  },
+  {
+    "id": "q002",
+    "question": "How are MCP tool input schemas generated from Python functions?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/tools",
+      "https://py.sdk.modelcontextprotocol.io/protocol"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Recap",
+      "section": "docs_src/tools/tutorial005.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7704817882323801
+    },
+    "e2_chunk": {
+      "title": "Recap",
+      "section": "docs_src/tools/tutorial005.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7704817882323801
+    }
+  },
+  {
+    "id": "q003",
+    "question": "How do I make an MCP tool parameter optional?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/tools"
+    ],
+    "vector_rank": 3,
+    "e2_rank": 2,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Recap",
+      "section": "docs_src/tools/tutorial005.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7128139946703317
+    },
+    "e2_chunk": {
+      "title": "Recap",
+      "section": "docs_src/tools/tutorial005.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7128139946703317
+    }
+  },
+  {
+    "id": "q004",
+    "question": "How do I describe an MCP tool parameter?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/tools"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Tools",
+      "section": "Tools",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7538640352406536
+    },
+    "e2_chunk": {
+      "title": "Tools",
+      "section": "Tools",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7538640352406536
+    }
+  },
+  {
+    "id": "q005",
+    "question": "How do I define an enum parameter for an MCP tool?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/tools"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Recap",
+      "section": "docs_src/tools/tutorial005.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7588984596400997
+    },
+    "e2_chunk": {
+      "title": "Recap",
+      "section": "docs_src/tools/tutorial005.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7588984596400997
+    }
+  },
+  {
+    "id": "q006",
+    "question": "How do I use a Pydantic model as an MCP tool input?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/tools",
+      "https://py.sdk.modelcontextprotocol.io/protocol"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Recap",
+      "section": "docs_src/tools/tutorial005.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7909454578724776
+    },
+    "e2_chunk": {
+      "title": "Recap",
+      "section": "docs_src/tools/tutorial005.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7909454578724776
+    }
+  },
+  {
+    "id": "q007",
+    "question": "What is the difference between an MCP tool and a resource?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/resources",
+      "https://py.sdk.modelcontextprotocol.io/servers/tools"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Resources",
+      "section": "Resources",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+      "similarity": 0.8405345678329468
+    },
+    "e2_chunk": {
+      "title": "Resources",
+      "section": "Resources",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+      "similarity": 0.8405345678329468
+    }
+  },
+  {
+    "id": "q008",
+    "question": "How do MCP tool errors work in FastMCP?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/handling-errors",
+      "https://py.sdk.modelcontextprotocol.io/whats-new"
+    ],
+    "vector_rank": 4,
+    "e2_rank": 2,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/whats_new/tutorial001.py",
+      "section": "docs_src/whats_new/tutorial001.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+      "similarity": 0.7184067796711207
+    },
+    "e2_chunk": {
+      "title": "docs_src/whats_new/tutorial001.py",
+      "section": "docs_src/whats_new/tutorial001.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+      "similarity": 0.7184067796711207
+    }
+  },
+  {
+    "id": "q009",
+    "question": "How can an MCP tool report progress?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/handlers/progress"
+    ],
+    "vector_rank": 3,
+    "e2_rank": 2,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/progress/tutorial001.py",
+      "section": "docs_src/progress/tutorial001.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/progress/",
+      "similarity": 0.7007262885137637
+    },
+    "e2_chunk": {
+      "title": "docs_src/progress/tutorial001.py",
+      "section": "docs_src/progress/tutorial001.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/progress/",
+      "similarity": 0.7007262885137637
+    }
+  },
+  {
+    "id": "q010",
+    "question": "How do I access MCP Context inside a tool?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/handlers/context"
+    ],
+    "vector_rank": 13,
+    "e2_rank": 5,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/context/tutorial002.py",
+      "section": "docs_src/context/tutorial002.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+      "similarity": 0.7095367139301738
+    },
+    "e2_chunk": {
+      "title": "docs_src/context/tutorial002.py",
+      "section": "docs_src/context/tutorial002.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+      "similarity": 0.7095367139301738
+    }
+  },
+  {
+    "id": "q011",
+    "question": "What information is available from MCP Context?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/handlers/context"
+    ],
+    "vector_rank": 2,
+    "e2_rank": 2,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/context/tutorial002.py",
+      "section": "docs_src/context/tutorial002.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+      "similarity": 0.6851481011598183
+    },
+    "e2_chunk": {
+      "title": "docs_src/context/tutorial002.py",
+      "section": "docs_src/context/tutorial002.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+      "similarity": 0.6851481011598183
+    }
+  },
+  {
+    "id": "q012",
+    "question": "How do I return structured output from an MCP tool?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/structured-output",
+      "https://py.sdk.modelcontextprotocol.io/servers/tools"
+    ],
+    "vector_rank": 2,
+    "e2_rank": 2,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Recap",
+      "section": "docs_src/tools/tutorial005.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.753382243115242
+    },
+    "e2_chunk": {
+      "title": "Recap",
+      "section": "docs_src/tools/tutorial005.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.753382243115242
+    }
+  },
+  {
+    "id": "q013",
+    "question": "What happens when an MCP tool returns a primitive type?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+    ],
+    "vector_rank": 5,
+    "e2_rank": 3,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Recap",
+      "section": "docs_src/structured_output/tutorial009.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+      "similarity": 0.6889831198474075
+    },
+    "e2_chunk": {
+      "title": "Recap",
+      "section": "docs_src/structured_output/tutorial009.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+      "similarity": 0.6889831198474075
+    }
+  },
+  {
+    "id": "q014",
+    "question": "Can an MCP tool return a Pydantic model?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+    ],
+    "vector_rank": 4,
+    "e2_rank": 4,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/structured_output/tutorial005.py",
+      "section": "docs_src/structured_output/tutorial005.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+      "similarity": 0.7162475159020725
+    },
+    "e2_chunk": {
+      "title": "docs_src/structured_output/tutorial005.py",
+      "section": "docs_src/structured_output/tutorial005.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+      "similarity": 0.7162475159020725
+    }
+  },
+  {
+    "id": "q015",
+    "question": "Can an MCP tool return a TypedDict?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/structured_output/tutorial003.py",
+      "section": "docs_src/structured_output/tutorial003.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+      "similarity": 0.7576377391815186
+    },
+    "e2_chunk": {
+      "title": "docs_src/structured_output/tutorial003.py",
+      "section": "docs_src/structured_output/tutorial003.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+      "similarity": 0.7576377391815186
+    }
+  },
+  {
+    "id": "q016",
+    "question": "Can an MCP tool return a plain untyped class?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+    ],
+    "vector_rank": 6,
+    "e2_rank": 4,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "A class without type hints",
+      "section": "docs_src/structured_output/tutorial008.py > A class without type hints",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+      "similarity": 0.6876869592759947
+    },
+    "e2_chunk": {
+      "title": "A class without type hints",
+      "section": "docs_src/structured_output/tutorial008.py > A class without type hints",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+      "similarity": 0.6876869592759947
+    }
+  },
+  {
+    "id": "q017",
+    "question": "How do I return CallToolResult directly from an MCP tool?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/server",
+      "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+    ],
+    "vector_rank": 8,
+    "e2_rank": 4,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/lowlevel/tutorial001.py",
+      "section": "docs_src/lowlevel/tutorial001.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.743748858943651
+    },
+    "e2_chunk": {
+      "title": "docs_src/lowlevel/tutorial001.py",
+      "section": "docs_src/lowlevel/tutorial001.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.743748858943651
+    }
+  },
+  {
+    "id": "q018",
+    "question": "How do I mark an MCP tool result as an error?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/handling-errors"
+    ],
+    "vector_rank": 6,
+    "e2_rank": 5,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/handling_errors/tutorial001.py",
+      "section": "docs_src/handling_errors/tutorial001.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+      "similarity": 0.7320110361569515
+    },
+    "e2_chunk": {
+      "title": "docs_src/handling_errors/tutorial001.py",
+      "section": "docs_src/handling_errors/tutorial001.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+      "similarity": 0.7320110361569515
+    }
+  },
+  {
+    "id": "q019",
+    "question": "How do I use _meta in an MCP tool result?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+    ],
+    "vector_rank": 2,
+    "e2_rank": 2,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/lowlevel/tutorial004.py",
+      "section": "docs_src/lowlevel/tutorial004.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.750007145106162
+    },
+    "e2_chunk": {
+      "title": "docs_src/lowlevel/tutorial004.py",
+      "section": "docs_src/lowlevel/tutorial004.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.750007145106162
+    }
+  },
+  {
+    "id": "q020",
+    "question": "What is the low-level MCP Server class used for?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+    ],
+    "vector_rank": 6,
+    "e2_rank": 3,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "The low-level Server",
+      "section": "The low-level Server",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.691150426864624
+    },
+    "e2_chunk": {
+      "title": "The low-level Server",
+      "section": "The low-level Server",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.691150426864624
+    }
+  },
+  {
+    "id": "q021",
+    "question": "When should I use the low-level MCP Server instead of FastMCP?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+    ],
+    "vector_rank": 18,
+    "e2_rank": 8,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Try it",
+      "section": "docs_src/lowlevel/tutorial001.py > Try it",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.6623979210853577
+    },
+    "e2_chunk": {
+      "title": "Try it",
+      "section": "docs_src/lowlevel/tutorial001.py > Try it",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.6623979210853577
+    }
+  },
+  {
+    "id": "q022",
+    "question": "How do I define a tool with the low-level MCP Server?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "The low-level Server",
+      "section": "The low-level Server",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.7698676860490274
+    },
+    "e2_chunk": {
+      "title": "The low-level Server",
+      "section": "The low-level Server",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.7698676860490274
+    }
+  },
+  {
+    "id": "q023",
+    "question": "What arguments does a low-level MCP tool handler receive?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+    ],
+    "vector_rank": 4,
+    "e2_rank": 3,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "The low-level Server",
+      "section": "The low-level Server",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.7213329242865502
+    },
+    "e2_chunk": {
+      "title": "The low-level Server",
+      "section": "The low-level Server",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.7213329242865502
+    }
+  },
+  {
+    "id": "q024",
+    "question": "How does a low-level MCP server dispatch multiple tools?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+    ],
+    "vector_rank": 3,
+    "e2_rank": 3,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "The low-level Server",
+      "section": "The low-level Server",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.7081658840179443
+    },
+    "e2_chunk": {
+      "title": "The low-level Server",
+      "section": "The low-level Server",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.7081658840179443
+    }
+  },
+  {
+    "id": "q025",
+    "question": "What JSON Schema version does MCP use for tool schemas?",
+    "status": "NO_GOLD_SOURCE"
+  },
+  {
+    "id": "q026",
+    "question": "How can Pydantic generate an MCP JSON Schema?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/tools",
+      "https://py.sdk.modelcontextprotocol.io/servers/structured-output"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/tools/tutorial004.py",
+      "section": "docs_src/tools/tutorial004.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7563041223196977
+    },
+    "e2_chunk": {
+      "title": "docs_src/tools/tutorial004.py",
+      "section": "docs_src/tools/tutorial004.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "similarity": 0.7563041223196977
+    }
+  },
+  {
+    "id": "q027",
+    "question": "How do I create an MCP prompt in Python?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/prompts"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Recap",
+      "section": "docs_src/prompts/tutorial003.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+      "similarity": 0.7914391756057739
+    },
+    "e2_chunk": {
+      "title": "Recap",
+      "section": "docs_src/prompts/tutorial003.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+      "similarity": 0.7914391756057739
+    }
+  },
+  {
+    "id": "q028",
+    "question": "Who controls an MCP prompt?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/prompts"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Recap",
+      "section": "docs_src/prompts/tutorial003.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+      "similarity": 0.7607294547775229
+    },
+    "e2_chunk": {
+      "title": "Recap",
+      "section": "docs_src/prompts/tutorial003.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+      "similarity": 0.7607294547775229
+    }
+  },
+  {
+    "id": "q029",
+    "question": "What type are MCP prompt arguments?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/prompts"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Recap",
+      "section": "docs_src/prompts/tutorial003.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+      "similarity": 0.7777830594117364
+    },
+    "e2_chunk": {
+      "title": "Recap",
+      "section": "docs_src/prompts/tutorial003.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+      "similarity": 0.7777830594117364
+    }
+  },
+  {
+    "id": "q030",
+    "question": "How can an MCP prompt create a multi-turn conversation?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/servers/prompts"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Prompts",
+      "section": "Prompts",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+      "similarity": 0.7126178741455078
+    },
+    "e2_chunk": {
+      "title": "Prompts",
+      "section": "Prompts",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+      "similarity": 0.7126178741455078
+    }
+  },
+  {
+    "id": "q031",
+    "question": "How do I make an MCP resource?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io",
+      "https://py.sdk.modelcontextprotocol.io/server"
+    ],
+    "vector_rank": 6,
+    "e2_rank": 6,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/index/tutorial001.py",
+      "section": "docs_src/index/tutorial001.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/",
+      "similarity": 0.7091350902157965
+    },
+    "e2_chunk": {
+      "title": "docs_src/index/tutorial001.py",
+      "section": "docs_src/index/tutorial001.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/",
+      "similarity": 0.7091350902157965
+    }
+  },
+  {
+    "id": "q032",
+    "question": "How do MCP resource subscriptions work?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions",
+      "https://py.sdk.modelcontextprotocol.io/whats-new"
+    ],
+    "vector_rank": 4,
+    "e2_rank": 4,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/subscriptions/tutorial003.py",
+      "section": "docs_src/subscriptions/tutorial003.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+      "similarity": 0.6824985945969404
+    },
+    "e2_chunk": {
+      "title": "docs_src/subscriptions/tutorial003.py",
+      "section": "docs_src/subscriptions/tutorial003.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+      "similarity": 0.6824985945969404
+    }
+  },
+  {
+    "id": "q033",
+    "question": "How do I run an MCP Python server with the development CLI?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io",
+      "https://py.sdk.modelcontextprotocol.io/get-started"
+    ],
+    "vector_rank": 6,
+    "e2_rank": 6,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Run it",
+      "section": "docs_src/index/tutorial001.py > Run it",
+      "url": "https://py.sdk.modelcontextprotocol.io/",
+      "similarity": 0.7546143678060564
+    },
+    "e2_chunk": {
+      "title": "Run it",
+      "section": "docs_src/index/tutorial001.py > Run it",
+      "url": "https://py.sdk.modelcontextprotocol.io/",
+      "similarity": 0.7546143678060564
+    }
+  },
+  {
+    "id": "q034",
+    "question": "What does mcp[cli] add to the MCP Python SDK?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/get-started/installation"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Installation",
+      "section": "Installation",
+      "url": "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+      "similarity": 0.8032379629157774
+    },
+    "e2_chunk": {
+      "title": "Installation",
+      "section": "Installation",
+      "url": "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+      "similarity": 0.8032379629157774
+    }
+  },
+  {
+    "id": "q035",
+    "question": "What does the MCP Inspector do?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io",
+      "https://py.sdk.modelcontextprotocol.io/get-started"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Try it",
+      "section": "docs_src/index/tutorial001.py > Run it > Try it",
+      "url": "https://py.sdk.modelcontextprotocol.io/",
+      "similarity": 0.670159637928009
+    },
+    "e2_chunk": {
+      "title": "Try it",
+      "section": "docs_src/index/tutorial001.py > Run it > Try it",
+      "url": "https://py.sdk.modelcontextprotocol.io/",
+      "similarity": 0.670159637928009
+    }
+  },
+  {
+    "id": "q036",
+    "question": "Why does MCP Inspector need Node.js tooling?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Run it",
+      "section": "docs_src/index/tutorial001.py > Run it",
+      "url": "https://py.sdk.modelcontextprotocol.io/",
+      "similarity": 0.745805174612382
+    },
+    "e2_chunk": {
+      "title": "Run it",
+      "section": "docs_src/index/tutorial001.py > Run it",
+      "url": "https://py.sdk.modelcontextprotocol.io/",
+      "similarity": 0.745805174612382
+    }
+  },
+  {
+    "id": "q037",
+    "question": "What transports does the MCP Python SDK support?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/client/transports",
+      "https://py.sdk.modelcontextprotocol.io/v1"
+    ],
+    "vector_rank": 7,
+    "e2_rank": 4,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Client transports",
+      "section": "Client transports",
+      "url": "https://py.sdk.modelcontextprotocol.io/client/transports/",
+      "similarity": 0.7271220900750787
+    },
+    "e2_chunk": {
+      "title": "Client transports",
+      "section": "Client transports",
+      "url": "https://py.sdk.modelcontextprotocol.io/client/transports/",
+      "similarity": 0.7271220900750787
+    }
+  },
+  {
+    "id": "q038",
+    "question": "How do I connect an MCP client using stdio?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/client",
+      "https://py.sdk.modelcontextprotocol.io/client/transports"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Recap",
+      "section": "docs_src/client_transports/tutorial004.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/client/transports/",
+      "similarity": 0.8148939609527588
+    },
+    "e2_chunk": {
+      "title": "Recap",
+      "section": "docs_src/client_transports/tutorial004.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/client/transports/",
+      "similarity": 0.8148939609527588
+    }
+  },
+  {
+    "id": "q039",
+    "question": "Why does MCP require initialization before normal client operations?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/protocol",
+      "https://py.sdk.modelcontextprotocol.io/protocol-versions"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Protocol versions",
+      "section": "Protocol versions",
+      "url": "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+      "similarity": 0.7549417389946688
+    },
+    "e2_chunk": {
+      "title": "Protocol versions",
+      "section": "Protocol versions",
+      "url": "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+      "similarity": 0.7549417389946688
+    }
+  },
+  {
+    "id": "q040",
+    "question": "What is MCP protocol version negotiation for?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/protocol",
+      "https://py.sdk.modelcontextprotocol.io/protocol-versions"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Recap",
+      "section": "docs_src/protocol_versions/tutorial004.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+      "similarity": 0.7926407827185199
+    },
+    "e2_chunk": {
+      "title": "Recap",
+      "section": "docs_src/protocol_versions/tutorial004.py > Recap",
+      "url": "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+      "similarity": 0.7926407827185199
+    }
+  },
+  {
+    "id": "q041",
+    "question": "How do MCP tool names need to be formatted?",
+    "status": "NO_GOLD_SOURCE"
+  },
+  {
+    "id": "q042",
+    "question": "How do MCP dependencies work in a tool?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/handlers/dependencies"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Dependencies",
+      "section": "Dependencies",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+      "similarity": 0.7445247617080679
+    },
+    "e2_chunk": {
+      "title": "Dependencies",
+      "section": "Dependencies",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+      "similarity": 0.7445247617080679
+    }
+  },
+  {
+    "id": "q043",
+    "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/handlers/dependencies",
+      "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "The server side",
+      "section": "Multi-round-trip requests > The server side",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+      "similarity": 0.6847889015204381
+    },
+    "e2_chunk": {
+      "title": "The server side",
+      "section": "Multi-round-trip requests > The server side",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+      "similarity": 0.6847889015204381
+    }
+  },
+  {
+    "id": "q044",
+    "question": "How do MCP elicitation results work?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/handlers/elicitation"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "docs_src/elicitation/tutorial003.py",
+      "section": "docs_src/elicitation/tutorial003.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+      "similarity": 0.7296126484870911
+    },
+    "e2_chunk": {
+      "title": "docs_src/elicitation/tutorial003.py",
+      "section": "docs_src/elicitation/tutorial003.py",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+      "similarity": 0.7296126484870911
+    }
+  },
+  {
+    "id": "q045",
+    "question": "Can MCP elicitation schemas have default values?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/handlers/elicitation"
+    ],
+    "vector_rank": 6,
+    "e2_rank": 4,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "What the client receives",
+      "section": "docs_src/elicitation/tutorial001.py > What the client receives",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+      "similarity": 0.6797727954184531
+    },
+    "e2_chunk": {
+      "title": "What the client receives",
+      "section": "docs_src/elicitation/tutorial001.py > What the client receives",
+      "url": "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+      "similarity": 0.6797727954184531
+    }
+  },
+  {
+    "id": "q046",
+    "question": "What is structured output in MCP?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/server",
+      "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+    ],
+    "vector_rank": 4,
+    "e2_rank": 4,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Structured output, by hand",
+      "section": "docs_src/lowlevel/tutorial002.py > Structured output, by hand",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.6882137470372777
+    },
+    "e2_chunk": {
+      "title": "Structured output, by hand",
+      "section": "docs_src/lowlevel/tutorial002.py > Structured output, by hand",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.6882137470372777
+    }
+  },
+  {
+    "id": "q047",
+    "question": "How is a low-level MCP output schema specified?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+    ],
+    "vector_rank": 2,
+    "e2_rank": 2,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Structured output, by hand",
+      "section": "docs_src/lowlevel/tutorial002.py > Structured output, by hand",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.7190809584759574
+    },
+    "e2_chunk": {
+      "title": "Structured output, by hand",
+      "section": "docs_src/lowlevel/tutorial002.py > Structured output, by hand",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.7190809584759574
+    }
+  },
+  {
+    "id": "q048",
+    "question": "What is the difference between FastMCP and the low-level Server?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+    ],
+    "vector_rank": 17,
+    "e2_rank": 8,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Try it",
+      "section": "docs_src/lowlevel/tutorial001.py > Try it",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.6118857860565186
+    },
+    "e2_chunk": {
+      "title": "Try it",
+      "section": "docs_src/lowlevel/tutorial001.py > Try it",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.6118857860565186
+    }
+  },
+  {
+    "id": "q049",
+    "question": "What changed from MCP Python SDK v1 to v2?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/migration",
+      "https://py.sdk.modelcontextprotocol.io/v1"
+    ],
+    "vector_rank": 1,
+    "e2_rank": 1,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "Migration Guide: v1 to v2",
+      "section": "Migration Guide: v1 to v2",
+      "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+      "similarity": 0.8204322564344267
+    },
+    "e2_chunk": {
+      "title": "Migration Guide: v1 to v2",
+      "section": "Migration Guide: v1 to v2",
+      "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+      "similarity": 0.8204322564344267
+    }
+  },
+  {
+    "id": "q050",
+    "question": "How should I handle an unknown tool name in a low-level MCP server?",
+    "gold_sources": [
+      "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server"
+    ],
+    "vector_rank": 2,
+    "e2_rank": 2,
+    "status": "SURVIVED_E2",
+    "vector_chunk": {
+      "title": "The low-level Server",
+      "section": "The low-level Server",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.7345870733261108
+    },
+    "e2_chunk": {
+      "title": "The low-level Server",
+      "section": "The low-level Server",
+      "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+      "similarity": 0.7345870733261108
+    }
+  }
+]

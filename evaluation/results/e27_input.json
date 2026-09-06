@@ -1,0 +1,1528 @@
+{
+  "source": "e25_section_rule_combinations_details.json",
+  "configuration": "C7_all_three",
+  "total_questions": 48,
+  "non_top1_questions": 16,
+  "questions": [
+    {
+      "id": "q003",
+      "question": "How do I make an MCP tool parameter optional?",
+      "gold_rank": 2,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-64",
+          "title": "`MCPServer.call_tool()`, `read_resource()`, `get_prompt()` now accept a `context` parameter",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()`, `read_resource()`, `get_prompt()` now accept a `context` parameter",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7325817346572876
+        },
+        {
+          "rank": 2,
+          "id": "mcp-python-sdk-servers-tools-6",
+          "title": "Optional arguments",
+          "section": "docs_src/tools/tutorial001.py > Optional arguments",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "similarity": 0.7038687467575073
+        },
+        {
+          "rank": 3,
+          "id": "mcp-python-sdk-get-started-installation-2",
+          "title": "Optional extras",
+          "section": "Installation > Optional extras",
+          "url": "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "similarity": 0.700946569442749
+        },
+        {
+          "rank": 5,
+          "id": "mcp-python-sdk-advanced-low-level-server-6",
+          "title": "docs_src/lowlevel/tutorial002.py",
+          "section": "docs_src/lowlevel/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.6861112713813782
+        },
+        {
+          "rank": 6,
+          "id": "mcp-python-sdk-servers-prompts-9",
+          "title": "Recap",
+          "section": "docs_src/prompts/tutorial003.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "similarity": 0.6819354295730591
+        },
+        {
+          "rank": 8,
+          "id": "mcp-python-sdk-whats-new-6",
+          "title": "docs_src/whats_new/tutorial001.py",
+          "section": "docs_src/whats_new/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.6733860969543457
+        },
+        {
+          "rank": 11,
+          "id": "mcp-python-sdk-handlers-dependencies-11",
+          "title": "docs_src/dependencies/tutorial004.py",
+          "section": "docs_src/dependencies/tutorial004.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "similarity": 0.6685245037078857
+        },
+        {
+          "rank": 12,
+          "id": "mcp-python-sdk-client-6",
+          "title": "docs_src/client/tutorial002.py",
+          "section": "docs_src/client/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/",
+          "similarity": 0.667482852935791
+        },
+        {
+          "rank": 13,
+          "id": "mcp-python-sdk-handlers-multi-round-trip-3",
+          "title": "docs_src/mrtr/tutorial001.py",
+          "section": "docs_src/mrtr/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "similarity": 0.6671305894851685
+        },
+        {
+          "rank": 16,
+          "id": "mcp-python-sdk-servers-uri-templates-15",
+          "title": "docs_src/uri_templates/tutorial003.py",
+          "section": "docs_src/uri_templates/tutorial003.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "similarity": 0.6666355729103088
+        }
+      ]
+    },
+    {
+      "id": "q009",
+      "question": "How can an MCP tool report progress?",
+      "gold_rank": 2,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-138",
+          "title": "server",
+          "section": "server",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7471672892570496
+        },
+        {
+          "rank": 2,
+          "id": "mcp-python-sdk-handlers-progress-1",
+          "title": "Report it from the tool",
+          "section": "Progress > Report it from the tool",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/progress/",
+          "similarity": 0.7262403964996338
+        },
+        {
+          "rank": 8,
+          "id": "mcp-python-sdk-handlers-subscriptions-2",
+          "title": "docs_src/subscriptions/tutorial001.py",
+          "section": "docs_src/subscriptions/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "similarity": 0.6861276626586914
+        },
+        {
+          "rank": 13,
+          "id": "mcp-python-sdk-advanced-apps-10",
+          "title": "docs_src/apps/tutorial003.py",
+          "section": "docs_src/apps/tutorial003.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "similarity": 0.6457306146621704
+        },
+        {
+          "rank": 14,
+          "id": "mcp-python-sdk-client-subscriptions-2",
+          "title": "docs_src/subscriptions/tutorial003.py",
+          "section": "docs_src/subscriptions/tutorial003.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/subscriptions/",
+          "similarity": 0.6439778804779053
+        },
+        {
+          "rank": 15,
+          "id": "mcp-python-sdk-servers-completions-4",
+          "title": "docs_src/completions/tutorial002.py",
+          "section": "docs_src/completions/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "similarity": 0.6433597803115845
+        },
+        {
+          "rank": 17,
+          "id": "mcp-python-sdk-protocol-versions-10",
+          "title": "Recap",
+          "section": "docs_src/protocol_versions/tutorial004.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/protocol-versions/",
+          "similarity": 0.6394460201263428
+        },
+        {
+          "rank": 19,
+          "id": "mcp-python-sdk-handlers-multi-round-trip-9",
+          "title": "docs_src/mrtr/tutorial002.py",
+          "section": "docs_src/mrtr/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "similarity": 0.6329997777938843
+        },
+        {
+          "rank": 21,
+          "id": "mcp-python-sdk-handlers-dependencies-11",
+          "title": "docs_src/dependencies/tutorial004.py",
+          "section": "docs_src/dependencies/tutorial004.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "similarity": 0.6306819915771484
+        },
+        {
+          "rank": 22,
+          "id": "mcp-python-sdk-troubleshooting-8",
+          "title": "My host lists zero tools",
+          "section": "docs_src/troubleshooting/tutorial002.py > My host lists zero tools",
+          "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "similarity": 0.6279786229133606
+        }
+      ]
+    },
+    {
+      "id": "q010",
+      "question": "How do I access MCP Context inside a tool?",
+      "gold_rank": 5,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 0.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.2
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-60",
+          "title": "`MCPServer.get_context()` removed",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.get_context()` removed",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7828311324119568
+        },
+        {
+          "rank": 3,
+          "id": "mcp-python-sdk-handlers-multi-round-trip-4",
+          "title": "Beyond tools",
+          "section": "docs_src/mrtr/tutorial001.py > Beyond tools",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "similarity": 0.7227306365966797
+        },
+        {
+          "rank": 4,
+          "id": "mcp-python-sdk-client-6",
+          "title": "docs_src/client/tutorial002.py",
+          "section": "docs_src/client/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/",
+          "similarity": 0.7223784923553467
+        },
+        {
+          "rank": 5,
+          "id": "mcp-python-sdk-whats-new-6",
+          "title": "docs_src/whats_new/tutorial001.py",
+          "section": "docs_src/whats_new/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.7174823880195618
+        },
+        {
+          "rank": 6,
+          "id": "mcp-python-sdk-handlers-context-7",
+          "title": "docs_src/context/tutorial002.py",
+          "section": "docs_src/context/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "similarity": 0.7124786376953125
+        },
+        {
+          "rank": 8,
+          "id": "mcp-python-sdk-advanced-low-level-server-10",
+          "title": "docs_src/lowlevel/tutorial004.py",
+          "section": "docs_src/lowlevel/tutorial004.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.7100749015808105
+        },
+        {
+          "rank": 9,
+          "id": "mcp-python-sdk-servers-tools-15",
+          "title": "Recap",
+          "section": "docs_src/tools/tutorial005.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "similarity": 0.7097858190536499
+        },
+        {
+          "rank": 17,
+          "id": "mcp-python-sdk-servers-completions-8",
+          "title": "docs_src/completions/tutorial003.py",
+          "section": "docs_src/completions/tutorial003.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/completions/",
+          "similarity": 0.6955846548080444
+        },
+        {
+          "rank": 21,
+          "id": "mcp-python-sdk-advanced-extensions-14",
+          "title": "docs_src/extensions/tutorial005.py",
+          "section": "docs_src/extensions/tutorial005.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "similarity": 0.6914705038070679
+        },
+        {
+          "rank": 22,
+          "id": "mcp-python-sdk-handlers-subscriptions-11",
+          "title": "docs_src/subscriptions/tutorial002.py",
+          "section": "docs_src/subscriptions/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "similarity": 0.6907719373703003
+        }
+      ]
+    },
+    {
+      "id": "q013",
+      "question": "What happens when an MCP tool returns a primitive type?",
+      "gold_rank": 3,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.3333333333333333
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-62",
+          "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()` returns `CallToolResult`",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7073378562927246
+        },
+        {
+          "rank": 2,
+          "id": "mcp-python-sdk-servers-tools-15",
+          "title": "Recap",
+          "section": "docs_src/tools/tutorial005.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "similarity": 0.6875983476638794
+        },
+        {
+          "rank": 3,
+          "id": "mcp-python-sdk-servers-structured-output-20",
+          "title": "Recap",
+          "section": "docs_src/structured_output/tutorial009.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "similarity": 0.6853017807006836
+        },
+        {
+          "rank": 4,
+          "id": "mcp-python-sdk-whats-new-8",
+          "title": "The wire types moved to `mcp-types`, and every field is snake_case",
+          "section": "docs_src/whats_new/tutorial001.py > The wire types moved to `mcp-types`, and every field is snake_case",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.6758338809013367
+        },
+        {
+          "rank": 6,
+          "id": "mcp-python-sdk-advanced-low-level-server-2",
+          "title": "docs_src/lowlevel/tutorial001.py",
+          "section": "docs_src/lowlevel/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.663190484046936
+        },
+        {
+          "rank": 7,
+          "id": "mcp-python-sdk-advanced-extensions-16",
+          "title": "docs_src/extensions/tutorial006.py",
+          "section": "docs_src/extensions/tutorial006.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "similarity": 0.6611577272415161
+        },
+        {
+          "rank": 10,
+          "id": "mcp-python-sdk-handlers-dependencies-2",
+          "title": "docs_src/dependencies/tutorial001.py",
+          "section": "docs_src/dependencies/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "similarity": 0.656670093536377
+        },
+        {
+          "rank": 11,
+          "id": "mcp-python-sdk-servers-resources-8",
+          "title": "Recap",
+          "section": "docs_src/resources/tutorial003.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "similarity": 0.6554327011108398
+        },
+        {
+          "rank": 13,
+          "id": "mcp-python-sdk-run-deploy-5",
+          "title": "docs_src/deploy/tutorial002.py",
+          "section": "docs_src/deploy/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "similarity": 0.6527848243713379
+        },
+        {
+          "rank": 17,
+          "id": "mcp-python-sdk-handlers-subscriptions-11",
+          "title": "docs_src/subscriptions/tutorial002.py",
+          "section": "docs_src/subscriptions/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "similarity": 0.6492172479629517
+        }
+      ]
+    },
+    {
+      "id": "q014",
+      "question": "Can an MCP tool return a Pydantic model?",
+      "gold_rank": 4,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 0.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.25
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-servers-tools-15",
+          "title": "Recap",
+          "section": "docs_src/tools/tutorial005.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "similarity": 0.7698312997817993
+        },
+        {
+          "rank": 2,
+          "id": "mcp-python-sdk-advanced-low-level-server-15",
+          "title": "docs_src/lowlevel/tutorial006.py",
+          "section": "docs_src/lowlevel/tutorial006.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.7372713088989258
+        },
+        {
+          "rank": 4,
+          "id": "mcp-python-sdk-client-8",
+          "title": "docs_src/client/tutorial003.py",
+          "section": "docs_src/client/tutorial003.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/",
+          "similarity": 0.706706166267395
+        },
+        {
+          "rank": 5,
+          "id": "mcp-python-sdk-servers-structured-output-4",
+          "title": "Return a model",
+          "section": "docs_src/structured_output/tutorial001.py > Return a model",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "similarity": 0.7066736221313477
+        },
+        {
+          "rank": 6,
+          "id": "mcp-python-sdk-troubleshooting-22",
+          "title": "docs_src/troubleshooting/tutorial008.py",
+          "section": "docs_src/troubleshooting/tutorial008.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "similarity": 0.705941915512085
+        },
+        {
+          "rank": 7,
+          "id": "mcp-python-sdk-client-callbacks-2",
+          "title": "docs_src/client_callbacks/tutorial001.py",
+          "section": "docs_src/client_callbacks/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "similarity": 0.7042683362960815
+        },
+        {
+          "rank": 11,
+          "id": "mcp-python-sdk-handlers-multi-round-trip-2",
+          "title": "The server side",
+          "section": "Multi-round-trip requests > The server side",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "similarity": 0.6937536001205444
+        },
+        {
+          "rank": 13,
+          "id": "mcp-python-sdk-whats-new-16",
+          "title": "docs_src/legacy_clients/tutorial001.py",
+          "section": "docs_src/legacy_clients/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.6859832406044006
+        },
+        {
+          "rank": 14,
+          "id": "mcp-python-sdk-handlers-dependencies-6",
+          "title": "docs_src/dependencies/tutorial002.py",
+          "section": "docs_src/dependencies/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "similarity": 0.6796280145645142
+        },
+        {
+          "rank": 18,
+          "id": "mcp-python-sdk-handlers-elicitation-4",
+          "title": "docs_src/elicitation/tutorial001.py",
+          "section": "docs_src/elicitation/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "similarity": 0.6755361557006836
+        }
+      ]
+    },
+    {
+      "id": "q016",
+      "question": "Can an MCP tool return a plain untyped class?",
+      "gold_rank": 2,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-servers-tools-15",
+          "title": "Recap",
+          "section": "docs_src/tools/tutorial005.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "similarity": 0.7083410024642944
+        },
+        {
+          "rank": 2,
+          "id": "mcp-python-sdk-servers-structured-output-18",
+          "title": "A class without type hints",
+          "section": "docs_src/structured_output/tutorial008.py > A class without type hints",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "similarity": 0.7042645215988159
+        },
+        {
+          "rank": 3,
+          "id": "mcp-python-sdk-migration-13",
+          "title": "Extra fields on MCP types are no longer preserved",
+          "section": "Use `str` instead of `Cursor` for pagination cursors > Field names changed from camelCase to snake_case > Extra fields on MCP types are no longer preserved",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.690027117729187
+        },
+        {
+          "rank": 5,
+          "id": "mcp-python-sdk-advanced-low-level-server-8",
+          "title": "docs_src/lowlevel/tutorial003.py",
+          "section": "docs_src/lowlevel/tutorial003.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.679977297782898
+        },
+        {
+          "rank": 12,
+          "id": "mcp-python-sdk-whats-new-8",
+          "title": "The wire types moved to `mcp-types`, and every field is snake_case",
+          "section": "docs_src/whats_new/tutorial001.py > The wire types moved to `mcp-types`, and every field is snake_case",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.6664208173751831
+        },
+        {
+          "rank": 13,
+          "id": "mcp-python-sdk-handlers-subscriptions-11",
+          "title": "docs_src/subscriptions/tutorial002.py",
+          "section": "docs_src/subscriptions/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "similarity": 0.6647173166275024
+        },
+        {
+          "rank": 16,
+          "id": "mcp-python-sdk-handlers-multi-round-trip-2",
+          "title": "The server side",
+          "section": "Multi-round-trip requests > The server side",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "similarity": 0.6537501811981201
+        },
+        {
+          "rank": 17,
+          "id": "mcp-python-sdk-run-deploy-6",
+          "title": "docs_src/deploy/tutorial003.py",
+          "section": "docs_src/deploy/tutorial003.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "similarity": 0.6527659296989441
+        },
+        {
+          "rank": 21,
+          "id": "mcp-python-sdk-handlers-dependencies-2",
+          "title": "docs_src/dependencies/tutorial001.py",
+          "section": "docs_src/dependencies/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "similarity": 0.643207311630249
+        },
+        {
+          "rank": 22,
+          "id": "mcp-python-sdk-advanced-extensions-7",
+          "title": "docs_src/extensions/tutorial003.py",
+          "section": "docs_src/extensions/tutorial003.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "similarity": 0.6417243480682373
+        }
+      ]
+    },
+    {
+      "id": "q017",
+      "question": "How do I return CallToolResult directly from an MCP tool?",
+      "gold_rank": 4,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 0.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 0.5,
+        "mrr": 0.25
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-62",
+          "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()` returns `CallToolResult`",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.852553129196167
+        },
+        {
+          "rank": 2,
+          "id": "mcp-python-sdk-handlers-multi-round-trip-2",
+          "title": "The server side",
+          "section": "Multi-round-trip requests > The server side",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "similarity": 0.7524998188018799
+        },
+        {
+          "rank": 6,
+          "id": "mcp-python-sdk-client-7",
+          "title": "Calling a tool",
+          "section": "docs_src/client/tutorial002.py > Calling a tool",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/",
+          "similarity": 0.733798623085022
+        },
+        {
+          "rank": 8,
+          "id": "mcp-python-sdk-advanced-low-level-server-2",
+          "title": "docs_src/lowlevel/tutorial001.py",
+          "section": "docs_src/lowlevel/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.7285445332527161
+        },
+        {
+          "rank": 9,
+          "id": "mcp-python-sdk-handlers-elicitation-10",
+          "title": "docs_src/elicitation/tutorial003.py",
+          "section": "docs_src/elicitation/tutorial003.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "similarity": 0.725277304649353
+        },
+        {
+          "rank": 10,
+          "id": "mcp-python-sdk-advanced-extensions-14",
+          "title": "docs_src/extensions/tutorial005.py",
+          "section": "docs_src/extensions/tutorial005.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "similarity": 0.725068211555481
+        },
+        {
+          "rank": 11,
+          "id": "mcp-python-sdk-whats-new-6",
+          "title": "docs_src/whats_new/tutorial001.py",
+          "section": "docs_src/whats_new/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.7234835624694824
+        },
+        {
+          "rank": 12,
+          "id": "mcp-python-sdk-client-callbacks-4",
+          "title": "docs_src/client_callbacks/tutorial002.py",
+          "section": "docs_src/client_callbacks/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "similarity": 0.720082700252533
+        },
+        {
+          "rank": 16,
+          "id": "mcp-python-sdk-run-deploy-5",
+          "title": "docs_src/deploy/tutorial002.py",
+          "section": "docs_src/deploy/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "similarity": 0.7136580348014832
+        },
+        {
+          "rank": 19,
+          "id": "mcp-python-sdk-advanced-middleware-2",
+          "title": "docs_src/middleware/tutorial001.py",
+          "section": "docs_src/middleware/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/middleware/",
+          "similarity": 0.7105117440223694
+        }
+      ]
+    },
+    {
+      "id": "q018",
+      "question": "How do I mark an MCP tool result as an error?",
+      "gold_rank": 2,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-66",
+          "title": "`MCPError` raised from an `@mcp.tool()` handler now surfaces as a JSON-RPC error",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPError` raised from an `@mcp.tool()` handler now surfaces as a JSON-RPC error",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7308299541473389
+        },
+        {
+          "rank": 4,
+          "id": "mcp-python-sdk-servers-handling-errors-0",
+          "title": "Handling errors",
+          "section": "Handling errors",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+          "similarity": 0.7254056930541992
+        },
+        {
+          "rank": 7,
+          "id": "mcp-python-sdk-servers-tools-15",
+          "title": "Recap",
+          "section": "docs_src/tools/tutorial005.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "similarity": 0.7167507410049438
+        },
+        {
+          "rank": 9,
+          "id": "mcp-python-sdk-whats-new-6",
+          "title": "docs_src/whats_new/tutorial001.py",
+          "section": "docs_src/whats_new/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.7047035694122314
+        },
+        {
+          "rank": 10,
+          "id": "mcp-python-sdk-client-11",
+          "title": "`is_error`: whether the tool failed",
+          "section": "docs_src/client/tutorial003.py > `content`: what the model reads > `is_error`: whether the tool failed",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/",
+          "similarity": 0.7041997909545898
+        },
+        {
+          "rank": 12,
+          "id": "mcp-python-sdk-troubleshooting-28",
+          "title": "Recap",
+          "section": "docs_src/troubleshooting/tutorial007.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "similarity": 0.6936005353927612
+        },
+        {
+          "rank": 16,
+          "id": "mcp-python-sdk-handlers-multi-round-trip-4",
+          "title": "Beyond tools",
+          "section": "docs_src/mrtr/tutorial001.py > Beyond tools",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "similarity": 0.6823107004165649
+        },
+        {
+          "rank": 20,
+          "id": "mcp-python-sdk-servers-resources-8",
+          "title": "Recap",
+          "section": "docs_src/resources/tutorial003.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "similarity": 0.677590012550354
+        },
+        {
+          "rank": 23,
+          "id": "mcp-python-sdk-servers-structured-output-2",
+          "title": "docs_src/structured_output/tutorial001.py",
+          "section": "docs_src/structured_output/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "similarity": 0.672200083732605
+        },
+        {
+          "rank": 24,
+          "id": "mcp-python-sdk-advanced-extensions-16",
+          "title": "docs_src/extensions/tutorial006.py",
+          "section": "docs_src/extensions/tutorial006.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "similarity": 0.6716547012329102
+        }
+      ]
+    },
+    {
+      "id": "q019",
+      "question": "How do I use _meta in an MCP tool result?",
+      "gold_rank": 2,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-14",
+          "title": "_meta remains the supported place for custom data, per the MCP spec",
+          "section": "_meta remains the supported place for custom data, per the MCP spec",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7967395782470703
+        },
+        {
+          "rank": 2,
+          "id": "mcp-python-sdk-advanced-low-level-server-10",
+          "title": "docs_src/lowlevel/tutorial004.py",
+          "section": "docs_src/lowlevel/tutorial004.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.722692608833313
+        },
+        {
+          "rank": 5,
+          "id": "mcp-python-sdk-servers-tools-15",
+          "title": "Recap",
+          "section": "docs_src/tools/tutorial005.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "similarity": 0.7091025710105896
+        },
+        {
+          "rank": 8,
+          "id": "mcp-python-sdk-whats-new-6",
+          "title": "docs_src/whats_new/tutorial001.py",
+          "section": "docs_src/whats_new/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.6986452341079712
+        },
+        {
+          "rank": 11,
+          "id": "mcp-python-sdk-client-6",
+          "title": "docs_src/client/tutorial002.py",
+          "section": "docs_src/client/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/",
+          "similarity": 0.6923384666442871
+        },
+        {
+          "rank": 12,
+          "id": "mcp-python-sdk-handlers-multi-round-trip-2",
+          "title": "The server side",
+          "section": "Multi-round-trip requests > The server side",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "similarity": 0.6911913156509399
+        },
+        {
+          "rank": 17,
+          "id": "mcp-python-sdk-advanced-extensions-10",
+          "title": "docs_src/extensions/tutorial004.py",
+          "section": "docs_src/extensions/tutorial004.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "similarity": 0.6802874803543091
+        },
+        {
+          "rank": 20,
+          "id": "mcp-python-sdk-handlers-subscriptions-11",
+          "title": "docs_src/subscriptions/tutorial002.py",
+          "section": "docs_src/subscriptions/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "similarity": 0.6798139214515686
+        },
+        {
+          "rank": 21,
+          "id": "mcp-python-sdk-servers-uri-templates-2",
+          "title": "docs_src/uri_templates/tutorial001.py",
+          "section": "docs_src/uri_templates/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/uri-templates/",
+          "similarity": 0.6790049076080322
+        },
+        {
+          "rank": 23,
+          "id": "mcp-python-sdk-handlers-dependencies-11",
+          "title": "docs_src/dependencies/tutorial004.py",
+          "section": "docs_src/dependencies/tutorial004.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "similarity": 0.6730749607086182
+        }
+      ]
+    },
+    {
+      "id": "q021",
+      "question": "When should I use the low-level MCP Server instead of FastMCP?",
+      "gold_rank": 3,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.3333333333333333
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-40",
+          "title": "What is unchanged on `MCPServer`",
+          "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7492616176605225
+        },
+        {
+          "rank": 2,
+          "id": "mcp-python-sdk-whats-new-1",
+          "title": "`FastMCP` is now `MCPServer`",
+          "section": "What's new in v2 > The SDK: v1 to v2 > `FastMCP` is now `MCPServer`",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.7386806011199951
+        },
+        {
+          "rank": 3,
+          "id": "mcp-python-sdk-advanced-low-level-server-0",
+          "title": "The low-level Server",
+          "section": "The low-level Server",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.7339707612991333
+        },
+        {
+          "rank": 8,
+          "id": "mcp-python-sdk-advanced-0",
+          "title": "Advanced",
+          "section": "Advanced",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "similarity": 0.7048901915550232
+        },
+        {
+          "rank": 16,
+          "id": "mcp-python-sdk--8",
+          "title": "Where to go next",
+          "section": "docs_src/index/tutorial001.py > Where to go next",
+          "url": "https://py.sdk.modelcontextprotocol.io/",
+          "similarity": 0.6645370721817017
+        },
+        {
+          "rank": 17,
+          "id": "mcp-python-sdk-servers-0",
+          "title": "Servers",
+          "section": "Servers",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/",
+          "similarity": 0.6616488099098206
+        },
+        {
+          "rank": 18,
+          "id": "mcp-python-sdk-get-started-3",
+          "title": "Where to go next",
+          "section": "Get started > Where to go next",
+          "url": "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "similarity": 0.6608453392982483
+        },
+        {
+          "rank": 19,
+          "id": "mcp-python-sdk-run-0",
+          "title": "Running your server",
+          "section": "Running your server",
+          "url": "https://py.sdk.modelcontextprotocol.io/run/",
+          "similarity": 0.6602168083190918
+        },
+        {
+          "rank": 20,
+          "id": "mcp-python-sdk-run-asgi-14",
+          "title": "Recap",
+          "section": "docs_src/asgi/tutorial006.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "similarity": 0.6590496301651001
+        },
+        {
+          "rank": 22,
+          "id": "mcp-python-sdk-run-legacy-clients-0",
+          "title": "Serving legacy clients",
+          "section": "Serving legacy clients",
+          "url": "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "similarity": 0.654168426990509
+        }
+      ]
+    },
+    {
+      "id": "q033",
+      "question": "How do I run an MCP Python server with the development CLI?",
+      "gold_rank": 3,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.3333333333333333
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-run-10",
+          "title": "The `mcp` command",
+          "section": "docs_src/run/tutorial003.py > The `mcp` command",
+          "url": "https://py.sdk.modelcontextprotocol.io/run/",
+          "similarity": 0.8102091550827026
+        },
+        {
+          "rank": 3,
+          "id": "mcp-python-sdk-migration-8",
+          "title": "`mcp dev` and `mcp install` pin the spawned environment to your SDK version",
+          "section": "Migration Guide: v1 to v2 > Packaging, dependencies, and CLI > `mcp dev` and `mcp install` pin the spawned environment to your SDK version",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.766917884349823
+        },
+        {
+          "rank": 4,
+          "id": "mcp-python-sdk--3",
+          "title": "Create it",
+          "section": "MCP Python SDK > Example > Create it",
+          "url": "https://py.sdk.modelcontextprotocol.io/",
+          "similarity": 0.7666243314743042
+        },
+        {
+          "rank": 6,
+          "id": "mcp-python-sdk-advanced-low-level-server-3",
+          "title": "Try it",
+          "section": "docs_src/lowlevel/tutorial001.py > Try it",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.7476005554199219
+        },
+        {
+          "rank": 8,
+          "id": "mcp-python-sdk-get-started-real-host-7",
+          "title": "VS Code",
+          "section": "docs_src/real_host/tutorial001.py > VS Code",
+          "url": "https://py.sdk.modelcontextprotocol.io/get-started/real-host/",
+          "similarity": 0.7349186539649963
+        },
+        {
+          "rank": 9,
+          "id": "mcp-python-sdk-get-started-first-steps-5",
+          "title": "Try it",
+          "section": "docs_src/first_steps/tutorial001.py > Try it",
+          "url": "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "similarity": 0.7341597676277161
+        },
+        {
+          "rank": 10,
+          "id": "mcp-python-sdk-get-started-1",
+          "title": "Run the code",
+          "section": "Get started > Run the code",
+          "url": "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "similarity": 0.7331705093383789
+        },
+        {
+          "rank": 13,
+          "id": "mcp-python-sdk-get-started-installation-2",
+          "title": "Optional extras",
+          "section": "Installation > Optional extras",
+          "url": "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "similarity": 0.7290471792221069
+        },
+        {
+          "rank": 14,
+          "id": "mcp-python-sdk-servers-resources-3",
+          "title": "Try it",
+          "section": "docs_src/resources/tutorial001.py > Try it",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "similarity": 0.7269102334976196
+        },
+        {
+          "rank": 23,
+          "id": "mcp-python-sdk-handlers-multi-round-trip-3",
+          "title": "docs_src/mrtr/tutorial001.py",
+          "section": "docs_src/mrtr/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "similarity": 0.7015002369880676
+        }
+      ]
+    },
+    {
+      "id": "q037",
+      "question": "What transports does the MCP Python SDK support?",
+      "gold_rank": 4,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 0.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 0.5,
+        "mrr": 0.25
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-9",
+          "title": "`mcp.types` moved to the `mcp-types` package",
+          "section": "Migration Guide: v1 to v2 > Types and wire format > `mcp.types` moved to the `mcp-types` package",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7483817338943481
+        },
+        {
+          "rank": 2,
+          "id": "mcp-python-sdk-get-started-installation-0",
+          "title": "Installation",
+          "section": "Installation",
+          "url": "https://py.sdk.modelcontextprotocol.io/get-started/installation/",
+          "similarity": 0.7399547100067139
+        },
+        {
+          "rank": 3,
+          "id": "mcp-python-sdk--0",
+          "title": "MCP Python SDK",
+          "section": "MCP Python SDK",
+          "url": "https://py.sdk.modelcontextprotocol.io/",
+          "similarity": 0.7398782968521118
+        },
+        {
+          "rank": 4,
+          "id": "mcp-python-sdk-client-transports-0",
+          "title": "Client transports",
+          "section": "Client transports",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/transports/",
+          "similarity": 0.7384156584739685
+        },
+        {
+          "rank": 5,
+          "id": "mcp-python-sdk-whats-new-12",
+          "title": "Removed outright",
+          "section": "docs_src/whats_new/tutorial001.py > The wire types moved to `mcp-types`, and every field is snake_case > Removed outright",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.7339742183685303
+        },
+        {
+          "rank": 10,
+          "id": "mcp-python-sdk-run-11",
+          "title": "Recap",
+          "section": "docs_src/run/tutorial003.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/run/",
+          "similarity": 0.7046638131141663
+        },
+        {
+          "rank": 11,
+          "id": "mcp-python-sdk-run-deploy-10",
+          "title": "What the SDK does not give you",
+          "section": "docs_src/deploy/tutorial004.py > What the SDK does not give you",
+          "url": "https://py.sdk.modelcontextprotocol.io/run/deploy/",
+          "similarity": 0.7020223140716553
+        },
+        {
+          "rank": 18,
+          "id": "mcp-python-sdk-client-3",
+          "title": "What you can pass to `Client`",
+          "section": "docs_src/client/tutorial001.py > What you can pass to `Client`",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/",
+          "similarity": 0.6942170858383179
+        },
+        {
+          "rank": 24,
+          "id": "mcp-python-sdk-run-legacy-clients-0",
+          "title": "Serving legacy clients",
+          "section": "Serving legacy clients",
+          "url": "https://py.sdk.modelcontextprotocol.io/run/legacy-clients/",
+          "similarity": 0.6869843602180481
+        },
+        {
+          "rank": 25,
+          "id": "mcp-python-sdk-handlers-logging-6",
+          "title": "Recap",
+          "section": "docs_src/logging/tutorial001.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "similarity": 0.686680793762207
+        }
+      ]
+    },
+    {
+      "id": "q043",
+      "question": "Why would I use an MCP dependency instead of calling a helper directly?",
+      "gold_rank": 2,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-troubleshooting-18",
+          "title": "`MCPError: Client did not declare the form elicitation capability required by resolver '<name>'`",
+          "section": "The mount works. The MCP app's own lifespan never runs. > `MCPError: Client did not declare the form elicitation capability required by resolver '<name>'`",
+          "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "similarity": 0.6787552833557129
+        },
+        {
+          "rank": 3,
+          "id": "mcp-python-sdk-handlers-multi-round-trip-2",
+          "title": "The server side",
+          "section": "Multi-round-trip requests > The server side",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "similarity": 0.6640856862068176
+        },
+        {
+          "rank": 4,
+          "id": "mcp-python-sdk-servers-resources-8",
+          "title": "Recap",
+          "section": "docs_src/resources/tutorial003.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "similarity": 0.6637685894966125
+        },
+        {
+          "rank": 6,
+          "id": "mcp-python-sdk-handlers-dependencies-11",
+          "title": "docs_src/dependencies/tutorial004.py",
+          "section": "docs_src/dependencies/tutorial004.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/dependencies/",
+          "similarity": 0.6572643518447876
+        },
+        {
+          "rank": 7,
+          "id": "mcp-python-sdk-servers-prompts-9",
+          "title": "Recap",
+          "section": "docs_src/prompts/tutorial003.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "similarity": 0.6539636850357056
+        },
+        {
+          "rank": 8,
+          "id": "mcp-python-sdk-get-started-first-steps-8",
+          "title": "Recap",
+          "section": "docs_src/first_steps/tutorial001.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "similarity": 0.6520354151725769
+        },
+        {
+          "rank": 9,
+          "id": "mcp-python-sdk-migration-34",
+          "title": "`McpError` renamed to `MCPError`",
+          "section": "After (v2) > `SUPPORTED_PROTOCOL_VERSIONS` deprecated; `LATEST_PROTOCOL_VERSION` changed meaning > `McpError` renamed to `MCPError`",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.650998592376709
+        },
+        {
+          "rank": 10,
+          "id": "mcp-python-sdk-advanced-extensions-2",
+          "title": "docs_src/extensions/tutorial001.py",
+          "section": "docs_src/extensions/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/extensions/",
+          "similarity": 0.6509666442871094
+        },
+        {
+          "rank": 11,
+          "id": "mcp-python-sdk-advanced-low-level-server-14",
+          "title": "A method of your own",
+          "section": "docs_src/lowlevel/tutorial005.py > A method of your own",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.6504838466644287
+        },
+        {
+          "rank": 14,
+          "id": "mcp-python-sdk-advanced-apps-0",
+          "title": "MCP Apps",
+          "section": "MCP Apps",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/apps/",
+          "similarity": 0.6470158100128174
+        }
+      ]
+    },
+    {
+      "id": "q045",
+      "question": "Can MCP elicitation schemas have default values?",
+      "gold_rank": 2,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-servers-tools-15",
+          "title": "Recap",
+          "section": "docs_src/tools/tutorial005.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "similarity": 0.6800503730773926
+        },
+        {
+          "rank": 2,
+          "id": "mcp-python-sdk-handlers-elicitation-10",
+          "title": "docs_src/elicitation/tutorial003.py",
+          "section": "docs_src/elicitation/tutorial003.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/elicitation/",
+          "similarity": 0.6717952489852905
+        },
+        {
+          "rank": 3,
+          "id": "mcp-python-sdk-whats-new-6",
+          "title": "docs_src/whats_new/tutorial001.py",
+          "section": "docs_src/whats_new/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.6685254573822021
+        },
+        {
+          "rank": 4,
+          "id": "mcp-python-sdk-troubleshooting-19",
+          "title": "`MCPError: Elicitation not supported`",
+          "section": "The mount works. The MCP app's own lifespan never runs. > `MCPError: Elicitation not supported`",
+          "url": "https://py.sdk.modelcontextprotocol.io/troubleshooting/",
+          "similarity": 0.6682946681976318
+        },
+        {
+          "rank": 5,
+          "id": "mcp-python-sdk-migration-13",
+          "title": "Extra fields on MCP types are no longer preserved",
+          "section": "Use `str` instead of `Cursor` for pagination cursors > Field names changed from camelCase to snake_case > Extra fields on MCP types are no longer preserved",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.6679134368896484
+        },
+        {
+          "rank": 7,
+          "id": "mcp-python-sdk-client-callbacks-4",
+          "title": "docs_src/client_callbacks/tutorial002.py",
+          "section": "docs_src/client_callbacks/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/callbacks/",
+          "similarity": 0.6627175807952881
+        },
+        {
+          "rank": 8,
+          "id": "mcp-python-sdk-advanced-low-level-server-2",
+          "title": "docs_src/lowlevel/tutorial001.py",
+          "section": "docs_src/lowlevel/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.6622327566146851
+        },
+        {
+          "rank": 9,
+          "id": "mcp-python-sdk-servers-prompts-2",
+          "title": "docs_src/prompts/tutorial001.py",
+          "section": "docs_src/prompts/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/prompts/",
+          "similarity": 0.6620020866394043
+        },
+        {
+          "rank": 15,
+          "id": "mcp-python-sdk-handlers-lifespan-3",
+          "title": "What the model sees",
+          "section": "docs_src/lifespan/tutorial001.py > What the model sees",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/lifespan/",
+          "similarity": 0.6532794237136841
+        },
+        {
+          "rank": 17,
+          "id": "mcp-python-sdk-handlers-multi-round-trip-3",
+          "title": "docs_src/mrtr/tutorial001.py",
+          "section": "docs_src/mrtr/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/",
+          "similarity": 0.6485521197319031
+        }
+      ]
+    },
+    {
+      "id": "q046",
+      "question": "What is structured output in MCP?",
+      "gold_rank": 2,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 0.5,
+        "mrr": 0.5
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-servers-structured-output-0",
+          "title": "Structured Output",
+          "section": "Structured Output",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/structured-output/",
+          "similarity": 0.741534948348999
+        },
+        {
+          "rank": 3,
+          "id": "mcp-python-sdk-advanced-low-level-server-7",
+          "title": "Structured output, by hand",
+          "section": "docs_src/lowlevel/tutorial002.py > Structured output, by hand",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.7186253666877747
+        },
+        {
+          "rank": 5,
+          "id": "mcp-python-sdk-servers-tools-15",
+          "title": "Recap",
+          "section": "docs_src/tools/tutorial005.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+          "similarity": 0.7014320492744446
+        },
+        {
+          "rank": 8,
+          "id": "mcp-python-sdk-client-10",
+          "title": "`structured_content`: what your application reads",
+          "section": "docs_src/client/tutorial003.py > `content`: what the model reads > `structured_content`: what your application reads",
+          "url": "https://py.sdk.modelcontextprotocol.io/client/",
+          "similarity": 0.6888309717178345
+        },
+        {
+          "rank": 17,
+          "id": "mcp-python-sdk-handlers-logging-6",
+          "title": "Recap",
+          "section": "docs_src/logging/tutorial001.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/logging/",
+          "similarity": 0.6269335746765137
+        },
+        {
+          "rank": 18,
+          "id": "mcp-python-sdk-servers-media-2",
+          "title": "docs_src/media/tutorial001.py",
+          "section": "docs_src/media/tutorial001.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/media/",
+          "similarity": 0.6259700059890747
+        },
+        {
+          "rank": 19,
+          "id": "mcp-python-sdk-migration-62",
+          "title": "`MCPServer.call_tool()` returns `CallToolResult`",
+          "section": "After (v2) > `MCP_*` environment variables and `.env` files are no longer read > `MCPServer.call_tool()` returns `CallToolResult`",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.6249985694885254
+        },
+        {
+          "rank": 21,
+          "id": "mcp-python-sdk-servers-resources-8",
+          "title": "Recap",
+          "section": "docs_src/resources/tutorial003.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/resources/",
+          "similarity": 0.6182990074157715
+        },
+        {
+          "rank": 22,
+          "id": "mcp-python-sdk-servers-0",
+          "title": "Servers",
+          "section": "Servers",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/",
+          "similarity": 0.6144318580627441
+        },
+        {
+          "rank": 25,
+          "id": "mcp-python-sdk-handlers-context-7",
+          "title": "docs_src/context/tutorial002.py",
+          "section": "docs_src/context/tutorial002.py",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/context/",
+          "similarity": 0.6072690486907959
+        }
+      ]
+    },
+    {
+      "id": "q048",
+      "question": "What is the difference between FastMCP and the low-level Server?",
+      "gold_rank": 3,
+      "metrics": {
+        "hit@1": 0.0,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.3333333333333333
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "id": "mcp-python-sdk-migration-40",
+          "title": "What is unchanged on `MCPServer`",
+          "section": "Constructing one: `id` is required but nullable > MCPServer (formerly FastMCP) > What is unchanged on `MCPServer`",
+          "url": "https://py.sdk.modelcontextprotocol.io/migration/",
+          "similarity": 0.7070479393005371
+        },
+        {
+          "rank": 2,
+          "id": "mcp-python-sdk-whats-new-1",
+          "title": "`FastMCP` is now `MCPServer`",
+          "section": "What's new in v2 > The SDK: v1 to v2 > `FastMCP` is now `MCPServer`",
+          "url": "https://py.sdk.modelcontextprotocol.io/whats-new/",
+          "similarity": 0.7028561234474182
+        },
+        {
+          "rank": 3,
+          "id": "mcp-python-sdk-advanced-low-level-server-0",
+          "title": "The low-level Server",
+          "section": "The low-level Server",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/",
+          "similarity": 0.682320237159729
+        },
+        {
+          "rank": 10,
+          "id": "mcp-python-sdk-advanced-0",
+          "title": "Advanced",
+          "section": "Advanced",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/",
+          "similarity": 0.634023904800415
+        },
+        {
+          "rank": 11,
+          "id": "mcp-python-sdk-handlers-subscriptions-10",
+          "title": "The low-level composition",
+          "section": "docs_src/subscriptions/tutorial003.py > The low-level composition",
+          "url": "https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/",
+          "similarity": 0.630153238773346
+        },
+        {
+          "rank": 14,
+          "id": "mcp-python-sdk-servers-0",
+          "title": "Servers",
+          "section": "Servers",
+          "url": "https://py.sdk.modelcontextprotocol.io/servers/",
+          "similarity": 0.6248098015785217
+        },
+        {
+          "rank": 16,
+          "id": "mcp-python-sdk-get-started-first-steps-8",
+          "title": "Recap",
+          "section": "docs_src/first_steps/tutorial001.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/get-started/first-steps/",
+          "similarity": 0.6214245557785034
+        },
+        {
+          "rank": 23,
+          "id": "mcp-python-sdk-advanced-pagination-7",
+          "title": "Recap",
+          "section": "docs_src/pagination/tutorial002.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/advanced/pagination/",
+          "similarity": 0.6054321527481079
+        },
+        {
+          "rank": 26,
+          "id": "mcp-python-sdk-get-started-3",
+          "title": "Where to go next",
+          "section": "Get started > Where to go next",
+          "url": "https://py.sdk.modelcontextprotocol.io/get-started/",
+          "similarity": 0.5976110696792603
+        },
+        {
+          "rank": 27,
+          "id": "mcp-python-sdk-run-asgi-14",
+          "title": "Recap",
+          "section": "docs_src/asgi/tutorial006.py > Recap",
+          "url": "https://py.sdk.modelcontextprotocol.io/run/asgi/",
+          "similarity": 0.5971952080726624
+        }
+      ]
+    }
+  ]
+}

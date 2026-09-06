@@ -1,0 +1,162 @@
+{
+  "dataset": "mcp_rag_eval_dataset.jsonl",
+  "total_questions": 50,
+  "evaluated_questions": 48,
+  "excluded_spec_questions": 2,
+  "excluded_spec_question_ids": [
+    "q025",
+    "q041"
+  ],
+  "top_k": 10,
+  "experiments": [
+    {
+      "id": "E0",
+      "name": "vector",
+      "description": "Vector baseline",
+      "mode": "vector",
+      "candidate_limit": 10,
+      "top_k": 10,
+      "reranker": false,
+      "dedup": false
+    },
+    {
+      "id": "E1",
+      "name": "vector_candidate100",
+      "description": "Vector with larger candidate pool",
+      "mode": "vector",
+      "candidate_limit": 100,
+      "top_k": 10,
+      "reranker": false,
+      "dedup": false
+    },
+    {
+      "id": "E2",
+      "name": "vector_dedup",
+      "description": "Vector + source deduplication",
+      "mode": "vector_dedup",
+      "candidate_limit": 100,
+      "top_k": 10,
+      "reranker": false,
+      "dedup": true
+    },
+    {
+      "id": "E3a",
+      "name": "vector_rerank",
+      "description": "Vector + ONNX reranker",
+      "mode": "vector_rerank",
+      "candidate_limit": 100,
+      "top_k": 10,
+      "reranker": true,
+      "dedup": false
+    },
+    {
+      "id": "E3",
+      "name": "vector_rerank_dedup",
+      "description": "Vector + ONNX reranker + source deduplication",
+      "mode": "vector_rerank_dedup",
+      "candidate_limit": 100,
+      "top_k": 10,
+      "reranker": true,
+      "dedup": true
+    },
+    {
+      "id": "E4",
+      "name": "hybrid",
+      "description": "Vector + keyword + RRF",
+      "mode": "hybrid",
+      "candidate_limit": 30,
+      "top_k": 10,
+      "reranker": false,
+      "dedup": false
+    },
+    {
+      "id": "E5",
+      "name": "hybrid_dedup",
+      "description": "Hybrid + source deduplication",
+      "mode": "hybrid_dedup",
+      "candidate_limit": 30,
+      "top_k": 10,
+      "reranker": false,
+      "dedup": true
+    }
+  ],
+  "results": {
+    "E0": {
+      "num_questions": 48,
+      "hit@1": 0.4583333333333333,
+      "hit@3": 0.6458333333333334,
+      "hit@5": 0.7708333333333334,
+      "hit@10": 0.9375,
+      "recall@5": 0.6770833333333334,
+      "recall@10": 0.8125,
+      "mrr": 0.5948164682539683,
+      "avg_latency_ms": 475.86020833333333
+    },
+    "E1": {
+      "num_questions": 48,
+      "hit@1": 0.4583333333333333,
+      "hit@3": 0.6458333333333334,
+      "hit@5": 0.7708333333333334,
+      "hit@10": 0.9375,
+      "recall@5": 0.6770833333333334,
+      "recall@10": 0.8125,
+      "mrr": 0.5948164682539683,
+      "avg_latency_ms": 73.24854166666667
+    },
+    "E2": {
+      "num_questions": 48,
+      "hit@1": 0.4583333333333333,
+      "hit@3": 0.7291666666666666,
+      "hit@5": 0.9166666666666666,
+      "hit@10": 1.0,
+      "recall@5": 0.8020833333333334,
+      "recall@10": 0.875,
+      "mrr": 0.6368055555555555,
+      "avg_latency_ms": 73.27125
+    },
+    "E3a": {
+      "num_questions": 48,
+      "hit@1": 0.3541666666666667,
+      "hit@3": 0.6458333333333334,
+      "hit@5": 0.75,
+      "hit@10": 0.9375,
+      "recall@5": 0.6145833333333334,
+      "recall@10": 0.7916666666666666,
+      "mrr": 0.5266699735449736,
+      "avg_latency_ms": 17567.430208333335
+    },
+    "E3": {
+      "num_questions": 48,
+      "hit@1": 0.3541666666666667,
+      "hit@3": 0.6875,
+      "hit@5": 0.8333333333333334,
+      "hit@10": 0.9791666666666666,
+      "recall@5": 0.7083333333333334,
+      "recall@10": 0.8333333333333334,
+      "mrr": 0.5634424603174603,
+      "avg_latency_ms": 17789.279791666668
+    },
+    "E4": {
+      "num_questions": 48,
+      "hit@1": 0.3541666666666667,
+      "hit@3": 0.5833333333333334,
+      "hit@5": 0.6875,
+      "hit@10": 0.9166666666666666,
+      "recall@5": 0.59375,
+      "recall@10": 0.8020833333333334,
+      "mrr": 0.5139963624338625,
+      "avg_latency_ms": 308.90333333333336
+    },
+    "E5": {
+      "num_questions": 48,
+      "hit@1": 0.3541666666666667,
+      "hit@3": 0.6666666666666666,
+      "hit@5": 0.875,
+      "hit@10": 1.0,
+      "recall@5": 0.75,
+      "recall@10": 0.875,
+      "mrr": 0.5561011904761904,
+      "avg_latency_ms": 286.2885416666667
+    }
+  }
+}

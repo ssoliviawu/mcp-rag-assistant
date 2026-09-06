@@ -1,0 +1,79 @@
+# MCP Python SDK
+
+> The official Python SDK for the Model Context Protocol
+
+## Docs
+
+- [MCP Python SDK](https://py.sdk.modelcontextprotocol.io/index.md)
+- [What's new in v2](https://py.sdk.modelcontextprotocol.io/whats-new/index.md)
+- [Protocol versions](https://py.sdk.modelcontextprotocol.io/protocol-versions/index.md)
+- [Deprecated features](https://py.sdk.modelcontextprotocol.io/deprecated/index.md)
+- [Troubleshooting](https://py.sdk.modelcontextprotocol.io/troubleshooting/index.md)
+- [Migration Guide](https://py.sdk.modelcontextprotocol.io/migration/index.md)
+
+## Get started
+
+- [Get started](https://py.sdk.modelcontextprotocol.io/get-started/index.md)
+- [Installation](https://py.sdk.modelcontextprotocol.io/get-started/installation/index.md)
+- [First steps](https://py.sdk.modelcontextprotocol.io/get-started/first-steps/index.md)
+- [Connect to a real host](https://py.sdk.modelcontextprotocol.io/get-started/real-host/index.md)
+- [Testing](https://py.sdk.modelcontextprotocol.io/get-started/testing/index.md)
+
+## Servers
+
+- [Servers](https://py.sdk.modelcontextprotocol.io/servers/index.md)
+- [Tools](https://py.sdk.modelcontextprotocol.io/servers/tools/index.md)
+- [Structured Output](https://py.sdk.modelcontextprotocol.io/servers/structured-output/index.md)
+- [Resources](https://py.sdk.modelcontextprotocol.io/servers/resources/index.md)
+- [URI templates](https://py.sdk.modelcontextprotocol.io/servers/uri-templates/index.md)
+- [Prompts](https://py.sdk.modelcontextprotocol.io/servers/prompts/index.md)
+- [Completions](https://py.sdk.modelcontextprotocol.io/servers/completions/index.md)
+- [Images, audio & icons](https://py.sdk.modelcontextprotocol.io/servers/media/index.md)
+- [Handling errors](https://py.sdk.modelcontextprotocol.io/servers/handling-errors/index.md)
+
+## Inside your handler
+
+- [Inside your handler](https://py.sdk.modelcontextprotocol.io/handlers/index.md)
+- [The Context](https://py.sdk.modelcontextprotocol.io/handlers/context/index.md)
+- [Dependencies](https://py.sdk.modelcontextprotocol.io/handlers/dependencies/index.md)
+- [Lifespan](https://py.sdk.modelcontextprotocol.io/handlers/lifespan/index.md)
+- [Elicitation](https://py.sdk.modelcontextprotocol.io/handlers/elicitation/index.md)
+- [Multi-round-trip requests](https://py.sdk.modelcontextprotocol.io/handlers/multi-round-trip/index.md)
+- [Sampling and roots](https://py.sdk.modelcontextprotocol.io/handlers/sampling-and-roots/index.md)
+- [Progress](https://py.sdk.modelcontextprotocol.io/handlers/progress/index.md)
+- [Logging](https://py.sdk.modelcontextprotocol.io/handlers/logging/index.md)
+- [Subscriptions](https://py.sdk.modelcontextprotocol.io/handlers/subscriptions/index.md)
+
+## Running your server
+
+- [Running your server](https://py.sdk.modelcontextprotocol.io/run/index.md)
+- [Add to an existing app](https://py.sdk.modelcontextprotocol.io/run/asgi/index.md)
+- [Deploy & scale](https://py.sdk.modelcontextprotocol.io/run/deploy/index.md)
+- [Authorization](https://py.sdk.modelcontextprotocol.io/run/authorization/index.md)
+- [OpenTelemetry](https://py.sdk.modelcontextprotocol.io/run/opentelemetry/index.md)
+- [Serving legacy clients](https://py.sdk.modelcontextprotocol.io/run/legacy-clients/index.md)
+
+## Clients
+
+- [The Client](https://py.sdk.modelcontextprotocol.io/client/index.md)
+- [Callbacks](https://py.sdk.modelcontextprotocol.io/client/callbacks/index.md)
+- [Transports](https://py.sdk.modelcontextprotocol.io/client/transports/index.md)
+- [OAuth](https://py.sdk.modelcontextprotocol.io/client/oauth-clients/index.md)
+- [Identity assertion](https://py.sdk.modelcontextprotocol.io/client/identity-assertion/index.md)
+- [Multiple servers](https://py.sdk.modelcontextprotocol.io/client/session-groups/index.md)
+- [Subscriptions](https://py.sdk.modelcontextprotocol.io/client/subscriptions/index.md)
+- [Caching](https://py.sdk.modelcontextprotocol.io/client/caching/index.md)
+
+## Advanced
+
+- [Advanced](https://py.sdk.modelcontextprotocol.io/advanced/index.md)
+- [The low-level Server](https://py.sdk.modelcontextprotocol.io/advanced/low-level-server/index.md)
+- [Pagination](https://py.sdk.modelcontextprotocol.io/advanced/pagination/index.md)
+- [Middleware](https://py.sdk.modelcontextprotocol.io/advanced/middleware/index.md)
+- [Extensions](https://py.sdk.modelcontextprotocol.io/advanced/extensions/index.md)
+- [MCP Apps](https://py.sdk.modelcontextprotocol.io/advanced/apps/index.md)
+
+## Optional
+
+- [mcp API reference](https://py.sdk.modelcontextprotocol.io/api/mcp/): Auto-generated API reference for the mcp package (rendered HTML)
+- [mcp-types API reference](https://py.sdk.modelcontextprotocol.io/api/mcp_types/): Auto-generated API reference for the mcp-types package (rendered HTML)

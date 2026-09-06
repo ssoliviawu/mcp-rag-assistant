@@ -1,0 +1,265 @@
+{
+  "total_low_rank_hits": 13,
+  "summary": {
+    "gold_rank_le_3": 13,
+    "gold_rank_4_5": 0,
+    "similarity_gap_lt_003": 8,
+    "similarity_gap_lt_005": 10
+  },
+  "top1_sources": {
+    "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server": 2,
+    "https://py.sdk.modelcontextprotocol.io/migration": 8,
+    "https://py.sdk.modelcontextprotocol.io/run/deploy": 1,
+    "https://py.sdk.modelcontextprotocol.io/servers/structured-output": 1,
+    "https://py.sdk.modelcontextprotocol.io/troubleshooting": 1
+  },
+  "questions": [
+    {
+      "id": "q001",
+      "question": "How do I create an MCP tool in Python?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "title": "docs_src/lowlevel/tutorial002.py",
+        "similarity": 0.7784006595611628
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "rank": 2,
+        "similarity": 0.7518107442968653
+      },
+      "similarity_gap": 0.026589915264297437,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q003",
+      "question": "How do I make an MCP tool parameter optional?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/migration",
+        "title": "_meta remains the supported place for custom data, per the MCP spec",
+        "similarity": 0.7363773584365845
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "rank": 2,
+        "similarity": 0.7128139946703317
+      },
+      "similarity_gap": 0.023563363766252787,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q008",
+      "question": "How do MCP tool errors work in FastMCP?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/migration",
+        "title": "`MCPError` raised from an `@mcp.tool()` handler now surfaces as a JSON-RPC error",
+        "similarity": 0.7309980552793826
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/whats-new",
+        "rank": 2,
+        "similarity": 0.7184067796711207
+      },
+      "similarity_gap": 0.012591275608261898,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q009",
+      "question": "How can an MCP tool report progress?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/migration",
+        "title": "`ProgressContext` and `progress()` context manager removed",
+        "similarity": 0.7584778440452294
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/handlers/progress",
+        "rank": 2,
+        "similarity": 0.7007262885137637
+      },
+      "similarity_gap": 0.057751555531465715,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q011",
+      "question": "What information is available from MCP Context?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/migration",
+        "title": "`MCPServer.get_context()` removed",
+        "similarity": 0.695310615934207
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/handlers/context",
+        "rank": 2,
+        "similarity": 0.6851481011598183
+      },
+      "similarity_gap": 0.010162514774388676,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q012",
+      "question": "How do I return structured output from an MCP tool?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "title": "Structured output, by hand",
+        "similarity": 0.7561847712883503
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/servers/tools",
+        "rank": 2,
+        "similarity": 0.753382243115242
+      },
+      "similarity_gap": 0.0028025281731082208,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q013",
+      "question": "What happens when an MCP tool returns a primitive type?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/migration",
+        "title": "Lowlevel `Server`: automatic return value wrapping removed",
+        "similarity": 0.6983993412972331
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/servers/structured-output",
+        "rank": 3,
+        "similarity": 0.6889831198474075
+      },
+      "similarity_gap": 0.009416221449825679,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q019",
+      "question": "How do I use _meta in an MCP tool result?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/migration",
+        "title": "_meta remains the supported place for custom data, per the MCP spec",
+        "similarity": 0.7751080065836954
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "rank": 2,
+        "similarity": 0.750007145106162
+      },
+      "similarity_gap": 0.02510086147753343,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q020",
+      "question": "What is the low-level MCP Server class used for?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/migration",
+        "title": "What is unchanged on `MCPServer`",
+        "similarity": 0.7504549026489258
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "rank": 3,
+        "similarity": 0.691150426864624
+      },
+      "similarity_gap": 0.05930447578430176,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q023",
+      "question": "What arguments does a low-level MCP tool handler receive?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/migration",
+        "title": "Lowlevel `Server`: decorator-based handlers replaced with constructor `on_*` params",
+        "similarity": 0.7582829368626226
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "rank": 3,
+        "similarity": 0.7213329242865502
+      },
+      "similarity_gap": 0.036950012576072444,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q024",
+      "question": "How does a low-level MCP server dispatch multiple tools?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/run/deploy",
+        "title": "Deploy & scale",
+        "similarity": 0.7405514717102051
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "rank": 3,
+        "similarity": 0.7081658840179443
+      },
+      "similarity_gap": 0.03238558769226074,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q047",
+      "question": "How is a low-level MCP output schema specified?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/servers/structured-output",
+        "title": "Validation",
+        "similarity": 0.7217624519154539
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "rank": 2,
+        "similarity": 0.7190809584759574
+      },
+      "similarity_gap": 0.0026814934394964185,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    },
+    {
+      "id": "q050",
+      "question": "How should I handle an unknown tool name in a low-level MCP server?",
+      "top1": {
+        "rank": 1,
+        "source": "https://py.sdk.modelcontextprotocol.io/troubleshooting",
+        "title": "My host lists zero tools",
+        "similarity": 0.7909277677536011
+      },
+      "gold": {
+        "source": "https://py.sdk.modelcontextprotocol.io/advanced/low-level-server",
+        "rank": 2,
+        "similarity": 0.7345870733261108
+      },
+      "similarity_gap": 0.056340694427490234,
+      "gold_in_top3": true,
+      "gold_in_top5": true,
+      "top1_is_gold": false
+    }
+  ]
+}

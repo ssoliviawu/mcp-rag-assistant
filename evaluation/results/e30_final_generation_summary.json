@@ -1,0 +1,56 @@
+{
+  "experiment": "E30_B_final_end_to_end",
+  "status": "FINAL",
+  "dataset": {
+    "file": "mcp_rag_eval_dataset.jsonl",
+    "question_count": 48,
+    "excluded_domain": "spec",
+    "expected_question_count": 48
+  },
+  "retrieval": {
+    "mode": "E25_C7_all_three",
+    "candidate_limit": 100,
+    "top_k": 10,
+    "max_chunks_per_source": 1,
+    "representation": "E25 C7: title + conditional section + content",
+    "section_rules": [
+      "installation",
+      "recap",
+      "requirements"
+    ],
+    "reranker": false,
+    "hybrid": false,
+    "lexical_boost": false,
+    "query_expansion": false,
+    "retrieval_hit_rate": 1.0,
+    "retrieval_hits": 48,
+    "retrieval_misses": 0,
+    "avg_latency_ms": 20.25
+  },
+  "generation": {
+    "model": "agnes-2.5-flash",
+    "avg_latency_ms": 9740.96,
+    "max_output_tokens": 1000
+  },
+  "successful_questions": 48,
+  "failed_questions": 0,
+  "errors": [],
+  "timing": {
+    "embedding_all_chunks_seconds": 281.7337585000787,
+    "end_to_end_total_ms": 561058.04,
+    "end_to_end_avg_ms": 11688.71
+  },
+  "batch": {
+    "batch_size": 3,
+    "batch_delay_seconds": 4,
+    "question_delay_seconds": 1
+  },
+  "pipeline_status": {
+    "retrieval": "FROZEN_E25_C7",
+    "reranker": "OFF",
+    "hybrid": "OFF",
+    "lexical_boost": "OFF",
+    "query_expansion": "OFF",
+    "experiment_purpose": "Final end-to-end benchmark of the frozen retrieval pipeline."
+  }
+}
