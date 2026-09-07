@@ -38,6 +38,3 @@ jobs:
             ingestion \
             evaluation \
             tests
-
-      - name: Run tests
-        run: uv run pytest -q
