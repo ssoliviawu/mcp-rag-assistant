@@ -35,34 +35,37 @@ The goal of this project is therefore to build a RAG-based assistant that:
                          MCP Python SDK Documentation
                                       │
                                       ▼
-                              Ingestion Pipeline
+                             Ingestion Pipeline
                                       │
                                       ▼
-                                  Chunking
+                                   Chunking
                                       │
                                       ▼
-                              BGE Embeddings
+                               BGE Embeddings
                                       │
                                       ▼
-                         PostgreSQL + pgvector
+                           PostgreSQL + pgvector
                                       │
                                       │
 User Question ───────────────► Vector Search
                                       │
-                              Candidate Limit = 100
+                                      ▼
+                         Candidate Limit = 100
                                       │
-                              Source-level Dedup
+                                      ▼
+                            Source-level Dedup
                                       │
-                         Max 1 Chunk per Source
+                                      ▼
+                       Max 1 Chunk per Source
                                       │
                                       ▼
                                 Top Results
                                       │
                                       ▼
-                            Context Construction
+                           Context Construction
                                       │
                                       ▼
-                            agnes-2.5-flash
+                             agnes-2.5-flash
                                       │
                                       ▼
                               Generated Answer
@@ -88,6 +91,8 @@ User Question ───────────────► Vector Search
 | Package management  | uv                                |
 | Database driver     | psycopg                           |
 | Evaluation          | Custom Python evaluation pipeline |
+| Testing             | pytest                            |
+| CI                  | GitHub Actions                    |
 
 ---
 
@@ -128,6 +133,10 @@ MCP RAG Assistant/
 │   ├── e29_robustness.py
 │   ├── e30_*.py
 │   └── results/
+│
+├── monitoring/
+│   ├── __init__.py
+│   └── logger.py
 │
 ├── rag/
 │   └── legacy application modules
@@ -230,7 +239,7 @@ Final retrieval results:
 | P95 latency               | **36.13 ms** |
 | Retrieval misses          |   **0 / 48** |
 
-The final retrieval pipeline therefore successfully retrieved at least one relevant document for all 48 evaluation questions.
+The final retrieval pipeline successfully retrieved at least one relevant document for all 48 evaluation questions.
 
 ---
 
@@ -240,17 +249,27 @@ The retrieved documents are converted into a structured context:
 
 ```text
 [Document 1]
+
 Title: ...
+
 Section: ...
+
 URL: ...
+
 Content:
+
 ...
 
 [Document 2]
+
 Title: ...
+
 Section: ...
+
 URL: ...
+
 Content:
+
 ...
 ```
 
@@ -318,8 +337,10 @@ One representative example:
 Question: Q013
 
 Vector rank:       5
+
 Reranker rank:    64
-Rank change:     -59
+
+Rank change:      -59
 ```
 
 The reranker also increased retrieval latency from approximately tens of milliseconds to approximately 18 seconds.
@@ -328,6 +349,7 @@ Therefore:
 
 ```text
 Final system:
+
 Vector Search + Dedup
 ```
 
@@ -343,7 +365,7 @@ This is an intentional design decision based on experimental evidence.
 
 # 11. Web Interface
 
-The project includes a Streamlit interface.
+The project includes a Streamlit-based web interface.
 
 Users can:
 
@@ -352,6 +374,8 @@ Users can:
 * view total latency;
 * see the number of retrieved documents;
 * inspect retrieved documentation sources.
+
+Streamlit is included as a project dependency and is installed automatically when using `uv sync`.
 
 Run:
 
@@ -397,22 +421,35 @@ OPENAI_MODEL=agnes-2.5-flash
 
 ```bash
 git clone <YOUR_GITHUB_REPOSITORY_URL>
+
 cd MCP-RAG-Assistant
 ```
 
 ## Install dependencies
 
-Using `uv`:
+The project uses `uv` for dependency management.
 
 ```bash
 uv sync
 ```
 
+This installs all project dependencies, including Streamlit.
+
 Activate the environment if desired:
 
-```bash
+```powershell
 .venv\Scripts\activate
 ```
+
+The project uses:
+
+```text
+Python 3.12
+pyproject.toml
+uv.lock
+```
+
+for reproducible dependency management.
 
 ---
 
@@ -433,6 +470,14 @@ vector(384)
 ```
 
 because the BGE embedding model produces 384-dimensional embeddings.
+
+The project also includes:
+
+```text
+docker-compose.yml
+```
+
+for running the PostgreSQL + pgvector service.
 
 ---
 
@@ -458,11 +503,13 @@ The ingestion modules are located under:
 ingestion/
 ```
 
-Example:
+Examples:
 
 ```bash
 python -m ingestion.discover
+
 python -m ingestion.pipeline
+
 python -m ingestion.embed
 ```
 
@@ -498,46 +545,97 @@ evaluation/results/
 
 ---
 
-# 17. Reproducibility
+# 17. Monitoring
+
+The application includes lightweight request monitoring.
+
+The monitoring implementation is located under:
+
+```text
+monitoring/
+```
+
+The logger records information including:
+
+* timestamp;
+* question;
+* success/failure status;
+* number of retrieved documents;
+* model name;
+* generation latency;
+* total request latency;
+* error information when applicable.
+
+Runtime metrics are written to:
+
+```text
+monitoring/metrics.jsonl
+```
+
+The metrics file is excluded from Git because it may contain user questions and runtime data.
+
+The current monitoring implementation is intentionally lightweight and file-based.
+
+Future improvements could include:
+
+* user feedback collection;
+* monitoring dashboards;
+* retrieval-quality tracking;
+* answer-quality tracking;
+* latency visualization;
+* failure-case analysis.
+
+---
+
+# 18. Reproducibility
 
 The project uses:
 
-* Python 3.12
-* `uv`
-* `pyproject.toml`
-* `uv.lock`
-* a fixed evaluation dataset
-* explicit retrieval parameters
-* explicit model configuration
+* Python 3.12;
+* `uv`;
+* `pyproject.toml`;
+* `uv.lock`;
+* a fixed evaluation dataset;
+* explicit retrieval parameters;
+* explicit model configuration.
 
 The main final configuration is:
 
 ```text
 Embedding:
+
 BGE
 
 Retrieval:
+
 Vector Search
 
 Candidate limit:
+
 100
 
 Source dedup:
+
 Enabled
 
 Maximum chunks per source:
+
 1
 
 Top K:
+
 10
 
 Reranker:
+
 Disabled
 
 Hybrid retrieval:
+
 Disabled
 
 LLM:
+
 agnes-2.5-flash
 ```
 
@@ -551,7 +649,44 @@ so that the final retrieval decision can be traced back to the experiments.
 
 ---
 
-# 18. Project Development Process
+# 19. Testing and Continuous Integration
+
+The project includes automated tests using pytest.
+
+Run tests locally with:
+
+```bash
+uv run pytest -q
+```
+
+Python compilation checks can be run with:
+
+```bash
+uv run python -m compileall app retrieval embedding ingestion evaluation monitoring tests
+```
+
+The repository also includes a GitHub Actions CI workflow:
+
+```text
+.github/
+└── workflows/
+    └── ci.yml
+```
+
+The CI workflow:
+
+1. checks out the repository;
+2. sets up Python 3.12;
+3. installs `uv`;
+4. installs locked project dependencies;
+5. compiles project Python files;
+6. runs the test suite.
+
+This helps detect broken code and dependency issues when changes are pushed to the repository or submitted through pull requests.
+
+---
+
+# 20. Project Development Process
 
 The project followed an experiment-driven development process.
 
@@ -575,13 +710,19 @@ Final E2 Selection
 End-to-End Evaluation
         ↓
 Streamlit Application
+        ↓
+Monitoring
+        ↓
+Testing / CI
 ```
 
 Rather than selecting additional components simply because they are commonly used in RAG systems, retrieval improvements were kept only when they demonstrated measurable benefits on the evaluation dataset.
 
+For example, the reranker and hybrid retrieval approaches were evaluated experimentally but were not included in the final system because they did not provide sufficient improvement relative to their additional complexity and latency.
+
 ---
 
-# 19. Future Improvements
+# 21. Future Improvements
 
 The current evaluation shows that retrieval is no longer the primary bottleneck.
 
@@ -599,19 +740,20 @@ Improve citation generation so that answers consistently reference the relevant 
 
 A controlled query-rewriting experiment can be used to determine whether rewriting improves difficult questions without increasing latency excessively.
 
-### Monitoring
+### Monitoring dashboard
 
-Add user feedback and monitoring dashboards to track:
+Extend the current lightweight logging system with a monitoring dashboard for visualizing:
 
+* request volume;
 * latency;
-* retrieval quality;
-* answer quality;
-* user feedback;
-* failure cases.
+* retrieval statistics;
+* generation statistics;
+* error rates;
+* user feedback.
 
 ---
 
-# 20. Conclusion
+# 22. Conclusion
 
 The final MCP RAG Assistant uses a lightweight vector retrieval pipeline combined with source-level deduplication and an LLM generation layer.
 
@@ -619,23 +761,35 @@ The final retrieval configuration achieved:
 
 ```text
 Hit@10: 100%
+
 MRR:     0.7976
+
 P95:     36.13 ms
+
 Misses:  0 / 48
 ```
 
 The end-to-end system achieved:
 
 ```text
-Correctness:        86.46%
-Faithfulness:       95.84%
+Correctness:          86.46%
+
+Faithfulness:         95.84%
+
 Citation Correctness: 95.84%
-Overall:            92.74%
+
+Overall:              92.74%
 ```
 
 The experiments also demonstrated that more complex retrieval components do not automatically produce better results. In particular, the evaluated reranker substantially increased latency and did not improve the final retrieval quality.
 
-The project therefore prioritizes **measured performance, simplicity, reproducibility, and evidence-grounded generation**.
+The project therefore prioritizes:
+
+* measured performance;
+* simplicity;
+* reproducibility;
+* evidence-grounded generation;
+* experimental validation.
 
 ---
 

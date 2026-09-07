@@ -4,6 +4,7 @@ import time
 from dotenv import load_dotenv
 from openai import OpenAI
 from retrieval.search import vector_search_diverse
+from monitoring.logger import log_request
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 load_dotenv(os.path.join(ROOT_DIR, ".env"))
@@ -40,7 +41,8 @@ def retrieve(question):
 
     return vector_search_diverse(
         question,
-        limit=CANDIDATE_LIMIT,
+        limit=TOP_K,
+        candidate_limit=CANDIDATE_LIMIT,
         max_chunks_per_source=MAX_CHUNKS_PER_SOURCE,
     )
 
@@ -204,67 +206,107 @@ def answer_question(question):
 
     total_start = time.perf_counter()
 
-    # --------------------------------------------------------
-    # Retrieval
-    # --------------------------------------------------------
+    try:
 
-    raw_results = retrieve(question)
+        # --------------------------------------------------------
+        # Retrieval
+        # --------------------------------------------------------
 
-    retrieved_details = (
-        build_retrieved_details(raw_results)
-    )
+        raw_results = retrieve(question)
 
-    # --------------------------------------------------------
-    # Context
-    # --------------------------------------------------------
+        retrieved_details = [
+            normalize_result(result, rank)
+            for rank, result in enumerate(
+                raw_results,
+                start=1,
+            )
+        ]
 
-    context = build_context(
-        retrieved_details
-    )
+        # --------------------------------------------------------
+        # Context
+        # --------------------------------------------------------
 
-    # --------------------------------------------------------
-    # Generation
-    # --------------------------------------------------------
+        context = build_context(
+            retrieved_details
+        )
 
-    generation = generate_answer(
-        question,
-        context,
-    )
+        # --------------------------------------------------------
+        # Generation
+        # --------------------------------------------------------
 
-    total_latency_ms = (
-        time.perf_counter() - total_start
-    ) * 1000
+        generation = generate_answer(
+            question,
+            context,
+        )
 
-    # --------------------------------------------------------
-    # Return everything UI needs
-    # --------------------------------------------------------
+        total_latency_ms = (
+            time.perf_counter() - total_start
+        ) * 1000
 
-    return {
-        "question": question,
+        # --------------------------------------------------------
+        # Monitoring
+        # --------------------------------------------------------
 
-        "answer": generation["answer"],
+        log_request(
+            question=question,
+            success=True,
+            result_count=len(retrieved_details),
+            model=generation["model"],
+            generation_latency_ms=(
+                generation["latency_ms"]
+            ),
+            total_latency_ms=total_latency_ms,
+        )
 
-        "model": generation["model"],
+        # --------------------------------------------------------
+        # Return everything UI needs
+        # --------------------------------------------------------
 
-        "latency_ms": total_latency_ms,
+        return {
+            "question": question,
 
-        "generation_latency_ms": (
-            generation["latency_ms"]
-        ),
+            "answer": generation["answer"],
 
-        "retrieval": {
-            "mode": RETRIEVAL_MODE,
+            "model": generation["model"],
 
-            "candidate_limit": CANDIDATE_LIMIT,
+            "latency_ms": total_latency_ms,
 
-            "top_k": TOP_K,
-
-            "max_chunks_per_source": (
-                MAX_CHUNKS_PER_SOURCE
+            "generation_latency_ms": (
+                generation["latency_ms"]
             ),
 
-            "results": retrieved_details,
+            "retrieval": {
+                "mode": RETRIEVAL_MODE,
 
-            "context": context,
-        },
-    }
+                "candidate_limit": CANDIDATE_LIMIT,
+
+                "top_k": TOP_K,
+
+                "max_chunks_per_source": (
+                    MAX_CHUNKS_PER_SOURCE
+                ),
+
+                "results": retrieved_details,
+
+                "context": context,
+            },
+        }
+
+    except Exception as error:
+
+        total_latency_ms = (
+            time.perf_counter() - total_start
+        ) * 1000
+
+        # --------------------------------------------------------
+        # Monitoring failed request
+        # --------------------------------------------------------
+
+        log_request(
+            question=question,
+            success=False,
+            total_latency_ms=total_latency_ms,
+            error=str(error),
+        )
+
+        raise
