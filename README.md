@@ -4,13 +4,7 @@ A Retrieval-Augmented Generation (RAG) assistant for answering questions about t
 
 This project was developed as a final project for the [DataTalksClub LLM Zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp).
 
-The system retrieves relevant MCP Python SDK documentation using vector search and generates grounded answers with an LLM.
-
-This project is not just about building a RAG Assistant—it is about understanding how to improve one. I started with a standard vector retrieval pipeline and systematically evaluated multiple optimization strategies, including hybrid search, reranking, deduplication, and document representation.
-
-The most important finding was that more sophisticated does not always mean better. Some popular techniques increased complexity and latency without providing consistent improvements. Through error analysis and controlled experiments, I found that improving document representation and handling section quality was more effective for this MCP documentation corpus.
-
-The result is a simpler, more explainable, and evidence-driven RAG pipeline, where design decisions are based on measured results rather than assumptions.
+I built an MCP-based RAG Assistant that exposes documentation-based question answering through an MCP server. Beyond building the standard RAG pipeline, I focused on systematically evaluating and optimizing retrieval strategies. By testing vector search, hybrid retrieval, reranking, deduplication, and document representation, I found that more complex RAG architectures do not always lead to better results. The final approach emphasizes simpler, faster, and evidence-driven retrieval based on systematic experiments and failure analysis.
 
 ---
 
